@@ -6,7 +6,6 @@
     <title>@section('title')
             Админ |
         @show </title>
-
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
           href="{{ asset('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback') }}">
@@ -41,7 +40,7 @@
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('admin.index') }}" class="nav-link">Главная</a>
+                <a href="{{ route('admin.index') }}" class="nav-link {{ request()->routeIs('admin.index')?'active':'' }}">Главная</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
@@ -176,19 +175,16 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-        <div style="text-align: center">
-            <a href="{{ route('admin.index') }}" class="brand-link">Админ панель</a>
-        </div>
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="user-panel mt-2 pb-2 mb-3 d-flex">
                 <div class="image">
                     <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Username</a>
                 </div>
             </div>
             <!-- SidebarSearch Form -->
