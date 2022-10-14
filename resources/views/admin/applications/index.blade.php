@@ -7,7 +7,7 @@
 @section('content')
     <br>
     <h1>Заявки</h1>
-    <a href="{{ route('admin.applications.create') }}" class="btn btn-warning mb-3">Создать заявку</a>
+    <a href="{{ route('admin.applications.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Создать заявку</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>
@@ -31,11 +31,14 @@
                             @csrf
                             @method('delete')
                             <a href="{{ route('admin.applications.show', $application->id) }}"><i
-                                    class="nav-icon fas fa-eye mr-2" style="color: green"></i></a>
+                                    class="nav-icon fas fa-eye mr-2" style="color: green; opacity: .7;"
+                                title="Посмотреть"></i></a>
                             <a href="{{ route('admin.applications.edit', $application->id) }}"><i
-                                    class="nav-icon fas fa-edit mr-3"></i></a>
+                                    class="nav-icon fas fa-edit mr-3" style="color: darkorange; opacity: .7;"
+                                    title="Редактировать"></i></a>
                             <button type="submit" style="border: none; background-color: transparent;"><i
-                                    class="nav-icon fas fa-trash-alt" style="color: red;"></i></button>
+                                    class="nav-icon fas fa-trash-alt" style="color: red; opacity: .7;"
+                                title="Удалить"></i></button>
                         </form>
                     </td>
                 </tr>
