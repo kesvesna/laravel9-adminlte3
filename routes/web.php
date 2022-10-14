@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Admin\Applications\ApplicationController as AdminApplicationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::name('admin.')
+    ->prefix('admin')
+    ->group(function () {
+
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::resource('applications', AdminApplicationController::class);
+    });
