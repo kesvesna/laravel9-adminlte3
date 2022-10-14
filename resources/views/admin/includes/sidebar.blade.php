@@ -15,5 +15,20 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.towns.index') }}" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    Города
+                    <span class="badge badge-info right">
+                        @if(isset($towns_count))
+                            {{ $towns_count }}
+                        @else
+                            0
+                        @endif
+                    </span>
+                </p>
+            </a>
+        </li>
     </ul>
 </nav>

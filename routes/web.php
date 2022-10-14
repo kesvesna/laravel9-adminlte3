@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\Applications\ApplicationController as AdminApplicationController;
+use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,5 @@ Route::name('admin.')
 
         Route::get('/', [AdminController::class, 'index'])->name('index');
         Route::resource('applications', AdminApplicationController::class);
+        Route::resource('towns', AdminTownController::class);
     });
