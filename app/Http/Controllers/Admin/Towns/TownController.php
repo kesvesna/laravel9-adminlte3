@@ -41,8 +41,7 @@ class TownController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'slug' => 'string',
+            'name' => 'required'
         ]);
         Town::create($data);
         return redirect()->route('admin.towns.index');
@@ -84,8 +83,7 @@ class TownController extends Controller
     public function update(Request $request, Town $town)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'slug' => 'string',
+            'name' => ['required']
         ]);
         $town->update($data);
         return redirect()->route('admin.towns.show', $town->id);

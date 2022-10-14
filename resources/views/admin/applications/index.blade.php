@@ -7,7 +7,8 @@
 @section('content')
     <br>
         <h1>Заявки</h1>
-        <div class="table-responsive">
+    <a href="{{ route('admin.applications.create') }}" class="btn btn-warning mb-3">Создать заявку</a>
+    <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered table-sm">
                 <thead>
                 <tr>
@@ -26,9 +27,13 @@
                         <td>{{ $application->comment }}</td>
                         <td>{{ $application->created_at }}</td>
                         <td>
-                            <a href="{{ route('admin.applications.show', $application->id) }}"><i class="nav-icon fas fa-eye mr-2" style="color: green"></i></a>
-                            <a href="{{ route('admin.applications.edit', $application->id) }}"><i class="nav-icon fas fa-edit mr-3"></i></a>
-                            <a href="{{ route('admin.applications.destroy', $application->id) }}"><i class="nav-icon fas fa-trash-alt" style="color: red"></i></a>
+                            <form action="{{ route('admin.applications.destroy', $application->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <a href="{{ route('admin.applications.show', $application->id) }}"><i class="nav-icon fas fa-eye mr-2" style="color: green"></i></a>
+                                <a href="{{ route('admin.applications.edit', $application->id) }}"><i class="nav-icon fas fa-edit mr-3"></i></a>
+                               <button type="submit" style="border: none; background-color: transparent;"><i class="nav-icon fas fa-trash-alt" style="color: red;"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @empty

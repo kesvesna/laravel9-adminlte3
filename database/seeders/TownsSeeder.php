@@ -27,7 +27,7 @@ class TownsSeeder extends Seeder
 
         DB::table('towns')->insert([
             'name' => 'Санкт-Петербург',
-            'slug' => 'saintpetersburg',
+            'slug' => 'saint-petersburg',
             'created_at' => now(),
             'updated_at' => now(),
         ]);

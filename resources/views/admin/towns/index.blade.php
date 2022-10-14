@@ -7,6 +7,7 @@
 @section('content')
     <br>
         <h1>Города</h1>
+        <a href="{{ route('admin.towns.create') }}" class="btn btn-warning mb-3">Добавить город</a>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered table-sm">
                 <thead>
@@ -26,9 +27,13 @@
                         <td>{{ $town->slug }}</td>
                         <td>{{ $town->created_at }}</td>
                         <td>
-                            <a href="{{ route('admin.towns.show', $town->id) }}"><i class="nav-icon fas fa-eye mr-2" style="color: green"></i></a>
-                            <a href="{{ route('admin.towns.edit', $town->id) }}"><i class="nav-icon fas fa-edit mr-3"></i></a>
-                            <a href="{{ route('admin.towns.destroy', $town->id) }}"><i class="nav-icon fas fa-trash-alt" style="color: red"></i></a>
+                            <form action="{{ route('admin.towns.destroy', $town->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <a href="{{ route('admin.towns.show', $town->id) }}"><i class="nav-icon fas fa-eye mr-2" style="color: green"></i></a>
+                                <a href="{{ route('admin.towns.edit', $town->id) }}"><i class="nav-icon fas fa-edit mr-3"></i></a>
+                                <button type="submit" style="border: none; background-color: transparent;"><i class="nav-icon fas fa-trash-alt" style="color: red;"></i></button>
+                            </form>
                         </td>
                     </tr>
                 @empty
