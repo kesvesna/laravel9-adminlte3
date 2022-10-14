@@ -5,13 +5,11 @@
                 <i class="nav-icon far fa-edit"></i>
                 <p>
                     Заявки
-                    <span class="badge badge-info right">
-                        @if(isset($applications_count))
+                    @if(isset($applications_count))
+                        <span class="badge badge-info right">
                             {{ $applications_count }}
-                        @else
-                            0
-                        @endif
-                    </span>
+                        </span>
+                    @endif
                 </p>
             </a>
         </li>
@@ -20,13 +18,11 @@
                 <i class="nav-icon far fa-file"></i>
                 <p>
                     Города
-                    <span class="badge badge-info right">
-                        @if(isset($towns_count))
+                    @if(isset($towns_count))
+                        <span class="badge badge-info right">
                             {{ $towns_count }}
-                        @else
-                            0
-                        @endif
-                    </span>
+                        </span>
+                    @endif
                 </p>
             </a>
         </li>

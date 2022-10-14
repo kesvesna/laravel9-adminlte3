@@ -83,7 +83,7 @@ class TownController extends Controller
     public function update(Request $request, Town $town)
     {
         $data = $request->validate([
-            'name' => ['required']
+            'name' => 'required'
         ]);
         $town->update($data);
         return redirect()->route('admin.towns.show', $town->id);

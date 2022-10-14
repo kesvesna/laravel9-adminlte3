@@ -14,7 +14,8 @@
         </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Comment</label>
-            <textarea type="text" class="form-control" id="comment" name="comment">{{ $application->comment }}</textarea>
+            <textarea type="text" class="form-control" id="comment"
+                      name="comment">{{ $application->comment }}</textarea>
         </div>
         <button type="submit" class="btn btn-primary mr-3">Сохранить</button>
         <a href="{{ route('admin.applications.index') }}" class="btn btn-success">К заявкам</a>
