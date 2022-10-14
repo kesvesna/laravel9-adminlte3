@@ -16,6 +16,7 @@
             <label for="comment" class="form-label">Comment</label>
             <textarea type="text" class="form-control" id="comment" name="comment"></textarea>
         </div>
+        <a href="{{ route('admin.applications.index') }}" class="btn btn-success mr-3">Назад</a>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
 @endsection

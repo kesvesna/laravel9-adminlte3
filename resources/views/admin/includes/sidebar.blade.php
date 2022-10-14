@@ -26,5 +26,18 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.trks.index') }}" class="nav-link {{ request()->routeIs('admin.trks.index')?'active':'' }}">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    ТРК
+                    @if(isset($trks_count))
+                        <span class="badge badge-info right">
+                            {{ $trks_count }}
+                        </span>
+                    @endif
+                </p>
+            </a>
+        </li>
     </ul>
 </nav>

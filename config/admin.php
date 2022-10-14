@@ -7,5 +7,9 @@
 
         'towns' => [
             'pagination' => 5
+        ],
+
+        'trks' => [
+            'pagination' => 5
         ]
     ];
