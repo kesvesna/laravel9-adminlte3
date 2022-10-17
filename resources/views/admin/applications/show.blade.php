@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <th scope="row">ТРК</th>
-            <td>{{ $application->trk_id }}</td>
+            <td>{{ $application->trk->name }}</td>
         </tr>
         <tr>
             <th scope="row">Комментарий</th>
@@ -27,10 +27,6 @@
         </tr>
         </tbody>
     </table>
-
-
-
-
     <form action="{{ route('admin.applications.destroy', $application->id) }}" method="post">
         @csrf
         @method('delete')

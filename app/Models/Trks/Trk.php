@@ -19,7 +19,8 @@ class Trk extends Model
 
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'town_id'
     ];
 
     /**

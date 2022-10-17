@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Trks;
 
 use App\Http\Controllers\Controller;
 use App\Models\Trks\Trk;
+use App\Models\Towns\Town;
 use Illuminate\Http\Request;
 
 class TrkController extends Controller
@@ -28,7 +29,10 @@ class TrkController extends Controller
      */
     public function create()
     {
-        return view('admin.trks.create');
+        return view('admin.trks.create',
+        [
+            'towns' => Town::all()
+        ]);
     }
 
     /**
@@ -40,7 +44,8 @@ class TrkController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'town_id' => ['required', 'integer', 'min:1']
         ]);
         Trk::create($data);
         return redirect()->route('admin.trks.index');
@@ -68,7 +73,8 @@ class TrkController extends Controller
     public function edit(Trk $trk)
     {
         return view('admin.trks.edit', [
-            'trk' => $trk
+            'trk' => $trk,
+            'towns' => Town::all()
         ]);
     }
 
@@ -82,7 +88,8 @@ class TrkController extends Controller
     public function update(Request $request, Trk $trk)
     {
         $data = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'town_id' => [ 'required', 'integer', 'min:1']
         ]);
         $trk->update($data);
         return redirect()->route('admin.trks.show', $trk->id);

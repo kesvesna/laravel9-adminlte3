@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Applications;
 
 use App\Http\Controllers\Controller;
 use App\Models\Applications\Applications;
+use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -14,7 +15,7 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         return view('admin.applications.index', [
             'applications' => Applications::with('trk')->paginate(config('admin.applications.pagination')),
@@ -24,13 +25,15 @@ class ApplicationController extends Controller
 
     public function create()
     {
-        return view('admin.applications.create');
+        return view('admin.applications.create',[
+            'trks' => Trk::all()
+        ]);
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'trk_id' => 'required',
+            'trk_id' => [ 'required', 'integer', 'min:1' ],
             'comment' => 'string',
         ]);
         Applications::create($data);
@@ -47,14 +50,15 @@ class ApplicationController extends Controller
     public function edit(Applications $application)
     {
         return view('admin.applications.edit', [
-            'application' => $application
+            'application' => $application,
+            'trks' => Trk::all()
         ]);
     }
 
     public function update(Applications $application, Request $request)
     {
         $data = $request->validate([
-            'trk_id' => 'required',
+            'trk_id' => [ 'required', 'integer', 'min:1' ],
             'comment' => 'string',
         ]);
         $application->update($data);

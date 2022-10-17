@@ -33,8 +33,8 @@
                             @csrf
                             @method('delete')
                             <a href="{{ route('admin.trks.show', $trk->id) }}"><i class="nav-icon fas fa-eye mr-2"
-                                                                                    style="color: green;  opacity: .7;"
-                                                                                    title="Посмотреть"></i></a>
+                                                                                  style="color: green;  opacity: .7;"
+                                                                                  title="Посмотреть"></i></a>
                             <a href="{{ route('admin.trks.edit', $trk->id) }}"><i
                                     class="nav-icon fas fa-edit mr-3" style="color: darkorange; opacity: .7;"
                                     title="Редактировать"></i></a>
