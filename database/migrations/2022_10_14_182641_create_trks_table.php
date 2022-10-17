@@ -50,13 +50,6 @@ return new class extends Migration
                     'updated_at' => now(),
                 ],
                 [
-                    'name' => 'FORT Отрадное',
-                    'slug' => 'fort-otradnoe',
-                    'town_id' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                [
                     'name' => 'Золотой Вавилон',
                     'slug' => 'zolotoi-vavilon',
                     'town_id' => 1,
@@ -132,7 +125,14 @@ return new class extends Migration
                     'town_id' => 2,
                     'created_at' => now(),
                     'updated_at' => now(),
-                ]
+                ],
+                [
+                    'name' => 'FORT Отрадное',
+                    'slug' => 'fort-otradnoe',
+                    'town_id' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
             ]
         );
 

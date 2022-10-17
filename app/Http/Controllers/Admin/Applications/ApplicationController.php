@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\Applications;
 
 use App\Http\Controllers\Controller;
+use App\Http\Filters\ApplicationFilter;
+use App\Http\Requests\Applications\ApplicationFilterRequest;
 use App\Models\Applications\Applications;
 use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
@@ -15,8 +17,17 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function index(ApplicationFilterRequest $request)
     {
+
+        $data = $request->validate([
+            'trk_id' => '',
+            'comment' => '',
+        ]);
+
+        $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
+        $applications = Applications::filter($filter)->paginate(config('admin.applications.pagination'));
+
         return view('admin.applications.index', [
             'applications' => Applications::with('trk')->paginate(config('admin.applications.pagination')),
             'applications_count' => Applications::count()

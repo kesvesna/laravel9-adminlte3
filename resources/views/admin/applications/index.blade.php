@@ -54,6 +54,6 @@
             @endforelse
             </tbody>
         </table>
-        {{ $applications->links() }}
+        {{ $applications->withQueryString()->links() }}
     </div>
 @endsection

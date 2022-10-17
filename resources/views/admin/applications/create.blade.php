@@ -12,7 +12,9 @@
             <label for="trk_id">ТОРГОВЫЙ КОМПЛЕКС</label>
             <select name="trk_id" id="trk_id" class="form-control">
                 @forelse($trks as $trk)
-                    <option value="{{ $trk->id }}">{{ $trk->name }}</option>
+                    <option
+                        {{ old('trk_id') == $trk->id ? ' selected' : ''}}
+                        value="{{ $trk->id }}">{{ $trk->name }}</option>
                 @empty
                     <option value="0">Нет комплексов в списке</option>
                 @endforelse

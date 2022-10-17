@@ -20,7 +20,7 @@ class ApplicationsSeeder extends Seeder
         $faker = Factory::create('ru_RU');
         for ($i = 0; $i < 10; $i++) {
             DB::table('applications')->insert([
-                'trk_id' => rand(1, 5),
+                'trk_id' => rand(1, 15),
                 'comment' => $faker->realText('100'),
             ]);
         }

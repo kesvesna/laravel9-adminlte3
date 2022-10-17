@@ -10,13 +10,18 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">НАЗВАНИЕ КОМПЛЕКСА</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" value="{{ old('name') }}" class="form-control" id="name" name="name">
+            @error('name')
+                <p class="text-danger">{{ __($message) }}</p>
+            @enderror
         </div>
         <div class="form-group">
             <label for="town_id">ГОРОД</label>
             <select name="town_id" id="town_id" class="form-control">
                 @forelse($towns as $town)
-                    <option value="{{ $town->id }}">{{ $town->name }}</option>
+                    <option
+                        {{ old('town_id') == $town->id ? ' selected' : ''}}
+                        value="{{ $town->id }}">{{ $town->name }}</option>
                 @empty
                     <option value="0">Нет городов в списке</option>
                 @endforelse

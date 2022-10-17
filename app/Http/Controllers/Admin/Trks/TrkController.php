@@ -44,7 +44,7 @@ class TrkController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
+            'name' => ['required', 'string', 'min:2', 'max:50'],
             'town_id' => ['required', 'integer', 'min:1']
         ]);
         Trk::create($data);
@@ -88,8 +88,8 @@ class TrkController extends Controller
     public function update(Request $request, Trk $trk)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'town_id' => [ 'required', 'integer', 'min:1']
+            'name' => ['required', 'string', 'min:2', 'max:50'],
+            'town_id' => ['required', 'integer', 'min:1']
         ]);
         $trk->update($data);
         return redirect()->route('admin.trks.show', $trk->id);
