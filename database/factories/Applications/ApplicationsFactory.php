@@ -17,7 +17,7 @@ class ApplicationsFactory extends Factory
     public function definition(): array
     {
         return [
-            'trk_id' => fake()->numberBetween(1, 5),
+            'trk_id' => fake()->numberBetween(1, 15),
             'comment' => fake()->realText(100),
         ];
     }

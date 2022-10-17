@@ -15,7 +15,10 @@ return new class extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedMediumInteger('trk_id');
+            $table->foreignId('trk_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->text('comment');
             $table->timestamps();
             $table->softDeletes();
@@ -29,6 +32,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('applications', function (Blueprint $table) {
+            $table->dropForeign(['trk_id']);
+        });
         Schema::dropIfExists('applications');
     }
 };

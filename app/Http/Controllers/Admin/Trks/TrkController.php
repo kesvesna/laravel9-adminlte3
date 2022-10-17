@@ -16,7 +16,7 @@ class TrkController extends Controller
     public function index()
     {
         return view('admin.trks.index', [
-            'trks' => Trk::paginate(config('admin.trks.pagination')),
+            'trks' => Trk::with('town')->paginate(config('admin.trks.pagination')),
             'trks_count' => Trk::count()
         ]);
     }

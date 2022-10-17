@@ -22,6 +22,10 @@
             <td>{{ $trk->name }}</td>
         </tr>
         <tr>
+            <th scope="row">Город</th>
+            <td>{{ $trk->town->name }}</td>
+        </tr>
+        <tr>
             <th scope="row">Slug</th>
             <td>{{ $trk->slug }}</td>
         </tr>

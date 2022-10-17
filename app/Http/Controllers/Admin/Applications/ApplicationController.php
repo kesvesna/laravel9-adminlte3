@@ -17,7 +17,7 @@ class ApplicationController extends Controller
     public function index()
     {
         return view('admin.applications.index', [
-            'applications' => Applications::paginate(config('admin.applications.pagination')),
+            'applications' => Applications::with('trk')->paginate(config('admin.applications.pagination')),
             'applications_count' => Applications::count()
         ]);
     }
