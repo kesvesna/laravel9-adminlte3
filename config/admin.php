@@ -1,11 +1,10 @@
 <?php
 
-    return [
+return [
         'applications' => [
-            'pagination' => 5
+            'pagination' => 5,
         ],
-
         'towns' => [
-            'pagination' => 5
+            'pagination' => 5,
         ]
-    ];
+];
