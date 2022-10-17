@@ -26,10 +26,10 @@ class ApplicationController extends Controller
         ]);
 
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
-        $applications = Applications::filter($filter)->paginate(config('admin.applications.pagination'));
+        $applications = Applications::filter($filter)->with('trk')->paginate(config('admin.applications.pagination'));
 
         return view('admin.applications.index', [
-            'applications' => Applications::with('trk')->paginate(config('admin.applications.pagination')),
+            'applications' => $applications,
             'applications_count' => Applications::count()
         ]);
     }
