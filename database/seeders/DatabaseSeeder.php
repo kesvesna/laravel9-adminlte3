@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             //TownsSeeder::class,
             //TrksSeeder::class,
-            BuildingsSeeder::class
+            BuildingsSeeder::class,
+            FloorsSeeder::class,
         ]);
     }
 }

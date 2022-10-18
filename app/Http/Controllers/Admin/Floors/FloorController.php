@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Buildings;
+namespace App\Http\Controllers\Admin\Floors;
 
 use App\Http\Controllers\Controller;
 use App\Models\Floors\Floor;
@@ -60,7 +60,7 @@ class FloorController extends Controller
     public function show(Floor $floor)
     {
         return view('admin.floors.show',[
-            'building' => $floor
+            'floor' => $floor
         ]);
     }
 
@@ -73,7 +73,7 @@ class FloorController extends Controller
     public function edit(Floor $floor)
     {
         return view('admin.floors.edit', [
-            'building' => $floor,
+            'floor' => $floor,
             'trks' => Trk::all()
         ]);
     }

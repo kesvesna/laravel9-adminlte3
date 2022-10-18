@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Buildings;
+namespace App\Models\Floors;
 
 use App\Models\Trks\Trk;
 use Cviebrock\EloquentSluggable\Sluggable;

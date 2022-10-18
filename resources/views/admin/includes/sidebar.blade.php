@@ -29,32 +29,57 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.trks.index') }}"
-               class="nav-link {{ request()->routeIs('admin.trks.index')?'active':'' }}">
+            <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>
-                    ТРК
-                    @if(isset($trks_count))
-                        <span class="badge badge-info right">
+                    Архитектура
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.trks.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.trks.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            ТРК
+                            @if(isset($trks_count))
+                                <span class="badge badge-info right">
                             {{ $trks_count }}
                         </span>
-                    @endif
-                </p>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="{{ route('admin.buildings.index') }}"
-               class="nav-link {{ request()->routeIs('admin.buildings.index')?'active':'' }}">
-                <i class="nav-icon far fa-file"></i>
-                <p>
-                    Блок/Зона
-                    @if(isset($buildings_count))
-                        <span class="badge badge-info right">
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.buildings.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.buildings.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Блок/Зона
+                            @if(isset($buildings_count))
+                                <span class="badge badge-info right">
                             {{ $buildings_count }}
                         </span>
-                    @endif
-                </p>
-            </a>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.floors.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.floors.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Этаж/Уровень
+                            @if(isset($floors_count))
+                                <span class="badge badge-info right">
+                            {{ $floors_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
 </nav>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Applications\Applications;
+use App\Models\Floors\Floor;
 use App\Models\Towns\Town;
 use App\Models\Buildings\Building;
 use App\Models\Trks\Trk;
@@ -23,7 +24,8 @@ class AdminController extends Controller
             'applications_count' => Applications::count(),
             'towns_count' => Town::count(),
             'trks_count' => Trk::count(),
-            'buildings_count' => Building::count()
+            'buildings_count' => Building::count(),
+            'floors_count' => Floor::count(),
         ]);
     }
 
