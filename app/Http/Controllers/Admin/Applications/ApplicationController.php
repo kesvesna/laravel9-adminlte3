@@ -19,18 +19,19 @@ class ApplicationController extends Controller
      */
     public function index(ApplicationFilterRequest $request)
     {
-
         $data = $request->validate([
             'trk_id' => '',
             'comment' => ''
         ]);
+
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
         $applications = Applications::filter($filter)->with('trk')->paginate(config('admin.applications.pagination'));
 
         return view('admin.applications.index', [
             'applications' => $applications,
             'applications_count' => Applications::count(),
-            'trks' => Trk::all()
+            'trks' => Trk::all(),
+            'old_filters' => $data
         ]);
     }
 
