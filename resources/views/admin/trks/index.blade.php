@@ -15,8 +15,6 @@
                 <th scope="col">ID</th>
                 <th scope="col">НАЗВАНИЕ</th>
                 <th scope="col">ГОРОД</th>
-                <th scope="col">SLUG</th>
-                <th scope="col">СОЗДАН</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
             </thead>
@@ -26,8 +24,6 @@
                     <th scope="row">{{ $trk->id }}</th>
                     <td>{{ $trk->name }}</td>
                     <td>{{ $trk->town->name }}</td>
-                    <td>{{ $trk->slug }}</td>
-                    <td>{{ $trk->created_at }}</td>
                     <td>
                         <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post">
                             @csrf

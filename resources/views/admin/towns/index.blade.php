@@ -14,8 +14,6 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">НАЗВАНИЕ</th>
-                <th scope="col">SLUG</th>
-                <th scope="col">СОЗДАН</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
             </thead>
@@ -24,8 +22,6 @@
                 <tr>
                     <th scope="row">{{ $town->id }}</th>
                     <td>{{ $town->name }}</td>
-                    <td>{{ $town->slug }}</td>
-                    <td>{{ $town->created_at }}</td>
                     <td>
                         <form action="{{ route('admin.towns.destroy', $town->id) }}" method="post">
                             @csrf
