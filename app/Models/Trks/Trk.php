@@ -3,6 +3,7 @@
 namespace App\Models\Trks;
 
 use App\Models\Applications\Applications;
+use App\Models\Buildings\Building;
 use App\Models\Towns\Town;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,5 +46,10 @@ class Trk extends Model
     public function town(): BelongsTo
     {
         return $this->belongsTo(Town::class)->withDefault();
+    }
+
+    public function buildings(): HasMany
+    {
+        return $this->hasMany(Building::class, 'trk_id', 'id');
     }
 }

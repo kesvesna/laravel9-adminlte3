@@ -11,5 +11,8 @@
 
         'trks' => [
             'pagination' => 5
+        ],
+        'buildings' => [
+            'pagination' => 5
         ]
     ];

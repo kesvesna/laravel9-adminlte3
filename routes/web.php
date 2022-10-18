@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Applications\ApplicationController as AdminApplicationController;
 use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 use App\Http\Controllers\Admin\Trks\TrkController as AdminTrkController;
+use App\Http\Controllers\Admin\Buildings\FloorController as AdminBuildingController;
 
 
 /*
@@ -30,4 +31,5 @@ Route::name('admin.')
         Route::resource('applications', AdminApplicationController::class);
         Route::resource('towns', AdminTownController::class);
         Route::resource('trks', AdminTrkController::class);
+        Route::resource('buildings', AdminBuildingController::class);
     });

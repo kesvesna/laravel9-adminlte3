@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Applications\Applications;
 use App\Models\Towns\Town;
+use App\Models\Buildings\Building;
 use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -21,7 +22,8 @@ class AdminController extends Controller
         return view('admin.index', [
             'applications_count' => Applications::count(),
             'towns_count' => Town::count(),
-            'trks_count' => Trk::count()
+            'trks_count' => Trk::count(),
+            'buildings_count' => Building::count()
         ]);
     }
 

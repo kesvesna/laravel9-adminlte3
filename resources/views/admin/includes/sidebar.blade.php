@@ -19,7 +19,7 @@
                class="nav-link {{ request()->routeIs('admin.towns.index')?'active':'' }}">
                 <i class="nav-icon far fa-file"></i>
                 <p>
-                    Города
+                    Город
                     @if(isset($towns_count))
                         <span class="badge badge-info right">
                             {{ $towns_count }}
@@ -37,6 +37,20 @@
                     @if(isset($trks_count))
                         <span class="badge badge-info right">
                             {{ $trks_count }}
+                        </span>
+                    @endif
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ route('admin.buildings.index') }}"
+               class="nav-link {{ request()->routeIs('admin.buildings.index')?'active':'' }}">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    Блок/Зона
+                    @if(isset($buildings_count))
+                        <span class="badge badge-info right">
+                            {{ $buildings_count }}
                         </span>
                     @endif
                 </p>

@@ -1,25 +1,25 @@
 <?php
 
-namespace App\Models\Towns;
+namespace App\Models\Buildings;
 
-use App\Models\Applications\Applications;
-use App\Models\Trks\Building;
+use App\Models\Trks\Trk;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Str;
 
-class Town extends Model
+class Floor extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
-    protected $table = "towns";
+    protected $table = "floors";
 
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'trk_id'
     ];
 
     /**
@@ -29,15 +29,16 @@ class Town extends Model
      */
     public function sluggable(): array
     {
+
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => ['name']
             ]
         ];
     }
 
-    public function applications(): HasMany
+    public function trk(): BelongsTo
     {
-        return $this->hasMany(Building::class, 'town_id', 'id');
+        return $this->belongsTo(Trk::class)->withDefault();
     }
 }
