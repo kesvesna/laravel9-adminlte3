@@ -32,6 +32,7 @@ Route::name('admin.')
         Route::resource('applications', AdminApplicationController::class);
         Route::resource('towns', AdminTownController::class);
         Route::resource('trks', AdminTrkController::class);
+        Route::get('/trks/get/{town}', [AdminTrkController::class, 'getTrksByTown'])->name('trks.get');
         Route::resource('buildings', AdminBuildingController::class);
         Route::resource('floors', AdminFloorController::class);
     });

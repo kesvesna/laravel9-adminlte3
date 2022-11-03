@@ -106,4 +106,12 @@ class TrkController extends Controller
         $trk->delete();
         return redirect()->route('admin.trks.index');
     }
+
+    public function getTrksByTown(Town $town)
+    {
+        $trks = Trk::with('town')->where('town_id', $town->id)->paginate(config('admin.trks.pagination'));
+        return view('admin.trks.get_trks_by_town', [
+            'trks' => $trks
+        ]);
+    }
 }

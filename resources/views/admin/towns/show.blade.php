@@ -34,4 +34,7 @@
         <a href="{{ route('admin.towns.edit', $town->id) }}" class="btn btn-warning mr-3">Редактировать</a>
         <button type="submit" class="btn btn-danger">Удалить</button>
     </form>
+
+    <iframe style="height: 80vh; border:none;" class="col-12 pt-2" src="{{ route('admin.trks.get', $town->id) }}">
+    </iframe>
 @endsection
