@@ -1,6 +1,20 @@
 @extends('admin.layouts.empty')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if (Session::has('success'))
+        <div class="alert alert-success text-center">
+            <p>{{ Session::get('success') }}</p>
+        </div>
+    @endif
     <a href="{{ route('admin.trks.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить комплекс</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
