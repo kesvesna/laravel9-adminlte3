@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
-<link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-<div class="container-fluid pt-2">
+@extends('admin.layouts.empty')
+
+@section('content')
     <a href="{{ route('admin.trks.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить комплекс</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
@@ -39,8 +39,6 @@
         </table>
         {{ $trks->links() }}
     </div>
-</div>
-<script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('plugins/bootstrap/bootstrap.bundle.js') }}"></script>
+@endsection
 
 
