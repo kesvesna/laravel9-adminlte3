@@ -15,17 +15,6 @@
             <p class="text-danger">{{ __($message) }}</p>
             @enderror
         </div>
-        <div class="form-group">
-            <label for="trk_id">ТРК</label>
-            <select name="trk_id" id="trk_id" class="form-control">
-                @forelse($trks as $trk)
-                    <option @if($floor->trk->id == $trk->id) selected @endif
-                    value="{{ $trk->id }}">{{ $trk->name }}</option>
-                @empty
-                    <option value="0">Нет трк в списке</option>
-                @endforelse
-            </select>
-        </div>
         <a href="{{ route('admin.floors.index') }}" class="btn btn-success mr-3">Назад</a>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>

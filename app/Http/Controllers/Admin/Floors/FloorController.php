@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Floors;
 
 use App\Http\Controllers\Controller;
 use App\Models\Floors\Floor;
-use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
 
 class FloorController extends Controller
@@ -17,7 +16,7 @@ class FloorController extends Controller
     public function index()
     {
         return view('admin.floors.index', [
-            'floors' => Floor::with('trk')->paginate(config('admin.floors.pagination')),
+            'floors' => Floor::paginate(config('admin.floors.pagination')),
             'floors_count' => Floor::count()
         ]);
     }
@@ -29,10 +28,7 @@ class FloorController extends Controller
      */
     public function create()
     {
-        return view('admin.floors.create',
-        [
-            'trks' => Trk::all()
-        ]);
+        return view('admin.floors.create');
     }
 
     /**
@@ -45,7 +41,7 @@ class FloorController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
-            'trk_id' => ['required', 'integer', 'min:1']
+            'sort_order' => ['integer']
         ]);
         Floor::create($data);
         return redirect()->route('admin.floors.index');
@@ -73,8 +69,7 @@ class FloorController extends Controller
     public function edit(Floor $floor)
     {
         return view('admin.floors.edit', [
-            'floor' => $floor,
-            'trks' => Trk::all()
+            'floor' => $floor
         ]);
     }
 
@@ -89,7 +84,7 @@ class FloorController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
-            'trk_id' => ['required', 'integer', 'min:1']
+            'sort_order' => ['integer']
         ]);
         $floor->update($data);
         return redirect()->route('admin.floors.show', $floor->id);

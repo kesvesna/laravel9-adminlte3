@@ -22,10 +22,6 @@
             <td>{{ $floor->name }}</td>
         </tr>
         <tr>
-            <th scope="row">Город</th>
-            <td>{{ $floor->trk->name }}</td>
-        </tr>
-        <tr>
             <th scope="row">Slug</th>
             <td>{{ $floor->slug }}</td>
         </tr>

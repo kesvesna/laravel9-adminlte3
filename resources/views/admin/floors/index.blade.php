@@ -7,13 +7,12 @@
 @section('content')
     <br>
     <h1>Этажи/Уровни</h1>
-    <a href="{{ route('admin.floors.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить блок/зону</b></a>
+    <a href="{{ route('admin.floors.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить этаж/уровень</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">ТРК</th>
                 <th scope="col">НАЗВАНИЕ</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
@@ -23,7 +22,6 @@
                 <tr>
                     <th scope="row">{{ $floor->id }}</th>
                     <td>{{ $floor->name }}</td>
-                    <td>{{ $floor->trk->name }}</td>
                     <td>
                         <form action="{{ route('admin.floors.destroy', $floor->id) }}" method="post">
                             @csrf

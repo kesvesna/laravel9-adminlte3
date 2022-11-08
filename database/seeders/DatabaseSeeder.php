@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\TrksBuildings\TrkBuilding;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -28,6 +29,7 @@ class DatabaseSeeder extends Seeder
             BuildingsSeeder::class,
             FloorsSeeder::class,
             RoomsSeeder::class,
+            TrkBuildingSeeder::class,
         ]);
     }
 }

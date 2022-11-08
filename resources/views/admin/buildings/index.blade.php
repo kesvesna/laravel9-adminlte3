@@ -13,7 +13,6 @@
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">ТРК</th>
                 <th scope="col">НАЗВАНИЕ</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
@@ -22,7 +21,6 @@
             @forelse($buildings as $building)
                 <tr>
                     <th scope="row">{{ $building->id }}</th>
-                    <td>{{ $building->trk->name }}</td>
                     <td>{{ $building->name }}</td>
                     <td>
                         <form action="{{ route('admin.buildings.destroy', $building->id) }}" method="post">

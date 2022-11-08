@@ -7,15 +7,12 @@
 @section('content')
     <br>
     <h1>Помещения</h1>
-    <a href="{{ route('admin.rooms.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить блок/зону</b></a>
+    <a href="{{ route('admin.rooms.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить помещение</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">ТРК</th>
-                <th scope="col">БЛОК/ЗОНА</th>
-                <th scope="col">ЭТАЖ/УРОВЕНЬ</th>
                 <th scope="col">НАЗВАНИЕ</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
@@ -24,9 +21,6 @@
             @forelse($rooms as $room)
                 <tr>
                     <th scope="row">{{ $room->id }}</th>
-                    <td>{{ $room->trk->name }}</td>
-                    <td>{{ $room->building->name }}</td>
-                    <td>{{ $room->floor->name }}</td>
                     <td>{{ $room->name }}</td>
                     <td>
                         <form action="{{ route('admin.rooms.destroy', $room->id) }}" method="post">

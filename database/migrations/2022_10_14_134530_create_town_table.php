@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50)->unique();
             $table->string('slug', 50)->unique();
+            $table->integer('sort_order')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,12 +28,14 @@ return new class extends Migration
                 [
                     'name' => 'Москва',
                     'slug' => 'moscow',
+                    'sort_order' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],
                 [
                     'name' => 'Санкт-Петербург',
                     'slug' => 'saint-petersburg',
+                    'sort_order' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ]

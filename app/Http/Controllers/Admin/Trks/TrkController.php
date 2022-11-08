@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Trks;
 
 use App\Http\Controllers\Controller;
+use App\Models\Buildings\Building;
 use App\Models\Trks\Trk;
 use App\Models\Towns\Town;
 use Illuminate\Http\Request;
@@ -60,7 +61,8 @@ class TrkController extends Controller
     public function show(Trk $trk)
     {
         return view('admin.trks.show',[
-            'trk' => $trk
+            'trk' => $trk,
+            'buildings' => Building::all(),
         ]);
     }
 

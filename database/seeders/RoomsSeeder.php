@@ -20,10 +20,8 @@ class RoomsSeeder extends Seeder
 
         DB::table('rooms')->insert([
             'name' => 'СП П1-24',
-            'slug' => 'sp_p1-24',
-            'trk_id' => 3,
-            'building_id' => 2,
-            'floor_id' => 2,
+            'slug' => 'sp-p1-24',
+            'sort_order' => 1,
             'created_at' => now(),
             'updated_at' => now(),
         ]);

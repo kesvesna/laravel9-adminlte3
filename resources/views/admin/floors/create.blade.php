@@ -8,18 +8,6 @@
     <br>
     <form action="{{ route('admin.floors.store') }}" method="post">
         @csrf
-        <div class="form-group">
-            <label for="trk_id">ТРК</label>
-            <select name="trk_id" id="trk_id" class="form-control">
-                @forelse($trks as $trk)
-                    <option
-                        {{ old('trk_id') == $trk->id ? ' selected' : ''}}
-                        value="{{ $trk->id }}">{{ $trk->name }}</option>
-                @empty
-                    <option value="0">Нет трк в списке</option>
-                @endforelse
-            </select>
-        </div>
         <div class="mb-3">
             <label for="name" class="form-label">ЭТАЖ/УРОВЕНЬ</label>
             <input type="text" value="{{ old('name') }}" class="form-control" id="name" name="name">

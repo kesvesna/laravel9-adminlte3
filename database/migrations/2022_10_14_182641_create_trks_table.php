@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50)->unique();
             $table->string('slug', 50)->unique();
+            $table->integer('sort_order')->default(1);
             $table->foreignId('town_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -46,6 +47,13 @@ return new class extends Migration
                     'name' => 'Европолис (м.Лесная)',
                     'slug' => 'evropolis-lesnaya',
                     'town_id' => 2,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'name' => 'Европолис (м.Отрадное)',
+                    'slug' => 'evropolis-otradnoe',
+                    'town_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
                 ],

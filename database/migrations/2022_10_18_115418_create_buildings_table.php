@@ -15,13 +15,9 @@ return new class extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('slug', 50);
-            $table->unique(['name', 'trk_id']);
-            $table->foreignId('trk_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
+            $table->string('name', 50)->unique();
+            $table->string('slug', 50)->unique();
+            $table->integer('sort_order')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,9 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('buildings', function (Blueprint $table) {
-            $table->dropForeign(['trk_id']);
-        });
         Schema::dropIfExists('buildings');
     }
 };

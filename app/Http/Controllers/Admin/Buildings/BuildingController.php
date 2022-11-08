@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin\Buildings;
 
 use App\Http\Controllers\Controller;
 use App\Models\Buildings\Building;
-use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
 
 class BuildingController extends Controller
@@ -17,7 +16,7 @@ class BuildingController extends Controller
     public function index()
     {
         return view('admin.buildings.index', [
-            'buildings' => Building::with('trk')->paginate(config('admin.buildings.pagination')),
+            'buildings' => Building::paginate(config('admin.buildings.pagination')),
             'buildings_count' => Building::count()
         ]);
     }
@@ -29,10 +28,7 @@ class BuildingController extends Controller
      */
     public function create()
     {
-        return view('admin.buildings.create',
-        [
-            'trks' => Trk::all()
-        ]);
+        return view('admin.buildings.create');
     }
 
     /**
@@ -45,7 +41,7 @@ class BuildingController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
-            'trk_id' => ['required', 'integer', 'min:1']
+            'sort_order' => ['integer'],
         ]);
         Building::create($data);
         return redirect()->route('admin.buildings.index');
@@ -73,8 +69,7 @@ class BuildingController extends Controller
     public function edit(Building $building)
     {
         return view('admin.buildings.edit', [
-            'building' => $building,
-            'trks' => Trk::all()
+            'building' => $building
         ]);
     }
 
@@ -89,7 +84,7 @@ class BuildingController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
-            'trk_id' => ['required', 'integer', 'min:1']
+            'sort_order' => ['integer']
         ]);
         $building->update($data);
         return redirect()->route('admin.buildings.show', $building->id);

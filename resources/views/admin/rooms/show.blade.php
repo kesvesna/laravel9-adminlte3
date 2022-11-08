@@ -18,18 +18,6 @@
             <td>{{ $room->created_at }}</td>
         </tr>
         <tr>
-            <th scope="row">Город</th>
-            <td>{{ $room->trk->name }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Блок/Зона</th>
-            <td>{{ $room->building->name }}</td>
-        </tr>
-        <tr>
-            <th scope="row">Этаж/Уровень</th>
-            <td>{{ $room->floor->name }}</td>
-        </tr>
-        <tr>
             <th scope="row">Название</th>
             <td>{{ $room->name }}</td>
         </tr>

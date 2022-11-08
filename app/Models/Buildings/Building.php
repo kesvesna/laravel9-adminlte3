@@ -2,14 +2,11 @@
 
 namespace App\Models\Buildings;
 
-use App\Models\Floors\Floor;
-use App\Models\Rooms\Room;
 use App\Models\Trks\Trk;
+use App\Models\TrksBuildings\TrkBuilding;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Building extends Model
@@ -21,7 +18,7 @@ class Building extends Model
     protected $fillable = [
         'name',
         'slug',
-        'trk_id'
+        'sort_order',
     ];
 
     /**
@@ -39,18 +36,11 @@ class Building extends Model
         ];
     }
 
-    public function trk(): BelongsTo
+    /**
+     * The trks that belong to the building.
+     */
+    public function trks()
     {
-        return $this->belongsTo(Trk::class)->withDefault();
-    }
-
-    public function floors(): HasMany
-    {
-        return $this->hasMany(Floor::class, 'building_id', 'id');
-    }
-
-    public function rooms(): HasMany
-    {
-        return $this->hasMany(Room::class, 'building_id', 'id');
+        return $this->belongsToMany(Trk::class);
     }
 }

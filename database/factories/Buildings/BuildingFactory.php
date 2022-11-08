@@ -19,6 +19,7 @@ class BuildingFactory extends Factory
         return [
             'name' => fake()->name(),
             'slug' => fake()->realText(50),
+            'sort_order' => 1,
         ];
     }
 }

@@ -21,9 +21,7 @@ class Room extends Model
     protected $fillable = [
         'name',
         'slug',
-        'trk_id',
-        'building_id',
-        'floor_id'
+        'sort_order',
     ];
 
     /**
@@ -39,20 +37,5 @@ class Room extends Model
                 'source' => ['name']
             ]
         ];
-    }
-
-    public function trk(): BelongsTo
-    {
-        return $this->belongsTo(Trk::class)->withDefault();
-    }
-
-    public function building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class)->withDefault();
-    }
-
-    public function floor(): BelongsTo
-    {
-        return $this->belongsTo(Floor::class)->withDefault();
     }
 }

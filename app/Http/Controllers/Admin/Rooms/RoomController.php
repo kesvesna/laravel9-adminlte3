@@ -3,10 +3,7 @@
 namespace App\Http\Controllers\Admin\Rooms;
 
 use App\Http\Controllers\Controller;
-use App\Models\Buildings\Building;
 use App\Models\Rooms\Room;
-use App\Models\Trks\Trk;
-use App\Models\Floors\Floor;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -21,7 +18,7 @@ class RoomController extends Controller
     public function index()
     {
         return view('admin.rooms.index', [
-            'rooms' => Room::with(['trk', 'building', 'floor'])->paginate(config('admin.rooms.pagination')),
+            'rooms' => Room::paginate(config('admin.rooms.pagination')),
             'rooms_count' => Room::count()
         ]);
     }
@@ -34,12 +31,7 @@ class RoomController extends Controller
     public function create()
     {
         $this->str = 'rooms';
-        return view('admin.' . $this->str . '.create',
-            [
-                'trks' => Trk::all(),
-                'buildings' => Building::all(),
-                'floors' => Floor::all(),
-            ]);
+        return view('admin.' . $this->str . '.create');
     }
 
     /**
@@ -52,9 +44,7 @@ class RoomController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
-            'trk_id' => ['required', 'integer', 'min:1'],
-            'building_id' => ['required', 'integer', 'min:1'],
-            'floor_id' => ['required', 'integer', 'min:1']
+            'sort_order' => ['integer']
         ]);
         Room::create($data);
         return redirect()->route('admin.rooms.index');
@@ -82,10 +72,7 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         return view('admin.rooms.edit', [
-            'room' => $room,
-            'trks' => Trk::all(),
-            'buildings' => Building::all(),
-            'floors' => Floor::all(),
+            'room' => $room
         ]);
     }
 
@@ -100,8 +87,7 @@ class RoomController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
-            'trk_id' => ['required', 'integer', 'min:1'],
-            'building_id' => ['required', 'integer', 'min:1']
+            'sort_order' => ['integer']
         ]);
         $room->update($data);
         return redirect()->route('admin.rooms.show', $room->id);

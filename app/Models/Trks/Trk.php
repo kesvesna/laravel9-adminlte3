@@ -7,10 +7,12 @@ use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Towns\Town;
+use App\Models\TrksBuildings\TrkBuilding;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -50,18 +52,11 @@ class Trk extends Model
         return $this->belongsTo(Town::class)->withDefault();
     }
 
-    public function buildings(): HasMany
+    /**
+     * The buildings that belong to the trk.
+     */
+    public function buildings()
     {
-        return $this->hasMany(Building::class, 'trk_id', 'id');
-    }
-
-    public function floors(): HasMany
-    {
-        return $this->hasMany(Floor::class, 'trk_id', 'id');
-    }
-
-    public function rooms(): HasMany
-    {
-        return $this->hasMany(Room::class, 'trk_id', 'id');
+        return $this->belongsToMany(Building::class);
     }
 }
