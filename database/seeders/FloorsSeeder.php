@@ -19,11 +19,22 @@ class FloorsSeeder extends Seeder
     {
 
             DB::table('floors')->insert([
-                'name' => 'Этаж 1',
+                [
+                    'name' => 'Этаж 1',
                 'slug' => 'etazh-1',
                 'trk_id' => 1,
+                'building_id' => 1,
                 'created_at' => now(),
-                'updated_at' => now(),
+                'updated_at' => now()
+                ],
+                [
+                    'name' => '0.000',
+                    'slug' => '0.000',
+                    'trk_id' => 3,
+                    'building_id' => 2,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
             ]);
 
     }

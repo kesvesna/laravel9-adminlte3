@@ -2,6 +2,8 @@
 
 namespace App\Models\Floors;
 
+use App\Models\Buildings\Building;
+use App\Models\Rooms\Room;
 use App\Models\Trks\Trk;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -40,5 +42,15 @@ class Floor extends Model
     public function trk(): BelongsTo
     {
         return $this->belongsTo(Trk::class)->withDefault();
+    }
+
+    public function building(): BelongsTo
+    {
+        return $this->belongsTo(Building::class)->withDefault();
+    }
+
+    public function rooms(): HasMany
+    {
+        return $this->hasMany(Room::class, 'floor_id', 'id');
     }
 }

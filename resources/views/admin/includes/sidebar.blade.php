@@ -79,6 +79,20 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.rooms.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.rooms.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Помещение
+                            @if(isset($rooms_count))
+                                <span class="badge badge-info right">
+                            {{ $rooms_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>

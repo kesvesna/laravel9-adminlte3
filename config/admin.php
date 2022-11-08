@@ -14,5 +14,11 @@
         ],
         'buildings' => [
             'pagination' => 5
+        ],
+        'floors' => [
+            'pagination' => 5
+        ],
+        'rooms' => [
+            'pagination' => 5
         ]
     ];

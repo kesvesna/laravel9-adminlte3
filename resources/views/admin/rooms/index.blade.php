@@ -1,37 +1,41 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-    @parent Блоки/Зоны
+    @parent Помещения
 @endsection
 
 @section('content')
     <br>
-    <h1>Блоки/Зоны</h1>
-    <a href="{{ route('admin.buildings.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить блок/зону</b></a>
+    <h1>Помещения</h1>
+    <a href="{{ route('admin.rooms.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить блок/зону</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">ТРК</th>
+                <th scope="col">БЛОК/ЗОНА</th>
+                <th scope="col">ЭТАЖ/УРОВЕНЬ</th>
                 <th scope="col">НАЗВАНИЕ</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
             </thead>
             <tbody>
-            @forelse($buildings as $building)
+            @forelse($rooms as $room)
                 <tr>
-                    <th scope="row">{{ $building->id }}</th>
-                    <td>{{ $building->trk->name }}</td>
-                    <td>{{ $building->name }}</td>
+                    <th scope="row">{{ $room->id }}</th>
+                    <td>{{ $room->trk->name }}</td>
+                    <td>{{ $room->building->name }}</td>
+                    <td>{{ $room->floor->name }}</td>
+                    <td>{{ $room->name }}</td>
                     <td>
-                        <form action="{{ route('admin.buildings.destroy', $building->id) }}" method="post">
+                        <form action="{{ route('admin.rooms.destroy', $room->id) }}" method="post">
                             @csrf
                             @method('delete')
-                            <a href="{{ route('admin.buildings.show', $building->id) }}"><i class="nav-icon fas fa-eye mr-2"
+                            <a href="{{ route('admin.rooms.show', $room->id) }}"><i class="nav-icon fas fa-eye mr-2"
                                                                                   style="color: green;  opacity: .7;"
                                                                                   title="Посмотреть"></i></a>
-                            <a href="{{ route('admin.buildings.edit', $building->id) }}"><i
+                            <a href="{{ route('admin.rooms.edit', $room->id) }}"><i
                                     class="nav-icon fas fa-edit mr-3" style="color: darkorange; opacity: .7;"
                                     title="Редактировать"></i></a>
                             <button type="submit" style="border: none; background-color: transparent;"><i
@@ -41,10 +45,10 @@
                     </td>
                 </tr>
             @empty
-                Нет блоков/зон
+                Нет помещений
             @endforelse
             </tbody>
         </table>
-        {{ $buildings->links() }}
+        {{ $rooms->links() }}
     </div>
 @endsection

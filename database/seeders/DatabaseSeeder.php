@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             //TrksSeeder::class,
             BuildingsSeeder::class,
             FloorsSeeder::class,
+            RoomsSeeder::class,
         ]);
     }
 }

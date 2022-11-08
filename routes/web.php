@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 use App\Http\Controllers\Admin\Trks\TrkController as AdminTrkController;
 use App\Http\Controllers\Admin\Buildings\BuildingController as AdminBuildingController;
 use App\Http\Controllers\Admin\Floors\FloorController as AdminFloorController;
+use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
+
 
 
 /*
@@ -35,4 +37,5 @@ Route::name('admin.')
         Route::get('/trks/get/{town}', [AdminTrkController::class, 'getTrksByTown'])->name('trks.get');
         Route::resource('buildings', AdminBuildingController::class);
         Route::resource('floors', AdminFloorController::class);
+        Route::resource('rooms', AdminRoomController::class);
     });

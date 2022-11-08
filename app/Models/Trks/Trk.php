@@ -4,6 +4,8 @@ namespace App\Models\Trks;
 
 use App\Models\Applications\Applications;
 use App\Models\Buildings\Building;
+use App\Models\Floors\Floor;
+use App\Models\Rooms\Room;
 use App\Models\Towns\Town;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -51,5 +53,15 @@ class Trk extends Model
     public function buildings(): HasMany
     {
         return $this->hasMany(Building::class, 'trk_id', 'id');
+    }
+
+    public function floors(): HasMany
+    {
+        return $this->hasMany(Floor::class, 'trk_id', 'id');
+    }
+
+    public function rooms(): HasMany
+    {
+        return $this->hasMany(Room::class, 'trk_id', 'id');
     }
 }

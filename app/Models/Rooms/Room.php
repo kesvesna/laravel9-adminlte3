@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Buildings;
+namespace App\Models\Rooms;
 
-use App\Models\Floors\Floor;
-use App\Models\Rooms\Room;
 use App\Models\Trks\Trk;
+use App\Models\Buildings\Building;
+use App\Models\Floors\Floor;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,16 +12,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Building extends Model
+class Room extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
-    protected $table = "buildings";
+    protected $table = "rooms";
 
     protected $fillable = [
         'name',
         'slug',
-        'trk_id'
+        'trk_id',
+        'building_id',
+        'floor_id'
     ];
 
     /**
@@ -44,13 +46,13 @@ class Building extends Model
         return $this->belongsTo(Trk::class)->withDefault();
     }
 
-    public function floors(): HasMany
+    public function building(): BelongsTo
     {
-        return $this->hasMany(Floor::class, 'building_id', 'id');
+        return $this->belongsTo(Building::class)->withDefault();
     }
 
-    public function rooms(): HasMany
+    public function floor(): BelongsTo
     {
-        return $this->hasMany(Room::class, 'building_id', 'id');
+        return $this->belongsTo(Floor::class)->withDefault();
     }
 }
