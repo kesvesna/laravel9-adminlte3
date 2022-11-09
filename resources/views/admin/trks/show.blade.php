@@ -88,5 +88,88 @@
         </table>
         <button type="submit" class="btn btn-danger mb-3">Сохранить блоки/зоны</button>
     </form>
+    <hr>
+    <h4>Этажи/Уровни {{ $trk->name }}</h4>
+    <form action="{{ route('admin.buildings-trks.update', $trk->id) }}" method="post">
+        @csrf
+        <table class="table pb-5" id="buildings-floors-table">
+            <thead>
+            <tr>
+                <td>
+                    Блок/Зона
+                </td>
+                <td>
+                    Этаж/Уровень
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            @forelse($trk->buildings as $building)
+                <tr id="{{ $building->id }}">
+                    <td>
+                        <select name="building[]{{ $building->id }}" class="form-control">
+                            <option
+                                value="{{ $building->id }}">{{ $building->name }}
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <select name="floor[]" class="form-control">
+                            <option
+                                value="">Этаж 1
+                            </option>
+                        </select>
+                    </td>
+                    <td>
+                        <button class="delete" style="border: none; background-color: transparent;">
+                            <img src="{{ asset('icons/delete.svg') }}" class="rounded" alt="Delete image" height="30" weight="30">
+                        </button>
+                    </td>
+                </tr>
+            @empty
+                <tr>
+                    <hr>
+                    Нет этажей/уровней
+                </tr>
+            @endforelse
+            <tr id="@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
+                <td>
+                    <select class="form-control" name="building[]@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
+                        <option value="0" selected>Выберите ...</option>
+                        @forelse($buildings as $building)
+                            <option
+                                value="{{ $building->id }}">{{ $building->name }}
+                            </option>
+                        @empty
+                            <option value="0">Нет блоков/зон в списке</option>
+                        @endforelse
+                    </select>
+                </td>
+                <td>
+                    <select name="floor[]" class="form-control">
+                        <option
+                            value="" selected>Выберите ...
+                        </option>
+                        <option
+                            value="">Этаж 1
+                        </option>
+                        <option
+                            value="">Этаж 2
+                        </option>
+                        <option
+                            value="">Этаж 3
+                        </option>
+                    </select>
+                </td>
+                <td>
+                    <button type="button" class="add" style="border: none; background-color: transparent;">
+                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add image" height="30" weight="30">
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="submit" class="btn btn-danger mb-3">Сохранить этажи/уровни</button>
+    </form>
 @endsection
 
