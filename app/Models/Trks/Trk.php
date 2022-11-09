@@ -8,6 +8,7 @@ use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Towns\Town;
 use App\Models\TrksBuildings\TrkBuilding;
+use App\Models\TrksBuildingsFloors\TrkBuildingFloor;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -59,4 +60,23 @@ class Trk extends Model
     {
         return $this->belongsToMany(Building::class);
     }
+
+//    public function floors() {
+//        return $this->belongsT(Floor::class, )
+//            ->withPivot('floor_id')
+//            ->withTimestamps();
+//    }
+
+    public function floors()
+    {
+        return $this->hasManyThrough(
+            Floor::class,
+            TrkBuildingFloor::class,
+            'trk_id',
+            'id',
+            'id',
+            'floor_id'
+        );
+    }
+
 }

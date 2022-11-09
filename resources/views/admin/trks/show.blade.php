@@ -104,13 +104,17 @@
             </tr>
             </thead>
             <tbody>
-            @forelse($trk->buildings as $building)
-                <tr id="{{ $building->id }}">
+            @forelse($trk->floors as $floor)
+                <tr id="{{ $floor->id }}">
                     <td>
                         <select name="trk[buildings_floors][building_id][]" class="form-control">
+                            @forelse($floor->buildings as $building)
                             <option
                                 value="{{ $building->id }}">{{ $building->name }}
                             </option>
+                                @empty
+                            <p>нет зданий</p>
+                            @endforelse
                         </select>
                     </td>
                     <td>

@@ -2,8 +2,10 @@
 
 namespace App\Models\Buildings;
 
+use App\Models\Floors\Floor;
 use App\Models\Trks\Trk;
 use App\Models\TrksBuildings\TrkBuilding;
+use App\Models\TrksBuildingsFloors\TrkBuildingFloor;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -42,5 +44,11 @@ class Building extends Model
     public function trks()
     {
         return $this->belongsToMany(Trk::class);
+    }
+
+    public function floors() {
+        return $this->belongsToMany(Floor::class)
+            ->withPivot('id', 'name')
+            ->withTimestamps();
     }
 }
