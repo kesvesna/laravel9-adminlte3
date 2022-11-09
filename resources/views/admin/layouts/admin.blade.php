@@ -259,8 +259,8 @@
 <script src="{{ asset('dist/js/adminlte.js') }}"></script>
 
 <!-- User javascript -->
-<script src="{{ asset('dist/js/tables/delete_row.js') }}"></script>
-<script src="{{ asset('dist/js/tables/add_row.js') }}"></script>
+<script src="{{ asset('dist/js/tables/trk_building/delete_row.js') }}"></script>
+<script src="{{ asset('dist/js/tables/trk_building/add_row.js') }}"></script>
 
 </body>
 </html>

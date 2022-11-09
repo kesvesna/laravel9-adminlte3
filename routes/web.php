@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\Applications\ApplicationController as AdminApplic
 use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 use App\Http\Controllers\Admin\Trks\TrkController as AdminTrkController;
 use App\Http\Controllers\Admin\Buildings\BuildingController as AdminBuildingController;
+use App\Http\Controllers\Admin\BuildingsTrks\BuildingTrkController as AdminBuildingTrkController;
 use App\Http\Controllers\Admin\Floors\FloorController as AdminFloorController;
 use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 
@@ -38,4 +39,6 @@ Route::name('admin.')
         Route::resource('buildings', AdminBuildingController::class);
         Route::resource('floors', AdminFloorController::class);
         Route::resource('rooms', AdminRoomController::class);
+
+        Route::post('buildings-trks/{trk}', [AdminBuildingTrkController::class, 'update'])->name('buildings-trks.update');
     });
