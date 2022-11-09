@@ -104,12 +104,11 @@
             </tr>
             </thead>
             <tbody>
-            @forelse($trk->floors as $floor)
-                {{ dd($floor->trks) }}
-                <tr id="{{ $floor->id }}">
+            @forelse($trk->buildings as $building)
+                <tr id="{{ $building->id }}">
                     <td>
                         <select name="trk[buildings_floors][building_id][]" class="form-control">
-                            @forelse($floor->buildings as $building)
+                            @forelse($trk->buildings as $building)
                             <option
                                 value="{{ $building->id }}">{{ $building->name }}
                             </option>
@@ -120,9 +119,13 @@
                     </td>
                     <td>
                         <select name="trk[buildings_floors][floor_id][]" class="form-control">
-                            <option
-                                value="">Этаж 1
-                            </option>
+                            @forelse($floors as $floor)
+                                <option
+                                    value="{{ $floor->id }}">{{ $floor->name }}
+                                </option>
+                            @empty
+                                <p>нет этажей</p>
+                            @endforelse
                         </select>
                     </td>
                     <td>
