@@ -47,8 +47,7 @@ class Building extends Model
     }
 
     public function floors() {
-        return $this->belongsToMany(Floor::class)
-            ->withPivot('id', 'name')
-            ->withTimestamps();
+        return $this->belongsToMany(Floor::class, 'building_floor_trk')
+            ->using(TrkBuildingFloor::class);
     }
 }

@@ -61,22 +61,9 @@ class Trk extends Model
         return $this->belongsToMany(Building::class);
     }
 
-//    public function floors() {
-//        return $this->belongsT(Floor::class, )
-//            ->withPivot('floor_id')
-//            ->withTimestamps();
-//    }
-
     public function floors()
     {
-        return $this->hasManyThrough(
-            Floor::class,
-            TrkBuildingFloor::class,
-            'trk_id',
-            'id',
-            'id',
-            'floor_id'
-        );
+        return $this->belongsToMany(Floor::class, 'building_floor_trk')
+                    ->using(TrkBuildingFloor::class);
     }
-
 }

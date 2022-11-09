@@ -105,6 +105,7 @@
             </thead>
             <tbody>
             @forelse($trk->floors as $floor)
+                {{ dd($floor->trks) }}
                 <tr id="{{ $floor->id }}">
                     <td>
                         <select name="trk[buildings_floors][building_id][]" class="form-control">
