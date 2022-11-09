@@ -65,9 +65,9 @@
                     Нет блоков/зон
                 </tr>
             @endforelse
-            <tr id="{{ $trk->buildings->last()->id + 1 }}">
+            <tr id="@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
                 <td>
-                    <select class="form-control" name="building[]{{ $trk->buildings->last()->id + 1 }}">
+                    <select class="form-control" name="building[]@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
                         <option value="0" selected>Выберите ...</option>
                         @forelse($buildings as $building)
                             <option

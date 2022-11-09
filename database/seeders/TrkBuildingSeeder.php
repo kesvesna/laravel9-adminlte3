@@ -43,6 +43,48 @@ class TrkBuildingSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'trk_id' => 1,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'trk_id' => 9,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'trk_id' => 10,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'trk_id' => 12,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'trk_id' => 13,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'trk_id' => 14,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'trk_id' => 15,
+                'building_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
 
     }
