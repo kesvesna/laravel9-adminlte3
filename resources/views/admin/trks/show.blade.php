@@ -38,7 +38,7 @@
         <a href="{{ route('admin.trks.edit', $trk->id) }}" class="btn btn-warning mr-3 mb-3">Редактировать</a>
         <button type="submit" class="btn btn-danger mb-3">Удалить</button>
     </form>
-    <hr>
+    <br>
     <h4>Блоки/Зоны {{ $trk->name }}</h4>
     <form action="{{ route('admin.buildings-trks.update', $trk->id) }}" method="post">
         @csrf
@@ -88,7 +88,7 @@
         </table>
         <button type="submit" class="btn btn-danger mb-3">Сохранить блоки/зоны</button>
     </form>
-    <hr>
+    <br>
     <h4>Этажи/Уровни {{ $trk->name }}</h4>
     <form action="{{ route('admin.buildings-trks.update', $trk->id) }}" method="post">
         @csrf
