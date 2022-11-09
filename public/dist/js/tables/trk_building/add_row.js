@@ -1,5 +1,5 @@
 
-$(".add").click(function(){
+$(".add-building-trks-buildings").click(function(){
     let $select = $('#buildings-table tbody tr:last td select').get();
     let $lastId = parseInt($('#buildings-table tbody tr:last').attr('id'));
     let $optionVal = $('#buildings-table tbody tr:last td select option:selected').val();
@@ -25,7 +25,7 @@ $(".add").click(function(){
 
         $("#buildings-table tbody tr:last").prev().children("td").children("select").val($optionVal).change();
 
-        $(".delete").click(function () {
+        $(".delete-building-trks-buildings").click(function () {
             $(this).closest("tr").remove();
         });
     } else {

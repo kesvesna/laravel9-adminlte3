@@ -47,14 +47,14 @@
             @forelse($trk->buildings as $building)
                 <tr id="{{ $building->id }}">
                     <td>
-                        <select name="building[]{{ $building->id }}" class="form-control">
+                        <select name="building[]" class="form-control">
                             <option
                                 value="{{ $building->id }}">{{ $building->name }}
                             </option>
                         </select>
                     </td>
                     <td>
-                        <button class="delete" style="border: none; background-color: transparent;">
+                        <button class="delete-building-trks-buildings" style="border: none; background-color: transparent;">
                             <img src="{{ asset('icons/delete.svg') }}" class="rounded" alt="Delete image" height="30" weight="30">
                         </button>
                     </td>
@@ -67,7 +67,7 @@
             @endforelse
             <tr id="@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
                 <td>
-                    <select class="form-control" name="building[]@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
+                    <select class="form-control" name="building[]">
                         <option value="0" selected>Выберите ...</option>
                         @forelse($buildings as $building)
                             <option
@@ -79,7 +79,7 @@
                     </select>
                 </td>
                 <td>
-                    <button type="button" class="add" style="border: none; background-color: transparent;">
+                    <button type="button" class="add-building-trks-buildings" style="border: none; background-color: transparent;">
                         <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add image" height="30" weight="30">
                     </button>
                 </td>
@@ -107,14 +107,14 @@
             @forelse($trk->buildings as $building)
                 <tr id="{{ $building->id }}">
                     <td>
-                        <select name="building[]{{ $building->id }}" class="form-control">
+                        <select name="trk[buildings_floors][building_id][]" class="form-control">
                             <option
                                 value="{{ $building->id }}">{{ $building->name }}
                             </option>
                         </select>
                     </td>
                     <td>
-                        <select name="floor[]" class="form-control">
+                        <select name="trk[buildings_floors][floor_id][]" class="form-control">
                             <option
                                 value="">Этаж 1
                             </option>
@@ -132,10 +132,9 @@
                     Нет этажей/уровней
                 </tr>
             @endforelse
-            <tr id="@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
+            <tr id="@if(!empty($trk->building)){{$trk->building->last()->id + 1}}@else{{1}}@endif">
                 <td>
-                    <select class="form-control" name="building[]@if(!empty($trk->building)) {{ $trk->building->last()->id + 1 }} @else {{ 1 }} @endif">
-                        <option value="0" selected>Выберите ...</option>
+                    <select class="form-control" name="trk[buildings_floors][building_id][]">
                         @forelse($buildings as $building)
                             <option
                                 value="{{ $building->id }}">{{ $building->name }}
@@ -146,19 +145,14 @@
                     </select>
                 </td>
                 <td>
-                    <select name="floor[]" class="form-control">
-                        <option
-                            value="" selected>Выберите ...
-                        </option>
-                        <option
-                            value="">Этаж 1
-                        </option>
-                        <option
-                            value="">Этаж 2
-                        </option>
-                        <option
-                            value="">Этаж 3
-                        </option>
+                    <select name="trk[buildings_floors][floor_id][]" class="form-control">
+                        @forelse($buildings as $building)
+                            <option
+                                value="{{ $building->id }}">{{ $building->name }}
+                            </option>
+                        @empty
+                            <option value="0">Нет блоков/зон в списке</option>
+                        @endforelse
                     </select>
                 </td>
                 <td>
