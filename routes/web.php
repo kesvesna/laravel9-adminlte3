@@ -25,7 +25,7 @@ use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('front/index');
 });
 
 Route::name('admin.')
