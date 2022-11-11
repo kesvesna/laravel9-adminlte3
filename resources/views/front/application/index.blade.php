@@ -1,17 +1,10 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Help Desk | FG</title>
-    <link rel="icon" type="image/x-icon" href="../icons/repair.svg">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/application_styles.css">
-</head>
-<body>
+@extends('front.layouts.main')
+
+@section('title')
+    @parent | Заявки
+@endsection
+
+@section('content')
 <main>
     <div class="container-fluid" style="padding-bottom: 15vh;">
         <div class="row col-12 mx-auto row-cols-1 pt-2">
@@ -62,7 +55,7 @@
             <tr>
                 <th scope="col" style="width: 15%;" class="d-none d-sm-table-cell">Дата
                     <button class="btn">
-                        <img class="" src="../icons/arrow-down-up.svg" alt="Arrow-down-up" width="20" height="20">
+                        <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">
                     </button>
                 </th>
                 <th scope="col" style="width: 20%;"  class="d-none d-lg-table-cell">
@@ -113,21 +106,21 @@
                     <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
                 </td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';">
+            <tr style="color: white;"  onclick="window.location='{{ route('front.application.show') }}';">
                 <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
                 <td class="d-none d-lg-table-cell">Академ Парк</td>
                 <td class="d-none d-md-table-cell">Закрыта</td>
                 <td class="d-none d-md-table-cell">АСУ</td>
                 <td>Изменить расписание наружного освещения</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';">
+            <tr style="color: white;"  onclick="window.location='{{ route('front.application.show') }}';">
                 <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
                 <td class="d-none d-lg-table-cell">Европолис</td>
                 <td class="d-none d-md-table-cell">Закрыта</td>
                 <td class="d-none d-md-table-cell">СЭ ТРК</td>
                 <td>Отвалилась плитка в туалете первого этажа</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';">
+            <tr style="color: white;"  onclick="window.location='{{ route('front.application.show') }}';">
                 <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
                 <td class="d-none d-lg-table-cell">Европолис</td>
                 <td class="d-none d-md-table-cell">Новая</td>
@@ -137,37 +130,11 @@
             </tbody>
         </table>
             <div class="row pb-2 d-flex flex-row-reverse pe-5">
-                <a href="create.html" style="width: 0">
-                    <img src="../icons/plus.svg" alt="Add picture" width="50" height="50">
+                <a href="{{ route('front.application.create') }}" style="width: 0">
+                    <img src="{{ asset('icons/plus.svg') }}" alt="Add picture" width="50" height="50">
                 </a>
             </div>
     </div>
-        <div class="collapse fixed-bottom mx-auto bottom-menu-block" id="navbarToggleExternalContent">
-            <div class="pt-3 pb-3 d-flex align-items-center bottom-menu-block-child">
-            <a class="nav-link" href="../chat/index.blade.php"><h5>Чат заявок</h5></a>
-            <a class="nav-link" href="../application/index.html"><h5>Заявки</h5></a>
-            <a class="nav-link" href="../repair/index.html"><h5>Ремонт</h5></a>
-            <a class="nav-link" href="../act/index.html"><h5>Акты</h5></a>
-            <a class="nav-link" href="../admin/index.html"><h5>Админ панель</h5></a>
-        </div>
-    </div>
+    @include('front.components.navbar')
 </main>
-<footer>
-    <nav class="navbar fixed-bottom justify-content-around">
-        <a href="../index.blade.php" class="btn">
-            <img src="../icons/home.svg" alt="Profile icon" width="30" height="30">
-        </a>
-        <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <button onClick="history.back()" class="btn">
-            <img src="../icons/back.svg" alt="Profile icon" width="30" height="30">
-        </button>
-    </nav>
-</footer>
-<script defer src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-<script defer src="../js/jquery.min.js"></script>
-</body>
-</html>
+@endsection

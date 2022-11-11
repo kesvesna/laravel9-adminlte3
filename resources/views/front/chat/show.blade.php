@@ -1,7 +1,7 @@
 @extends('front.layouts.main')
 
 @section('title')
-    @parent Чат
+    @parent | Чат
 @endsection
 
 @section('content')

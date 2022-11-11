@@ -39,7 +39,8 @@ Route::get('front/chat/', [FrontChatController::class, 'index'])->name('front.ch
 Route::get('front/chat/show', [FrontChatController::class, 'show'])->name('front.chat.show');
 
 Route::get('front/application/', [FrontApplicationController::class, 'index'])->name('front.application.index');
-
+Route::get('front/application/show', [FrontApplicationController::class, 'show'])->name('front.application.show');
+Route::get('front/application/create', [FrontApplicationController::class, 'create'])->name('front.application.create');
 
 Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');
 

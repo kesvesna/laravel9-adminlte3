@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Help Desk | FG</title>
     <title>@section('title')
             Help Desk | FG
         @show </title>
@@ -12,6 +11,7 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{asset('dist/css/front/styles.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/front/chat_styles.css')}}">
+    <link rel="stylesheet" href="{{asset('dist/css/front/application_styles.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/owlcarousel/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/owlcarousel/css/owl.theme.default.min.css')}}">

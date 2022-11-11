@@ -17,7 +17,7 @@
                             <div class="col-auto ms-2">
                                 <label for="search_application" class="col-form-label">
                                     <h4>
-                                        <a href="./application/index.html" style="color: black;">Заявки</a>
+                                        <a href="application/index.blade.php" style="color: black;">Заявки</a>
                                     </h4>
                                 </label>
                             </div>
@@ -32,13 +32,13 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <a href="./application/index.html" style="padding: 0 0 0 1rem;"><b style="color: darkred;">Новые:</b></a><span> 2</span>
+                    <a href="application/index.blade.php" style="padding: 0 0 0 1rem;"><b style="color: darkred;">Новые:</b></a><span> 2</span>
                     <hr>
-                    <p class="in_progress__applications" style=""><a href="./application/index.html"
+                    <p class="in_progress__applications" style=""><a href="application/index.blade.php"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>В
                         обработке:</b> </a>5</p>
                     <hr>
-                    <p class="closed__applications" style=""><a href="./application/index.html" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Закрытые:</b>
+                    <p class="closed__applications" style=""><a href="application/index.blade.php" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Закрытые:</b>
                     </a>23</p>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >

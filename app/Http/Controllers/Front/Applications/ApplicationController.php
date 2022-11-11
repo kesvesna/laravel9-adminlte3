@@ -27,5 +27,15 @@ class ApplicationController extends Controller
         return view('front.application.index');
     }
 
+    public function show()
+    {
+        return view('front.application.show');
+    }
+
+    public function create()
+    {
+        return view('front.application.create');
+    }
+
 }
 
