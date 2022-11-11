@@ -88,7 +88,7 @@
                     <div class="slide__title p-1">
                         <div class="row g-3 align-items-center justify-content-between">
                             <div class="col-auto ms-2">
-                                <label for="search_act" class="col-form-label"><h4><a href="./act/index.html" style="color: black;">Акты</a></h4></label>
+                                <label for="search_act" class="col-form-label"><h4><a href="act/index.blade.php" style="color: black;">Акты</a></h4></label>
                             </div>
                             <div class="col-8 col-sm-7 col-md-8">
                                 <div class="input-group">
@@ -101,18 +101,18 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <p class="new__applications" style=""><a href="./act/index.html" style="color: darkred; padding: 0 0 0 1rem;"><b>По
+                    <p class="new__applications" style=""><a href="act/index.blade.php" style="color: darkred; padding: 0 0 0 1rem;"><b>По
                         заявкам:</b> </a>34</p>
                     <hr>
-                    <p class="in_progress__applications" style=""><a href="./act/index.html"
+                    <p class="in_progress__applications" style=""><a href="act/index.blade.php"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>По
                         плану:</b> </a>45</p>
                     <hr>
-                    <p class="closed__applications" style=""><a href="./act/index.html" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Все:</b>
+                    <p class="closed__applications" style=""><a href="act/index.blade.php" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Все:</b>
                     </a>79</p>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
-                            <a href="./act/create.html" title="Заполнить акт">
+                            <a href="act/create.blade.php" title="Заполнить акт">
                                 <img src="./icons/plus.svg" alt="Add picture" width="40" height="40">
                             </a>
                         </div>

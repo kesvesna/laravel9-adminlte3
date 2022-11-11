@@ -1,19 +1,10 @@
-<!doctype html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Help Desk | FG</title>
-    <link rel="icon" type="image/x-icon" href="../icons/repair.svg">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/act_styles.css">
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../owlcarousel/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="../owlcarousel/css/owl.theme.default.min.css">
-</head>
-<body>
+@extends('front.layouts.main')
+
+@section('title')
+    @parent | Акты
+@endsection
+
+@section('content')
 <main>
     <div class="container-fluid" style="padding-bottom: 15vh;">
         <h5 style="color: white;" class="pt-3">Акты</h5>
@@ -27,7 +18,7 @@
             <tr>
                 <th scope="col" style="width: 15%;" class="d-none d-sm-table-cell">Дата
                     <button class="btn">
-                        <img class="" src="../icons/arrow-down-up.svg" alt="Arrow-down-up" width="20" height="20">
+                        <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">
                     </button>
                 </th>
                 <th scope="col" style="width: 20%;"  class="d-none d-lg-table-cell">
@@ -69,63 +60,35 @@
                     <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
                 </td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 14:54</td>
                 <td class="d-none d-lg-table-cell">Академ Парк</td>
                 <td class="d-none d-md-table-cell">Вентиляция</td>
                 <td class="d-none d-lg-table-cell">ВК-12</td>
                 <td>ПВ-9</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:57</td>
                 <td class="d-none d-lg-table-cell">Родео Драйв</td>
                 <td class="d-none d-md-table-cell">Кондиционирование</td>
                 <td class="d-none d-lg-table-cell">B-13</td>
                 <td>Ф-59</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
                 <td class="d-none d-lg-table-cell">Гудзон</td>
                 <td class="d-none d-md-table-cell">Электрооборудование</td>
                 <td class="d-none d-lg-table-cell">ГРЩ-2</td>
                 <td>Розетка</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
                 <td class="d-none d-lg-table-cell">Гудзон</td>
                 <td class="d-none d-md-table-cell">Электрооборудование</td>
                 <td class="d-none d-lg-table-cell">ГРЩ-2</td>
                 <td>Розетка</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
-                <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
-                <td class="d-none d-lg-table-cell">Гудзон</td>
-                <td class="d-none d-md-table-cell">Электрооборудование</td>
-                <td class="d-none d-lg-table-cell">ГРЩ-2</td>
-                <td>Розетка</td>
-            </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
-                <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
-                <td class="d-none d-lg-table-cell">Гудзон</td>
-                <td class="d-none d-md-table-cell">Электрооборудование</td>
-                <td class="d-none d-lg-table-cell">ГРЩ-2</td>
-                <td>Розетка</td>
-            </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
-                <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
-                <td class="d-none d-lg-table-cell">Гудзон</td>
-                <td class="d-none d-md-table-cell">Электрооборудование</td>
-                <td class="d-none d-lg-table-cell">ГРЩ-2</td>
-                <td>Розетка</td>
-            </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
-                <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
-                <td class="d-none d-lg-table-cell">Гудзон</td>
-                <td class="d-none d-md-table-cell">Электрооборудование</td>
-                <td class="d-none d-lg-table-cell">ГРЩ-2</td>
-                <td>Розетка</td>
-            </tr>
-            <tr style="color: white;"  onclick="window.location='show.html';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
                 <td class="d-none d-lg-table-cell">Гудзон</td>
                 <td class="d-none d-md-table-cell">Электрооборудование</td>
@@ -135,37 +98,11 @@
             </tbody>
         </table>
         <div class="row pb-2 d-flex flex-row-reverse pe-5">
-            <a href="create.html" style="width: 0">
-                <img src="../icons/plus.svg" alt="Add picture" width="50" height="50">
+            <a href="{{ route('front.act.create') }}" style="width: 0">
+                <img src="{{ asset('icons/plus.svg') }}" alt="Add picture" width="50" height="50">
             </a>
         </div>
     </div>
-    <div class="collapse fixed-bottom mx-auto bottom-menu-block" id="navbarToggleExternalContent">
-        <div class="pt-3 pb-3 d-flex align-items-center bottom-menu-block-child">
-            <a class="nav-link" href="../chat/index.blade.php"><h5>Чат заявок</h5></a>
-            <a class="nav-link" href="../application/index.blade.php"><h5>Заявки</h5></a>
-            <a class="nav-link" href="../repair/index.blade.php"><h5>Ремонт</h5></a>
-            <a class="nav-link" href="../act/index.html"><h5>Акты</h5></a>
-            <a class="nav-link" href="../admin/index.html"><h5>Админ панель</h5></a>
-        </div>
-    </div>
+    @include('front.components.navbar')
 </main>
-<footer>
-    <nav class="navbar fixed-bottom justify-content-around">
-        <a href="../index.blade.php" class="btn">
-            <img src="../icons/home.svg" alt="Profile icon" width="30" height="30">
-        </a>
-        <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <button onClick="history.back()" class="btn">
-            <img src="../icons/back.svg" alt="Profile icon" width="30" height="30">
-        </button>
-    </nav>
-</footer>
-<script defer src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-<script defer src="../js/jquery.min.js"></script>
-</body>
-</html>
+@endsection

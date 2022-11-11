@@ -27,5 +27,15 @@ class ActController extends Controller
         return view('front.act.index');
     }
 
+    public function show()
+    {
+        return view('front.act.show');
+    }
+
+    public function create()
+    {
+        return view('front.act.create');
+    }
+
 }
 

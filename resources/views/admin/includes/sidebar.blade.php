@@ -95,5 +95,25 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    Профиль
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.profiles.timesheet') }}"
+                       class="nav-link {{ request()->routeIs('admin.profiles.timesheet')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Табель
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>

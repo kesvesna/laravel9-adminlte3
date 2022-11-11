@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{asset('dist/css/front/chat_styles.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/front/application_styles.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/front/repair_styles.css')}}">
+    <link rel="stylesheet" href="{{asset('dist/css/front/act_styles.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/owlcarousel/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/owlcarousel/css/owl.theme.default.min.css')}}">

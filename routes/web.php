@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use Illuminate\Support\Facades\Route;
 
+// backend
 use App\Http\Controllers\Admin\Applications\ApplicationController as AdminApplicationController;
 use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 use App\Http\Controllers\Admin\Trks\TrkController as AdminTrkController;
@@ -10,7 +11,10 @@ use App\Http\Controllers\Admin\Buildings\BuildingController as AdminBuildingCont
 use App\Http\Controllers\Admin\BuildingsTrks\BuildingTrkController as AdminBuildingTrkController;
 use App\Http\Controllers\Admin\Floors\FloorController as AdminFloorController;
 use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
+use App\Http\Controllers\Admin\Profiles\ProfileController as AdminProfileController;
 
+
+//frontend
 use App\Http\Controllers\Front\IndexController as FrontIndexController;
 use App\Http\Controllers\Front\Chats\ChatController as FrontChatController;
 use App\Http\Controllers\Front\Applications\ApplicationController as FrontApplicationController;
@@ -47,9 +51,14 @@ Route::get('front/repair/show', [FrontRepairController::class, 'show'])->name('f
 Route::get('front/repair/create_by_plan', [FrontRepairController::class, 'create'])->name('front.repair.create_by_plan');
 
 Route::get('front/act/', [FrontActController::class, 'index'])->name('front.act.index');
-
+Route::get('front/act/show', [FrontActController::class, 'show'])->name('front.act.show');
+Route::get('front/act/create', [FrontActController::class, 'create'])->name('front.act.create');
 
 Route::get('front/renter_application/', [FrontRenterApplicationController::class, 'index'])->name('front.renter_application.index');
+Route::get('front/renter_application/show', [FrontRenterApplicationController::class, 'show'])->name('front.renter_application.show');
+Route::get('front/renter_application/create', [FrontRenterApplicationController::class, 'create'])->name('front.renter_application.create');
+
+
 
 
 Route::name('admin.')
@@ -63,6 +72,8 @@ Route::name('admin.')
         Route::resource('buildings', AdminBuildingController::class);
         Route::resource('floors', AdminFloorController::class);
         Route::resource('rooms', AdminRoomController::class);
+
+        Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');
 
         Route::post('buildings-trks/{trk}', [AdminBuildingTrkController::class, 'update'])->name('buildings-trks.update');
     });

@@ -27,5 +27,15 @@ class RenterApplicationController extends Controller
         return view('front.renter_application.index');
     }
 
+    public function show()
+    {
+        return view('front.renter_application.show');
+    }
+
+    public function create()
+    {
+        return view('front.renter_application.create');
+    }
+
 }
 
