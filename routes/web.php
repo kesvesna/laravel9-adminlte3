@@ -36,9 +36,17 @@ Route::get('/index', [FrontIndexController::class, 'index'])->name('front.index'
 Route::get('/home', [FrontIndexController::class, 'index'])->name('front.index');
 
 Route::get('front/chat/', [FrontChatController::class, 'index'])->name('front.chat.index');
+Route::get('front/chat/show', [FrontChatController::class, 'show'])->name('front.chat.show');
+
 Route::get('front/application/', [FrontApplicationController::class, 'index'])->name('front.application.index');
+
+
 Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');
+
+
 Route::get('front/act/', [FrontActController::class, 'index'])->name('front.act.index');
+
+
 Route::get('front/renter_application/', [FrontRenterApplicationController::class, 'index'])->name('front.renter_application.index');
 
 

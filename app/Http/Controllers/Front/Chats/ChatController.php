@@ -27,5 +27,10 @@ class ChatController extends Controller
         return view('front.chat.index');
     }
 
+    public function show()
+    {
+        return view('front.chat.show');
+    }
+
 }
 

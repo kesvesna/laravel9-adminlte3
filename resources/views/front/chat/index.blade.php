@@ -18,37 +18,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -63,37 +63,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -108,37 +108,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -153,37 +153,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -198,37 +198,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -243,37 +243,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -288,37 +288,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -333,37 +333,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -378,37 +378,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -423,37 +423,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -468,37 +468,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -513,37 +513,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
@@ -558,37 +558,37 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/repair.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>СЭ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/snow.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ХВО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/auto.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>АСУ</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/camera.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>ТСО</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/admin.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Администрация</span>
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="show.html">
+                        <a class="dropdown-item" href="{{ route('front.chat.show') }}">
                             <img src="../icons/cleaning.svg" alt="repair" width="20" height="20" class="mb-1">
                             <span>Клининг</span>
                         </a>
