@@ -1,0 +1,9 @@
+.chats-list {
+    overflow-y: auto;
+}
+
+.body-messages {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 70vh;
+}

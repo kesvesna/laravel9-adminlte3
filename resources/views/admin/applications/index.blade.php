@@ -20,6 +20,7 @@
                 <thead>
                 <tr>
                     <th>ТРК</th>
+                    <th>Статус</th>
                     <th>КОММЕНТАРИЙ К ЗАЯВКЕ</th>
                     <th colspan="3">ОПЕРАЦИИ</th>
                 </tr>
@@ -36,6 +37,16 @@
                         </select>
                     </th>
                     <th>
+                        <select class="form-control" name="application_status_id" aria-label="select" onchange="this.form.submit()">
+                            <option selected value="">Все</option>
+                            @forelse($application_statuses as $status)
+                                <option value="{{ $status->id }}" @if(isset($old_filters['application_status_id'])){{ $old_filters['application_status_id'] == $status->id ? ' selected' : '' }} @endif>{{ $status->name }}</option>
+                            @empty
+                                <option value="">Нет статусов</option>
+                            @endforelse
+                        </select>
+                    </th>
+                    <th>
                         <input type="text" value="@if(isset($old_filters['comment'])) {{ $old_filters['comment'] }} @endif"
                                class="form-control" id="comment" name="comment">
                     </th>
@@ -47,6 +58,7 @@
                 @forelse($applications as $application)
                     <tr>
                         <td>{{ $application->trk->name }}</td>
+                        <td>{{ $application->application_status->name }}</td>
                         <td>{{ $application->comment }}</td>
                         <td><a href="{{ route('admin.applications.show', $application->id) }}"><i
                                     class="nav-icon fas fa-eye ml-2 mr-2" style="color: green; opacity: .7;"

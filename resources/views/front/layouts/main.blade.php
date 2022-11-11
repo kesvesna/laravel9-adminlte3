@@ -11,9 +11,6 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" href="{{asset('dist/css/front/styles.css')}}">
     <link rel="stylesheet" href="{{asset('dist/css/front/chat_styles.css')}}">
-    <link rel="stylesheet" href="{{asset('dist/css/front/application_styles.css')}}">
-    <link rel="stylesheet" href="{{asset('dist/css/front/repair_styles.css')}}">
-    <link rel="stylesheet" href="{{asset('dist/css/front/act_styles.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/owlcarousel/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/owlcarousel/css/owl.theme.default.min.css')}}">
@@ -24,7 +21,7 @@
 
 @include('front.components.footer')
 
-<script defer src="{{ asset('dist/js/jquery.min.js') }}"></script>
+<script src="{{ asset('dist/js/jquery.min.js') }}"></script>
 <script defer src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script defer src="{{ asset('plugins/owlcarousel/js/owl.carousel.min.js') }}"></script>
 <script defer src="{{ asset('dist/js/carousel_driver.js') }}"></script>

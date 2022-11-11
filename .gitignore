@@ -3,8 +3,7 @@
 /public/hot
 /public/storage
 /public/plugins
-/public/dist/css
-/public/dist/img
+/public/dist/css/alt
 /storage/*.key
 /vendor
 .env

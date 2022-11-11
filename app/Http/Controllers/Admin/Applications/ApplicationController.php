@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
 use App\Http\Requests\Applications\ApplicationFilterRequest;
 use App\Models\Applications\Applications;
+use App\Models\ApplicationStatuses\ApplicationStatuses;
 use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -21,16 +22,18 @@ class ApplicationController extends Controller
     {
         $data = $request->validate([
             'trk_id' => '',
+            'application_status_id' => '',
             'comment' => ''
         ]);
 
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
-        $applications = Applications::filter($filter)->with('trk')->paginate(config('admin.applications.pagination'));
+        $applications = Applications::filter($filter)->with(['trk', 'application_status'])->paginate(config('admin.applications.pagination'));
 
         return view('admin.applications.index', [
             'applications' => $applications,
             'applications_count' => Applications::count(),
             'trks' => Trk::all(),
+            'application_statuses' => ApplicationStatuses::all(),
             'old_filters' => $data
         ]);
     }
@@ -38,7 +41,8 @@ class ApplicationController extends Controller
     public function create()
     {
         return view('admin.applications.create',[
-            'trks' => Trk::all()
+            'trks' => Trk::all(),
+            'application_statuses' => ApplicationStatuses::all(),
         ]);
     }
 
@@ -46,6 +50,7 @@ class ApplicationController extends Controller
     {
         $data = $request->validate([
             'trk_id' => [ 'required', 'integer', 'min:1' ],
+            'application_status_id' => [ 'required', 'integer', 'min:1' ],
             'comment' => 'string',
         ]);
         Applications::create($data);
@@ -63,7 +68,8 @@ class ApplicationController extends Controller
     {
         return view('admin.applications.edit', [
             'application' => $application,
-            'trks' => Trk::all()
+            'trks' => Trk::all(),
+            'application_statuses' => ApplicationStatuses::all(),
         ]);
     }
 
@@ -71,6 +77,7 @@ class ApplicationController extends Controller
     {
         $data = $request->validate([
             'trk_id' => [ 'required', 'integer', 'min:1' ],
+            'application_status_id' => [ 'required', 'integer', 'min:1' ],
             'comment' => 'string',
         ]);
         $application->update($data);

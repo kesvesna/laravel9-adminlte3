@@ -21,6 +21,7 @@ class ApplicationsSeeder extends Seeder
         for ($i = 0; $i < 10; $i++) {
             DB::table('applications')->insert([
                 'trk_id' => rand(1, 15),
+                'application_status_id' => rand(1,5),
                 'comment' => $faker->realText('100'),
             ]);
         }

@@ -45,6 +45,10 @@
                    class="nav-link {{ request()->routeIs('admin.index')?'active':'' }}">Главная</a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('front.index') }}"
+                   class="nav-link {{ request()->routeIs('front.index')?'active':'' }}">Главная сайта</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
                 <a href="#" class="nav-link">Contact</a>
             </li>
         </ul>

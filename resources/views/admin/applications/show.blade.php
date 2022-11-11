@@ -22,6 +22,10 @@
             <td>{{ $application->trk->name }}</td>
         </tr>
         <tr>
+            <th scope="row">Статус</th>
+            <td>{{ $application->application_status->name }}</td>
+        </tr>
+        <tr>
             <th scope="row">Комментарий</th>
             <td>{{ $application->comment }}</td>
         </tr>

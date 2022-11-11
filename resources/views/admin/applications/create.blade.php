@@ -20,6 +20,12 @@
                 @endforelse
             </select>
         </div>
+        <div class="form-group">
+            <label for="application_status_id">СТАТУС</label>
+            <select name="application_status_id" id="application_status_id" class="form-control">
+                <option value="1">Новая</option>
+            </select>
+        </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Comment</label>
             <textarea type="text" class="form-control" id="comment" name="comment"></textarea>

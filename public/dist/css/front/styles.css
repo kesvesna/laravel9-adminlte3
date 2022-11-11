@@ -1,0 +1,82 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100vh;
+    background: url('../../img/main_background.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+main {
+    height: 90vh;
+}
+
+footer {
+    height: 10vh;
+}
+
+.navbar {
+    background: rgba( 255, 255, 255, 0.75 );
+    backdrop-filter: blur( 1px );
+    -webkit-backdrop-filter: blur( 1px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+.bottom-menu-block {
+    width: 60vw; border-radius: 16px;
+    box-shadow: 0 10px 60px rgba(0, 0, 0, 0.4);
+    margin-bottom: 11vh;
+}
+
+.bottom-menu-block-child {
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.message {
+    background: rgba( 255, 255, 255, 0.1 );
+    backdrop-filter: blur( 1px );
+    -webkit-backdrop-filter: blur( 1px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    border-radius: 5px;
+    color: white;
+}
+
+.container-fluid {
+    min-height: 90vh;
+}
+
+.top-slide {
+    background: rgba( 255, 255, 255, 0.1 );
+    backdrop-filter: blur( 1px );
+    -webkit-backdrop-filter: blur( 1px );
+    border-radius: 5px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+    margin-bottom: 15vh;
+}
+
+.top-slide a {
+    text-decoration: none;
+}
+
+.owl-nav {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .bottom-menu-block {
+        margin-bottom: 13vh;
+    }
+}
+
+
+

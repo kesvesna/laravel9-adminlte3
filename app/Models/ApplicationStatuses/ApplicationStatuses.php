@@ -1,35 +1,29 @@
 <?php
 
-namespace App\Models\Applications;
+namespace App\Models\ApplicationStatuses;
 
-use App\Models\ApplicationStatuses\ApplicationStatuses;
-use App\Models\Trks\Trk;
+use App\Models\Applications\Applications;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Applications extends Model
+class ApplicationStatuses extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
-    protected $table = "applications";
+    protected $table = "application_statuses";
 
     protected $fillable = [
-        'trk_id',
-        'application_status_id',
-        'comment'
+        'name',
+        'slug'
     ];
 
-    public function trk(): BelongsTo
+    public function applications(): HasMany
     {
-        return $this->belongsTo(Trk::class)->withDefault();
-    }
-
-    public function application_status(): BelongsTo
-    {
-        return $this->belongsTo(ApplicationStatuses::class)->withDefault();
+        return $this->hasMany(Applications::class, 'application_status_id', 'id');
     }
 
     protected function removeQueryParam(string ...$keys)

@@ -15,22 +15,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Applications\Applications::factory(20)->create();
-        \App\Models\User::factory(10)->create();
-
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
         $this->call([
-            //TownsSeeder::class,
-            //TrksSeeder::class,
+            ApplicationsStatusSeeder::class,
             BuildingsSeeder::class,
             FloorsSeeder::class,
             RoomsSeeder::class,
             TrkBuildingSeeder::class,
             TrkBuildingFloorSeeder::class,
+
         ]);
+
+        \App\Models\Applications\Applications::factory(20)->create();
+        \App\Models\User::factory(10)->create();
     }
 }
