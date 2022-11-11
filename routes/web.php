@@ -11,6 +11,12 @@ use App\Http\Controllers\Admin\BuildingsTrks\BuildingTrkController as AdminBuild
 use App\Http\Controllers\Admin\Floors\FloorController as AdminFloorController;
 use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 
+use App\Http\Controllers\Front\IndexController as FrontIndexController;
+use App\Http\Controllers\Front\Chats\ChatController as FrontChatController;
+use App\Http\Controllers\Front\Applications\ApplicationController as FrontApplicationController;
+use App\Http\Controllers\Front\Repairs\RepairController as FrontRepairController;
+use App\Http\Controllers\Front\Acts\ActController as FrontActController;
+use App\Http\Controllers\Front\RenterApplications\RenterApplicationController as FrontRenterApplicationController;
 
 
 /*
@@ -24,9 +30,17 @@ use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 |
 */
 
-Route::get('/', function () {
-    return view('front/index');
-});
+// home page
+Route::get('/', [FrontIndexController::class, 'index'])->name('front.index');
+Route::get('/index', [FrontIndexController::class, 'index'])->name('front.index');
+Route::get('/home', [FrontIndexController::class, 'index'])->name('front.index');
+
+Route::get('front/chat/', [FrontChatController::class, 'index'])->name('front.chat.index');
+Route::get('front/application/', [FrontApplicationController::class, 'index'])->name('front.application.index');
+Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');
+Route::get('front/act/', [FrontActController::class, 'index'])->name('front.act.index');
+Route::get('front/renter_application/', [FrontRenterApplicationController::class, 'index'])->name('front.renter_application.index');
+
 
 Route::name('admin.')
     ->prefix('admin')
