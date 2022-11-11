@@ -27,5 +27,15 @@ class RepairController extends Controller
         return view('front.repair.index');
     }
 
+    public function show()
+    {
+        return view('front.repair.show');
+    }
+
+    public function create()
+    {
+        return view('front.repair.create_by_plan');
+    }
+
 }
 

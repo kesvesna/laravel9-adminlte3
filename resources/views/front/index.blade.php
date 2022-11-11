@@ -53,7 +53,7 @@
                     <div class="slide__title p-1">
                         <div class="row g-3 align-items-center justify-content-between">
                             <div class="col-auto ms-2">
-                                <label for="search_repair" class="col-form-label"><h4><a href="./repair/index.html" style="color: black;">Ремонт</a></h4></label>
+                                <label for="search_repair" class="col-form-label"><h4><a href="repair/index.blade.php" style="color: black;">Ремонт</a></h4></label>
                             </div>
                             <div class="col-8 col-sm-7 col-md-7">
                                 <div class="input-group">
@@ -66,18 +66,18 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <p class="new__applications" style=""><a href="./repair/index.html" style="color: darkred; padding: 0 0 0 1rem;"><b>По
+                    <p class="new__applications" style=""><a href="repair/index.blade.php" style="color: darkred; padding: 0 0 0 1rem;"><b>По
                         заявкам:</b> </a>4</p>
                     <hr>
-                    <p class="in_progress__applications" style=""><a href="./repair/index.html"
+                    <p class="in_progress__applications" style=""><a href="repair/index.blade.php"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>По
                         плану:</b> </a>2</p>
                     <hr>
-                    <p class="closed__applications" style=""><a href="./repair/index.html" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Закрытый:</b>
+                    <p class="closed__applications" style=""><a href="repair/index.blade.php" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Закрытый:</b>
                     </a>15</p>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
-                            <a href="repair/create_by_plan.html" title="Запланировать ремонт">
+                            <a href="repair/create_by_plan.blade.php" title="Запланировать ремонт">
                                 <img src="./icons/plus.svg" alt="Add picture" width="40" height="40">
                             </a>
                         </div>

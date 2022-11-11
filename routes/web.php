@@ -43,7 +43,8 @@ Route::get('front/application/show', [FrontApplicationController::class, 'show']
 Route::get('front/application/create', [FrontApplicationController::class, 'create'])->name('front.application.create');
 
 Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');
-
+Route::get('front/repair/show', [FrontRepairController::class, 'show'])->name('front.repair.show');
+Route::get('front/repair/create_by_plan', [FrontRepairController::class, 'create'])->name('front.repair.create_by_plan');
 
 Route::get('front/act/', [FrontActController::class, 'index'])->name('front.act.index');
 
