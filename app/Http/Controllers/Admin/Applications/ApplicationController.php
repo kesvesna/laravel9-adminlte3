@@ -60,7 +60,7 @@ class ApplicationController extends Controller
     public function show(Applications $application)
     {
         return view('admin.applications.show',[
-            'applications' => $application
+            'application' => $application
         ]);
     }
 
