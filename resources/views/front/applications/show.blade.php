@@ -23,41 +23,31 @@
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col mt-3">
                             <label for="date" class="form-label" style="color: white;">Дата/Время</label>
-                            <input disabled type="datetime-local" value="2017-06-01T08:30" id="date" name="date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                            <input disabled type="datetime-local" value="{{ $application->created_at }}" id="created_at" name="created_at" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                         </div>
                         <div class="col mt-3">
                             <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
                             <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                                <option value="1">Академ Парк</option>
-                                <option value="2">Гудзон</option>
-                                <option value="3">Европолис (м.Лесная)</option>
-                                <option value="4">Родео Драйв</option>
-                                <option value="5">Европолис (м.Ростокино)</option>
+                                <option value="">{{ $application->trk->name }}</option>
                             </select>
                         </div>
                         <div class="col mt-3">
                             <label for="system_id" class="form-label" style="color: white;">Подразделение</label>
                             <select disabled id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                                <option value="1">Служба эксплуатации</option>
-                                <option value="2">Администрация</option>
-                                <option value="3">ХВО</option>
-                                <option value="4">АСУ</option>
+                                <option value="">{{ $application->service->name }}</option>
                             </select>
                         </div>
                         <div class="col mt-3">
                             <label for="status_id" class="form-label" style="color: white;">Статус заявки</label>
                             <select disabled id="status_id" name="status_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                                <option value="1">Новая</option>
-                                <option value="2">В обработке</option>
-                                <option value="3">Ремонт</option>
-                                <option value="4">Выполнена</option>
+                                <option value="">{{ $application->application_status->name }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 mt-3">
                         <div class="col">
                             <label for="comment" class="form-label" style="color: white;">Проблема/Задача</label>
-                            <textarea disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                            <textarea disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
                         </div>
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 my-4">
@@ -65,6 +55,17 @@
                             <a href="{{ asset('dist/img/second.jpg') }}" target="_blank">
                                 <img src="{{ asset('dist/img/second.jpg') }}" alt="Application image" class="col-12">
                             </a>
+                        </div>
+                    </div>
+                    <div class="row col-12 mx-auto row-cols-1">
+                        <div class="col">
+                    <div class="form-check">
+                        <input disabled class="form-check-input" type="checkbox" id="notify_author" name="notify_author" value="on"
+                            {{ $application->notify_author == '1' ? 'checked' : '' }}>
+                        <label class="form-check-label" for="notify_author">
+                            Оповещение автора
+                        </label>
+                    </div>
                         </div>
                     </div>
                     <div class="row col-12 mx-auto row-cols-1">

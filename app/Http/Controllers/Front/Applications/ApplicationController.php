@@ -25,11 +25,14 @@ class ApplicationController extends Controller
             'trk_id' => '',
             'application_status_id' => '',
             'service_id' => '',
-            'comment' => ''
+            'comment' => '',
+            'created_at' => ''
         ]);
 
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
-        $applications = Applications::filter($filter)->with(['trk', 'application_status', 'service'])->paginate(config('front.applications.pagination'));
+        $applications = Applications::filter($filter)
+                                        ->with(['trk', 'application_status', 'service'])
+                                        ->paginate(config('front.applications.pagination'));
 
         return view('front.applications.index', [
             'applications' => $applications,
@@ -46,22 +49,34 @@ class ApplicationController extends Controller
         return view('front.applications.create',[
             'trks' => Trk::all(),
             'application_statuses' => ApplicationStatuses::all(),
-            'application_services' => Service::all(),
+            'services' => Service::all(),
         ]);
     }
 
     public function store(Request $request)
     {
+
         $data = $request->validate([
             'trk_id' => [ 'required', 'integer', 'min:1' ],
-            'application_status_id' => [ 'required', 'integer', 'min:1' ],
-            'comment' => 'string',
             'service_id' => [ 'required', 'integer', 'min:1'],
-            'notice_author' => [],
+            'comment' => ['required', 'string'],
+            'notify_author' => ['nullable']
         ]);
-        $data['user_id'] = Auth::id();
-        Applications::create($data);
-        return redirect()->route('front.applications.index');
+
+        if(isset($data['notify_author'])){
+            $data['notify_author'] = 1;
+        } else {
+            $data['notify_author'] = 0;
+        }
+
+        $data['user_id'] = 1; //Auth::id();
+        $data['application_status_id'] = 1; // new
+
+        if(Applications::create($data)){
+            return redirect()->route('front.applications.index');
+        }
+
+        return redirect()->route('front.applications.create');
     }
 
     public function show(Applications $application)

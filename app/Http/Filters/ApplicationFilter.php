@@ -11,6 +11,7 @@ class ApplicationFilter extends AbstractFilter
     public const COMMENT = 'comment';
     public const SERVICE_ID = 'service_id';
     public const ID = 'id';
+    public const CREATED_AT = 'created_at';
 
     protected function getCallbacks(): array
     {
@@ -19,7 +20,8 @@ class ApplicationFilter extends AbstractFilter
             self::APPLICATION_ID => [$this, 'application_status_id'],
             self::COMMENT => [$this, 'comment'],
             self::ID => [$this, 'id'],
-            self::SERVICE_ID => [$this, 'service_id']
+            self::SERVICE_ID => [$this, 'service_id'],
+            self::CREATED_AT => [$this, 'created_at'],
         ];
     }
 
@@ -47,4 +49,10 @@ class ApplicationFilter extends AbstractFilter
     {
         $builder->where('comment', 'like', "%{$value}%");
     }
+
+    public function created_at(Builder $builder, $value)
+    {
+        $builder->where('created_at', 'like', "%{$value}%");
+    }
+
 }

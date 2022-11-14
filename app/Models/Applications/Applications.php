@@ -22,7 +22,8 @@ class Applications extends Model
         'application_status_id',
         'service_id',
         'notify_author',
-        'comment'
+        'comment',
+        'user_id'
     ];
 
     public function trk(): BelongsTo
