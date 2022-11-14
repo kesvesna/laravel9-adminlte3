@@ -37,9 +37,6 @@
                     <p class="in_progress__applications" style=""><a href="application/index.blade.php"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>В
                         обработке:</b> </a>5</p>
-                    <hr>
-                    <p class="closed__applications" style=""><a href="application/index.blade.php" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Закрытые:</b>
-                    </a>23</p>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
                             <a href="chat/index.blade.php" title="Подать заявку">
@@ -72,9 +69,6 @@
                     <p class="in_progress__applications" style=""><a href="repair/index.blade.php"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>По
                         плану:</b> </a>2</p>
-                    <hr>
-                    <p class="closed__applications" style=""><a href="repair/index.blade.php" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Закрытый:</b>
-                    </a>15</p>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
                             <a href="repair/create_by_plan.blade.php" title="Запланировать ремонт">
@@ -107,9 +101,6 @@
                     <p class="in_progress__applications" style=""><a href="act/index.blade.php"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>По
                         плану:</b> </a>45</p>
-                    <hr>
-                    <p class="closed__applications" style=""><a href="act/index.blade.php" style="color: lightgreen; padding: 0 0 0 1rem;"><b>Все:</b>
-                    </a>79</p>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
                             <a href="act/create.blade.php" title="Заполнить акт">
