@@ -111,7 +111,7 @@ return [
      | Optionally, you can also send ServerTiming headers on ajax requests for the Chrome DevTools.
      |
      | Note for your request to be identified as ajax requests they must either send the header
-     | X-Requested-With with the value XMLHttpRequest (most JS libraries send this), or have application/json as a Accept header.
+     | X-Requested-With with the value XMLHttpRequest (most JS libraries send this), or have applications/json as a Accept header.
      */
 
     'capture_ajax' => true,
@@ -205,7 +205,7 @@ return [
         ],
         'views' => [
             'timeline' => false,  // Add the views to the timeline (Experimental)
-            'data' => false,    //Note: Can slow down the application, because the data can be quite large..
+            'data' => false,    //Note: Can slow down the applications, because the data can be quite large..
         ],
         'route' => [
             'label' => true,  // show complete route on bar

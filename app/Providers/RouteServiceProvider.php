@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 class RouteServiceProvider extends ServiceProvider
 {
     /**
-     * The path to the "home" route for your application.
+     * The path to the "home" route for your applications.
      *
      * Typically, users are redirected here after authentication.
      *
@@ -39,7 +39,7 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Configure the rate limiters for the application.
+     * Configure the rate limiters for the applications.
      *
      * @return void
      */

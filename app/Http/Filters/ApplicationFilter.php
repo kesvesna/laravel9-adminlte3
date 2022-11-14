@@ -9,6 +9,7 @@ class ApplicationFilter extends AbstractFilter
     public const TRK_ID = 'trk_id';
     public const APPLICATION_ID = 'application_status_id';
     public const COMMENT = 'comment';
+    public const SERVICE_ID = 'service_id';
     public const ID = 'id';
 
     protected function getCallbacks(): array
@@ -17,7 +18,8 @@ class ApplicationFilter extends AbstractFilter
             self::TRK_ID => [$this, 'trk_id'],
             self::APPLICATION_ID => [$this, 'application_status_id'],
             self::COMMENT => [$this, 'comment'],
-            self::ID => [$this, 'id']
+            self::ID => [$this, 'id'],
+            self::SERVICE_ID => [$this, 'service_id']
         ];
     }
 
@@ -34,6 +36,11 @@ class ApplicationFilter extends AbstractFilter
     public function application_status_id(Builder $builder, $value)
     {
         $builder->where('application_status_id', $value);
+    }
+
+    public function service_id(Builder $builder, $value)
+    {
+        $builder->where('service_id', $value);
     }
 
     public function comment(Builder $builder, $value)

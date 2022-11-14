@@ -18,7 +18,7 @@ class RepairController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the applications dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */

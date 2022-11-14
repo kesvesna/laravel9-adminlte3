@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed the applications's database.
      *
      * @return void
      */
@@ -27,10 +27,11 @@ class DatabaseSeeder extends Seeder
             RoomsSeeder::class,
             TrkBuildingSeeder::class,
             TrkBuildingFloorSeeder::class,
-
+            ServicesSeeder::class,
         ]);
 
-        \App\Models\Applications\Applications::factory(20)->create();
         \App\Models\User::factory(10)->create();
+        \App\Models\Applications\Applications::factory(20)->create();
+
     }
 }

@@ -17,7 +17,7 @@
                             <div class="col-auto ms-2">
                                 <label for="search_application" class="col-form-label">
                                     <h4>
-                                        <a href="application/index.blade.php" style="color: black;">Заявки</a>
+                                        <a href="{{ route('front.applications.index') }}" style="color: black;">Заявки</a>
                                     </h4>
                                 </label>
                             </div>
@@ -32,9 +32,10 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <a href="application/index.blade.php" style="padding: 0 0 0 1rem;"><b style="color: darkred;">Новые:</b></a><span> 2</span>
+                    <a href="{{ route('front.applications.index') }}" style="padding: 0 0 0 1rem;"><b style="color: darkred;">Новые:</b></a><span> 2</span>
                     <hr>
-                    <p class="in_progress__applications" style=""><a href="application/index.blade.php"
+                    <p class="in_progress__applications" style="">
+                        <a href="{{ route('front.applications.index') }}"
                                                                      style="color: yellow; padding: 0 0 0 1rem;"><b>В
                         обработке:</b> </a>5</p>
                     <div class="position-relative">

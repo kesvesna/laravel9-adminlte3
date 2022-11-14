@@ -28,7 +28,7 @@ use App\Http\Controllers\Front\RenterApplications\RenterApplicationController as
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
+| Here is where you can register web routes for your applications. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
@@ -42,9 +42,16 @@ Route::get('/home', [FrontIndexController::class, 'index'])->name('front.index')
 Route::get('front/chat/', [FrontChatController::class, 'index'])->name('front.chat.index');
 Route::get('front/chat/show', [FrontChatController::class, 'show'])->name('front.chat.show');
 
-Route::get('front/application/', [FrontApplicationController::class, 'index'])->name('front.application.index');
-Route::get('front/application/show', [FrontApplicationController::class, 'show'])->name('front.application.show');
-Route::get('front/application/create', [FrontApplicationController::class, 'create'])->name('front.application.create');
+//Route::get('front/applications/', [FrontApplicationController::class, 'index'])->name('front.applications.index');
+//Route::get('front/applications/show', [FrontApplicationController::class, 'show'])->name('front.applications.show');
+//Route::get('front/applications/create', [FrontApplicationController::class, 'create'])->name('front.applications.create');
+
+
+Route::name('front.')
+    ->prefix('front')
+    ->group(function () {
+        Route::resource('applications', FrontApplicationController::class);
+    });
 
 Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');
 Route::get('front/repair/show', [FrontRepairController::class, 'show'])->name('front.repair.show');

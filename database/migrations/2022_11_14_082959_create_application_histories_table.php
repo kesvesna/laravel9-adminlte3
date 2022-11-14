@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('applications', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('trk_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
-            $table->foreignId('service_id')
+        Schema::create('application_histories', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('application_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
@@ -27,12 +23,16 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->text('comment');
-            $table->boolean('notify_author')->default(0);
             $table->foreignId('user_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
+            $table->foreignId('service_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
+            $table->text('comment')->nullable()->default(null);
+            $table->integer('sort_order')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -46,11 +46,11 @@ return new class extends Migration
     public function down()
     {
         Schema::table('applications', function (Blueprint $table) {
-            $table->dropForeign(['trk_id']);
             $table->dropForeign(['application_status_id']);
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['application_id']);
             $table->dropForeign(['service_id']);
         });
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('application_histories');
     }
 };

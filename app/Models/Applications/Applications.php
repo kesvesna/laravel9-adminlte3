@@ -2,6 +2,7 @@
 
 namespace App\Models\Applications;
 
+use App\Models\Services\Service;
 use App\Models\ApplicationStatuses\ApplicationStatuses;
 use App\Models\Trks\Trk;
 use App\Models\Traits\Filterable;
@@ -19,6 +20,8 @@ class Applications extends Model
     protected $fillable = [
         'trk_id',
         'application_status_id',
+        'service_id',
+        'notify_author',
         'comment'
     ];
 
@@ -30,6 +33,11 @@ class Applications extends Model
     public function application_status(): BelongsTo
     {
         return $this->belongsTo(ApplicationStatuses::class)->withDefault();
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class)->withDefault();
     }
 
     protected function removeQueryParam(string ...$keys)

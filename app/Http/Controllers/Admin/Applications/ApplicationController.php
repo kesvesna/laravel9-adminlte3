@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\App;
 class ApplicationController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Show the applications dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -60,14 +60,14 @@ class ApplicationController extends Controller
     public function show(Applications $application)
     {
         return view('admin.applications.show',[
-            'application' => $application
+            'applications' => $application
         ]);
     }
 
     public function edit(Applications $application)
     {
         return view('admin.applications.edit', [
-            'application' => $application,
+            'applications' => $application,
             'trks' => Trk::all(),
             'application_statuses' => ApplicationStatuses::all(),
         ]);
