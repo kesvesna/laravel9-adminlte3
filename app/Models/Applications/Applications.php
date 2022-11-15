@@ -17,6 +17,7 @@ class Applications extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
+    public const NEW = 1;
     public const IN_PROGRESS = 2;
 
     protected $table = "applications";

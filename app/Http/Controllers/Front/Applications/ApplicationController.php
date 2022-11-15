@@ -127,7 +127,6 @@ class ApplicationController extends Controller
 
     public function destroy(Applications $application)
     {
-        $application->delete();
         return redirect()->route('front.applications.index');
     }
 
