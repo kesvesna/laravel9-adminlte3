@@ -2,10 +2,7 @@
 
 namespace App\Models\Applications;
 
-use App\Models\ApplicationHistories\ApplicationHistories;
-use App\Models\ApplicationMedias\ApplicationMedias;
 use App\Models\Services\Service;
-use App\Models\ApplicationStatuses\ApplicationStatuses;
 use App\Models\Trks\Trk;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

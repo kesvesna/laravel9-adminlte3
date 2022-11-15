@@ -25,7 +25,9 @@ class ApplicationFilterRequest extends FormRequest
     {
         return [
             'trk_id',
-            'comment'
+            'comment',
+            'application_status_id',
+            'service_id'
         ];
     }
 }

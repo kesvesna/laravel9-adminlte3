@@ -1,13 +1,10 @@
 <?php
 
-namespace App\Models\ApplicationMedias;
+namespace App\Models\Applications;
 
-use App\Models\Applications\Applications;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ApplicationMedias extends Model

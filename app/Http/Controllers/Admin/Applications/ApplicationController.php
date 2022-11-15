@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
 use App\Http\Requests\Applications\ApplicationFilterRequest;
 use App\Models\Applications\Applications;
-use App\Models\ApplicationStatuses\ApplicationStatuses;
+use App\Models\Applications\ApplicationStatuses;
 use App\Models\Trks\Trk;
-use App\Services\UploadService;
+use App\Services\Applications\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
