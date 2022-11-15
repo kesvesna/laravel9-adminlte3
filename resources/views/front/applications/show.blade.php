@@ -16,7 +16,7 @@
                     <div>
                         <div class="row col-12 mx-auto row-cols-1">
                             <div class="col">
-                            <h4 style="color: white;">Заявка</h4>
+                            <h4 style="color: white;">Заявка №{{ $application->id }}</h4>
                                 </div>
                         </div>
                     </div>
@@ -52,30 +52,26 @@
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($application->media) }} my-2">
                         @forelse($application->media as $media)
-                            <div class="col my-2" >
+                            <div class="col my-2">
                                 <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
                                     <img class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Application file"></a>
                             </div>
                            @empty
                         @endforelse
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1">
+                    <div class="row col-12 mx-auto row-cols-1 mb-2">
                         <div class="col">
-                    <div class="form-check">
-                        <input disabled class="form-check-input" type="checkbox" id="notify_author" name="notify_author" value="on"
-                            {{ $application->notify_author == '1' ? 'checked' : '' }}>
-                        <label class="form-check-label" for="notify_author">
-                            Оповещение автора
-                        </label>
-                    </div>
+                            <div class="form-check">
+                                <input disabled class="form-check-input" type="checkbox" id="notify_author" name="notify_author" value="on"
+                                    {{ $application->notify_author == '1' ? 'checked' : '' }}>
+                                <label class="form-check-label" for="notify_author">
+                                    Оповещение автора
+                                </label>
+                            </div>
                         </div>
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1">
-                        <div class="col">
-                            <hr>
-                            <h5>Если новая:</h5>
-                        </div>
-                    </div>
+
+                    @if($application->application_status_id == 1)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col">
                             <button type="button" class="btn btn-success col-12 mb-3">Принять</button>
@@ -89,13 +85,10 @@
                         <div class="col">
                             <button type="button" class="btn btn-danger col-12 mb-3">Отклонить</button>
                         </div>
-                        <hr>
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1">
-                        <div class="col">
-                            <h5>Если в обработке:</h5>
-                        </div>
-                    </div>
+                    @endif
+
+                    @if($application->application_status_id == 2)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-5">
                         <div class="col">
                             <button type="button" class="btn btn-success col-12 mb-3">Выполнена</button>
@@ -112,13 +105,10 @@
                         <div class="col">
                             <button type="button" class="btn btn-danger col-12 mb-3">Отклонить</button>
                         </div>
-                        <hr>
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1">
-                        <div class="col">
-                            <h5>Если в ремонте:</h5>
-                        </div>
-                    </div>
+                    @endif
+
+                    @if($application->application_status_id == 3)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col">
                             <button type="button" class="btn btn-success col-12 mb-3">Выполнена</button>
@@ -132,8 +122,9 @@
                         <div class="col">
                             <button type="button" class="btn btn-danger col-12 mb-3">Отклонить</button>
                         </div>
-                        <hr>
                     </div>
+                    @endif
+
                     <div class="row col-12 mx-auto row-cols-1">
                         <div class="col">
                             <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
