@@ -23,11 +23,11 @@ class IndexController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Applications $application)
     {
         return view('front.index', [
-            'new_applications_count' => count(Applications::where('application_status_id', 1)->get()),
-            'in_progress_applications_count' => count(Applications::where('application_status_id', 2)->get())
+            'new_applications_count' => count(Applications::where('application_status_id', $application::NEW)->get()),
+            'in_progress_applications_count' => count(Applications::where('application_status_id', $application::IN_PROGRESS)->get())
         ]);
     }
 

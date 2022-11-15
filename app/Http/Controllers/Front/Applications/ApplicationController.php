@@ -57,7 +57,7 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function store(Request $request, UploadService $uploadService)
+    public function store(Request $request, UploadService $uploadService, Applications $application)
     {
 
         if($request->isMethod('post')){
@@ -76,7 +76,7 @@ class ApplicationController extends Controller
             }
 
             $data['user_id'] = 1; //Auth::id();
-            $data['application_status_id'] = 1; // new
+            $data['application_status_id'] = $application::NEW; // new
 
             if( $id = Applications::create($data)->id ){
 
