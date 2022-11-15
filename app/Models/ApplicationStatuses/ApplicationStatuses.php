@@ -2,6 +2,7 @@
 
 namespace App\Models\ApplicationStatuses;
 
+use App\Models\ApplicationHistories\ApplicationHistories;
 use App\Models\Applications\Applications;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,6 +25,11 @@ class ApplicationStatuses extends Model
     public function applications(): HasMany
     {
         return $this->hasMany(Applications::class, 'application_status_id', 'id');
+    }
+
+    public function histories(): HasMany
+    {
+        return $this->hasMany(ApplicationHistories::class, 'application_status_id', 'id');
     }
 
     protected function removeQueryParam(string ...$keys)

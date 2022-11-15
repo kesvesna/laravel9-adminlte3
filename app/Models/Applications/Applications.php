@@ -2,6 +2,7 @@
 
 namespace App\Models\Applications;
 
+use App\Models\ApplicationHistories\ApplicationHistories;
 use App\Models\ApplicationMedias\ApplicationMedias;
 use App\Models\Services\Service;
 use App\Models\ApplicationStatuses\ApplicationStatuses;
@@ -16,6 +17,8 @@ class Applications extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
+    public const IN_PROGRESS = 2;
+
     protected $table = "applications";
 
     protected $fillable = [
@@ -26,6 +29,19 @@ class Applications extends Model
         'comment',
         'user_id'
     ];
+
+    public function accept(ApplicationHistories $history)
+    {
+        $this->application_status_id = $this::IN_PROGRESS;
+        $this->save();
+
+        $history->application_id = $this->id;
+        $history->application_status_id = $this->application_status_id;
+        $history->user_id = 1;
+        $history->service_id = $this->service_id;
+        $history->trk_id = $this->trk_id;
+        $history->save();
+    }
 
     public function trk(): BelongsTo
     {
@@ -45,6 +61,11 @@ class Applications extends Model
     public function media()
     {
         return $this->hasMany(ApplicationMedias::class, 'application_id', 'id');
+    }
+
+    public function history()
+    {
+        return $this->hasMany(ApplicationHistories::class, 'application_id', 'id');
     }
 
     protected function removeQueryParam(string ...$keys)

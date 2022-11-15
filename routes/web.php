@@ -51,6 +51,7 @@ Route::name('front.')
     ->prefix('front')
     ->group(function () {
         Route::resource('applications', FrontApplicationController::class);
+        Route::post('applications/accept/{application}', [FrontApplicationController::class, 'accept'])->where('application', '[0-9]+')->name('applications.accept');
     });
 
 Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front\Applications;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
 use App\Http\Requests\Applications\ApplicationFilterRequest;
+use App\Models\ApplicationHistories\ApplicationHistories;
 use App\Models\ApplicationMedias\ApplicationMedias;
 use App\Models\Applications\Applications;
 use App\Models\Services\Service;
@@ -59,34 +60,36 @@ class ApplicationController extends Controller
     public function store(Request $request, UploadService $uploadService)
     {
 
-        $data = $request->validate([
-            'trk_id' => [ 'required', 'integer', 'min:1' ],
-            'service_id' => [ 'required', 'integer', 'min:1'],
-            'comment' => ['required', 'string'],
-            'notify_author' => ['nullable'],
-            'files' => ['nullable', 'max:15000'] // 10mb all files size
-        ]);
+        if($request->isMethod('post')){
+            $data = $request->validate([
+                'trk_id' => [ 'required', 'integer', 'min:1' ],
+                'service_id' => [ 'required', 'integer', 'min:1'],
+                'comment' => ['required', 'string'],
+                'notify_author' => ['nullable'],
+                'files' => ['nullable', 'max:15000'] // 10mb all files size
+            ]);
 
-        if(isset($data['notify_author'])){
-            $data['notify_author'] = 1;
-        } else {
-            $data['notify_author'] = 0;
-        }
-
-        $data['user_id'] = 1; //Auth::id();
-        $data['application_status_id'] = 1; // new
-
-        if( $id = Applications::create($data)->id ){
-
-            $media['application_id'] = $id;
-            if ($request->hasFile('files')) {
-                foreach($request->file(['files']) as $file) {
-                    $media['name'] = $uploadService->uploadMedia($file);
-                    ApplicationMedias::create($media);
-                }
+            if(isset($data['notify_author'])){
+                $data['notify_author'] = 1;
+            } else {
+                $data['notify_author'] = 0;
             }
 
-            return redirect()->route('front.applications.index');
+            $data['user_id'] = 1; //Auth::id();
+            $data['application_status_id'] = 1; // new
+
+            if( $id = Applications::create($data)->id ){
+
+                $media['application_id'] = $id;
+                if ($request->hasFile('files')) {
+                    foreach($request->file(['files']) as $file) {
+                        $media['name'] = $uploadService->uploadMedia($file);
+                        ApplicationMedias::create($media);
+                    }
+                }
+
+                return redirect()->route('front.applications.index');
+            }
         }
 
         return redirect()->route('front.applications.create');
@@ -127,6 +130,32 @@ class ApplicationController extends Controller
         $application->delete();
         return redirect()->route('front.applications.index');
     }
+
+    public function accept(Applications $application, ApplicationHistories $history)
+    {
+        $application->accept($history);
+        return redirect()->route('front.applications.index');
+    }
+
+    public function redirect(Request $request)
+    {
+
+        return redirect()->route('front.applications.index');
+    }
+
+    public function appoint(Request $request)
+    {
+
+        return redirect()->route('front.applications.index');
+    }
+
+
+    public function reject(Request $request)
+    {
+
+        return redirect()->route('front.applications.index');
+    }
+
 
 }
 

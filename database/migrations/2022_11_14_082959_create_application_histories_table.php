@@ -31,6 +31,10 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
+            $table->foreignId('trk_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->text('comment')->nullable()->default(null);
             $table->integer('sort_order')->default(1);
             $table->timestamps();
@@ -50,6 +54,7 @@ return new class extends Migration
             $table->dropForeign(['user_id']);
             $table->dropForeign(['application_id']);
             $table->dropForeign(['service_id']);
+            $table->dropForeign(['trk_id']);
         });
         Schema::dropIfExists('application_histories');
     }

@@ -8,11 +8,6 @@
 <main>
     <div class="container-fluid">
         <div class="container pt-3" style="padding-bottom: 15vh;">
-                <form style="background: rgba( 255, 255, 255, 0.1 );
-                            backdrop-filter: blur( 1px );
-                            -webkit-backdrop-filter: blur( 1px );
-                            border-radius: 5px;
-                            border: 1px solid rgba( 255, 255, 255, 0.18 );" class="pt-2 pb-3">
                     <div>
                         <div class="row col-12 mx-auto row-cols-1">
                             <div class="col">
@@ -22,7 +17,7 @@
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col mt-3">
-                            <label for="date" class="form-label" style="color: white;">Дата/Время</label>
+                            <label for="date" class="form-label" style="color: white;">Создана</label>
                             <input disabled type="datetime-local" value="{{ $application->created_at }}" id="created_at" name="created_at" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                         </div>
                         <div class="col mt-3">
@@ -71,10 +66,25 @@
                         </div>
                     </div>
 
+                    @if(isset($application->history) && count($application->history) > 0)
+                        <div class="row col-12 mx-auto row-cols-1 my-2">
+                        <h6 style="color: white;">История заявки</h6>
+                        @forelse($application->history as $history)
+                            <div class="col">
+                                <p style="color: white;">{{ $history->created_at }}, {{ $history->application_status->name }}, {{ $history->user_id }}, {{ $history->comment }}</p>
+                            </div>
+                            @empty
+                        @endforelse
+                        </div>
+                    @endif
+
                     @if($application->application_status_id == 1)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col">
-                            <button type="button" class="btn btn-success col-12 mb-3">Принять</button>
+                            <form action="{{ route('front.applications.accept', $application->id) }}" method="post">
+                                @csrf
+                                <button type="submit" class="btn btn-success col-12 mb-3">Принять</button>
+                            </form>
                         </div>
                         <div class="col">
                             <button type="button" class="btn btn-warning col-12 mb-3">Перенаправить</button>
@@ -124,13 +134,11 @@
                         </div>
                     </div>
                     @endif
-
                     <div class="row col-12 mx-auto row-cols-1">
                         <div class="col">
                             <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     @include('front.components.navbar')
