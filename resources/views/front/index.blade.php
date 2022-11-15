@@ -32,12 +32,15 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <a href="{{ route('front.applications.index') }}" style="padding: 0 0 0 1rem;"><b style="color: darkred;">Новые:</b></a><span> 2</span>
+                    <form action="{{ route('front.applications.index') }}" method="get" class="ms-2">
+                        <input hidden name="application_status_id" value="1">
+                        <button class="btn btn-danger" type="submit">Новые: 2</button>
+                    </form>
                     <hr>
-                    <p class="in_progress__applications" style="">
-                        <a href="{{ route('front.applications.index') }}"
-                                                                     style="color: yellow; padding: 0 0 0 1rem;"><b>В
-                        обработке:</b> </a>5</p>
+                    <form action="{{ route('front.applications.index') }}" method="get" class="mb-3 ms-2">
+                        <input hidden name="application_status_id" value="2">
+                        <button class="btn btn-warning" type="submit">В обработке: 3</button>
+                    </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
                             <a href="chat/index.blade.php" title="Подать заявку">
