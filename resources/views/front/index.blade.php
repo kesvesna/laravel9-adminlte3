@@ -21,25 +21,28 @@
                                     </h4>
                                 </label>
                             </div>
+
                             <div class="col-8 col-sm-7 col-md-7">
+                                <form action="{{ route('front.applications.index') }}" method="get">
                                 <div class="input-group">
-                                    <input autofocus type="search" id="search_application" placeholder="Поиск" class="form-control" aria-describedby="search_application">
-                                    <button class="btn">
-                                        <img src="icons/search.svg" alt="Search application" width="30" height="30">
+                                    <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control" aria-describedby="search_application">
+                                    <button class="btn" type="submit">
+                                        <img src="{{ asset('icons/search.svg') }}" alt="Search application" width="30" height="30">
                                     </button>
                                 </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
                     <form action="{{ route('front.applications.index') }}" method="get" class="ms-2">
                         <input hidden name="application_status_id" value="1">
-                        <button class="btn btn-danger" type="submit">Новые: 2</button>
+                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: darkred;">Новые: {{ $new_applications_count }}</b></button>
                     </form>
                     <hr>
                     <form action="{{ route('front.applications.index') }}" method="get" class="mb-3 ms-2">
                         <input hidden name="application_status_id" value="2">
-                        <button class="btn btn-warning" type="submit">В обработке: 3</button>
+                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">В обработке: {{ $in_progress_applications_count }}</b></button>
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
