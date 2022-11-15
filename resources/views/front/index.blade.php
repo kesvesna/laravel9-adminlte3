@@ -46,7 +46,7 @@
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
-                            <a href="chat/index.blade.php" title="Подать заявку">
+                            <a href="{{ route('front.chat.index') }}" title="Подать заявку">
                                 <img src="./icons/plus.svg" alt="Add picture" width="40" height="40">
                             </a>
                         </div>
