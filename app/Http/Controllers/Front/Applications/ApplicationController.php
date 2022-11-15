@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Front\Applications;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
 use App\Http\Requests\Applications\ApplicationFilterRequest;
+use App\Models\ApplicationMedias\ApplicationMedias;
 use App\Models\Applications\Applications;
 use App\Models\Services\Service;
 use App\Models\ApplicationStatuses\ApplicationStatuses;
 use App\Models\Trks\Trk;
+use App\Services\Applications\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +34,7 @@ class ApplicationController extends Controller
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
         $applications = Applications::filter($filter)
                                         ->with(['trk', 'application_status', 'service'])
+                                        ->orderBy('created_at', 'desc')
                                         ->paginate(config('front.applications.pagination'));
 
         return view('front.applications.index', [
@@ -53,14 +56,15 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, UploadService $uploadService)
     {
 
         $data = $request->validate([
             'trk_id' => [ 'required', 'integer', 'min:1' ],
             'service_id' => [ 'required', 'integer', 'min:1'],
             'comment' => ['required', 'string'],
-            'notify_author' => ['nullable']
+            'notify_author' => ['nullable'],
+            'files' => ['nullable', 'max:15000'] // 10mb all files size
         ]);
 
         if(isset($data['notify_author'])){
@@ -72,7 +76,16 @@ class ApplicationController extends Controller
         $data['user_id'] = 1; //Auth::id();
         $data['application_status_id'] = 1; // new
 
-        if(Applications::create($data)){
+        if( $id = Applications::create($data)->id ){
+
+            $media['application_id'] = $id;
+            if ($request->hasFile('files')) {
+                foreach($request->file(['files']) as $file) {
+                    $media['name'] = $uploadService->uploadMedia($file);
+                    ApplicationMedias::create($media);
+                }
+            }
+
             return redirect()->route('front.applications.index');
         }
 

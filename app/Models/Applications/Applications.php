@@ -2,6 +2,7 @@
 
 namespace App\Models\Applications;
 
+use App\Models\ApplicationMedias\ApplicationMedias;
 use App\Models\Services\Service;
 use App\Models\ApplicationStatuses\ApplicationStatuses;
 use App\Models\Trks\Trk;
@@ -39,6 +40,11 @@ class Applications extends Model
     public function service(): BelongsTo
     {
         return $this->belongsTo(Service::class)->withDefault();
+    }
+
+    public function media()
+    {
+        return $this->hasMany(ApplicationMedias::class, 'application_id', 'id');
     }
 
     protected function removeQueryParam(string ...$keys)

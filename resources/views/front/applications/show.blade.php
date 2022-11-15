@@ -50,12 +50,14 @@
                             <textarea disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
                         </div>
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1 my-4">
-                        <div class="col">
-                            <a href="{{ asset('dist/img/second.jpg') }}" target="_blank">
-                                <img src="{{ asset('dist/img/second.jpg') }}" alt="Application image" class="col-12">
-                            </a>
-                        </div>
+                    <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($application->media) }} my-2">
+                        @forelse($application->media as $media)
+                            <div class="col my-2" >
+                                <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
+                                    <img class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Application file"></a>
+                            </div>
+                           @empty
+                        @endforelse
                     </div>
                     <div class="row col-12 mx-auto row-cols-1">
                         <div class="col">

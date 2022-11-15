@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('application_photos', function (Blueprint $table) {
+        Schema::create('application_medias', function (Blueprint $table) {
             $table->id();
             $table->foreignId('application_id')
                 ->constrained()
@@ -34,9 +34,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('application_photos', function (Blueprint $table) {
+        Schema::table('application_medias', function (Blueprint $table) {
             $table->dropForeign(['application_id']);
         });
-        Schema::dropIfExists('application_photos');
+        Schema::dropIfExists('application_medias');
     }
 };

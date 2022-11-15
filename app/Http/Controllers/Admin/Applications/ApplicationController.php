@@ -8,6 +8,7 @@ use App\Http\Requests\Applications\ApplicationFilterRequest;
 use App\Models\Applications\Applications;
 use App\Models\ApplicationStatuses\ApplicationStatuses;
 use App\Models\Trks\Trk;
+use App\Services\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -46,13 +47,14 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, UploadService $uploadService)
     {
         $data = $request->validate([
             'trk_id' => [ 'required', 'integer', 'min:1' ],
             'application_status_id' => [ 'required', 'integer', 'min:1' ],
             'comment' => 'string',
         ]);
+
         Applications::create($data);
         return redirect()->route('admin.applications.index');
     }

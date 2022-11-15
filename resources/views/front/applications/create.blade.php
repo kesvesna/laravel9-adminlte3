@@ -13,7 +13,7 @@
                             -webkit-backdrop-filter: blur( 1px );
                             border-radius: 5px;
                             border: 1px solid rgba( 255, 255, 255, 0.18 );"
-                  class="pt-2 pb-3" method="post" action="{{ route('front.applications.store') }}">
+                  class="pt-2 pb-3" method="post" action="{{ route('front.applications.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="mb-4">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                        <input class="form-control" type="file" id="files" multiple name="files[]" accept="image/*, video/*, audio/*">
                     </div>
                 </div>
                 <div class="mb-4">
