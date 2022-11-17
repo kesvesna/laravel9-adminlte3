@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Applications\Repair;
+use App\Models\Repairs\Repair;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Towns\Town;

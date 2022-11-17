@@ -14,7 +14,6 @@
                             border-radius: 5px;
                             border: 1px solid rgba( 255, 255, 255, 0.18 );" class="pt-2 pb-3" method="post" action="{{ route('front.repair.store') }}" enctype="multipart/form-data">
                 @csrf
-                @method('post')
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
                         <h4 style="color: white;">Ремонт по заявке № {{ $application->id }}</h4>

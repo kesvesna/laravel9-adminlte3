@@ -63,7 +63,7 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function store(StoreApplicationFormRequest $request, UploadService $uploadService, Repair $application)
+    public function store(StoreApplicationFormRequest $request, UploadService $uploadService, Applications $application)
     {
 
         if($request->isMethod('post')){

@@ -20,5 +20,8 @@
         ],
         'rooms' => [
             'pagination' => 5
+        ],
+        'repairs' => [
+            'pagination' => 5
         ]
     ];

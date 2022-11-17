@@ -70,31 +70,25 @@
                     <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
                 </td>
             </tr>
-            <tr style="color: white;" onclick="window.location='{{ route('front.repair.show') }}';">
-                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell">Академ Парк</td>
-                <td class="d-none d-lg-table-cell">ХВО</td>
-                <td class="d-none d-md-table-cell">Выполнен</td>
-                <td>Замена подшипников</td>
             </tr>
-            <tr style="color: white;" onclick="window.location='{{ route('front.repair.show') }}';">
-                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell">Европолис</td>
-                <td class="d-none d-lg-table-cell">СЭ</td>
-                <td class="d-none d-md-table-cell">По заявке</td>
-                <td>Приклеить плитку в туалете первого этажа</td>
-            </tr>
-            <tr style="color: white;" onclick="window.location='{{ route('front.repair.show') }}';">
-                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell">Европолис</td>
-                <td class="d-none d-lg-table-cell">ХВО</td>
-                <td class="d-none d-md-table-cell">По плану</td>
-                <td>Замена вытяжки В-09-ОП</td>
-            </tr>
+            @forelse($repairs as $repair)
+                <tr style="color: white;"  onclick="window.location='{{ route('front.repair.show', $repair->id) }}';">
+                    <td>{{ $repair->id }}</td>
+                    <td class="d-none d-sm-table-cell">{{ $repair->created_at }}</td>
+                    <td class="d-none d-lg-table-cell">{{ $repair->trk->name }}</td>
+                    <td class="d-none d-md-table-cell">{{ $repair->repair_status->name }}</td>
+                    <td class="d-none d-md-table-cell">{{ $repair->service->name }}</td>
+                    <td>{{ $repair->comment }}</td>
+                </tr>
+            @empty
+                Нет ремонтов
+            @endforelse
+            <tr>
             </tbody>
         </table>
+        {{ $repairs->withQueryString()->links() }}
         <div class="row pb-2 d-flex flex-row-reverse pe-5">
-            <a href="{{ route('front.repair.create_by_plan') }}" style="width: 0">
+            <a href="{{ route('front.repair.create') }}" style="width: 0">
                 <img src="{{ asset('icons/plus.svg') }}" alt="Add picture" width="50" height="50">
             </a>
         </div>

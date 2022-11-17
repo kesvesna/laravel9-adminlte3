@@ -36,16 +36,9 @@ use App\Http\Controllers\Front\RenterApplications\RenterApplicationController as
 
 // home page
 Route::get('/', [FrontIndexController::class, 'index'])->name('front.index');
-Route::get('/index', [FrontIndexController::class, 'index'])->name('front.index');
-Route::get('/home', [FrontIndexController::class, 'index'])->name('front.index');
 
 Route::get('front/chat/', [FrontChatController::class, 'index'])->name('front.chat.index');
 Route::get('front/chat/show', [FrontChatController::class, 'show'])->name('front.chat.show');
-
-//Route::get('front/applications/', [FrontApplicationController::class, 'index'])->name('front.applications.index');
-//Route::get('front/applications/show', [FrontApplicationController::class, 'show'])->name('front.applications.show');
-//Route::get('front/applications/create', [FrontApplicationController::class, 'create'])->name('front.applications.create');
-
 
 Route::name('front.')
     ->prefix('front')

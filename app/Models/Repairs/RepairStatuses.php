@@ -12,21 +12,21 @@ class RepairStatuses extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
-    protected $table = "application_statuses";
+    protected $table = "repair_statuses";
 
     protected $fillable = [
         'name',
         'slug'
     ];
 
-    public function applications(): HasMany
+    public function repairs(): HasMany
     {
-        return $this->hasMany(Repair::class, 'application_status_id', 'id');
+        return $this->hasMany(Repair::class, 'repair_status_id', 'id');
     }
 
     public function histories(): HasMany
     {
-        return $this->hasMany(RepairHistories::class, 'application_status_id', 'id');
+        return $this->hasMany(RepairHistories::class, 'repair_status_id', 'id');
     }
 
     protected function removeQueryParam(string ...$keys)

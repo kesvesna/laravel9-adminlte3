@@ -58,6 +58,11 @@ class Repair extends Model
         return $this->hasMany(RepairHistories::class, 'repair_id', 'id');
     }
 
+    public function repair_status(): BelongsTo
+    {
+        return $this->belongsTo(RepairStatuses::class)->withDefault();
+    }
+
     protected function removeQueryParam(string ...$keys)
     {
         foreach($keys as $key)
