@@ -52,6 +52,9 @@ Route::name('front.')
     ->group(function () {
         Route::resource('applications', FrontApplicationController::class);
         Route::post('applications/accept/{application}', [FrontApplicationController::class, 'accept'])->where('application', '[0-9]+')->name('applications.accept');
+        Route::post('applications/redirect/{application}', [FrontApplicationController::class, 'redirect'])->where('application', '[0-9]+')->name('applications.redirect');
+        Route::post('applications/reject/{application}', [FrontApplicationController::class, 'reject'])->where('application', '[0-9]+')->name('applications.reject');
+        Route::post('applications/appoint/{application}', [FrontApplicationController::class, 'appoint'])->where('application', '[0-9]+')->name('applications.appoint');
     });
 
 Route::get('front/repair/', [FrontRepairController::class, 'index'])->name('front.repair.index');
@@ -61,6 +64,7 @@ Route::get('front/repair/create_by_plan', [FrontRepairController::class, 'create
 Route::get('front/act/', [FrontActController::class, 'index'])->name('front.act.index');
 Route::get('front/act/show', [FrontActController::class, 'show'])->name('front.act.show');
 Route::get('front/act/create', [FrontActController::class, 'create'])->name('front.act.create');
+Route::post('front/act/create_by_application', [FrontActController::class, 'create_by_application'])->name('front.act.create_by_application');
 
 Route::get('front/renter_application/', [FrontRenterApplicationController::class, 'index'])->name('front.renter_application.index');
 Route::get('front/renter_application/show', [FrontRenterApplicationController::class, 'show'])->name('front.renter_application.show');

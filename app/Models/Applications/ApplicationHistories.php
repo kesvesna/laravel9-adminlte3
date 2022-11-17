@@ -2,6 +2,7 @@
 
 namespace App\Models\Applications;
 
+use App\Models\Services\Service;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -31,5 +32,10 @@ class ApplicationHistories extends Model
     public function application_status(): BelongsTo
     {
         return $this->belongsTo(ApplicationStatuses::class)->withDefault();
+    }
+
+    public function service(): BelongsTo
+    {
+        return $this->belongsTo(Service::class)->withDefault();
     }
 }

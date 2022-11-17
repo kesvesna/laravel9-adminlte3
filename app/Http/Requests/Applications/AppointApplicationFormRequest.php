@@ -4,7 +4,7 @@ namespace App\Http\Requests\Applications;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ApplicationFilterRequest extends FormRequest
+class AppointApplicationFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class ApplicationFilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'trk_id' => '',
-            'application_status_id' => '',
-            'service_id' => '',
-            'comment' => '',
-            'created_at' => ''
+            'user_id' => ['required', 'integer', 'min:1'],
+            'comment' => ['nullable', 'string']
         ];
     }
 }

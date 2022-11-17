@@ -16,6 +16,10 @@ class Applications extends Model
 
     public const NEW = 1;
     public const IN_PROGRESS = 2;
+    public const REPAIR = 3;
+    public const DONE = 4;
+    public const REJECTED = 5;
+    public const DELETED = 6;
 
     protected $table = "applications";
 
@@ -74,5 +78,15 @@ class Applications extends Model
         }
 
         return $this;
+    }
+
+    public function setStatusId(int $application_status_id)
+    {
+        $this->application_status_id = $application_status_id;
+    }
+
+    public function setServiceId(int $service_id)
+    {
+        $this->service_id = $service_id;
     }
 }

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin\Applications;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
 use App\Http\Requests\Applications\ApplicationFilterRequest;
+use App\Http\Requests\Applications\UpdateApplicationFromRequest;
 use App\Models\Applications\Applications;
 use App\Models\Applications\ApplicationStatuses;
+use App\Models\Services\Service;
 use App\Models\Trks\Trk;
 use App\Services\Applications\UploadService;
 use Illuminate\Http\Request;
@@ -69,19 +71,16 @@ class ApplicationController extends Controller
     public function edit(Applications $application)
     {
         return view('admin.applications.edit', [
-            'applications' => $application,
+            'application' => $application,
             'trks' => Trk::all(),
             'application_statuses' => ApplicationStatuses::all(),
+            'services' => Service::all(),
         ]);
     }
 
-    public function update(Applications $application, Request $request)
+    public function update(Applications $application, UpdateApplicationFromRequest $request)
     {
-        $data = $request->validate([
-            'trk_id' => [ 'required', 'integer', 'min:1' ],
-            'application_status_id' => [ 'required', 'integer', 'min:1' ],
-            'comment' => 'string',
-        ]);
+        $data = $request->validated();
         $application->update($data);
         return redirect()->route('admin.applications.show', $application->id);
     }

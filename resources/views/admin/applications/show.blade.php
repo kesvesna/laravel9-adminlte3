@@ -26,6 +26,10 @@
             <td>{{ $application->application_status->name }}</td>
         </tr>
         <tr>
+            <th scope="row">Подразделение</th>
+            <td>{{ $application->service->name }}</td>
+        </tr>
+        <tr>
             <th scope="row">Комментарий</th>
             <td>{{ $application->comment }}</td>
         </tr>

@@ -20,6 +20,19 @@
                         <h4 style="color: white;">Новая заявка</h4>
                     </div>
                 </div>
+                <div class="row col-12 mx-auto row-cols-1">
+                    <div class="col-12">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    </div>
+                </div>
                 <div class="mb-3 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>

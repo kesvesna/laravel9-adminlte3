@@ -34,6 +34,17 @@
                 @endforelse
             </select>
         </div>
+        <div class="form-group">
+            <label for="service_id">Подразделение</label>
+            <select name="service_id" id="service_id" class="form-control">
+                @forelse($services as $service)
+                    <option @if($application->service->id === $service->id) selected @endif
+                    value="{{ $service->id }}">{{ $service->name }}</option>
+                @empty
+                    <option value="0">Нет подразделений в списке</option>
+                @endforelse
+            </select>
+        </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Comment</label>
             <textarea type="text" class="form-control" id="comment"
