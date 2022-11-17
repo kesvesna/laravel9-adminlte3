@@ -2,7 +2,7 @@
 
 namespace App\Models\Trks;
 
-use App\Models\Applications\Applications;
+use App\Models\Applications\Repair;
 use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
@@ -45,7 +45,7 @@ class Trk extends Model
 
     public function applications(): HasMany
     {
-        return $this->hasMany(Applications::class, 'trk_id', 'id');
+        return $this->hasMany(Repair::class, 'trk_id', 'id');
     }
 
     public function town(): BelongsTo

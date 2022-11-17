@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Acts;
 
 use App\Http\Controllers\Controller;
-use App\Models\Applications\Applications;
+use App\Models\Applications\Repair;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
@@ -39,10 +39,11 @@ class ActController extends Controller
         return view('front.act.create');
     }
 
-    public function create_by_application(Applications $application)
+    public function create_by_application(Repair $application)
     {
-        dd($application);
-        return view('front.act.create');
+        return view('front.act.create-by-application',[
+            'application' => $application,
+        ]);
     }
 }
 

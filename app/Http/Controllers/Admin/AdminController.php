@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Applications\Applications;
+use App\Models\Applications\Repair;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Towns\Town;
@@ -22,7 +22,7 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin.index', [
-            'applications_count' => Applications::count(),
+            'applications_count' => Repair::count(),
             'towns_count' => Town::count(),
             'trks_count' => Trk::count(),
             'buildings_count' => Building::count(),

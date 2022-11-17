@@ -19,6 +19,7 @@ use App\Models\Trks\Trk;
 use App\Models\User;
 use App\Services\Applications\UploadService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -62,7 +63,7 @@ class ApplicationController extends Controller
         ]);
     }
 
-    public function store(StoreApplicationFormRequest $request, UploadService $uploadService, Applications $application)
+    public function store(StoreApplicationFormRequest $request, UploadService $uploadService, Repair $application)
     {
 
         if($request->isMethod('post')){

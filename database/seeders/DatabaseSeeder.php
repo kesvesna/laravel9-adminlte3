@@ -28,10 +28,12 @@ class DatabaseSeeder extends Seeder
             TrkBuildingSeeder::class,
             TrkBuildingFloorSeeder::class,
             ServicesSeeder::class,
+            RepairsStatusSeeder::class,
         ]);
 
         \App\Models\User::factory(10)->create();
         \App\Models\Applications\Applications::factory(20)->create();
+        \App\Models\Repairs\Repair::factory(20)->create();
 
     }
 }

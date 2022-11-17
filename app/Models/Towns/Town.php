@@ -2,7 +2,7 @@
 
 namespace App\Models\Towns;
 
-use App\Models\Applications\Applications;
+use App\Models\Applications\Repair;
 use App\Models\Trks\Building;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

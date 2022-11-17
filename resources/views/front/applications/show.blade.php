@@ -96,9 +96,12 @@
                                 <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
                             </div>
                         </form>
+                        <form action="{{ route('front.repair.create_by_application', $application->id) }}" method="post">
+                            @csrf
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3"><b>В ремонт</b></button>
+                            <button type="submit" class="btn btn-warning col-12 mb-3"><b>В ремонт</b></button>
                         </div>
+                        </form>
                         <div class="col">
                             <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
                         </div>
