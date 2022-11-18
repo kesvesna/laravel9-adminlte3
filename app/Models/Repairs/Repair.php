@@ -30,7 +30,8 @@ class Repair extends Model
         'repair_status_id',
         'service_id',
         'comment',
-        'user_id'
+        'user_id',
+        'plan_date'
     ];
 
     public function trk(): BelongsTo

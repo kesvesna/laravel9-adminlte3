@@ -9,6 +9,7 @@ use App\Http\Requests\Repairs\StoreRepairFormRequest;
 use App\Http\Requests\Repairs\UpdateRepairFormRequest;
 use App\Models\Applications\Applications;
 use App\Models\Repairs\Repair;
+use App\Models\Repairs\RepairMedias;
 use App\Models\Repairs\RepairStatuses;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
@@ -66,27 +67,26 @@ class RepairController extends Controller
         return view('front.repair.create');
     }
 
-    public function create_by_application(Applications $application): string
+    public function create_by_application(Applications $application)
     {
         return view('front.repair.create_by_application',[
             'application' => $application,
         ]);
     }
 
-    public function store(StoreRepairFormRequest $request, UploadService $uploadService, Repair $repair)
+    public function store(StoreRepairFormRequest $request, UploadService $uploadService)
     {
 
-        dd($repair);
         if($request->isMethod('post')){
 
             $data = $request->validated();
             $data['user_id'] = 1; //Auth::id();
-            $data['repair_status_id'] = $repair::BY_APPLICATION; // new
+            $data['repair_status_id'] = Repair::BY_APPLICATION; // new
 
             if( $id = Repair::create($data)->id ){
 
-                $media['repair_id'] = $id;
                 if ($request->hasFile('files')) {
+                    $media['repair_id'] = $id;
                     foreach($request->file(['files']) as $file) {
                         $media['name'] = $uploadService->uploadMedia($file);
                         RepairMedias::create($media);

@@ -33,6 +33,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->integer('application_id')->nullable()->default(null)->unsigned();
+            $table->dateTime('plan_date');
             $table->timestamps();
             $table->softDeletes();
         });

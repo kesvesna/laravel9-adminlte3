@@ -24,11 +24,11 @@ class StoreRepairFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'application_id' => ['nullable', 'integer|min:1'],
-            'date' => ['required', 'date'],
-            'trk_id' => ['required', 'integer|min:1'],
-            'service_id' => ['required', 'integer|min:1'],
-            'comment' => ['required', 'string']
+            'plan_date' => ['required', 'date'],
+            'trk_id' => ['required', 'integer', 'min:1'],
+            'service_id' => ['required', 'integer', 'min:1'],
+            'comment' => ['required', 'string'],
+            'application_id' => ['nullable', 'integer', 'min:1'],
         ];
     }
 }

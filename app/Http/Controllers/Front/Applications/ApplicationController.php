@@ -4,23 +4,27 @@ namespace App\Http\Controllers\Front\Applications;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
-use App\Http\Requests\Applications\ApplicationFilterRequest;
-use App\Http\Requests\Applications\AppointApplicationFormRequest;
-use App\Http\Requests\Applications\RedirectApplicationFormRequest;
-use App\Http\Requests\Applications\RejectApplicationFormRequest;
-use App\Http\Requests\Applications\StoreApplicationFormRequest;
-use App\Http\Requests\Applications\UpdateApplicationFromRequest;
-use App\Models\Applications\ApplicationHistories;
-use App\Models\Applications\ApplicationMedias;
-use App\Models\Applications\Applications;
+
+use App\Http\Requests\Applications\{
+    ApplicationFilterRequest,
+    AppointApplicationFormRequest,
+    RedirectApplicationFormRequest,
+    RejectApplicationFormRequest,
+    StoreApplicationFormRequest,
+    UpdateApplicationFromRequest
+};
+
+use App\Models\Applications\{
+    ApplicationHistories,
+    ApplicationMedias,
+    Applications,
+    ApplicationStatuses
+};
+
 use App\Models\Services\Service;
-use App\Models\Applications\ApplicationStatuses;
 use App\Models\Trks\Trk;
 use App\Models\User;
 use App\Services\Applications\UploadService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller

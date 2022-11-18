@@ -14,6 +14,7 @@
                             border-radius: 5px;
                             border: 1px solid rgba( 255, 255, 255, 0.18 );" class="pt-2 pb-3" method="post" action="{{ route('front.repair.store') }}" enctype="multipart/form-data">
                 @csrf
+                <input value="{{ $application->id }}" hidden name="application_id">
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
                         <h4 style="color: white;">Ремонт по заявке № {{ $application->id }}</h4>
@@ -21,9 +22,10 @@
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label class="mb-2" for="date" style="color: white;">Когда начнется ремонт</label>
+                        <label class="mb-2" for="plan_date" style="color: white;">Когда начнется ремонт</label>
                         <br>
-                        <input type="datetime-local" id="date" name="date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+{{--                        <input type="hidden" id="timezone" name="timezone" value="-03:00">--}}
+                        <input value="{{date('Y-m-d\TH:i')}}" type="datetime-local" id="plan_date" name="plan_date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                     </div>
@@ -31,13 +33,13 @@
                 <div class="mb-3 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                        <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <select id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                             <option value="{{ $application->trk->id }}">{{ $application->trk->name }}</option>
                         </select>
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label for="system_id" class="form-label" style="color: white;">Подразделение</label>
-                        <select disabled id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <label for="service_id" class="form-label" style="color: white;">Подразделение</label>
+                        <select id="service_id" name="service_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                             <option value="{{ $application->service->id }}">{{ $application->service->name }}</option>
                         </select>
                     </div>

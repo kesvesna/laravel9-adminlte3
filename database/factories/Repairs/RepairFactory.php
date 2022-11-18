@@ -23,6 +23,7 @@ class RepairFactory extends Factory
             'service_id' => fake()->numberBetween(1,6),
             'comment' => fake()->realText(100),
             'application_id' => fake()->numberBetween(0,5),
+            'plan_date' => fake()->dateTime(),
         ];
     }
 }
