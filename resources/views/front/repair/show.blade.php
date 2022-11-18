@@ -17,7 +17,7 @@
                 <div>
                     <div class="row col-12 mx-auto row-cols-1">
                         <div class="col">
-                            <h4 style="color: white;">Ремонт № {{ $repair->id }} по заявке № {{ $repair->application_id }}</h4>
+                            <h4 style="color: white;">Ремонт № {{ $repair->id }}@if($repair->application_id) по заявке № {{ $repair->application_id }}@endif</h4>
                         </div>
                     </div>
                 </div>

@@ -64,7 +64,12 @@ class RepairController extends Controller
 
     public function create()
     {
-        return view('front.repair.create');
+
+        return view('front.repair.create',[
+            'trks' => Trk::all(),
+            'repair_statuses' => RepairStatuses::where('id', Repair::BY_PLAN)->get(),
+            'services' => Service::all(),
+        ]);
     }
 
     public function create_by_application(Applications $application)
@@ -81,7 +86,14 @@ class RepairController extends Controller
 
             $data = $request->validated();
             $data['user_id'] = 1; //Auth::id();
-            $data['repair_status_id'] = Repair::BY_APPLICATION; // new
+
+            if(is_null($data['application_id']))
+            {
+                $data['repair_status_id'] = Repair::BY_PLAN;
+            } else
+            {
+                $data['repair_status_id'] = Repair::BY_APPLICATION;
+            }
 
             if( $id = Repair::create($data)->id ){
 

@@ -24,7 +24,6 @@
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label class="mb-2" for="plan_date" style="color: white;">Когда начнется ремонт</label>
                         <br>
-{{--                        <input type="hidden" id="timezone" name="timezone" value="-03:00">--}}
                         <input value="{{date('Y-m-d\TH:i')}}" type="datetime-local" id="plan_date" name="plan_date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
