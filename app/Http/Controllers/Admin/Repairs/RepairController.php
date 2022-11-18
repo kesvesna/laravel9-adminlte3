@@ -15,6 +15,7 @@ use App\Models\Repairs\Repair;
 use App\Models\Repairs\RepairStatuses;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
+use App\Models\User;
 use App\Services\Applications\UploadService;
 use Illuminate\Http\Request;
 
@@ -81,6 +82,7 @@ class RepairController extends Controller
             'trks' => Trk::all(),
             'repair_statuses' => RepairStatuses::all(),
             'services' => Service::all(),
+            'users' => User::all(),
         ]);
     }
 

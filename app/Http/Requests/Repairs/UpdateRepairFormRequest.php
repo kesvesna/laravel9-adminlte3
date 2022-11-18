@@ -29,7 +29,9 @@ class UpdateRepairFormRequest extends FormRequest
             'service_id' => ['required', 'integer', 'min:1'],
             'comment' => ['required', 'string'],
             'application_id' => ['nullable', 'integer', 'min:1'],
-            'responsible_user_id' => ['required', 'integer', 'min:1']
+            'responsible_user_id' => ['required', 'integer', 'min:1'],
+            'user_id' => ['nullable', 'integer', 'min:1'],
+            'repair_status_id' => ['nullable', 'integer', 'min:1']
         ];
     }
 }

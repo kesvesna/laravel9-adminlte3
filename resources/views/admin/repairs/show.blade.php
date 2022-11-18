@@ -14,9 +14,19 @@
             <td>{{ $repair->id }}</td>
         </tr>
         <tr>
+            <th scope="col" class="col-3">Запланирован на</th>
+            <td>{{ $repair->plan_date }}</td>
+        </tr>
+        <tr>
             <th scope="row">Создан</th>
             <td>{{ $repair->created_at }}</td>
         </tr>
+        @if($repair->application_id > 0)
+            <tr>
+                <th scope="row">По заявке</th>
+                <td>{{ $repair->application_id }}</td>
+            </tr>
+        @endif
         <tr>
             <th scope="row">ТРК</th>
             <td>{{ $repair->trk->name }}</td>
@@ -28,6 +38,14 @@
         <tr>
             <th scope="row">Подразделение</th>
             <td>{{ $repair->service->name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Создал</th>
+            <td>{{ $repair->user->name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Исполнитель</th>
+            <td>{{ $repair->responsible_user->name }}</td>
         </tr>
         <tr>
             <th scope="row">Комментарий</th>
