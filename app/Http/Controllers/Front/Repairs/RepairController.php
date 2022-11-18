@@ -4,22 +4,26 @@ namespace App\Http\Controllers\Front\Repairs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\RepairFilter;
-use App\Http\Requests\Repairs\AppointRepairFormRequest;
-use App\Http\Requests\Repairs\RejectRepairFormRequest;
-use App\Http\Requests\Repairs\RepairFilterRequest;
-use App\Http\Requests\Repairs\StoreRepairFormRequest;
-use App\Http\Requests\Repairs\UpdateRepairFormRequest;
+use App\Http\Requests\Repairs\{
+    AppointRepairFormRequest,
+    RejectRepairFormRequest,
+    RepairFilterRequest,
+    StoreRepairFormRequest,
+    UpdateRepairFormRequest,
+};
+
+use App\Models\Repairs\{
+    Repair,
+    RepairHistories,
+    RepairMedias,
+    RepairStatuses,
+};
+
 use App\Models\Applications\Applications;
-use App\Models\Repairs\Repair;
-use App\Models\Repairs\RepairHistories;
-use App\Models\Repairs\RepairMedias;
-use App\Models\Repairs\RepairStatuses;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
 use App\Models\User;
 use App\Services\Repairs\UploadService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class RepairController extends Controller
@@ -48,10 +52,10 @@ class RepairController extends Controller
         $repairs = Repair::filter($filter)
             ->with(['trk', 'repair_status', 'service'])
             ->orderBy('created_at', 'desc')
-            ->paginate(config('front.repairs.pagination'));
+            ->paginate(config('front.repair.pagination'));
 
         return view('front.repair.index', [
-            'repairs' => $repairs,
+            'repair' => $repairs,
             'repairs_count' => Applications::count(),
             'trks' => Trk::all(),
             'services' => Service::all(),

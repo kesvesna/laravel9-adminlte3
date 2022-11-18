@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('repairs', function (Blueprint $table) {
+        Schema::create('repair', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('trk_id')
                 ->constrained()
@@ -50,13 +50,13 @@ return new class extends Migration
      * @return void
      */
     public function down()
-    {Schema::table('repairs', function (Blueprint $table) {
+    {Schema::table('repair', function (Blueprint $table) {
         $table->dropForeign(['trk_id']);
         $table->dropForeign(['repair_status_id']);
         $table->dropForeign(['user_id']);
         $table->dropForeign(['service_id']);
         $table->dropForeign(['responsible_user_id']);
     });
-        Schema::dropIfExists('repairs');
+        Schema::dropIfExists('repair');
     }
 };

@@ -15,6 +15,20 @@
             </a>
         </li>
         <li class="nav-item">
+            <a href="{{ route('admin.repairs.index') }}"
+               class="nav-link {{ request()->routeIs('admin.repairs.index')?'active':'' }}">
+                <i class="nav-icon far fa-edit"></i>
+                <p>
+                    Ремонт
+                    @if(isset($repairs_count))
+                        <span class="badge badge-info right">
+                            {{ $repairs_count }}
+                        </span>
+                    @endif
+                </p>
+            </a>
+        </li>
+        <li class="nav-item">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>

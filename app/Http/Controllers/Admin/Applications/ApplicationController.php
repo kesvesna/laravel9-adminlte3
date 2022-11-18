@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Filters\ApplicationFilter;
 use App\Http\Requests\Applications\ApplicationFilterRequest;
 use App\Http\Requests\Applications\UpdateApplicationFromRequest;
+use App\Models\Applications\Applications;
+use App\Models\Applications\ApplicationStatuses;
 use App\Models\Repairs\Repair;
-use App\Models\Repairs\RepairStatuses;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
 use App\Services\Applications\UploadService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class ApplicationController extends Controller
 {
@@ -30,13 +30,13 @@ class ApplicationController extends Controller
         ]);
 
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
-        $applications = Repair::filter($filter)->with(['trk', 'application_status'])->paginate(config('admin.applications.pagination'));
+        $applications = Applications::filter($filter)->with(['trk', 'application_status', 'service'])->paginate(config('admin.applications.pagination'));
 
         return view('admin.applications.index', [
             'applications' => $applications,
-            'applications_count' => Repair::count(),
+            'applications_count' => Applications::count(),
             'trks' => Trk::all(),
-            'application_statuses' => RepairStatuses::all(),
+            'application_statuses' => ApplicationStatuses::all(),
             'old_filters' => $data
         ]);
     }
@@ -45,7 +45,7 @@ class ApplicationController extends Controller
     {
         return view('admin.applications.create',[
             'trks' => Trk::all(),
-            'application_statuses' => RepairStatuses::all(),
+            'application_statuses' => ApplicationStatuses::all(),
         ]);
     }
 
@@ -57,35 +57,35 @@ class ApplicationController extends Controller
             'comment' => 'string',
         ]);
 
-        Repair::create($data);
+        Applications::create($data);
         return redirect()->route('admin.applications.index');
     }
 
-    public function show(Repair $application)
+    public function show(Applications $application)
     {
         return view('admin.applications.show',[
             'application' => $application
         ]);
     }
 
-    public function edit(Repair $application)
+    public function edit(Applications $application)
     {
         return view('admin.applications.edit', [
             'application' => $application,
             'trks' => Trk::all(),
-            'application_statuses' => RepairStatuses::all(),
+            'application_statuses' => ApplicationStatuses::all(),
             'services' => Service::all(),
         ]);
     }
 
-    public function update(Repair $application, UpdateApplicationFromRequest $request)
+    public function update(Applications $application, UpdateApplicationFromRequest $request)
     {
         $data = $request->validated();
         $application->update($data);
         return redirect()->route('admin.applications.show', $application->id);
     }
 
-    public function destroy(Repair $application)
+    public function destroy(Applications $application)
     {
         $application->delete();
         return redirect()->route('admin.applications.index');

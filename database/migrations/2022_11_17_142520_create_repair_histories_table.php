@@ -54,7 +54,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('repairs', function (Blueprint $table) {
+        Schema::table('repair', function (Blueprint $table) {
             $table->dropForeign(['repair_status_id']);
             $table->dropForeign(['user_id']);
             $table->dropForeign(['responsible_user_id']);

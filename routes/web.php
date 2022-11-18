@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\BuildingsTrks\BuildingTrkController as AdminBuild
 use App\Http\Controllers\Admin\Floors\FloorController as AdminFloorController;
 use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\Profiles\ProfileController as AdminProfileController;
+use App\Http\Controllers\Admin\Repairs\RepairController as AdminRepairController;
 
 
 //frontend
@@ -79,6 +80,8 @@ Route::name('admin.')
         Route::resource('buildings', AdminBuildingController::class);
         Route::resource('floors', AdminFloorController::class);
         Route::resource('rooms', AdminRoomController::class);
+        Route::resource('repairs', AdminRepairController::class);
+
 
         Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');
 
