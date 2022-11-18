@@ -8,7 +8,44 @@
 <main>
     <div class="container-fluid" style="padding-bottom: 15vh;">
         <h5 style="color: white;" class="pt-3">Ремонты</h5>
-        <button class="btn btn-success btn-sm mb-2">Сброс фильтров</button>
+        <form action="{{ route('front.repair.index') }}" method="get">
+            <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 pt-2 d-md-none">
+                <div class="col">
+                    <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
+                    <select name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        @forelse($trks as $trk)
+                            <option  @if(isset($old_filters['trk_id'])){{ $old_filters['trk_id'] == $trk->id ? ' selected' : '' }} @endif value="{{ $trk->id }}">{{ $trk->name }}</option>
+                        @empty
+                            Нет трк
+                        @endforelse
+                    </select>
+                </div>
+                <div class="col pt-2">
+                    <label for="service_id" class="form-label" style="color: white;">Подразделение</label>
+                    <select name="service_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        @forelse($services as $service)
+                            <option  @if(isset($old_filters['service_id'])){{ $old_filters['service_id'] == $service->id ? ' selected' : '' }} @endif value="{{ $service->id }}">{{ $service->name }}</option>
+                        @empty
+                            Нет подразделений
+                        @endforelse
+                    </select>
+                </div>
+                <div class="col pt-2">
+                    <label for="application_status_id" class="form-label" style="color: white;">Статус заявки</label>
+                    <select name="application_status_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        @forelse($repair_statuses as $status)
+                            <option  @if(isset($old_filters['repair_status_id'])){{ $old_filters['repair_status_id'] == $status->id ? ' selected' : '' }} @endif value="{{ $status->id }}">{{ $status->name }}</option>
+                        @empty
+                            Нет статусов
+                        @endforelse
+                    </select>
+                </div>
+            </div>
+        </form>
+        <form action="{{ route('front.repair.index') }}" method="get">
         <table class="table table-bordered table-hover" style="background: rgba( 255, 255, 255, 0.1 );
     backdrop-filter: blur( 1px );
     -webkit-backdrop-filter: blur( 1px );
@@ -25,10 +62,10 @@
                     ТРК
                 </th>
                 <th scope="col" style="width: 15%;"  class="d-none d-lg-table-cell">
-                    Поздразделение
+                    Статус
                 </th>
                 <th scope="col" style="width: 15%;" class="d-none d-md-table-cell">
-                    Статус
+                    Поздразделение
                 </th>
                 <th scope="col">Задача</th>
             </tr>
@@ -36,44 +73,45 @@
             <tbody>
             <tr>
                 <td class="d-none d-sm-table-cell">
-                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="date" type="datetime-local" class="form-control" placeholder="Поиск" aria-label="date" aria-describedby="date">
+                    <input value="@if(isset($old_filters['created_at'])){{ $old_filters['created_at'] }}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="created_at" type="date" class="form-control" placeholder="Поиск" aria-label="created_at" aria-describedby="created_at" onchange="this.form.submit()">
                 </td>
                 <td class="d-none d-lg-table-cell">
-                    <select class="form-select" aria-label="trk" style="background: rgba( 255, 255, 255, 0.5 );" >
-                        <option selected>Все</option>
-                        <option value="1">Академ Парк</option>
-                        <option value="2">Родео Драйв</option>
-                        <option value="3">Гудзон</option>
-                        <option value="4">Европолис (м.Ростокино)</option>
+                    <select name="trk_id" class="form-select" aria-label="trk_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        @forelse($trks as $trk)
+                            <option @if(isset($old_filters['trk_id'])){{ $old_filters['trk_id'] == $trk->id ? ' selected' : '' }} @endif value="{{ $trk->id }}">{{ $trk->name }}</option>
+                        @empty
+                            Нет трк
+                        @endforelse
                     </select>
                 </td>
                 <td class="d-none d-md-table-cell">
-                    <select class="form-select" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
-                        <option selected>Все</option>
-                        <option value="1">СЭ ТРК</option>
-                        <option value="2">Администрация</option>
-                        <option value="3">ХВО</option>
-                        <option value="3">ТСО</option>
-                        <option value="3">АСУ</option>
+                    <select name="repair_status_id" class="form-select" aria-label="repair_status_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        @forelse($repair_statuses as $status)
+                            <option  @if(isset($old_filters['repair_status_id'])){{ $old_filters['repair_status_id'] == $status->id ? ' selected' : '' }} @endif value="{{ $status->id }}">{{ $status->name }}</option>
+                        @empty
+                            Нет статусов
+                        @endforelse
                     </select>
                 </td>
                 <td class="d-none d-md-table-cell">
-                    <select class="form-select" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
-                        <option selected>Все</option>
-                        <option value="1">По плану</option>
-                        <option value="2">По заявке</option>
-                        <option value="3">Выполнен</option>
-                        <option value="3">Отклонен</option>
+                    <select name="service_id" class="form-select" aria-label="service_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                        <option value="">Все</option>
+                        @forelse($services as $service)
+                            <option  @if(isset($old_filters['service_id'])){{ $old_filters['service_id'] == $service->id ? ' selected' : '' }} @endif value="{{ $service->id }}">{{ $service->name }}</option>
+                        @empty
+                            Нет подразделений
+                        @endforelse
                     </select>
                 </td>
                 <td colspan="4">
-                    <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
+                    <input   value="{{ request()->input('comment') }}" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="comment" type="search" class="form-control" placeholder="Поиск" aria-label="comment" aria-describedby="comment">
                 </td>
             </tr>
             </tr>
             @forelse($repairs as $repair)
                 <tr style="color: white;"  onclick="window.location='{{ route('front.repair.show', $repair->id) }}';">
-                    <td>{{ $repair->id }}</td>
                     <td class="d-none d-sm-table-cell">{{ $repair->created_at }}</td>
                     <td class="d-none d-lg-table-cell">{{ $repair->trk->name }}</td>
                     <td class="d-none d-md-table-cell">{{ $repair->repair_status->name }}</td>
@@ -84,8 +122,17 @@
                 Нет ремонтов
             @endforelse
             <tr>
+                <th colspan="5">
+                    <a href="{{ route('front.repair.index') }}" class="btn col-12 btn-sm" style="background: rgba( 7, 250, 7, 0.1 );
+                                                                    backdrop-filter: blur( 1px );
+                                                                    -webkit-backdrop-filter: blur( 1px );
+                                                                    border-radius: 5px;
+                                                                    border: 1px solid rgba( 255, 255, 255, 0.18 );"><b>Сброс фильтров ремонта</b></a>
+                </th>
+            </tr>
             </tbody>
         </table>
+        </form>
         {{ $repairs->withQueryString()->links() }}
         <div class="row pb-2 d-flex flex-row-reverse pe-5">
             <a href="{{ route('front.repair.create') }}" style="width: 0">

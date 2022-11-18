@@ -74,10 +74,9 @@
             <tbody>
             <tr>
                 <td>
-
                 </td>
                 <td class="d-none d-sm-table-cell">
-                    <input value="" style="background: rgba( 255, 255, 255, 0.5 );" name="created_at" type="date" class="form-control" placeholder="Поиск" aria-label="created_at" aria-describedby="created_at">
+                    <input value="@if(isset($old_filters['created_at'])){{ $old_filters['created_at'] }}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="created_at" type="date" class="form-control" placeholder="Поиск" aria-label="created_at" aria-describedby="created_at" onchange="this.form.submit()">
                 </td>
                 <td class="d-none d-lg-table-cell">
                     <select name="trk_id" class="form-select" aria-label="trk_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
