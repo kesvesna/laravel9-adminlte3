@@ -17,7 +17,7 @@
                             <div class="col-auto ms-2">
                                 <label for="search_application" class="col-form-label">
                                     <h4>
-                                        <a href="{{ route('front.applications.index') }}" style="color: black;">Заявки</a>
+                                        <a href="{{ route('front.applications.index') }}" style="color: white;">Заявки</a>
                                     </h4>
                                 </label>
                             </div>
@@ -59,7 +59,7 @@
                             <div class="col-auto ms-2">
                                 <label for="search_application" class="col-form-label">
                                     <h4>
-                                        <a href="{{ route('front.repair.index') }}" style="color: black;">Ремонт</a>
+                                        <a href="{{ route('front.repair.index') }}" style="color: white;">Ремонт</a>
                                     </h4>
                                 </label>
                             </div>
@@ -99,7 +99,7 @@
                     <div class="slide__title p-1">
                         <div class="row g-3 align-items-center justify-content-between">
                             <div class="col-auto ms-2">
-                                <label for="search_act" class="col-form-label"><h4><a href="act/index.blade.php" style="color: black;">Акты</a></h4></label>
+                                <label for="search_act" class="col-form-label"><h4><a href="act/index.blade.php" style="color: white;">Акты</a></h4></label>
                             </div>
                             <div class="col-8 col-sm-7 col-md-8">
                                 <div class="input-group">
