@@ -13,7 +13,7 @@ class UpdateRepairFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class UpdateRepairFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'plan_date' => ['required', 'date'],
+            'trk_id' => ['required', 'integer', 'min:1'],
+            'service_id' => ['required', 'integer', 'min:1'],
+            'comment' => ['required', 'string'],
+            'application_id' => ['nullable', 'integer', 'min:1'],
+            'responsible_user_id' => ['required', 'integer', 'min:1']
         ];
     }
 }

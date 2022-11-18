@@ -61,24 +61,106 @@
                     @empty
                     @endforelse
                 </div>
-                <div class="mt-3 row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
-                    <div class="col">
-                        <button type="button" class="btn btn-success col-12 mb-3">Выполнен</button>
+                <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
+                    <div class="col mb-3">
+                        <label for="user_id" class="form-label" style="color: white;">Ремонт запланировал</label>
+                        <input disabled type="text" value="{{ $repair->user->name }}" id="user_id" name="user_id" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-warning col-12 mb-3">Выполнен частично</button>
+                    <div class="col mb-3">
+                        <label for="responsible_user_id" class="form-label" style="color: white;">Исполнитель</label>
+                        <input disabled type="text" value="{{ $repair->responsible_user->name }}" id="responsible_user_id" name="responsible_user_id" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-warning col-12 mb-3">Назначить исполнителя</button>
-                    </div>
-                    <div class="col">
-                        <button type="button" class="btn btn-danger col-12 mb-3">Отклонить</button>
-                    </div>
-                    <hr>
                 </div>
-                <div class="row col-12 mx-auto row-cols-1">
+                @if(isset($repair->history) && count($repair->history) > 0)
+                    <div class="row col-12 mx-auto row-cols-1 my-2">
+                        <h6 style="color: white;">История ремонта</h6>
+                        @forelse($repair->history as $history)
+                            <div class="col">
+                                <p style="color: white;">{{ $history->created_at }}, {{ $history->repair_status->name }},  {{ $history->service->name }}, {{ $history->user_id }}, {{ $history->comment }}</p>
+                            </div>
+                        @empty
+                        @endforelse
+                    </div>
+                @endif
+                @if($repair->repair_status_id == $repair::BY_PLAN || $repair->repair_status_id == $repair::BY_APPLICATION ||  $repair->repair_status_id == $repair::IN_PROGRESS)
+                    <div class="mt-3 row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
+                        <div class="col">
+                            <button type="button" class="btn btn-success col-12 mb-3">Выполнен</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-warning col-12 mb-3">Выполнен частично</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointRepairModal">Назначить исполнителя</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectRepairModal">Отклонить</button>
+                        </div>
+                    </div>
+                @endif
+                <div class="row col-12 mx-auto row-cols-1 mt-2">
                     <div class="col">
                         <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Appoint Modal -->
+    <div class="modal fade" id="appointRepairModal" tabindex="-1" aria-labelledby="appointRepairModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form action="{{ route('front.repair.appoint', $repair->id) }}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="appointRepairModal">Назначение ответственного за выполнение ремонта</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="responsible_user_id">Кого назначить</label>
+                            <select name="responsible_user_id" id="responsible_user_id" class="form-control">
+                                @forelse($users as $user)
+                                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @empty
+                                    <option value="0">Нет пользователей в списке</option>
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Комментарий</label>
+                            <textarea required type="text" class="form-control" id="comment"
+                                      name="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Reject Modal -->
+    <div class="modal fade" id="rejectRepairModal" tabindex="-1" aria-labelledby="rejectRepairModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <form action="{{ route('front.repair.reject', $repair->id) }}" method="post">
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="rejectRepairModal">Отклонение ремонта</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">Причина</label>
+                            <textarea required type="text" class="form-control" id="comment"
+                                      name="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                        <button type="submit" class="btn btn-primary">Сохранить</button>
                     </div>
                 </div>
             </form>

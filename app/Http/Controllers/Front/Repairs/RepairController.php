@@ -4,18 +4,23 @@ namespace App\Http\Controllers\Front\Repairs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\RepairFilter;
+use App\Http\Requests\Repairs\AppointRepairFormRequest;
+use App\Http\Requests\Repairs\RejectRepairFormRequest;
 use App\Http\Requests\Repairs\RepairFilterRequest;
 use App\Http\Requests\Repairs\StoreRepairFormRequest;
 use App\Http\Requests\Repairs\UpdateRepairFormRequest;
 use App\Models\Applications\Applications;
 use App\Models\Repairs\Repair;
+use App\Models\Repairs\RepairHistories;
 use App\Models\Repairs\RepairMedias;
 use App\Models\Repairs\RepairStatuses;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
+use App\Models\User;
 use App\Services\Repairs\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\DB;
 
 class RepairController extends Controller
 {
@@ -59,6 +64,7 @@ class RepairController extends Controller
     {
         return view('front.repair.show', [
             'repair' => $repair,
+            'users' => User::all(),
         ]);
     }
 
@@ -69,6 +75,7 @@ class RepairController extends Controller
             'trks' => Trk::all(),
             'repair_statuses' => RepairStatuses::where('id', Repair::BY_PLAN)->get(),
             'services' => Service::all(),
+            'users' => User::all(),
         ]);
     }
 
@@ -76,6 +83,10 @@ class RepairController extends Controller
     {
         return view('front.repair.create_by_application',[
             'application' => $application,
+            'trks' => Trk::all(),
+            'repair_statuses' => RepairStatuses::where('id', Repair::BY_APPLICATION)->get(),
+            'services' => Service::all(),
+            'users' => User::all(),
         ]);
     }
 
@@ -96,7 +107,6 @@ class RepairController extends Controller
             }
 
             if( $id = Repair::create($data)->id ){
-
                 if ($request->hasFile('files')) {
                     $media['repair_id'] = $id;
                     foreach($request->file(['files']) as $file) {
@@ -124,6 +134,61 @@ class RepairController extends Controller
 
     public function destroy(Repair $repair)
     {
+        return redirect()->route('front.repair.index');
+    }
+
+    public function appoint(AppointRepairFormRequest $request, Repair $repair)
+    {
+        if($request->isMethod('post'))
+        {
+            $data = $request->validated();
+            $data['trk_id'] = $repair->trk_id;
+            $data['service_id'] = $repair->service_id;
+            $data['repair_id'] = $repair->id;
+            $data['repair_status_id'] = $repair->repair_status_id;
+            $data['user_id'] = 1; // Auth::id();
+
+            $repair->responsible_user_id = $data['responsible_user_id'];
+
+            try {
+                DB::beginTransaction();
+                $repair->update();
+                RepairHistories::create($data);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                dd($e);
+            }
+        }
+
+        return redirect()->route('front.repair.index');
+    }
+
+    public function reject(RejectRepairFormRequest $request, Repair $repair)
+    {
+        if($request->isMethod('post'))
+        {
+            $data = $request->validated();
+            $data['user_id'] = 1; // Auth::id()
+            $data['responsible_user_id'] = $repair->responsible_user_id; // Auth::id()
+            $data['trk_id'] = $repair->trk_id;
+            $data['repair_status_id'] = $repair::REJECTED;
+            $data['service_id'] = $repair->service_id;
+            $data['repair_id'] = $repair->id;
+
+            $repair->repair_status_id = $repair::REJECTED;
+
+            try {
+                DB::beginTransaction();
+                $repair->update();
+                RepairHistories::create($data);
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                dd($e);
+            }
+        }
+
         return redirect()->route('front.repair.index');
     }
 

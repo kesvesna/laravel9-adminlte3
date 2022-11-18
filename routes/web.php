@@ -49,8 +49,10 @@ Route::name('front.')
         Route::post('applications/reject/{application}', [FrontApplicationController::class, 'reject'])->where('application', '[0-9]+')->name('applications.reject');
         Route::post('applications/appoint/{application}', [FrontApplicationController::class, 'appoint'])->where('application', '[0-9]+')->name('applications.appoint');
 
-        Route::post('repair/create_by_application/{application}', [FrontRepairController::class, 'create_by_application'])->where('application', '[0-9]+')->name('repair.create_by_application');
         Route::resource('repair', FrontRepairController::class);
+        Route::post('repair/create_by_application/{application}', [FrontRepairController::class, 'create_by_application'])->where('application', '[0-9]+')->name('repair.create_by_application');
+        Route::post('repair/appoint/{repair}', [FrontRepairController::class, 'appoint'])->where('repair', '[0-9]+')->name('repair.appoint');
+        Route::post('repair/reject/{repair}', [FrontRepairController::class, 'reject'])->where('repair', '[0-9]+')->name('repair.reject');
     });
 
 

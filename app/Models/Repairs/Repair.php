@@ -6,6 +6,7 @@ use App\Models\Applications\Applications;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
 use App\Models\Traits\Filterable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -31,7 +32,8 @@ class Repair extends Model
         'service_id',
         'comment',
         'user_id',
-        'plan_date'
+        'plan_date',
+        'responsible_user_id'
     ];
 
     public function trk(): BelongsTo
@@ -62,6 +64,16 @@ class Repair extends Model
     public function repair_status(): BelongsTo
     {
         return $this->belongsTo(RepairStatuses::class)->withDefault();
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class)->withDefault();
+    }
+
+    public function responsible_user(): BelongsTo
+    {
+        return $this->belongsTo(User::class)->withDefault();
     }
 
     protected function removeQueryParam(string ...$keys)

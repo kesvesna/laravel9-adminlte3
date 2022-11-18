@@ -27,6 +27,11 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
+            $table->foreignId('responsible_user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->foreignId('service_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -52,6 +57,7 @@ return new class extends Migration
         Schema::table('repairs', function (Blueprint $table) {
             $table->dropForeign(['repair_status_id']);
             $table->dropForeign(['user_id']);
+            $table->dropForeign(['responsible_user_id']);
             $table->dropForeign(['repair_id']);
             $table->dropForeign(['service_id']);
             $table->dropForeign(['trk_id']);

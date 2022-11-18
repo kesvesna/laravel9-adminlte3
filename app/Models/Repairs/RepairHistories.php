@@ -20,6 +20,7 @@ class RepairHistories extends Model
         'application_id',
         'repair_status_id',
         'user_id',
+        'responsible_user_id',
         'service_id',
         'comment',
         'trk_id'

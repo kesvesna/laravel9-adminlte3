@@ -27,6 +27,7 @@ class RepairsSeeder extends Seeder
                 'application_id' => rand(0,5),
                 'comment' => $faker->realText('100'),
                 'plan_date' => $faker->dateTime(),
+                'responsible_user_id' => rand(1,5),
             ]);
         }
 

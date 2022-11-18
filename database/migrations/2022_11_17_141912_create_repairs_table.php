@@ -32,6 +32,11 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
+            $table->foreignId('responsible_user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->integer('application_id')->nullable()->default(null)->unsigned();
             $table->dateTime('plan_date');
             $table->timestamps();
@@ -50,6 +55,7 @@ return new class extends Migration
         $table->dropForeign(['repair_status_id']);
         $table->dropForeign(['user_id']);
         $table->dropForeign(['service_id']);
+        $table->dropForeign(['responsible_user_id']);
     });
         Schema::dropIfExists('repairs');
     }
