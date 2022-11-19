@@ -55,7 +55,7 @@ class RepairController extends Controller
             ->paginate(config('front.repair.pagination'));
 
         return view('front.repair.index', [
-            'repair' => $repairs,
+            'repairs' => $repairs,
             'repairs_count' => Applications::count(),
             'trks' => Trk::all(),
             'services' => Service::all(),
