@@ -18,9 +18,7 @@ class ApplicationsFactory extends Factory
     {
         return [
             'trk_id' => fake()->numberBetween(1, 15),
-            'application_status_id' => fake()->numberBetween(1,6),
             'user_id' => fake()->numberBetween(1,6),
-            'service_id' => fake()->numberBetween(1,6),
             'notify_author' => fake()->numberBetween(0,1),
             'comment' => fake()->realText(100),
         ];

@@ -19,14 +19,6 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('service_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
-            $table->foreignId('application_status_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
             $table->text('comment');
             $table->boolean('notify_author')->default(0);
             $table->foreignId('user_id')
@@ -47,9 +39,7 @@ return new class extends Migration
     {
         Schema::table('applications', function (Blueprint $table) {
             $table->dropForeign(['trk_id']);
-            $table->dropForeign(['application_status_id']);
             $table->dropForeign(['user_id']);
-            $table->dropForeign(['service_id']);
         });
         Schema::dropIfExists('applications');
     }

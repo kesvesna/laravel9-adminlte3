@@ -11,7 +11,7 @@
                     <div>
                         <div class="row col-12 mx-auto row-cols-1">
                             <div class="col">
-                            <h5 style="color: white;" class="mt-4">Заявка № {{ $application->id }}, {{ $application->application_status->name }}</h5>
+                            <h5 style="color: white;" class="mt-4">Заявка № {{ $application->id }}, {{ $application->currentHistory->application_status->name }}</h5>
                                 </div>
                         </div>
                     </div>
@@ -26,7 +26,7 @@
                         </div>
                         <div class="col mt-2">
                             <select disabled id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                                <option value="">{{ $application->service->name }}</option>
+                                <option value="">{{ $application->currentHistory->service->name }}</option>
                             </select>
                         </div>
                     </div>
@@ -35,8 +35,9 @@
                             <textarea disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
                         </div>
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($application->media) }} my-2">
-                        @forelse($application->media as $media)
+                    @if(isset($application->medias))
+                    <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($application->medias) }} my-2">
+                        @forelse($application->medias as $media)
                             <div class="col my-2">
                                 <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
                                     <img class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Application file"></a>
@@ -44,6 +45,7 @@
                            @empty
                         @endforelse
                     </div>
+                    @endif
                     <div class="row col-12 mx-auto row-cols-1 mb-2">
                         <div class="col">
                             <div class="form-check">
@@ -56,19 +58,19 @@
                         </div>
                     </div>
 
-                    @if(isset($application->history) && count($application->history) > 0)
+                    @if(isset($application->histories) && count($application->histories) > 0)
                         <div class="row col-12 mx-auto row-cols-1 my-2">
                         <h6 style="color: white;">История заявки</h6>
-                        @forelse($application->history as $history)
+                        @forelse($application->histories as $history)
                             <div class="col">
-                                <p style="color: white;">{{ $history->created_at }}, {{ $history->application_status->name }},  {{ $history->service->name }}, {{ $history->user_id }}, {{ $history->comment }}</p>
+                                <p style="color: white;">{{ $history->created_at }}, {{ $history->application_status->name }},  {{ $history->service->name }}, от {{ $history->user->name }}, @if(isset($history->responsible_user->id)) {{ "ответственный: " . $history->responsible_user->name . ',' }}  @endif{{$history->comment }}</p>
                             </div>
                             @empty
                         @endforelse
                         </div>
                     @endif
 
-                    @if($application->application_status_id == $application::NEW)
+                    @if($application->currentHistory->application_status->id == $application::NEW)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col">
                             <form action="{{ route('front.applications.accept', $application->id) }}" method="post">
@@ -88,7 +90,7 @@
                     </div>
                     @endif
 
-                    @if($application->application_status_id == $application::IN_PROGRESS)
+                    @if($application->currentHistory->application_status->id == $application::IN_PROGRESS)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-5">
                         <form action="{{ route('front.act.create_by_application', $application->id) }}" method="post">
                             @csrf
@@ -114,7 +116,7 @@
                     </div>
                     @endif
 
-                    @if($application->application_status_id == $application::REPAIR)
+                    @if($application->currentHistory->application_status->id == $application::REPAIR)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col">
                             <button type="button" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
@@ -152,7 +154,7 @@
                         <label for="service_id">Куда перенаправить</label>
                         <select name="service_id" id="service_id" class="form-control">
                             @forelse($services as $service)
-                                <option @if($application->service->id === $service->id) selected @endif
+                                <option @if($application->currentHistory->service->id === $service->id) selected @endif
                                 value="{{ $service->id }}">{{ $service->name }}</option>
                             @empty
                                 <option value="0">Нет подразделений в списке</option>
@@ -210,8 +212,8 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <label for="user_id">Кого назначить</label>
-                            <select name="user_id" id="user_id" class="form-control">
+                            <label for="responsible_user_id">Кого назначить</label>
+                            <select name="responsible_user_id" id="responsible_user_id" class="form-control">
                                 @forelse($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @empty

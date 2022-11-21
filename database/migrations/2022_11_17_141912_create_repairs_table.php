@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('repair', function (Blueprint $table) {
+        Schema::create('repairs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('trk_id')
                 ->constrained()

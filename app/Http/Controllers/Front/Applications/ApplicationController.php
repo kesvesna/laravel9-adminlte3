@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Front\Applications;
 
 use App\Http\Controllers\Controller;
-use App\Http\Filters\ApplicationFilter;
+use App\Http\Filters\Applications\ApplicationFilter;
 
+use App\Http\Filters\Applications\ApplicationHistoriesFilter;
 use App\Http\Requests\Applications\{
     ApplicationFilterRequest,
     AppointApplicationFormRequest,
@@ -25,6 +26,7 @@ use App\Models\Services\Service;
 use App\Models\Trks\Trk;
 use App\Models\User;
 use App\Services\Applications\UploadService;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
@@ -42,10 +44,14 @@ class ApplicationController extends Controller
     {
         $data = $request->validated();
 
+        $filter = app()->make(ApplicationHistoriesFilter::class, ['queryParams' => array_filter($data)]);
+        $histories = ApplicationHistories::filter($filter)->pluck('application_id')->all();
+
         $filter = app()->make(ApplicationFilter::class, ['queryParams' => array_filter($data)]);
         $applications = Applications::filter($filter)
-                                        ->with(['trk', 'application_status', 'service'])
+                                        ->with(['trk', 'histories', 'currentHistory'])
                                         ->orderBy('created_at', 'desc')
+                                        ->whereIn('id', $histories)
                                         ->paginate(config('front.applications.pagination'));
 
         return view('front.applications.index', [
@@ -63,39 +69,52 @@ class ApplicationController extends Controller
         return view('front.applications.create',[
             'trks' => Trk::all(),
             'application_statuses' => ApplicationStatuses::all(),
-            'services' => Service::all(),
+            'services' => Service::all()
         ]);
     }
 
-    public function store(StoreApplicationFormRequest $request, UploadService $uploadService, Applications $application)
+    public function store(StoreApplicationFormRequest $request, UploadService $uploadService)
     {
 
         if($request->isMethod('post')){
-            $data = $request->validated();
 
+            $data = $request->validated();
             if(isset($data['notify_author'])){
                 $data['notify_author'] = 1;
             } else {
                 $data['notify_author'] = 0;
             }
-
             $data['user_id'] = 1; //Auth::id();
-            $data['application_status_id'] = $application::NEW; // new
 
-            if( $id = Applications::create($data)->id ){
+            try {
+                DB::beginTransaction();
 
-                $media['application_id'] = $id;
-                if ($request->hasFile('files')) {
-                    foreach($request->file(['files']) as $file) {
-                        $media['name'] = $uploadService->uploadMedia($file);
-                        ApplicationMedias::create($media);
+                if( $id = Applications::create($data)->id ){
+
+                    $media['application_id'] = $id;
+                    if ($request->hasFile('files')) {
+                        foreach($request->file(['files']) as $file) {
+                            $media['name'] = $uploadService->uploadMedia($file);
+                            ApplicationMedias::create($media);
+                        }
                     }
-                }
 
-                return redirect()->route('front.applications.index');
+                    $history['application_status_id'] = Applications::NEW;
+                    $history['user_id'] = $data['user_id'];
+                    $history['service_id'] = $data['service_id'];
+                    $history['application_id'] = $id;
+
+                    ApplicationHistories::create($history);
+
+                    DB::commit();
+
+                    return redirect()->route('front.applications.index');
+                }
+            } catch (\Exception $e) {
+                DB::rollBack();
+                dd($e);
             }
         }
-
         return redirect()->route('front.applications.create');
     }
 
@@ -123,9 +142,20 @@ class ApplicationController extends Controller
         return redirect()->route('front.applications.index');
     }
 
-    public function accept(Applications $application, ApplicationHistories $history)
+    public function accept(Applications $application)
     {
-        $application->accept($history);
+        $history = ApplicationHistories::where('application_id', $application->id)
+            ->where('application_status_id', Applications::NEW)
+            ->get()
+            ->last();
+
+        $newHistory = $history->replicate()->fill([
+            'application_status_id' => Applications::IN_PROGRESS,
+            'user_id' => 1,
+            'comment' => ''
+        ]);
+        $newHistory->save();
+
         return redirect()->route('front.applications.index');
     }
 
@@ -136,22 +166,23 @@ class ApplicationController extends Controller
         {
             $data = $request->validated();
             $data['user_id'] = 1; // Auth::id()
-            $data['trk_id'] = $application->trk_id;
-            $data['application_status_id'] = $application::NEW;
+            $data['application_status_id'] = $application::REDIRECTED;
             $data['application_id'] = $application->id;
-
-            $application->setStatusId($application::NEW);
-            $application->setServiceId($data['service_id']);
 
             try {
                 DB::beginTransaction();
-                $application->update();
-                ApplicationHistories::create($data);
+                $history = ApplicationHistories::create($data);
+                $newHistory = $history->replicate()->fill([
+                    'application_status_id' => Applications::NEW,
+                    'comment' => '',
+                ]);
+                $newHistory->save();
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
                 dd($e);
             }
+
         }
 
         return redirect()->route('front.applications.index');
@@ -162,17 +193,19 @@ class ApplicationController extends Controller
         if($request->isMethod('post'))
         {
             $data = $request->validated();
-            $data['trk_id'] = $application->trk_id;
-            $data['application_status_id'] = $application::IN_PROGRESS;
-            $data['service_id'] = $application->service_id;
+            $data['application_status_id'] = $application::RESPONSIBLE_USER;
+            $data['service_id'] = $application->currentHistory->service->id;
             $data['application_id'] = $application->id;
-
-            $application->setStatusId($application::IN_PROGRESS);
+            $data['user_id'] = 1; // Auth::id
 
             try {
                 DB::beginTransaction();
-                $application->update();
-                ApplicationHistories::create($data);
+                $history = ApplicationHistories::create($data);
+                $newHistory = $history->replicate()->fill([
+                    'application_status_id' => Applications::IN_PROGRESS,
+                    'comment' => '',
+                ]);
+                $newHistory->save();
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();
@@ -190,16 +223,12 @@ class ApplicationController extends Controller
         {
             $data = $request->validated();
             $data['user_id'] = 1; // Auth::id()
-            $data['trk_id'] = $application->trk_id;
-            $data['application_status_id'] = $application::REJECTED;
-            $data['service_id'] = $application->service_id;
+            $data['application_status_id'] = Applications::REJECTED;
             $data['application_id'] = $application->id;
-
-            $application->setStatusId($application::REJECTED);
+            $data['service_id'] = $application->currentHistory->service->id;
 
             try {
                 DB::beginTransaction();
-                $application->update();
                 ApplicationHistories::create($data);
                 DB::commit();
             } catch (\Exception $e) {

@@ -24,6 +24,7 @@ class ApplicationFilterRequest extends FormRequest
     public function rules()
     {
         return [
+            'id' => '',
             'trk_id' => '',
             'application_status_id' => '',
             'service_id' => '',

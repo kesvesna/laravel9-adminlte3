@@ -60,6 +60,20 @@ class ApplicationsStatusSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'name' => 'Перенаправлена',
+                'slug' => 'redirected',
+                'sort_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Ответственный',
+                'slug' => 'responsible',
+                'sort_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
 
     }

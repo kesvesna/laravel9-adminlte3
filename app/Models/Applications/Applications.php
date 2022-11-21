@@ -2,13 +2,13 @@
 
 namespace App\Models\Applications;
 
-use App\Models\Services\Service;
+use App\Models\User;
 use App\Models\Trks\Trk;
 use App\Models\Traits\Filterable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Applications extends Model
 {
@@ -20,54 +20,36 @@ class Applications extends Model
     public const DONE = 4;
     public const REJECTED = 5;
     public const DELETED = 6;
+    public const REDIRECTED = 7;
+    public const RESPONSIBLE_USER = 8;
 
     protected $table = "applications";
 
     protected $fillable = [
         'trk_id',
-        'application_status_id',
-        'service_id',
         'notify_author',
         'comment',
         'user_id'
     ];
-
-    public function accept(ApplicationHistories $history)
-    {
-        $this->application_status_id = $this::IN_PROGRESS;
-        $this->save();
-
-        $history->application_id = $this->id;
-        $history->application_status_id = $this->application_status_id;
-        $history->user_id = 1;
-        $history->service_id = $this->service_id;
-        $history->trk_id = $this->trk_id;
-        $history->save();
-    }
 
     public function trk(): BelongsTo
     {
         return $this->belongsTo(Trk::class)->withDefault();
     }
 
-    public function application_status(): BelongsTo
-    {
-        return $this->belongsTo(ApplicationStatuses::class)->withDefault();
-    }
-
-    public function service(): BelongsTo
-    {
-        return $this->belongsTo(Service::class)->withDefault();
-    }
-
-    public function media()
+    public function medias()
     {
         return $this->hasMany(ApplicationMedias::class, 'application_id', 'id');
     }
 
-    public function history()
+    public function histories()
     {
         return $this->hasMany(ApplicationHistories::class, 'application_id', 'id');
+    }
+
+    public function currentHistory()
+    {
+        return $this->hasOne(ApplicationHistories::class, 'application_id')->latest('id');
     }
 
     protected function removeQueryParam(string ...$keys)
@@ -78,15 +60,5 @@ class Applications extends Model
         }
 
         return $this;
-    }
-
-    public function setStatusId(int $application_status_id)
-    {
-        $this->application_status_id = $application_status_id;
-    }
-
-    public function setServiceId(int $service_id)
-    {
-        $this->service_id = $service_id;
     }
 }

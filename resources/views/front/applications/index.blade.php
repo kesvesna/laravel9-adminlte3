@@ -53,7 +53,7 @@
                                                                     border: 1px solid rgba( 255, 255, 255, 0.18 );">
             <thead>
             <tr>
-                <th scope="col" style="width: 15%;"  class="d-none d-lg-table-cell">
+                <th scope="col" style="width: 10%;"  class="d-none d-sm-table-cell">
                     ID
                 </th>
                 <th scope="col" style="width: 15%;" class="d-none d-sm-table-cell">Дата
@@ -61,10 +61,10 @@
                         <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">
                     </button>
                 </th>
-                <th scope="col" style="width: 20%;"  class="d-none d-lg-table-cell">
+                <th scope="col" style="width: 21%;"  class="d-none d-lg-table-cell">
                     ТРК
                 </th>
-                <th scope="col" style="width: 20%;" class="d-none d-md-table-cell">
+                <th scope="col" style="width: 16%;" class="d-none d-md-table-cell">
                     Статус
                 </th>
                 <th scope="col" style="width: 15%;"  class="d-none d-md-table-cell">Подразделение</th>
@@ -73,7 +73,8 @@
             </thead>
             <tbody>
             <tr>
-                <td>
+                <td  class="d-none d-sm-table-cell">
+                    <input   value="{{ request()->input('id') }}" style="background: rgba( 255, 255, 255, 0.5 );" name="id" type="search" class="form-control" placeholder="Поиск" aria-label="id" aria-describedby="id">
                 </td>
                 <td class="d-none d-sm-table-cell">
                     <input value="@if(isset($old_filters['created_at'])){{ $old_filters['created_at'] }}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="created_at" type="date" class="form-control" placeholder="Поиск" aria-label="created_at" aria-describedby="created_at" onchange="this.form.submit()">
@@ -114,18 +115,18 @@
             </tr>
             @forelse($applications as $application)
                 <tr style="color: white;"  onclick="window.location='{{ route('front.applications.show', $application->id) }}';">
-                    <td>{{ $application->id }}</td>
+                    <td  class="d-none d-sm-table-cell">{{ $application->id }}</td>
                     <td class="d-none d-sm-table-cell">{{ $application->created_at }}</td>
                     <td class="d-none d-lg-table-cell">{{ $application->trk->name }}</td>
-                    <td class="d-none d-md-table-cell">{{ $application->application_status->name }}</td>
-                    <td class="d-none d-md-table-cell">{{ $application->service->name }}</td>
+                    <td class="d-none d-md-table-cell">{{ $application->currentHistory->application_status->name }}</td>
+                    <td class="d-none d-md-table-cell">{{ $application->currentHistory->service->name }}</td>
                     <td>{{ $application->comment }}</td>
                 </tr>
                 @empty
                     Нет заявок
             @endforelse
             <tr>
-                <th colspan="5">
+                <th colspan="6">
                     <a href="{{ route('front.applications.index') }}" class="btn col-12 btn-sm" style="background: rgba( 7, 250, 7, 0.1 );
                                                                     backdrop-filter: blur( 1px );
                                                                     -webkit-backdrop-filter: blur( 1px );

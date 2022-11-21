@@ -24,7 +24,7 @@ class AppointApplicationFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id' => ['required', 'integer', 'min:1'],
+            'responsible_user_id' => ['required', 'integer', 'min:1'],
             'comment' => ['nullable', 'string']
         ];
     }

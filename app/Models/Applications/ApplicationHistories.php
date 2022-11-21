@@ -4,6 +4,7 @@ namespace App\Models\Applications;
 
 use App\Models\Services\Service;
 use App\Models\Traits\Filterable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -21,7 +22,7 @@ class ApplicationHistories extends Model
         'user_id',
         'service_id',
         'comment',
-        'trk_id'
+        'responsible_user_id',
     ];
 
     public function application()
@@ -36,6 +37,16 @@ class ApplicationHistories extends Model
 
     public function service(): BelongsTo
     {
-        return $this->belongsTo(Service::class)->withDefault();
+        return $this->belongsTo(Service::class, 'service_id', 'id')->withDefault();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
+    }
+
+    public function responsible_user()
+    {
+        return $this->belongsTo(User::class, 'responsible_user_id', 'id')->withDefault();
     }
 }
