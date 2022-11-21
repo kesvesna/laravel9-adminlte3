@@ -2,6 +2,8 @@
 
 namespace App\Models\Applications;
 
+use App\Models\Acts\Act;
+use App\Models\Repairs\Repair;
 use App\Models\User;
 use App\Models\Trks\Trk;
 use App\Models\Traits\Filterable;
@@ -49,6 +51,30 @@ class Applications extends Model
     public function currentHistory()
     {
         return $this->hasOne(ApplicationHistories::class, 'application_id')->latest('id');
+    }
+
+    public function repairs()
+    {
+        return $this->hasManyThrough(
+            Repair::class,
+            ApplicationRepairAct::class,
+            'application_id',
+            'id',
+            'id',
+            'id'
+        );
+    }
+
+    public function acts()
+    {
+        return $this->hasManyThrough(
+            Act::class,
+            ApplicationRepairAct::class,
+            'application_id',
+            'id',
+            'id',
+            'id'
+        );
     }
 
     protected function removeQueryParam(string ...$keys)

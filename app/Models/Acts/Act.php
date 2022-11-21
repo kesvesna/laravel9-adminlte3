@@ -1,34 +1,23 @@
 <?php
 
-namespace App\Models\Repairs;
+namespace App\Models\Acts;
 
-use App\Models\Acts\Act;
 use App\Models\Applications\ApplicationRepairAct;
-use App\Models\Applications\Applications;
-use App\Models\Trks\Trk;
+use App\Models\Repairs\Repair;
 use App\Models\Traits\Filterable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Trks\Trk;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Repair extends Model
+class Act extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
-    public const BY_PLAN = 1;
-    public const BY_APPLICATION = 2;
-    public const IN_PROGRESS = 3;
-    public const DONE = 4;
-    public const REJECTED = 5;
-    public const DELETED = 6;
-    public const RESPONSIBLE_USER = 7;
-
-    protected $table = "repairs";
+    protected $table = "acts";
 
     protected $fillable = [
-        'trk_id',
-        'comment',
     ];
 
     public function trk(): BelongsTo
@@ -38,28 +27,28 @@ class Repair extends Model
 
     public function medias()
     {
-        return $this->hasMany(RepairMedias::class, 'repair_id', 'id');
+        return $this->hasMany(ActMedias::class, 'application_id', 'id');
     }
 
     public function histories()
     {
-        return $this->hasMany(RepairHistories::class, 'repair_id', 'id');
+        return $this->hasMany(ActHistories::class, 'application_id', 'id');
     }
 
     public function currentHistory()
     {
-        return $this->hasOne(RepairHistories::class, 'repair_id')->latest('id');
+        return $this->hasOne(ActHistories::class, 'application_id')->latest('id');
     }
 
-    public function application()
+    public function repairs()
     {
-        return $this->hasOneThrough(
-            Applications::class,
+        return $this->hasManyThrough(
+            Repair::class,
             ApplicationRepairAct::class,
-            'repair_id',
+            'act_id',
             'id',
             'id',
-            'application_id'
+            'id'
         );
     }
 
@@ -68,7 +57,7 @@ class Repair extends Model
         return $this->hasManyThrough(
             Act::class,
             ApplicationRepairAct::class,
-            'repair_id',
+            'act_id',
             'id',
             'id',
             'id'

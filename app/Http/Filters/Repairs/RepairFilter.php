@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Filters;
+namespace App\Http\Filters\Repairs;
 
+use App\Http\Filters\AbstractFilter;
 use Illuminate\Database\Eloquent\Builder;
 
 class RepairFilter extends AbstractFilter

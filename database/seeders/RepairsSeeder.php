@@ -18,16 +18,10 @@ class RepairsSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('ru_RU');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             DB::table('repair')->insert([
                 'trk_id' => rand(1, 15),
-                'repair_status_id' => rand(1,5),
-                'user_id' => rand(1,5),
-                'service_id' => rand(1,5),
-                'application_id' => rand(0,5),
                 'comment' => $faker->realText('100'),
-                'plan_date' => $faker->dateTime(),
-                'responsible_user_id' => rand(1,5),
             ]);
         }
 

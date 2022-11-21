@@ -116,7 +116,7 @@
                     </div>
                     @endif
 
-                    @if($application->currentHistory->application_status->id == $application::REPAIR)
+                    @if($application->currentHistory->application_status_id == $application::REPAIR)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                         <div class="col">
                             <button type="button" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>

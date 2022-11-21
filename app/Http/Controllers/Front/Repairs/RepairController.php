@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front\Repairs;
 
 use App\Http\Controllers\Controller;
-use App\Http\Filters\RepairFilter;
+use App\Http\Filters\Repairs\RepairFilter;
 use App\Http\Requests\Repairs\{
     AppointRepairFormRequest,
     RejectRepairFormRequest,
@@ -50,13 +50,13 @@ class RepairController extends Controller
 
         $filter = app()->make(RepairFilter::class, ['queryParams' => array_filter($data)]);
         $repairs = Repair::filter($filter)
-            ->with(['trk', 'repair_status', 'service'])
+            ->with(['trk', 'currentHistory', 'histories'])
             ->orderBy('created_at', 'desc')
-            ->paginate(config('front.repair.pagination'));
+            ->paginate(config('front.repairs.pagination'));
 
         return view('front.repair.index', [
             'repairs' => $repairs,
-            'repairs_count' => Applications::count(),
+            'repairs_count' => Repair::count(),
             'trks' => Trk::all(),
             'services' => Service::all(),
             'repair_statuses' => RepairStatuses::all(),
@@ -146,18 +146,22 @@ class RepairController extends Controller
         if($request->isMethod('post'))
         {
             $data = $request->validated();
-            $data['trk_id'] = $repair->trk_id;
-            $data['service_id'] = $repair->service_id;
+            $data['repair_status_id'] = $repair::RESPONSIBLE_USER;
+            $data['service_id'] = $repair->currentHistory->service_id;
             $data['repair_id'] = $repair->id;
-            $data['repair_status_id'] = $repair->repair_status_id;
-            $data['user_id'] = 1; // Auth::id();
+            $data['plan_date'] = $repair->currentHistory->plan_date;
+            $data['user_id'] = 1; // Auth::id
 
-            $repair->responsible_user_id = $data['responsible_user_id'];
+            $old_repair_status = $repair->currentHistory->repair_status_id;
 
             try {
                 DB::beginTransaction();
-                $repair->update();
-                RepairHistories::create($data);
+                $history = RepairHistories::create($data);
+                $newHistory = $history->replicate()->fill([
+                    'repair_status_id' => $old_repair_status,
+                    'comment' => '',
+                ]);
+                $newHistory->save();
                 DB::commit();
             } catch (\Exception $e) {
                 DB::rollBack();

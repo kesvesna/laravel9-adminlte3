@@ -4,6 +4,7 @@ namespace App\Models\Repairs;
 
 use App\Models\Services\Service;
 use App\Models\Traits\Filterable;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -23,13 +24,9 @@ class RepairHistories extends Model
         'responsible_user_id',
         'service_id',
         'comment',
-        'trk_id'
+        'plan_date'
     ];
 
-    public function application()
-    {
-        return $this->belongsTo(Repair::class, 'application_id', 'id');
-    }
 
     public function repair_status(): BelongsTo
     {
@@ -38,6 +35,16 @@ class RepairHistories extends Model
 
     public function service(): BelongsTo
     {
-        return $this->belongsTo(Service::class)->withDefault();
+        return $this->belongsTo(Service::class, 'service_id', 'id')->withDefault();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
+    }
+
+    public function responsible_user()
+    {
+        return $this->belongsTo(User::class, 'responsible_user_id', 'id')->withDefault();
     }
 }

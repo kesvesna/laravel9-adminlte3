@@ -8,23 +8,17 @@
 <main>
     <div class="container-fluid">
         <div class="container pt-3" style="padding-bottom: 15vh;">
-            <form style="background: rgba( 255, 255, 255, 0.1 );
-                            backdrop-filter: blur( 1px );
-                            -webkit-backdrop-filter: blur( 1px );
-                            border-radius: 5px;
-                            border: 1px solid rgba( 255, 255, 255, 0.18 );"
-                  class="pt-2 pb-3">
                 <div>
                     <div class="row col-12 mx-auto row-cols-1">
                         <div class="col">
-                            <h4 style="color: white;">Ремонт № {{ $repair->id }}@if($repair->application_id) по заявке № {{ $repair->application_id }}@endif</h4>
+                            <h4 style="color: white;">Ремонт № {{ $repair->id }}@if(isset($repair->application->id)) по заявке № {{ $repair->application->id }} @else плановый@endif</h4>
                         </div>
                     </div>
                 </div>
                 <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                     <div class="col mt-3">
                         <label for="date" class="form-label" style="color: white;">Должен начаться</label>
-                        <input disabled type="datetime-local" value="{{ $repair->plan_date }}" id="plan_date" name="plan_date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <input disabled type="datetime-local" value="{{ $repair->currentHistory->plan_date }}" id="plan_date" name="plan_date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col mt-3">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
@@ -35,13 +29,13 @@
                     <div class="col mt-3">
                         <label for="service_id" class="form-label" style="color: white;">Подразделение</label>
                         <select id="service_id" name="service_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="{{ $repair->service->id }}">{{ $repair->service->name }}</option>
+                            <option value="{{ $repair->currentHistory->service_id }}">{{ $repair->currentHistory->service->name }}</option>
                         </select>
                     </div>
                     <div class="col mt-3">
                         <label for="status_id" class="form-label" style="color: white;">Статус ремонта</label>
                         <select id="status_id" name="status_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="{{ $repair->repair_status->id }}">{{ $repair->repair_status->name }}</option>
+                            <option value="{{ $repair->currentHistory->repair_status->id }}">{{ $repair->currentHistory->repair_status->name }}</option>
                         </select>
                     </div>
                 </div>
@@ -52,8 +46,8 @@
                         </textarea>
                     </div>
                 </div>
-                <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($repair->media) }} my-2">
-                    @forelse($repair->media as $media)
+                <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($repair->medias) }} my-2">
+                    @forelse($repair->medias as $media)
                         <div class="col my-2">
                             <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
                                 <img class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Repair file"></a>
@@ -64,29 +58,34 @@
                 <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
                     <div class="col mb-3">
                         <label for="user_id" class="form-label" style="color: white;">Ремонт запланировал</label>
-                        <input disabled type="text" value="{{ $repair->user->name }}" id="user_id" name="user_id" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <input disabled type="text" value="{{ $repair->currentHistory->user->name }}" id="user_id" name="user_id" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
+                    @if(isset($repair->currentHistory->responsible_user->name))
                     <div class="col mb-3">
                         <label for="responsible_user_id" class="form-label" style="color: white;">Исполнитель</label>
-                        <input disabled type="text" value="{{ $repair->responsible_user->name }}" id="responsible_user_id" name="responsible_user_id" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <input disabled type="text" value="{{ $repair->currentHistory->responsible_user->name }}" id="responsible_user_id" name="responsible_user_id" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
+                    @endif
                 </div>
-                @if(isset($repair->history) && count($repair->history) > 0)
+                @if(isset($repair->histories) && count($repair->histories) > 0)
                     <div class="row col-12 mx-auto row-cols-1 my-2">
                         <h6 style="color: white;">История ремонта</h6>
-                        @forelse($repair->history as $history)
+                        @forelse($repair->histories as $history)
                             <div class="col">
-                                <p style="color: white;">{{ $history->created_at }}, {{ $history->repair_status->name }},  {{ $history->service->name }}, {{ $history->user_id }}, {{ $history->comment }}</p>
+                                <p style="color: white;">{{ $history->created_at }}, {{ $history->repair_status->name }},  {{ $history->service->name }}, {{ $history->user->name }}, {{ $history->comment }}</p>
                             </div>
                         @empty
                         @endforelse
                     </div>
                 @endif
-                @if($repair->repair_status_id == $repair::BY_PLAN || $repair->repair_status_id == $repair::BY_APPLICATION ||  $repair->repair_status_id == $repair::IN_PROGRESS)
+                @if($repair->currentHistory->repair_status->id == $repair::BY_PLAN || $repair->currentHistory->repair_status->id == $repair::BY_APPLICATION ||  $repair->currentHistory->repair_status->id == $repair::IN_PROGRESS)
                     <div class="mt-3 row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
-                        <div class="col">
-                            <button type="button" class="btn btn-success col-12 mb-3">Выполнен</button>
-                        </div>
+                        <form action="{{ route('front.act.create_by_repair', $repair->id) }}" method="post">
+                            @csrf
+                            <div class="col">
+                                <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнен</b></button>
+                            </div>
+                        </form>
                         <div class="col">
                             <button type="button" class="btn btn-warning col-12 mb-3">Выполнен частично</button>
                         </div>
@@ -103,7 +102,6 @@
                         <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
     <!-- Appoint Modal -->

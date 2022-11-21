@@ -112,10 +112,10 @@
             </tr>
             @forelse($repairs as $repair)
                 <tr style="color: white;"  onclick="window.location='{{ route('front.repair.show', $repair->id) }}';">
-                    <td class="d-none d-sm-table-cell">{{ $repair->created_at }}</td>
+                    <td class="d-none d-sm-table-cell">{{ $repair->currentHistory->plan_date }}</td>
                     <td class="d-none d-lg-table-cell">{{ $repair->trk->name }}</td>
-                    <td class="d-none d-md-table-cell">{{ $repair->repair_status->name }}</td>
-                    <td class="d-none d-md-table-cell">{{ $repair->service->name }}</td>
+                    <td class="d-none d-md-table-cell">{{ $repair->currentHistory->repair_status->name }}</td>
+                    <td class="d-none d-md-table-cell">{{ $repair->currentHistory->service->name }}</td>
                     <td>{{ $repair->comment }}</td>
                 </tr>
             @empty

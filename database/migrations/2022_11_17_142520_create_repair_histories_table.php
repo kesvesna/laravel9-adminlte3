@@ -19,6 +19,10 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
+            $table->foreignId('service_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->foreignId('repair_status_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -27,19 +31,8 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('responsible_user_id')
-                ->references('id')
-                ->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('no action');
-            $table->foreignId('service_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
-            $table->foreignId('trk_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
+            $table->integer('responsible_user_id')->nullable()->default(null);
+            $table->dateTime('plan_date');
             $table->text('comment')->nullable()->default(null);
             $table->integer('sort_order')->default(1);
             $table->timestamps();
@@ -60,7 +53,6 @@ return new class extends Migration
             $table->dropForeign(['responsible_user_id']);
             $table->dropForeign(['repair_id']);
             $table->dropForeign(['service_id']);
-            $table->dropForeign(['trk_id']);
         });
         Schema::dropIfExists('repair_histories');
     }

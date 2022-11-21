@@ -60,6 +60,13 @@ class RepairsStatusSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'name' => 'Ответственный',
+                'slug' => 'responsible_user',
+                'sort_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
 
     }
