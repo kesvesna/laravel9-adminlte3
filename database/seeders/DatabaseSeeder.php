@@ -35,5 +35,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Applications\Applications::factory(20)->create();
         \App\Models\Repairs\Repair::factory(20)->create();
 
+        $this->call([
+            ApplicationHistoriesSeeder::class,
+        ]);
+
     }
 }

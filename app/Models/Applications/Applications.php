@@ -28,8 +28,7 @@ class Applications extends Model
     protected $fillable = [
         'trk_id',
         'notify_author',
-        'comment',
-        'user_id'
+        'comment'
     ];
 
     public function trk(): BelongsTo

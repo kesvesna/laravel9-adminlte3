@@ -21,10 +21,6 @@ return new class extends Migration
                 ->onDelete('no action');
             $table->text('comment');
             $table->boolean('notify_author')->default(0);
-            $table->foreignId('user_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
             $table->timestamps();
             $table->softDeletes();
         });
