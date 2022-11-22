@@ -99,28 +99,38 @@
                     <div class="slide__title p-1">
                         <div class="row g-3 align-items-center justify-content-between">
                             <div class="col-auto ms-2">
-                                <label for="search_act" class="col-form-label"><h4><a href="act/index.blade.php" style="color: white;">Акты</a></h4></label>
+                                <label for="search_application" class="col-form-label">
+                                    <h4>
+                                        <a href="{{ route('front.act.index') }}" style="color: white;">Акты</a>
+                                    </h4>
+                                </label>
                             </div>
-                            <div class="col-8 col-sm-7 col-md-8">
-                                <div class="input-group">
-                                    <input type="search" id="search_act" placeholder="Поиск" class="form-control" aria-describedby="search_act">
-                                    <button class="btn">
-                                        <img src="icons/search.svg" alt="Search repair" width="30" height="30">
-                                    </button>
-                                </div>
+
+                            <div class="col-8 col-sm-7 col-md-7">
+                                <form action="{{ route('front.act.index') }}" method="get">
+                                    <div class="input-group">
+                                        <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control" aria-describedby="search_act">
+                                        <button class="btn" type="submit">
+                                            <img src="{{ asset('icons/search.svg') }}" alt="Search act" width="30" height="30">
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <p class="new__applications" style=""><a href="act/index.blade.php" style="color: darkred; padding: 0 0 0 1rem;"><b>По
-                        заявкам:</b> </a>34</p>
+                    <form action="{{ route('front.act.index') }}" method="get" class="ms-2">
+                        <input hidden name="act_status_id" value="2">
+                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: darkred;">По плану: {{ $act_by_plan_count }}</b></button>
+                    </form>
                     <hr>
-                    <p class="in_progress__applications" style=""><a href="act/index.blade.php"
-                                                                     style="color: yellow; padding: 0 0 0 1rem;"><b>По
-                        плану:</b> </a>45</p>
+                    <form action="{{ route('front.act.index') }}" method="get" class="mb-3 ms-2">
+                        <input hidden name="repair_status_id" value="1">
+                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">По заявкам: {{ $act_by_application_count }}</b></button>
+                    </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
-                            <a href="act/create.blade.php" title="Заполнить акт">
+                            <a href="{{ route('front.act.create') }}" title="Заполнить акт">
                                 <img src="./icons/plus.svg" alt="Add picture" width="40" height="40">
                             </a>
                         </div>

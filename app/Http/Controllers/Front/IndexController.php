@@ -31,7 +31,9 @@ class IndexController extends Controller
             'new_applications_count' => count(ApplicationHistories::where('application_status_id', $application::NEW)->get()),
             'in_progress_applications_count' => count(ApplicationHistories::where('application_status_id', $application::IN_PROGRESS)->get()),
             'repair_by_plan_count' => count(RepairHistories::where('repair_status_id', $repair::BY_PLAN)->get()),
-            'repair_by_application_count' => count(RepairHistories::where('repair_status_id', $repair::BY_APPLICATION)->get())
+            'repair_by_application_count' => count(RepairHistories::where('repair_status_id', $repair::BY_APPLICATION)->get()),
+            'act_by_plan_count' => 3,
+            'act_by_application_count' => 4
         ]);
     }
 
