@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\TrksBuildings\TrkBuilding;
+use App\Models\Applications\Applications;
+use App\Models\Repairs\Repair;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +16,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
-
         $this->call([
             ApplicationsStatusSeeder::class,
             BuildingsSeeder::class,
@@ -29,11 +25,13 @@ class DatabaseSeeder extends Seeder
             TrkBuildingFloorSeeder::class,
             ServicesSeeder::class,
             RepairsStatusSeeder::class,
+            ActTypesSeeder::class,
         ]);
 
-        \App\Models\User::factory(10)->create();
-        \App\Models\Applications\Applications::factory(20)->create();
-        \App\Models\Repairs\Repair::factory(2)->create();
+        User::factory(10)->create();
+        Applications::factory(20)->create();
+        Repair::factory(2)->create();
+
 
         $this->call([
             ApplicationHistoriesSeeder::class,
