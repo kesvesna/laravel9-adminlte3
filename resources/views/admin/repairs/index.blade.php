@@ -58,7 +58,7 @@
                 @forelse($repairs as $repair)
                     <tr>
                         <td>{{ $repair->trk->name }}</td>
-                        <td>{{ $repair->repair_status->name }}</td>
+                        <td>{{ $repair->currentHistory->repair_status->name }}</td>
                         <td>{{ $repair->comment }}</td>
                         <td><a href="{{ route('admin.repairs.show', $repair->id) }}"><i
                                     class="nav-icon fas fa-eye ml-2 mr-2" style="color: green; opacity: .7;"

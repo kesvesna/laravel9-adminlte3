@@ -1,12 +1,12 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-    @parent Создание заявки
+    @parent Планирование ремонта
 @endsection
 
 @section('content')
     <br>
-    <form action="{{ route('admin.applications.store') }}" method="post">
+    <form action="{{ route('admin.repairs.store') }}" method="post">
         @csrf
         <div class="form-group">
             <label for="trk_id">ТОРГОВЫЙ КОМПЛЕКС</label>
@@ -21,16 +21,16 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="application_status_id">СТАТУС</label>
-            <select name="application_status_id" id="application_status_id" class="form-control">
-                <option value="1">Новая</option>
+            <label for="repair_status_id">СТАТУС</label>
+            <select name="repair_status_id" id="repair_status_id" class="form-control">
+                <option value="1">По плану</option>
             </select>
         </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Comment</label>
             <textarea type="text" class="form-control" id="comment" name="comment"></textarea>
         </div>
-        <a href="{{ route('admin.applications.index') }}" class="btn btn-success mr-3">Назад</a>
+        <a href="{{ route('admin.repairs.index') }}" class="btn btn-success mr-3">Назад</a>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
 @endsection

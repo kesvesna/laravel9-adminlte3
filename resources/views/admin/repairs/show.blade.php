@@ -21,10 +21,10 @@
             <th scope="row">Создан</th>
             <td>{{ $repair->created_at }}</td>
         </tr>
-        @if($repair->application_id > 0)
+        @if($repair->currentHistory->application_id > 0)
             <tr>
                 <th scope="row">По заявке</th>
-                <td>{{ $repair->application_id }}</td>
+                <td>{{ $repair->currentHistory->application_id }}</td>
             </tr>
         @endif
         <tr>
@@ -33,19 +33,19 @@
         </tr>
         <tr>
             <th scope="row">Статус</th>
-            <td>{{ $repair->repair_status->name }}</td>
+            <td>{{ $repair->currentHistory->repair_status->name }}</td>
         </tr>
         <tr>
             <th scope="row">Подразделение</th>
-            <td>{{ $repair->service->name }}</td>
+            <td>{{ $repair->currentHistory->service->name }}</td>
         </tr>
         <tr>
             <th scope="row">Создал</th>
-            <td>{{ $repair->user->name }}</td>
+            <td>{{ $repair->currentHistory->user->name }}</td>
         </tr>
         <tr>
             <th scope="row">Исполнитель</th>
-            <td>{{ $repair->responsible_user->name }}</td>
+            <td>{{ $repair->currentHistory->responsible_user->name }}</td>
         </tr>
         <tr>
             <th scope="row">Комментарий</th>

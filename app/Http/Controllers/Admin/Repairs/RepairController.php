@@ -3,14 +3,9 @@
 namespace App\Http\Controllers\Admin\Repairs;
 
 use App\Http\Controllers\Controller;
-use App\Http\Filters\ApplicationFilter;
-use App\Http\Filters\RepairFilter;
-use App\Http\Requests\Applications\ApplicationFilterRequest;
-use App\Http\Requests\Applications\UpdateApplicationFromRequest;
+use App\Http\Filters\Repairs\RepairFilter;
 use App\Http\Requests\Repairs\RepairFilterRequest;
 use App\Http\Requests\Repairs\UpdateRepairFormRequest;
-use App\Models\Applications\Applications;
-use App\Models\Applications\ApplicationStatuses;
 use App\Models\Repairs\Repair;
 use App\Models\Repairs\RepairStatuses;
 use App\Models\Services\Service;
@@ -37,7 +32,7 @@ class RepairController extends Controller
         ]);
 
         $filter = app()->make(RepairFilter::class, ['queryParams' => array_filter($data)]);
-        $repairs = Repair::filter($filter)->with(['trk', 'repair_status', 'service'])->paginate(config('admin.repair.pagination'));
+        $repairs = Repair::filter($filter)->with(['trk', 'currentHistory', 'histories'])->paginate(config('admin.repair.pagination'));
 
         return view('admin.repairs.index', [
             'repairs' => $repairs,
