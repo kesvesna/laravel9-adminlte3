@@ -7,6 +7,7 @@ use App\Models\Applications\Applications;
 use App\Models\Repairs\Repair;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
+use App\Models\Systems\System;
 use App\Models\Towns\Town;
 use App\Models\Buildings\Building;
 use App\Models\Trks\Trk;
@@ -30,6 +31,7 @@ class AdminController extends Controller
             'buildings_count' => Building::count(),
             'floors_count' => Floor::count(),
             'rooms_count' => Room::count(),
+            'systems_count' => System::count(),
         ]);
     }
 

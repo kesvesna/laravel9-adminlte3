@@ -113,6 +113,31 @@
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>
+                    Оборудование
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.systems.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.systems.timesheet')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Тип/Услуга
+                            @if(isset($systems_count))
+                                <span class="badge badge-info right">
+                            {{ $systems_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
+                <p>
                     Профиль
                     <i class="fas fa-angle-left right"></i>
                 </p>

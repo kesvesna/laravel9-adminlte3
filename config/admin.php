@@ -23,5 +23,8 @@
         ],
         'repair' => [
             'pagination' => 5
+        ],
+        'systems' => [
+            'pagination' => 5
         ]
     ];
