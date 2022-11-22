@@ -72,7 +72,7 @@
                         <h6 style="color: white;">История ремонта</h6>
                         @forelse($repair->histories as $history)
                             <div class="col">
-                                <p style="color: white;">{{ $history->created_at }}, {{ $history->repair_status->name }},  {{ $history->service->name }}, {{ $history->user->name }}, {{ $history->comment }}</p>
+                                <p style="color: white;">{{ $history->created_at }}, {{ $history->repair_status->name }},  {{ $history->service->name }}, от {{ $history->user->name }}, @if(isset($history->responsible_user->id)) {{ "ответственный: " . $history->responsible_user->name . ',' }}  @endif{{$history->comment }}</p>
                             </div>
                         @empty
                         @endforelse
@@ -80,15 +80,18 @@
                 @endif
                 @if($repair->currentHistory->repair_status->id == $repair::BY_PLAN || $repair->currentHistory->repair_status->id == $repair::BY_APPLICATION ||  $repair->currentHistory->repair_status->id == $repair::IN_PROGRESS)
                     <div class="mt-3 row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
-                        <form action="{{ route('front.act.create_by_repair', $repair->id) }}" method="post">
+                        <form action="{{ route('front.act.create_by_repair_all_done', $repair->id) }}" method="post">
                             @csrf
                             <div class="col">
                                 <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнен</b></button>
                             </div>
                         </form>
+                        <form action="{{ route('front.act.create_by_repair_not_completely_done', $repair->id) }}" method="post">
+                            @csrf
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3">Выполнен частично</button>
+                            <button type="submit" class="btn btn-warning col-12 mb-3">Выполнен частично</button>
                         </div>
+                        </form>
                         <div class="col">
                             <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointRepairModal">Назначить исполнителя</button>
                         </div>

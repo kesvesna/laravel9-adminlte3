@@ -16,8 +16,8 @@
                   class="pt-2 pb-3">
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
-                        <h4 style="color: white;">Акт по заявке № {{ $application->id }}</h4>
-                        <h5 style="color: white;">Заявка будет закрыта</h5>
+                        <h4 style="color: white;">Акт по ремонту № {{ $repair->id }}</h4>
+                        <h5 style="color: white;">Ремонт и заявка не будут закрыты</h5>
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
@@ -33,7 +33,7 @@
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
                         <select id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="{{ $application->trk->id }}">{{ $application->trk->name }}</option>
+                            <option value="{{ $repair->trk->id }}">{{ $repair->trk->name }}</option>
                         </select>
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">

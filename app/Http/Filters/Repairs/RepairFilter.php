@@ -8,9 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 class RepairFilter extends AbstractFilter
 {
     public const TRK_ID = 'trk_id';
-    public const REPAIR_STATUS_ID = 'repair_status_id';
     public const COMMENT = 'comment';
-    public const SERVICE_ID = 'service_id';
     public const ID = 'id';
     public const CREATED_AT = 'created_at';
 
@@ -18,10 +16,8 @@ class RepairFilter extends AbstractFilter
     {
         return [
             self::TRK_ID => [$this, 'trk_id'],
-            self::REPAIR_STATUS_ID => [$this, 'repair_status_id'],
             self::COMMENT => [$this, 'comment'],
             self::ID => [$this, 'id'],
-            self::SERVICE_ID => [$this, 'service_id'],
             self::CREATED_AT => [$this, 'created_at'],
         ];
     }
@@ -34,16 +30,6 @@ class RepairFilter extends AbstractFilter
     public function trk_id(Builder $builder, $value)
     {
         $builder->where('trk_id', $value);
-    }
-
-    public function repair_status_id(Builder $builder, $value)
-    {
-        $builder->where('repair_status_id', $value);
-    }
-
-    public function service_id(Builder $builder, $value)
-    {
-        $builder->where('service_id', $value);
     }
 
     public function comment(Builder $builder, $value)

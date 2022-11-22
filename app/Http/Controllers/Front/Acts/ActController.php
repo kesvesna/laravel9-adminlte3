@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Front\Acts;
 use App\Http\Controllers\Controller;
 use App\Models\Applications\Applications;
 use App\Models\Repairs\Repair;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class ActController extends Controller
 {
@@ -47,11 +45,41 @@ class ActController extends Controller
         ]);
     }
 
-    public function create_by_repair(Repair $repair)
+    public function create_by_repair_all_done(Repair $repair)
     {
-        return view('front.act.create-by-repair',[
+        // need to close repair
+        return view('front.act.create-by-repair-all-done',[
             'repair' => $repair,
         ]);
+    }
+
+    public function create_by_repair_not_completely_done(Repair $repair)
+    {
+        // don't close repair
+        return view('front.act.create-by-repair-not-completely-done',[
+            'repair' => $repair,
+        ]);
+    }
+
+
+    public function create_by_plan()
+    {
+        return view('front.act.create-by-plan');
+    }
+
+    public function update()
+    {
+        return view('front.act.index');
+    }
+
+    public function edit()
+    {
+        return view('front.act.index');
+    }
+
+    public function delete()
+    {
+        return view('front.act.index');
     }
 }
 

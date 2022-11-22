@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Front\Repairs;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Repairs\RepairFilter;
+use App\Http\Filters\Repairs\RepairHistoriesFilter;
+use App\Models\Applications\ApplicationRepairAct;
 use App\Http\Requests\Repairs\{
     AppointRepairFormRequest,
     RejectRepairFormRequest,
@@ -48,10 +50,14 @@ class RepairController extends Controller
     {
         $data = $request->validated();
 
+        $filter = app()->make(RepairHistoriesFilter::class, ['queryParams' => array_filter($data)]);
+        $histories = RepairHistories::filter($filter)->pluck('repair_id')->all();
+
         $filter = app()->make(RepairFilter::class, ['queryParams' => array_filter($data)]);
         $repairs = Repair::filter($filter)
             ->with(['trk', 'currentHistory', 'histories'])
             ->orderBy('created_at', 'desc')
+            ->whereIn('id', $histories)
             ->paginate(config('front.repairs.pagination'));
 
         return view('front.repair.index', [
@@ -110,17 +116,38 @@ class RepairController extends Controller
                 $data['repair_status_id'] = Repair::BY_APPLICATION;
             }
 
-            if( $id = Repair::create($data)->id ){
-                if ($request->hasFile('files')) {
-                    $media['repair_id'] = $id;
-                    foreach($request->file(['files']) as $file) {
-                        $media['name'] = $uploadService->uploadMedia($file);
-                        RepairMedias::create($media);
-                    }
-                }
+            try {
+                DB::beginTransaction();
 
-                return redirect()->route('front.repair.index');
+                if( $id = Repair::create($data)->id ){
+
+                    $media['repair_id'] = $id;
+                    if ($request->hasFile('files')) {
+                        foreach($request->file(['files']) as $file) {
+                            $media['name'] = $uploadService->uploadMedia($file);
+                            RepairMedias::create($media);
+                        }
+                    }
+
+                    $history['repair_status_id'] = $data['repair_status_id'];
+                    $history['user_id'] = $data['user_id'];
+                    $history['service_id'] = $data['service_id'];
+                    $history['repair_id'] = $id;
+                    $history['plan_date'] = $data['plan_date'];
+
+                    RepairHistories::create($history);
+
+                    $repair['repair_id'] = $id;
+                    ApplicationRepairAct::create($repair);
+
+                    DB::commit();
+                    return redirect()->route('front.repair.index');
+                }
+            } catch (\Exception $e) {
+                DB::rollBack();
+                dd($e);
             }
+                return redirect()->route('front.repair.create');
         }
 
         return redirect()->route('front.repair.create');

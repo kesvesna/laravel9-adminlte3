@@ -61,12 +61,12 @@ Route::get('front/act/', [FrontActController::class, 'index'])->name('front.act.
 Route::get('front/act/show', [FrontActController::class, 'show'])->name('front.act.show');
 Route::get('front/act/create', [FrontActController::class, 'create'])->name('front.act.create');
 Route::post('front/act/create_by_application/{application}', [FrontActController::class, 'create_by_application'])->name('front.act.create_by_application');
-Route::post('front/act/create_by_repair/{repair}', [FrontActController::class, 'create_by_repair'])->name('front.act.create_by_repair');
+Route::post('front/act/create_by_repair_all_done/{repair}', [FrontActController::class, 'create_by_repair_all_done'])->name('front.act.create_by_repair_all_done');
+Route::post('front/act/create_by_repair_not_completely_done/{repair}', [FrontActController::class, 'create_by_repair_not_completely_done'])->name('front.act.create_by_repair_not_completely_done');
 
 Route::get('front/renter_application/', [FrontRenterApplicationController::class, 'index'])->name('front.renter_application.index');
 Route::get('front/renter_application/show', [FrontRenterApplicationController::class, 'show'])->name('front.renter_application.show');
 Route::get('front/renter_application/create', [FrontRenterApplicationController::class, 'create'])->name('front.renter_application.create');
-
 
 
 
