@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             ServicesSeeder::class,
             RepairsStatusSeeder::class,
             ActTypesSeeder::class,
+            EquipmentNamesSeeder::class,
+            SystemTypesSeeder::class,
+            WorkTypesSeeder::class,
         ]);
 
         User::factory(10)->create();
