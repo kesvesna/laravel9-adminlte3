@@ -19,7 +19,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->foreignId('equipment_id')
-                ->constrained()
+                ->constrained('equipments')
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->unique(['act_id', 'equipment_id']);

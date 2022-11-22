@@ -13,13 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('acts', function (Blueprint $table) {
+        Schema::create('equipments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('act_type_id')
+            $table->foreignId('trk_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('trk_id')
+            $table->foreignId('system_type_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
+            $table->foreignId('building_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
+            $table->foreignId('floor_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
@@ -27,14 +35,11 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('equipment_id')
-                ->constrained('equipments')
+            $table->foreignId('equipment_name_id')
+                ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->text('works')->nullable()->default(null);
-            $table->text('remarks')->nullable()->default(null);
-            $table->text('recommendations')->nullable()->default(null);
-            $table->text('spare_parts')->nullable()->default(null);
+            $table->unique(['trk_id', 'room_id', 'equipment_name_id']);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -47,12 +52,14 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('acts', function (Blueprint $table) {
+        Schema::table('equipments', function (Blueprint $table) {
             $table->dropForeign(['trk_id']);
+            $table->dropForeign(['system_type_id']);
+            $table->dropForeign(['building_id']);
+            $table->dropForeign(['floor_id']);
             $table->dropForeign(['room_id']);
-            $table->dropForeign(['equipment_id']);
-            $table->dropForeign(['act_type_id']);
+            $table->dropForeign(['equipment_name_id']);
         });
-        Schema::dropIfExists('acts');
+        Schema::dropIfExists('equipments');
     }
 };
