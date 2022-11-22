@@ -8,7 +8,6 @@
 <main>
     <div class="container-fluid" style="padding-bottom: 15vh;">
         <h5 style="color: white;" class="pt-3">Акты</h5>
-        <button class="btn btn-success btn-sm mb-2">Сброс фильтров</button>
         <table class="table table-bordered table-hover" style="background: rgba( 255, 255, 255, 0.1 );
                                                                 backdrop-filter: blur( 1px );
                                                                 -webkit-backdrop-filter: blur( 1px );
@@ -25,10 +24,10 @@
                     ТРК
                 </th>
                 <th scope="col" style="width: 20%;" class="d-none d-md-table-cell">
-                    Тип
+                    Оборудование/Услуга
                 </th>
                 <th scope="col" style="width: 15%;"  class="d-none d-lg-table-cell">Помещение</th>
-                <th scope="col">Оборудование</th>
+                <th scope="col">Наименование</th>
             </tr>
             </thead>
             <tbody>

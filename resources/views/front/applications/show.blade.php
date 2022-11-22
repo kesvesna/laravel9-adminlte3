@@ -92,11 +92,17 @@
 
                     @if($application->currentHistory->application_status->id == $application::IN_PROGRESS)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-5">
-                        <form action="{{ route('front.act.create_by_application', $application->id) }}" method="post">
+                        <form action="{{ route('front.act.create_by_application_all_done', $application->id) }}" method="post">
                             @csrf
                             <div class="col">
                                 <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
                             </div>
+                        </form>
+                        <form action="{{ route('front.act.create_by_application_not_completely_done', $application->id) }}" method="post">
+                            @csrf
+                        <div class="col">
+                            <button type="submit" class="btn btn-warning col-12 mb-3"><b>Выполнена частично</b></button>
+                        </div>
                         </form>
                         <form action="{{ route('front.repair.create_by_application', $application->id) }}" method="post">
                             @csrf
@@ -118,9 +124,18 @@
 
                     @if($application->currentHistory->application_status_id == $application::REPAIR)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
-                        <div class="col">
-                            <button type="button" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
+                        <form action="{{ route('front.act.create_by_application_all_done', $application->id) }}" method="post">
+                        @csrf
+                            <div class="col">
+                            <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
                         </div>
+                        </form>
+                        <form action="{{ route('front.act.create_by_application_not_completely_done', $application->id) }}" method="post">
+                            @csrf
+                        <div class="col">
+                            <button type="submit" class="btn btn-warning col-12 mb-3"><b>Выполнена частично</b></button>
+                        </div>
+                        </form>
                         <div class="col">
                             <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
                         </div>

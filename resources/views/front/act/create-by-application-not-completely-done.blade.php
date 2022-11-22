@@ -17,7 +17,7 @@
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
                         <h4 style="color: white;">Акт по заявке № {{ $application->id }}</h4>
-                        <h5 style="color: white;">Заявка будет закрыта</h5>
+                        <h5 style="color: white;">Заявка НЕ будет закрыта</h5>
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">

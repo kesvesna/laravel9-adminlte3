@@ -38,9 +38,16 @@ class ActController extends Controller
         return view('front.act.create');
     }
 
-    public function create_by_application(Applications $application)
+    public function create_by_application_all_done(Applications $application)
     {
-        return view('front.act.create-by-application',[
+        return view('front.act.create-by-application-all-done',[
+            'application' => $application,
+        ]);
+    }
+
+    public function create_by_application_not_completely_done(Applications $application)
+    {
+        return view('front.act.create-by-application-not-completely-done',[
             'application' => $application,
         ]);
     }
