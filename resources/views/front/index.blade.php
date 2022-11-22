@@ -126,7 +126,7 @@
                     <hr>
                     <form action="{{ route('front.act.index') }}" method="get" class="mb-3 ms-2">
                         <input hidden name="repair_status_id" value="1">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: darkgreen;">По плану: {{ $act_by_plan_count }}</b></button>
+                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">По плану: {{ $act_by_plan_count }}</b></button>
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
