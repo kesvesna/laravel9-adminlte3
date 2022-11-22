@@ -114,6 +114,17 @@
                         <textarea class="form-control" id="recommendation" name="recommendation" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                     </div>
                 </div>
+                <div class="mb-4">
+                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
+                        <label for="space_parts" class="form-label" style="color: white;">Потраченные материальные ценности</label>
+                        <textarea class="form-control" id="space_parts" name="space_parts" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
+                        <input class="form-control" type="file" id="files" multiple name="files[]" accept="image/*, video/*, audio/*">
+                    </div>
+                </div>
                 <div class="mb-5">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
                         <label for="user_id" class="form-label" style="color: white;">Исполнители</label>
