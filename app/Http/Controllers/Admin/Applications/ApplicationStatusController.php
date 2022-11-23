@@ -2,23 +2,13 @@
 
 namespace App\Http\Controllers\Admin\Applications;
 
+use Illuminate\Support\Str;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Http\Filters\Applications\ApplicationFilter;
-use App\Http\Filters\Applications\ApplicationHistoriesFilter;
-use App\Http\Requests\Application_statuses\StoreApplicationStatusFormRequest;
-use App\Http\Requests\Application_statuses\UpdateApplicationStatusFormRequest;
-use App\Http\Requests\Applications\ApplicationFilterRequest;
-use App\Http\Requests\Applications\UpdateApplicationFromRequest;
-use App\Models\Applications\ApplicationHistories;
-use App\Models\Applications\ApplicationMedias;
 use App\Models\Applications\Applications;
 use App\Models\Applications\ApplicationStatuses;
-use App\Models\Services\Service;
-use App\Models\Trks\Trk;
-use App\Services\Applications\UploadService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
+use App\Http\Requests\Application_statuses\StoreApplicationStatusFormRequest;
+use App\Http\Requests\Application_statuses\UpdateApplicationStatusFormRequest;
 
 class ApplicationStatusController extends Controller
 {
@@ -29,7 +19,6 @@ class ApplicationStatusController extends Controller
      */
     public function index()
     {
-
         return view('admin.application_statuses.index', [
             'application_statuses' => ApplicationStatuses::paginate(config('admin.application_statuses.pagination')),
             'applications_count' => Applications::count(),
@@ -37,7 +26,10 @@ class ApplicationStatusController extends Controller
         ]);
     }
 
-    public function create()
+    /**
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function create() : View
     {
         return view('admin.application_statuses.create');
     }
@@ -55,7 +47,6 @@ class ApplicationStatusController extends Controller
                 return redirect()->route('admin.application_statuses.show', $application_status->id);
             }
         }
-
         return redirect()->route('admin.application_statuses.create');
     }
 
@@ -86,9 +77,7 @@ class ApplicationStatusController extends Controller
                 return redirect()->route('admin.application_statuses.show', $application_status->id);
             }
         }
-
         return redirect()->route('admin.application_statuses.show', $application_status->id);
-
     }
 
     public function destroy(ApplicationStatuses $application_status)
