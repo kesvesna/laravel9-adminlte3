@@ -35,6 +35,7 @@ return new class extends Migration
             $table->dateTime('plan_date');
             $table->text('comment')->nullable()->default(null);
             $table->integer('sort_order')->default(1);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

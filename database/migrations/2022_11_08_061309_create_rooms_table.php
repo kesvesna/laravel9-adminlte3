@@ -18,11 +18,7 @@ return new class extends Migration
             $table->string('name', 50)->unique();
             $table->string('slug', 50)->unique();
             $table->integer('sort_order')->default(1);
-            //$table->unique(['trk_id', 'building_id', 'floor_id', 'name']);
-//            $table->foreignId('trk_id')
-//                ->constrained()
-//                ->onUpdate('cascade')
-//                ->onDelete('no action');
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

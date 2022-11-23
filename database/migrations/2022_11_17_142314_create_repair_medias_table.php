@@ -22,6 +22,7 @@ return new class extends Migration
             $table->unique(['repair_id', 'name']);
             $table->string('name');
             $table->integer('sort_order')->default(1);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

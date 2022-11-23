@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('act_id')->unsigned()->nullable()->default(null);
             $table->unique(['application_id', 'repair_id', 'act_id']);
             $table->integer('sort_order')->default(1);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

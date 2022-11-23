@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->string('slug')->unique();
             $table->integer('sort_order')->default(1);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

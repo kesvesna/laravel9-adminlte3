@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name', 50)->unique();
             $table->string('slug', 50)->unique();
             $table->integer('sort_order')->default(1);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

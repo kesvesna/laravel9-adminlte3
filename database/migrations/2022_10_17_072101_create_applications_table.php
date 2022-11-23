@@ -21,6 +21,7 @@ return new class extends Migration
                 ->onDelete('no action');
             $table->text('comment');
             $table->boolean('notify_author')->default(0);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -27,7 +27,7 @@
             <label for="application_status_id">СТАТУС</label>
             <select name="application_status_id" id="application_status_id" class="form-control">
                 @forelse($application_statuses as $status)
-                    <option @if($application->application_status->id === $status->id) selected @endif
+                    <option @if($application->currentHistory->application_status->id === $status->id) selected @endif
                     value="{{ $status->id }}">{{ $status->name }}</option>
                 @empty
                     <option value="0">Нет статусов в списке</option>
@@ -38,7 +38,7 @@
             <label for="service_id">Подразделение</label>
             <select name="service_id" id="service_id" class="form-control">
                 @forelse($services as $service)
-                    <option @if($application->service->id === $service->id) selected @endif
+                    <option @if($application->currentHistory->service->id === $service->id) selected @endif
                     value="{{ $service->id }}">{{ $service->name }}</option>
                 @empty
                     <option value="0">Нет подразделений в списке</option>

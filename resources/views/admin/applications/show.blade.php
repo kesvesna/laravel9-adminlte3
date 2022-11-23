@@ -23,11 +23,11 @@
         </tr>
         <tr>
             <th scope="row">Статус</th>
-            <td>{{ $application->application_status->name }}</td>
+            <td>{{ $application->currentHistory->application_status->name }}</td>
         </tr>
         <tr>
             <th scope="row">Подразделение</th>
-            <td>{{ $application->service->name }}</td>
+            <td>{{ $application->currentHistory->service->name }}</td>
         </tr>
         <tr>
             <th scope="row">Комментарий</th>
@@ -43,5 +43,29 @@
            class="btn btn-warning mr-3">Редактировать</a>
         <button type="submit" class="btn btn-danger">Удалить</button>
     </form>
+    <br>
+    <h4>История заявки №{{ $application->id }}</h4>
+    <table class="table table-sm table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th scope="col" class="col-3">Дата</th>
+                <th scope="col" class="col-3">Статус</th>
+                <th scope="col" class="col-3">Подразделение</th>
+                <th scope="col" class="col-3">От</th>
+                <th scope="col" class="col-3">Ответственный</th>
+            </tr>
+            @forelse($application->histories as $history)
+            <tr>
+                <td>{{ $history->created_at }}</td>
+                <td>{{ $history->application_status->name }}</td>
+                <td>{{ $history->service->name }}</td>
+                <td>{{ $history->user->name }}</td>
+                <td>{{ $history->responsible_user->name ? $history->responsible_user->name : 'Нет' }}</td>
+            </tr>
+        @empty
+            Нет историй
+        @endforelse
+        </tbody>
+    </table>
 
 @endsection

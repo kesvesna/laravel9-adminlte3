@@ -23,6 +23,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->unique(['act_id', 'user_id']);
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -20,6 +20,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->text('comment');
+            $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

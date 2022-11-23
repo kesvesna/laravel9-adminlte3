@@ -58,7 +58,7 @@
                 @forelse($applications as $application)
                     <tr>
                         <td>{{ $application->trk->name }}</td>
-                        <td>{{ $application->application_status->name }}</td>
+                        <td>{{ $application->currentHistory->application_status->name }}</td>
                         <td>{{ $application->comment }}</td>
                         <td><a href="{{ route('admin.applications.show', $application->id) }}"><i
                                     class="nav-icon fas fa-eye ml-2 mr-2" style="color: green; opacity: .7;"
