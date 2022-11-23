@@ -64,6 +64,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Перенаправлена',
                 'slug' => 'redirected',
                 'sort_order' => 1,
+                'visible' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -71,6 +72,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Ответственный',
                 'slug' => 'responsible',
                 'sort_order' => 1,
+                'visible' => 0,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

@@ -1,18 +1,43 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-            <a href="{{ route('admin.applications.index') }}"
-               class="nav-link {{ request()->routeIs('admin.applications.index')?'active':'' }}">
-                <i class="nav-icon far fa-edit"></i>
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
                 <p>
                     Заявки
-                    @if(isset($applications_count))
-                        <span class="badge badge-info right">
-                            {{ $applications_count }}
-                        </span>
-                    @endif
+                    <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.applications.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.applications.index')?'active':'' }}">
+                        <i class="nav-icon far fa-edit"></i>
+                        <p>
+                            Заявки
+                            @if(isset($applications_count))
+                                <span class="badge badge-info right">
+                            {{ $applications_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.application_statuses.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.application_statuses.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Статусы заявок
+                            @if(isset($application_statuses_count))
+                                <span class="badge badge-info right">
+                            {{ $application_statuses_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.repairs.index') }}"

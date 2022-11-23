@@ -26,5 +26,8 @@
         ],
         'systems' => [
             'pagination' => 5
+        ],
+        'application_statuses' => [
+            'pagination' => 5
         ]
     ];

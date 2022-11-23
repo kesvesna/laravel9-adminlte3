@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 // backend
 use App\Http\Controllers\Admin\Applications\ApplicationController as AdminApplicationController;
+use App\Http\Controllers\Admin\Applications\ApplicationStatusController as AdminApplicationStatusController;
 use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 use App\Http\Controllers\Admin\Trks\TrkController as AdminTrkController;
 use App\Http\Controllers\Admin\Buildings\BuildingController as AdminBuildingController;
@@ -84,6 +85,7 @@ Route::name('admin.')
         Route::resource('floors', AdminFloorController::class);
         Route::resource('rooms', AdminRoomController::class);
         Route::resource('repairs', AdminRepairController::class);
+        Route::resource('application_statuses', AdminApplicationStatusController::class);
 
 
         Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');

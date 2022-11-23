@@ -43,7 +43,8 @@ class ApplicationController extends Controller
             'applications_count' => Applications::count(),
             'trks' => Trk::all(),
             'services' => Service::all(),
-            'application_statuses' => ApplicationStatuses::all(),
+            'application_statuses' => ApplicationStatuses::where('visible', 1)->get(),
+            'application_statuses_count' => ApplicationStatuses::where('visible', 1)->count(),
             'old_filters' => $data
         ]);
     }
