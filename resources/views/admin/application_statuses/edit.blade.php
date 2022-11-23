@@ -20,6 +20,10 @@
             <label for="comment" class="form-label">Slug</label>
             <input type="text" class="form-control" name="slug" id="slug" value="{{ $application_status->slug }}">
         </div>
+        <div class="mb-3">
+            <label for="sort_order" class="form-label">Номер в сортировке</label>
+            <input type="number" class="form-control" name="sort_order" id="sort_order" value="{{ $application_status->sort_order }}">
+        </div>
         <div class="form-check mb-3">
             <input class="form-check-input" type="checkbox" value="1" id="visible" name="visible" {{ $application_status->visible ? 'checked' : '' }}>
             <label class="form-check-label" for="visible">

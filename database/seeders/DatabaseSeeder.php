@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(10)->create();
-        Applications::factory(20)->create();
+        Applications::factory(2)->create();
         Repair::factory(2)->create();
 
 

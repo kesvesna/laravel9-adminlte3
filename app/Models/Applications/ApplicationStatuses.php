@@ -16,7 +16,8 @@ class ApplicationStatuses extends Model
 
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'sort_order'
     ];
 
     public function applications(): HasMany

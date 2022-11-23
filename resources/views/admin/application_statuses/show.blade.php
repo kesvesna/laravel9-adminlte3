@@ -29,6 +29,10 @@
             <th scope="row">Видно в списках</th>
             <td>{{ $application_status->visible ? 'Да' : 'Нет' }}</td>
         </tr>
+        <tr>
+            <th scope="row">Номер в сортировке</th>
+            <td>{{ $application_status->sort_order }}</td>
+        </tr>
         </tbody>
     </table>
     <form action="{{ route('admin.application_statuses.destroy', $application_status->id) }}" method="post">

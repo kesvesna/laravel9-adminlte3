@@ -22,6 +22,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Новая',
                 'slug' => 'new',
                 'sort_order' => 1,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -29,6 +30,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'В обработке',
                 'slug' => 'in_progress',
                 'sort_order' => 1,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -36,6 +38,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Ремонт',
                 'slug' => 'repair',
                 'sort_order' => 1,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -43,6 +46,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Выполнена',
                 'slug' => 'done',
                 'sort_order' => 1,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -50,6 +54,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Отклонена',
                 'slug' => 'rejected',
                 'sort_order' => 1,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -57,6 +62,7 @@ class ApplicationsStatusSeeder extends Seeder
                 'name' => 'Удалена',
                 'slug' => 'removed',
                 'sort_order' => 1,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

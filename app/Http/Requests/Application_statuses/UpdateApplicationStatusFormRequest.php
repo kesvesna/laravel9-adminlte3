@@ -26,7 +26,8 @@ class UpdateApplicationStatusFormRequest extends FormRequest
         return [
             'name' => [ 'required', 'string', 'min:2', 'max:50'],
             'slug' => 'string',
-            'visible' => []
+            'visible' => [],
+            'sort_order' => ['required', 'numeric']
         ];
     }
 }

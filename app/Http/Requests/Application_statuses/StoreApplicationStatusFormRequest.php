@@ -25,7 +25,7 @@ class StoreApplicationStatusFormRequest extends FormRequest
     {
         return [
             'name' => 'string',
-            'visible' => []
+            'visible' => [],
         ];
     }
 }

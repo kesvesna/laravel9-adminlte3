@@ -18,7 +18,7 @@ class ApplicationsSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create('ru_RU');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             DB::table('applications')->insert([
                 'trk_id' => rand(1, 15),
                 'notify_author' => rand(0,1),

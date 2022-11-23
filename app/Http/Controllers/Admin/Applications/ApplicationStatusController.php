@@ -32,6 +32,8 @@ class ApplicationStatusController extends Controller
 
         return view('admin.application_statuses.index', [
             'application_statuses' => ApplicationStatuses::paginate(config('admin.application_statuses.pagination')),
+            'applications_count' => Applications::count(),
+            'application_statuses_count' => ApplicationStatuses::where('visible', 1)->count(),
         ]);
     }
 
