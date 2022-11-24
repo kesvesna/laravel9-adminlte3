@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Admin\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Users\UserFilter;
-use App\Http\Filters\Users\UserHistoriesFilter;
+use App\Http\Filters\Users\UserStatusesFilter;
+use App\Http\Requests\Users\StoreUserFormRequest;
+use App\Http\Requests\Users\UpdateUserFormRequest;
 use App\Http\Requests\Users\UserFilterRequest;
-use App\Http\Requests\Users\UpdateUserFromRequest;
-use App\Models\Users\UserHistories;
-use App\Models\Users\UserMedias;
-use App\Models\Users\Users;
-use App\Models\Users\UserStatuses;
+use App\Models\User;
+use App\Models\UserMedias;
+use App\Models\UserStatuses;
 use App\Models\Services\Service;
 use App\Models\Trks\Trk;
 use App\Services\Users\UploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -28,101 +29,91 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
-        $filter = app()->make(UserHistoriesFilter::class, ['queryParams' => array_filter($data)]);
-        $histories = UserHistories::filter($filter)->pluck('User_id')->all();
+        $filter = app()->make(UserStatusesFilter::class, ['queryParams' => array_filter($data)]);
+        $user_statuses = UserStatuses::filter($filter)->pluck('id')->all();
 
         $filter = app()->make(UserFilter::class, ['queryParams' => array_filter($data)]);
-        $Users = Users::filter($filter)
-            ->with(['trk', 'histories', 'currentHistory'])
+        $users = User::filter($filter)
+            ->with(['status'])
             ->orderBy('created_at', 'desc')
-            ->whereIn('id', $histories)
-            ->paginate(config('admin.Users.pagination'));
+            ->whereIn('user_status_id', $user_statuses)
+            ->paginate(config('admin.users.pagination'));
 
-        return view('admin.Users.index', [
-            'Users' => $Users,
-            'Users_count' => Users::count(),
+        return view('admin.users.index', [
+            'users' => $users,
+            'users_count' => User::count(),
             'trks' => Trk::all(),
             'services' => Service::all(),
-            'User_statuses' => UserStatuses::where('visible', 1)->get(),
-            'User_statuses_count' => UserStatuses::where('visible', 1)->count(),
+            'user_statuses' => UserStatuses::where('visible', 1)->get(),
+            'user_statuses_count' => UserStatuses::where('visible', 1)->count(),
             'old_filters' => $data
         ]);
     }
 
     public function create()
     {
-        return view('admin.Users.create',[
+        return view('admin.users.create',[
+            'user_statuses' => UserStatuses::all(),
+        ]);
+    }
+
+    public function store(StoreUserFormRequest $request, UploadService $uploadService)
+    {
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+        User::create($data);
+        return redirect()->route('admin.users.index');
+    }
+
+    public function show(User $user)
+    {
+        return view('admin.users.show',[
+            'user' => $user
+        ]);
+    }
+
+    public function edit(User $user)
+    {
+        return view('admin.users.edit', [
+            'user' => $user,
             'trks' => Trk::all(),
-            'User_statuses' => UserStatuses::all(),
-        ]);
-    }
-
-    public function store(Request $request, UploadService $uploadService)
-    {
-        $data = $request->validate([
-            'trk_id' => [ 'required', 'integer', 'min:1' ],
-            'User_status_id' => [ 'required', 'integer', 'min:1' ],
-            'comment' => 'string',
-        ]);
-
-        Users::create($data);
-        return redirect()->route('admin.Users.index');
-    }
-
-    public function show(Users $User)
-    {
-        return view('admin.Users.show',[
-            'User' => $User
-        ]);
-    }
-
-    public function edit(Users $User)
-    {
-        return view('admin.Users.edit', [
-            'User' => $User,
-            'trks' => Trk::all(),
-            'User_statuses' => UserStatuses::all(),
+            'user_statuses' => UserStatuses::all(),
             'services' => Service::all(),
         ]);
     }
 
-    public function update(Users $User, UpdateUserFromRequest $request)
+    public function update(User $user, UpdateUserFormRequest $request)
     {
         if($request->isMethod('patch')){
 
             $data = $request->validated();
 
-            $User->trk_id = $data['trk_id'];
-            $User->comment = $data['comment'];
+            if($user->password != $data['password'])
+            {
+                $data['password'] = Hash::make($data['password']);
+            }
 
             try {
                 DB::beginTransaction();
 
-                if( $User->save() ){
-
-                    $history['User_status_id'] = $data['User_status_id'];
-                    $history['user_id'] = 1; // Auth::id
-                    $history['service_id'] = $data['service_id'];
-                    $history['User_id'] = $User->id;
-
-                    UserHistories::create($history);
+                if( $user->update($data) ){
 
                     DB::commit();
 
-                    return redirect()->route('admin.Users.index');
+                    return redirect()->route('admin.users.index');
                 }
             } catch (\Exception $e) {
                 DB::rollBack();
                 dd($e);
             }
         }
-        return redirect()->route('admin.Users.show', $User->id);
+        return redirect()->route('admin.users.edit', $user->id);
     }
 
-    public function destroy(Users $User)
+    public function destroy(User $user)
     {
-        $User->delete();
-        return redirect()->route('admin.Users.index');
+        $user->delete();
+        return redirect()->route('admin.users.index');
     }
 
 }

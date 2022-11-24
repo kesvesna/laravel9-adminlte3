@@ -3,6 +3,7 @@
 namespace App\Models\Equipments;
 
 use App\Models\Acts\Act;
+use App\Models\Applications\ApplicationRepairAct;
 use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
@@ -83,7 +84,7 @@ class Equipment extends Model
     {
         return $this->hasManyThrough(
             Act::class,
-            EquipmentAct::class,
+            ApplicationRepairAct::class,
             'equipment_id',
             'id',
             'id',

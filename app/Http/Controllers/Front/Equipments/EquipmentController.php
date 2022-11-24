@@ -12,8 +12,8 @@ use App\Models\Rooms\Room;
 use App\Models\Systems\System;
 use App\Http\Requests\Equipments\{
     EquipmentFilterRequest,
-    StoreEquipmentFormRequest,
-    UpdateEquipmentFormRequest
+    StoreUserFormRequest,
+    UpdateUserFormRequest
 };
 
 use App\Models\Equipments\{EquipmentHistories, EquipmentMedias, Equipment, EquipmentNames, EquipmentStatuses};
@@ -73,7 +73,7 @@ class EquipmentController extends Controller
         ]);
     }
 
-    public function store(StoreEquipmentFormRequest $request, UploadService $uploadService)
+    public function store(StoreUserFormRequest $request, UploadService $uploadService)
     {
         return redirect()->route('front.equipment.index');
     }
@@ -90,7 +90,7 @@ class EquipmentController extends Controller
         return redirect()->route('front.equipment.index');
     }
 
-    public function update(Equipment $equipment, UpdateEquipmentFormRequest $request)
+    public function update(Equipment $equipment, UpdateUserFormRequest $request)
     {
         return redirect()->route('front.equipment.index');
     }

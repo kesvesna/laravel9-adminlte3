@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\Profiles\ProfileController as AdminProfileControl
 use App\Http\Controllers\Admin\Repairs\RepairController as AdminRepairController;
 use App\Http\Controllers\Admin\Systems\SystemController as AdminSystemController;
 use App\Http\Controllers\Admin\Equipments\EquipmentController as AdminEquipmentController;
+use App\Http\Controllers\Admin\Users\UserController as AdminUserController;
 
 
 //frontend
@@ -100,4 +101,6 @@ Route::name('admin.')
         Route::resource('systems', AdminSystemController::class);
 
         Route::resource('equipments', AdminEquipmentController::class);
+
+        Route::resource('users', AdminUserController::class);
     });

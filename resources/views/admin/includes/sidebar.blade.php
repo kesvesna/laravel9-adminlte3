@@ -193,5 +193,25 @@
                 </li>
             </ul>
         </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    Пользователи
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.users.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.users.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Пользователи
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </li>
     </ul>
 </nav>

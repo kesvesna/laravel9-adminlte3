@@ -32,5 +32,8 @@
         ],
         'equipments' => [
             'pagination' => 5
+        ],
+        'users' => [
+            'pagination' => 5
         ]
     ];
