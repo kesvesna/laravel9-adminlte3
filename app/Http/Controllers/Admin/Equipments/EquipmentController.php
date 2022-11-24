@@ -8,6 +8,8 @@ use App\Http\Filters\Equipments\EquipmentFilter;
 
 use App\Http\Filters\Equipments\EquipmentNamesFilter;
 use App\Http\Filters\Equipments\EquipmentRoomsFilter;
+use App\Models\Buildings\Building;
+use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Systems\System;
 use App\Http\Requests\Equipments\{
@@ -66,7 +68,15 @@ class EquipmentController extends Controller
 
     public function create()
     {
-        return view('admin.equipments.index', [
+        return view('admin.equipments.create', [
+            'trks' => Trk::all(),
+            'buildings' => Building::all(),
+            'floors' => Floor::all(),
+            'systems' => System::all(),
+            'rooms' => Room::all(),
+            'equipment_names' => EquipmentNames::all(),
+            'equipment_statuses' => EquipmentStatuses::all(),
+
         ]);
     }
 

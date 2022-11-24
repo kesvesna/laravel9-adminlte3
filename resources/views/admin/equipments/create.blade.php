@@ -21,16 +21,78 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="equipment_status_id">СТАТУС</label>
-            <select name="equipment_status_id" id="equipment_status_id" class="form-control">
-                <option value="1">Новая</option>
+            <label for="building_id">Блок/Зона</label>
+            <select name="building_id" id="building_id" class="form-control">
+                @forelse($buildings as $building)
+                    <option
+                        {{ old('building_id') == $building->id ? ' selected' : ''}}
+                        value="{{ $building->id }}">{{ $building->name }}</option>
+                @empty
+                    <option value="0">Нет блоков/зон</option>
+                @endforelse
             </select>
         </div>
-        <div class="mb-3">
-            <label for="comment" class="form-label">Comment</label>
-            <textarea type="text" class="form-control" id="comment" name="comment"></textarea>
+        <div class="form-group">
+            <label for="floor_id">Этаж/Уровень</label>
+            <select name="floor_id" id="floor_id" class="form-control">
+                @forelse($floors as $floor)
+                    <option
+                        {{ old('floor_id') == $floor->id ? ' selected' : ''}}
+                        value="{{ $floor->id }}">{{ $floor->name }}</option>
+                @empty
+                    <option value="0">Нет этажей</option>
+                @endforelse
+            </select>
         </div>
-        <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3">Назад</a>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <div class="form-group">
+            <label for="room_id">Помещение</label>
+            <select name="room_id" id="room_id" class="form-control">
+                @forelse($rooms as $room)
+                    <option
+                        {{ old('room_id') == $room->id ? ' selected' : ''}}
+                        value="{{ $room->id }}">{{ $room->name }}</option>
+                @empty
+                    <option value="0">Нет помещений</option>
+                @endforelse
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="equipment_name_id">Наименование по проекту</label>
+            <select name="equipment_name_id" id="equipment_name_id" class="form-control">
+                @forelse($equipment_names as $equipment_name)
+                    <option
+                        {{ old('equipment_name_id') == $equipment_name->id ? ' selected' : ''}}
+                        value="{{ $equipment_name->id }}">{{ $equipment_name->name }}</option>
+                @empty
+                    <option value="0">Нет наименований</option>
+                @endforelse
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="equipment_status_id">СТАТУС</label>
+            <select name="equipment_status_id" id="equipment_status_id" class="form-control">
+                @forelse($equipment_statuses as $status)
+                    <option
+                        {{ old('equipment_status_id') == $status->id ? ' selected' : ''}}
+                        value="{{ $status->id }}">{{ $status->name }}</option>
+                @empty
+                    <option value="0">Нет статусов</option>
+                @endforelse
+            </select>
+        </div>
+        <input class="form-control" type="file" id="files" multiple name="files[]" accept="image/*, video/*, audio/*">
+        <hr>
+        <p>заявки</p>
+        <p>ремонт</p>
+        <p>акты</p>
+        <p>Из каких деталей состоит</p>
+        <p>Потребители</p>
+        <p>Откуда запитано</p>
+        <p>Комментарии</p>
+        <p>Ответственный</p>
+        <p>QR код</p>
+        <hr>
+        <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3 mt-3 mb-3">Назад</a>
+        <button type="submit" class="btn btn-primary mt-3 mb-3">Сохранить</button>
     </form>
 @endsection
