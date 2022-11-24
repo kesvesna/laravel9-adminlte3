@@ -110,7 +110,7 @@
                     </select>
                 </td>
                 <td colspan="4">
-                    <input   value="{{ request()->input('comment') }}" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="comment" type="search" class="form-control" placeholder="Поиск" aria-label="comment" aria-describedby="comment">
+                    <input value="{{ request()->input('comment') }}" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="comment" type="search" class="form-control" placeholder="Поиск" aria-label="comment" aria-describedby="comment">
                 </td>
             </tr>
             @forelse($applications as $application)

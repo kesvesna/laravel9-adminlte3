@@ -2,6 +2,7 @@
 
 namespace App\Models\Rooms;
 
+use App\Models\Traits\Filterable;
 use App\Models\Trks\Trk;
 use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Room extends Model
 {
-    use HasFactory, SoftDeletes, Sluggable;
+    use HasFactory, SoftDeletes, Sluggable, Filterable;
 
     protected $table = "rooms";
 

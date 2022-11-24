@@ -23,5 +23,8 @@
         ],
         'repairs' => [
             'pagination' => 5
+        ],
+        'equipments' => [
+            'pagination' => 5
         ]
     ];

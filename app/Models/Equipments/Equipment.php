@@ -3,6 +3,8 @@
 namespace App\Models\Equipments;
 
 use App\Models\Acts\Act;
+use App\Models\Rooms\Room;
+use App\Models\Systems\System;
 use App\Models\Traits\Filterable;
 use App\Models\Trks\Trk;
 use Illuminate\Database\Eloquent\Model;
@@ -33,6 +35,21 @@ class Equipment extends Model
     public function trk(): BelongsTo
     {
         return $this->belongsTo(Trk::class)->withDefault();
+    }
+
+    public function system(): BelongsTo
+    {
+        return $this->belongsTo(System::class, 'system_type_id')->withDefault();
+    }
+
+    public function name(): BelongsTo
+    {
+        return $this->belongsTo(EquipmentNames::class, 'equipment_name_id')->withDefault();
+    }
+
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class)->withDefault();
     }
 
     public function medias()
