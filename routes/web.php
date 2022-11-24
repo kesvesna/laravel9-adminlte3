@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\Profiles\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\Repairs\RepairController as AdminRepairController;
 use App\Http\Controllers\Admin\Systems\SystemController as AdminSystemController;
+use App\Http\Controllers\Admin\Equipments\EquipmentController as AdminEquipmentController;
 
 
 //frontend
@@ -97,4 +98,6 @@ Route::name('admin.')
         Route::post('buildings-trks/{trk}', [AdminBuildingTrkController::class, 'update'])->name('buildings-trks.update');
 
         Route::resource('systems', AdminSystemController::class);
+
+        Route::resource('equipments', AdminEquipmentController::class);
     });

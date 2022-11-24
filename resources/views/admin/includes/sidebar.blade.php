@@ -144,6 +144,20 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
+                    <a href="{{ route('admin.equipments.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.equipments.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Оборудование
+                            @if(isset($equipments_count))
+                                <span class="badge badge-info right">
+                            {{ $equipments_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.systems.index') }}"
                        class="nav-link {{ request()->routeIs('admin.systems.timesheet')?'active':'' }}">
                         <i class="nav-icon far fa-file"></i>

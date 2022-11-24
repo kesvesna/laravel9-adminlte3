@@ -51,15 +51,16 @@
                 </div>
             </div>
             <hr>
-                    <p style="color: white;">Photos</p>
-                    <p style="color: white;">Applications</p>
-                    <p style="color: white;">Repairs</p>
-                    <p style="color: white;">Acts</p>
-                    <p style="color: white;">Spare parts</p>
-                    <p style="color: white;">Consumers</p>
-                    <p style="color: white;">Comments</p>
-                    <p style="color: white;">Something else</p>
-
+                    <p style="color: white;">фотографии</p>
+                    <p style="color: white;">заявки</p>
+                    <p style="color: white;">ремонт</p>
+                    <p style="color: white;">акты</p>
+                    <p style="color: white;">Из каких деталей состоит</p>
+                    <p style="color: white;">Потребители</p>
+                    <p style="color: white;">Откуда запитано</p>
+                    <p style="color: white;">Комментарии</p>
+                    <p style="color: white;">Ответственный</p>
+                    <p style="color: white;">QR код</p>
             <hr>
                     @if(isset($equipment->medias))
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($equipment->medias) }} my-2">
