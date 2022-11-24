@@ -58,7 +58,9 @@
                     <p style="color: white;">Spare parts</p>
                     <p style="color: white;">Users</p>
                     <p style="color: white;">Comments</p>
-<hr>
+            <p style="color: white;">Something else</p>
+
+            <hr>
                     @if(isset($equipment->medias))
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($equipment->medias) }} my-2">
                         @forelse($equipment->medias as $media)
