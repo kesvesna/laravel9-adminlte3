@@ -24,6 +24,7 @@ use App\Http\Controllers\Front\Applications\ApplicationController as FrontApplic
 use App\Http\Controllers\Front\Repairs\RepairController as FrontRepairController;
 use App\Http\Controllers\Front\Acts\ActController as FrontActController;
 use App\Http\Controllers\Front\RenterApplications\RenterApplicationController as FrontRenterApplicationController;
+use App\Http\Controllers\Front\Equipments\EquipmentController as FrontEquipmentController;
 
 
 /*
@@ -56,6 +57,9 @@ Route::name('front.')
         Route::post('repair/create_by_application/{application}', [FrontRepairController::class, 'create_by_application'])->where('application', '[0-9]+')->name('repair.create_by_application');
         Route::post('repair/appoint/{repair}', [FrontRepairController::class, 'appoint'])->where('repair', '[0-9]+')->name('repair.appoint');
         Route::post('repair/reject/{repair}', [FrontRepairController::class, 'reject'])->where('repair', '[0-9]+')->name('repair.reject');
+
+        Route::resource('equipment', FrontEquipmentController::class);
+
     });
 
 
