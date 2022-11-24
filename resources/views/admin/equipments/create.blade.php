@@ -21,6 +21,18 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="system_type_id">ТИП ОБОРУДОВАНИЯ/УСЛУГА</label>
+            <select name="system_type_id" id="system_type_id" class="form-control">
+                @forelse($systems as $system)
+                    <option
+                        {{ old('system_type_id') == $system->id ? ' selected' : ''}}
+                        value="{{ $system->id }}">{{ $system->name }}</option>
+                @empty
+                    <option value="0">Нет типов в списке</option>
+                @endforelse
+            </select>
+        </div>
+        <div class="form-group">
             <label for="building_id">Блок/Зона</label>
             <select name="building_id" id="building_id" class="form-control">
                 @forelse($buildings as $building)

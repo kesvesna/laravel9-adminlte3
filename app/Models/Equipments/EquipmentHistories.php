@@ -19,6 +19,7 @@ class EquipmentHistories extends Model
     protected $fillable = [
         'equipment_id',
         'equipment_status_id',
+        'created_by_user_id',
 
     ];
 

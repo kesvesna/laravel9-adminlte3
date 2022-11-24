@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin\Equipments;
 
 use App\Http\Controllers\Controller;
-use App\Http\Filters\Equipments\EquipmentHistoriesFilter;
 use App\Http\Filters\Equipments\EquipmentFilter;
-
+use App\Http\Filters\Equipments\EquipmentHistoriesFilter;
 use App\Http\Filters\Equipments\EquipmentNamesFilter;
 use App\Http\Filters\Equipments\EquipmentRoomsFilter;
 use App\Models\Buildings\Building;
@@ -17,14 +16,9 @@ use App\Http\Requests\Equipments\{
     StoreEquipmentFormRequest,
     UpdateEquipmentFormRequest
 };
-
-use App\Models\Equipments\{EquipmentHistories, EquipmentMedias, Equipment, EquipmentNames, EquipmentStatuses};
-
-use App\Models\Services\Service;
+use App\Models\Equipments\{Equipment, EquipmentHistories, EquipmentNames, EquipmentStatuses};
 use App\Models\Trks\Trk;
-use App\Models\User;
-use App\Services\Applications\UploadService;
-use Illuminate\Support\Facades\App;
+use App\Services\Equipments\UploadService;
 use Illuminate\Support\Facades\DB;
 
 class EquipmentController extends Controller
@@ -82,7 +76,26 @@ class EquipmentController extends Controller
 
     public function store(StoreEquipmentFormRequest $request, UploadService $uploadService)
     {
-        return redirect()->route('admin.equipments.index');
+        if($request->isMethod('post'))
+        {
+            $data = $request->validated();
+
+            try {
+                DB::beginTransaction();
+                $equipment = Equipment::create($data);
+
+                $data['created_by_user_id'] = 1; // Auth::id
+                $data['equipment_id'] = $equipment->id;
+
+                $history = EquipmentHistories::create($data);
+                DB::commit();
+            } catch(\Exception $e){
+                DB::rollBack();
+                dd($e);
+            }
+            return redirect()->route('admin.equipments.index');
+        }
+        return redirect()->route('admin.equipments.create');
     }
 
     public function show(Equipment $equipment)
@@ -104,6 +117,14 @@ class EquipmentController extends Controller
 
     public function destroy(Equipment $equipment)
     {
+        try{
+            DB::beginTransaction();
+            $equipment->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+            dd($e);
+        }
         return redirect()->route('admin.equipments.index');
     }
 }

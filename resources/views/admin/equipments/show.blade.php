@@ -21,6 +21,26 @@
             <th scope="row">ТРК</th>
             <td>{{ $equipment->trk->name }}</td>
         </tr>
+        <tr>
+            <th scope="row">Тип оборудования/Услуга</th>
+            <td>{{ $equipment->system->name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Блок/Зона</th>
+            <td>{{ $equipment->building->name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Этаж</th>
+            <td>{{ $equipment->floor->name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Помещение</th>
+            <td>{{ $equipment->room->name }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Наименование по проекту</th>
+            <td>{{ $equipment->name->name }}</td>
+        </tr>
         </tbody>
     </table>
     <form action="{{ route('admin.equipments.destroy', $equipment->id) }}" method="post">

@@ -100,4 +100,12 @@ class Equipment extends Model
 
         return $this;
     }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($equipment) {
+            $equipment->histories()->delete();
+        });
+    }
 }
