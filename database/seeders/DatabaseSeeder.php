@@ -32,19 +32,20 @@ class DatabaseSeeder extends Seeder
             SystemTypesSeeder::class,
             WorkTypesSeeder::class,
             EquipmentStatusSeeder::class,
+            UserStatusSeeder::class,
         ]);
 
         User::factory(10)->create();
         Applications::factory(2)->create();
         Repair::factory(2)->create();
-        Equipment::factory(16)->create();
-
+        Equipment::factory(40)->create();
+        EquipmentHistories::factory(500)->create();
 
         $this->call([
             ApplicationHistoriesSeeder::class,
             RepairHistoriesSeeder::class,
             ApplicationRepairActEquipmentSeeder::class,
-            EquipmentHistoriesSeeder::class,
+            //EquipmentHistoriesSeeder::class,
         ]);
 
     }

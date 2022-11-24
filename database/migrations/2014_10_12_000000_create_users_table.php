@@ -21,6 +21,10 @@ return new class extends Migration
             $table->string('password');
             $table->tinyInteger('visible')->default(1);
             $table->rememberToken();
+            $table->foreignId('user_status_id')
+                ->constrained('user_statuses')
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->timestamps();
         });
     }
@@ -32,6 +36,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['user_status_id']);
+        });
         Schema::dropIfExists('users');
     }
 };
