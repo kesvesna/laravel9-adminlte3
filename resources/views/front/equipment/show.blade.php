@@ -17,24 +17,48 @@
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                         <div class="col mt-2">
-                            <input disabled type="datetime-local" value="{{ $equipment->created_at }}" id="created_at" name="created_at" class="form-control" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold">
-                        </div>
-                        <div class="col mt-2">
                             <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $equipment->trk->name }}</option>
-                            </select>
-                        </div>
+                            </select>                        </div>
                         <div class="col mt-2">
-                            <select disabled id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                                <option value="">{{ $equipment->currentHistory->service->name }}</option>
+                            <select disabled id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                                <option value="">{{ $equipment->system->name }}</option>
                             </select>
                         </div>
                     </div>
-                    <div class="row col-12 mx-auto row-cols-1 mt-2">
-                        <div class="col">
-                            <textarea disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
-                        </div>
-                    </div>
+            <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
+                <div class="col mt-2">
+                    <select disabled id="building_id" name="building_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                        <option value="">{{ $equipment->building->name }}</option>
+                    </select>
+                </div>
+                <div class="col mt-2">
+                    <select disabled id="floor_id" name="floor_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                        <option value="">{{ $equipment->floor->name }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
+                <div class="col mt-2">
+                    <select disabled id="room_id" name="room_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                        <option value="">{{ $equipment->room->name }}</option>
+                    </select>
+                </div>
+                <div class="col mt-2">
+                    <select disabled id="equipment_name_id" name="equipment_name_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                        <option value="">{{ $equipment->name->name }}</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+                    <p style="color: white;">Photos</p>
+                    <p style="color: white;">Applicaitons</p>
+                    <p style="color: white;">Repairs</p>
+                    <p style="color: white;">Acts</p>
+                    <p style="color: white;">Spare parts</p>
+                    <p style="color: white;">Users</p>
+                    <p style="color: white;">Comments</p>
+<hr>
                     @if(isset($equipment->medias))
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($equipment->medias) }} my-2">
                         @forelse($equipment->medias as $media)
@@ -46,15 +70,15 @@
                         @endforelse
                     </div>
                     @endif
-
                     @if(isset($equipment->histories) && count($equipment->histories) > 0)
                         <div class="row col-12 mx-auto row-cols-1 my-2">
                         <h6 style="color: white;">История оборудования</h6>
                         @forelse($equipment->histories as $history)
                             <div class="col">
-                                <p style="color: white;">{{ $history->created_at }}, {{ $history->equipment_status->name }},  {{ $history->service->name }}, от {{ $history->created_by_user->name }}, {{$history->comment }}</p>
+                                <p style="color: white;">{{ $history->created_at }}, {{ $history->equipment_status->name }}, создал {{ $history->created_by_user->name }}, {{$history->comment }}</p>
                             </div>
                             @empty
+                            Нет истории
                         @endforelse
                         </div>
                     @endif

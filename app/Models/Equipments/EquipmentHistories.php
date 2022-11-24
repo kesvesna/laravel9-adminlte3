@@ -34,6 +34,6 @@ class EquipmentHistories extends Model
 
     public function created_by_user()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id')->withDefault();
+        return $this->belongsTo(User::class, 'created_by_user_id', 'id')->withDefault();
     }
 }

@@ -33,4 +33,6 @@ class EquipmentHistoriesFilter extends AbstractFilter
         $builder->where('service_id', $value);
     }
 
+
+
 }

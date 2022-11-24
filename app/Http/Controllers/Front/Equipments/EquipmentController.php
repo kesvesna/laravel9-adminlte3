@@ -48,11 +48,11 @@ class EquipmentController extends Controller
 
         $filter = app()->make(EquipmentRoomsFilter::class, ['queryParams' => array_filter($data)]);
         $rooms = Room::filter($filter)->pluck('id')->all();
-       
+
         $filter = app()->make(EquipmentFilter::class, ['queryParams' => array_filter($data)]);
         $equipments = Equipment::filter($filter)
                                         ->with(['trk', 'histories', 'currentHistory', 'system', 'name', 'room'])
-                                        ->orderBy('created_at', 'desc')
+                                        ->orderBy('id', 'desc')
                                         ->whereIn('equipment_name_id', $names)
                                         ->whereIn('room_id', $rooms)
                                         ->paginate(config('front.equipments.pagination'));

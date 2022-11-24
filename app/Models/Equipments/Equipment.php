@@ -3,6 +3,8 @@
 namespace App\Models\Equipments;
 
 use App\Models\Acts\Act;
+use App\Models\Buildings\Building;
+use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Systems\System;
 use App\Models\Traits\Filterable;
@@ -50,6 +52,16 @@ class Equipment extends Model
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class)->withDefault();
+    }
+
+    public function building(): BelongsTo
+    {
+        return $this->belongsTo(Building::class)->withDefault();
+    }
+
+    public function floor(): BelongsTo
+    {
+        return $this->belongsTo(Floor::class)->withDefault();
     }
 
     public function medias()
