@@ -38,7 +38,14 @@
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 pt-2 d-md-none">
                 <div class="col">
                     <label for="room_id" class="form-label" style="color: white;">Помещение</label>
-                    <input value="{{ request()->input('room_id') }}" style="background: rgba( 255, 255, 255, 0.5 );" name="room_id" type="search" class="form-control" placeholder="Поиск" aria-label="room_id" aria-describedby="room_id">
+                    <input list="rooms" value="@if(isset($old_filters['room_id'])){{ $old_filters['room_id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_id" type="search" class="form-control" placeholder="Поиск" aria-label="room_id" aria-describedby="room_id">
+                    <datalist id="rooms">
+                        @forelse($rooms as $room)
+                            <option value="{{$room->name}}">
+                                @empty
+                                    Нет названий оборудования
+                        @endforelse
+                    </datalist>
                 </div>
             </div>
         </form>
@@ -87,10 +94,24 @@
                     </select>
                 </td>
                 <td class="d-none d-lg-table-cell">
-                    <input value="@if(isset($old_filters['room_id'])){{ $old_filters['room_id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_id" type="search" class="form-control" placeholder="Поиск" aria-label="room_id" aria-describedby="room_id">
+                    <input list="rooms" onchange="this.form.submit()" value="@if(isset($old_filters['room_id'])){{ $old_filters['room_id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_id" type="search" class="form-control" placeholder="Поиск" aria-label="room_id" aria-describedby="room_id">
+                    <datalist id="rooms">
+                        @forelse($rooms as $room)
+                            <option value="{{$room->name}}">
+                                @empty
+                                    Нет названий оборудования
+                        @endforelse
+                    </datalist>
                 </td>
                 <td>
-                    <input value="@if(isset($old_filters['equipment_name_id'])){{$old_filters['equipment_name_id']}}@endif" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment_name_id" type="search" class="form-control" placeholder="Поиск" aria-label="equipment_name_id" aria-describedby="equipment_name_id">
+                    <input list="equipment_names" onchange="this.form.submit()" value="@if(isset($old_filters['equipment_name_id'])){{$old_filters['equipment_name_id']}}@endif" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment_name_id" type="search" class="form-control" placeholder="Поиск" aria-label="equipment_name_id" aria-describedby="equipment_name_id">
+                    <datalist id="equipment_names">
+                        @forelse($equipment_names as $name)
+                            <option value="{{$name->name}}">
+                        @empty
+                            Нет названий оборудования
+                        @endforelse
+                    </datalist>
                 </td>
             </tr>
             @forelse($equipments as $equipment)

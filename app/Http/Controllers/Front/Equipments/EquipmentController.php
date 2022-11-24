@@ -62,7 +62,7 @@ class EquipmentController extends Controller
             'trks' => Trk::all(),
             'systems' => System::all(),
             'rooms' => Room::all(),
-            'names' => EquipmentNames::all(),
+            'equipment_names' => EquipmentNames::all(),
             'old_filters' => $data
         ]);
     }

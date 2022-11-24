@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ApplicationHistoriesSeeder::class,
             RepairHistoriesSeeder::class,
-            ApplicationRepairActSeeder::class,
+            ApplicationRepairActEquipmentSeeder::class,
             EquipmentHistoriesSeeder::class,
         ]);
 

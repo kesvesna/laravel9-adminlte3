@@ -11,7 +11,7 @@
                     <div>
                         <div class="row col-12 mx-auto row-cols-1">
                             <div class="col">
-                            <h5 style="color: white;" class="mt-4">Оборудование № {{ $equipment->id }}</h5>
+                            <h5 style="color: white;" class="mt-4">Оборудование № {{ $equipment->id }}, {{ $equipment->name->name }}</h5>
                                 </div>
                         </div>
                     </div>
@@ -52,13 +52,13 @@
             </div>
             <hr>
                     <p style="color: white;">Photos</p>
-                    <p style="color: white;">Applicaitons</p>
+                    <p style="color: white;">Applications</p>
                     <p style="color: white;">Repairs</p>
                     <p style="color: white;">Acts</p>
                     <p style="color: white;">Spare parts</p>
-                    <p style="color: white;">Users</p>
+                    <p style="color: white;">Consumers</p>
                     <p style="color: white;">Comments</p>
-            <p style="color: white;">Something else</p>
+                    <p style="color: white;">Something else</p>
 
             <hr>
                     @if(isset($equipment->medias))
