@@ -7,8 +7,8 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\Applications\Applications;
 use App\Models\Applications\ApplicationStatuses;
-use App\Http\Requests\Application_statuses\StoreApplicationStatusFormRequest;
-use App\Http\Requests\Application_statuses\UpdateApplicationStatusFormRequest;
+use App\Http\Requests\Application_statuses\StoreUserStatusFormRequest;
+use App\Http\Requests\Application_statuses\UpdateUserStatusFormRequest;
 
 class ApplicationStatusController extends Controller
 {
@@ -34,7 +34,7 @@ class ApplicationStatusController extends Controller
         return view('admin.application_statuses.create');
     }
 
-    public function store(StoreApplicationStatusFormRequest $request, ApplicationStatuses $application_status)
+    public function store(StoreUserStatusFormRequest $request, ApplicationStatuses $application_status)
     {
         if($request->isMethod('post')){
 
@@ -65,7 +65,7 @@ class ApplicationStatusController extends Controller
         ]);
     }
 
-    public function update(ApplicationStatuses $application_status, UpdateApplicationStatusFormRequest $request)
+    public function update(ApplicationStatuses $application_status, UpdateUserStatusFormRequest $request)
     {
         if($request->isMethod('patch')){
 

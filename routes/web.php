@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Repairs\RepairController as AdminRepairController
 use App\Http\Controllers\Admin\Systems\SystemController as AdminSystemController;
 use App\Http\Controllers\Admin\Equipments\EquipmentController as AdminEquipmentController;
 use App\Http\Controllers\Admin\Users\UserController as AdminUserController;
+use App\Http\Controllers\Admin\Users\UserStatusController as AdminUserStatusController;
 
 
 //frontend
@@ -103,4 +104,7 @@ Route::name('admin.')
         Route::resource('equipments', AdminEquipmentController::class);
 
         Route::resource('users', AdminUserController::class);
+
+        Route::resource('user_statuses', AdminUserStatusController::class);
+
     });

@@ -211,6 +211,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.user_statuses.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.user_statuses.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Статусы
+                        </p>
+                    </a>
+                </li>
             </ul>
         </li>
     </ul>
