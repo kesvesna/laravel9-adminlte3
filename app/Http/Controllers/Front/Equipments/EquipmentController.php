@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Front\Equipments;
 
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Equipments\EquipmentHistoriesFilter;
-use App\Http\Filters\Equipments\EquipmentFilter;
-
 use App\Http\Filters\Equipments\EquipmentNamesFilter;
-use App\Http\Filters\Equipments\EquipmentRoomsFilter;
+use App\Http\Filters\Trks\TrkRoomNamesFilter;
+use App\Http\Filters\Trks\TrksFilter;
 use App\Models\Rooms\Room;
 use App\Models\Systems\System;
 use App\Http\Requests\Equipments\{
@@ -46,10 +45,10 @@ class EquipmentController extends Controller
         $filter = app()->make(EquipmentNamesFilter::class, ['queryParams' => array_filter($data)]);
         $names = EquipmentNames::filter($filter)->pluck('id')->all();
 
-        $filter = app()->make(EquipmentRoomsFilter::class, ['queryParams' => array_filter($data)]);
+        $filter = app()->make(TrkRoomNamesFilter::class, ['queryParams' => array_filter($data)]);
         $rooms = Room::filter($filter)->pluck('id')->all();
 
-        $filter = app()->make(EquipmentFilter::class, ['queryParams' => array_filter($data)]);
+        $filter = app()->make(TrksFilter::class, ['queryParams' => array_filter($data)]);
         $equipments = Equipment::filter($filter)
                                         ->with(['trk', 'histories', 'currentHistory', 'system', 'name', 'room'])
                                         ->orderBy('id', 'desc')

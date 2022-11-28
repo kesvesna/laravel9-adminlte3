@@ -1,6 +1,6 @@
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-        <li class="nav-item">
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;" >
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>
@@ -39,7 +39,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="{{ route('admin.repairs.index') }}"
                class="nav-link {{ request()->routeIs('admin.repairs.index')?'active':'' }}">
                 <i class="nav-icon far fa-edit"></i>
@@ -53,7 +53,7 @@
                 </p>
             </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>
@@ -63,20 +63,6 @@
             </a>
             <ul class="nav nav-treeview" style="display: none;">
                 <li class="nav-item">
-                    <a href="{{ route('admin.towns.index') }}"
-                       class="nav-link {{ request()->routeIs('admin.towns.index')?'active':'' }}">
-                        <i class="nav-icon far fa-file"></i>
-                        <p>
-                            Город
-                            @if(isset($towns_count))
-                                <span class="badge badge-info right">
-                            {{ $towns_count }}
-                        </span>
-                            @endif
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ route('admin.trks.index') }}"
                        class="nav-link {{ request()->routeIs('admin.trks.index')?'active':'' }}">
                         <i class="nav-icon far fa-file"></i>
@@ -85,6 +71,20 @@
                             @if(isset($trks_count))
                                 <span class="badge badge-info right">
                             {{ $trks_count }}
+                                </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.towns.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.towns.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Город
+                            @if(isset($towns_count))
+                                <span class="badge badge-info right">
+                            {{ $towns_count }}
                         </span>
                             @endif
                         </p>
@@ -134,7 +134,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>
@@ -173,7 +173,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>
@@ -193,7 +193,7 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
                 <p>

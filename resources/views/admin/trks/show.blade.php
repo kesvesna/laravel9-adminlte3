@@ -40,8 +40,6 @@
     </form>
     <br>
     <h4>Помещения {{ $trk->name }}</h4>
-    <form action="{{ route('admin.trk-building-floor-room.update', $trk->id) }}" method="post">
-        @csrf
         <table class="table pb-5" id="trk-rooms-table">
             <thead>
                 <tr>
@@ -60,8 +58,45 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse($trk->architectures() as $architecture)
-                    <tr id="0">
+            <form action="{{ route('admin.trks.show', $trk->id) }}" method="get">
+                @csrf
+            <tr>
+                <td>
+                    <select name="building_id" class="form-control" aria-label="building_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                        <option value="">Здания/Зоны</option>
+                    @forelse($buildings as $building)
+                            <option @if(isset($old_filters['building_id'])){{ $old_filters['building_id'] == $building->id ? ' selected' : '' }} @endif value="{{ $building->id }}">{{ $building->name }}</option>
+                        @empty
+                            Нет блоков/зданий
+                        @endforelse
+                    </select>
+                </td>
+                <td>
+                    <select name="floor_id" class="form-control" aria-label="floor_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                        <option value="">Этажи/уровни</option>
+                        @forelse($floors as $floor)
+                            <option  @if(isset($old_filters['floor_id'])){{ $old_filters['floor_id'] == $floor->id ? ' selected' : '' }} @endif value="{{ $floor->id }}">{{ $floor->name }}</option>
+                        @empty
+                            Нет этажей/уровней
+                        @endforelse
+                    </select>
+                </td>
+                <td>
+                    <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_name'])){{ $old_filters['room_name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_name" type="search" class="form-control" placeholder="Поиск" aria-label="room_name" aria-describedby="room_name">
+                    <datalist id="rooms">
+                        @forelse($rooms as $room)
+                            <option value="{{$room->name}}">
+                                @empty
+                                    Нет помещений
+                        @endforelse
+                    </datalist>
+                </td>
+            </tr>
+            </form>
+            <form action="{{ route('admin.trk-building-floor-room.update', $trk->id) }}" method="post">
+                @csrf
+            @forelse($architectures as $architecture)
+                    <tr>
                     <td>
                         <select id="buildings" name="buildings[]" class="form-control">
                             @forelse($buildings as $building)
@@ -97,7 +132,7 @@
                     </tr>
                 @empty
                 @endforelse
-                <tr id="1">
+                <tr>
                     <td>
                         <select id="buildings" name="buildings[]" class="form-control">
                             <option value="">Выберите ...</option>
@@ -134,9 +169,14 @@
                         </button>
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="4">
+                        <button type="submit" class="btn btn-danger mb-5">Сохранить</button>
+                    </td>
+                </tr>
+            </form>
             </tbody>
         </table>
-        <button type="submit" class="btn btn-danger mb-3">Сохранить</button>
-    </form>
+        {{ $architectures->links() }}
 @endsection
 

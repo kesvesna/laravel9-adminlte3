@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Trks;
 
+use App\Http\Filters\Trks\TrkRoomNamesFilter;
+use App\Http\Filters\Trks\TrksFilter;
+use App\Http\Requests\Trks\TrkFilterRequest;
+use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use App\Http\Controllers\Controller;
 use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
@@ -60,10 +64,23 @@ class TrkController extends Controller
      * @param  \App\Models\Trks\Trk  $trk
      * @return \Illuminate\Http\Response
      */
-    public function show(Trk $trk)
+    public function show(Trk $trk, TrkFilterRequest $request)
     {
+        $data = $request->validated();
+
+        $filter = app()->make(TrkRoomNamesFilter::class, ['queryParams' => array_filter($data)]);
+        $rooms = Room::filter($filter)->pluck('id')->all();
+
+        $filter = app()->make(TrksFilter::class, ['queryParams' => array_filter($data)]);
+
+        $architectures = TrkBuildingFloorRoom::filter($filter)
+            ->orderBy('created_at', 'desc')
+            ->whereIn('room_id', $rooms)
+            ->paginate(config('admin.trks.pagination'));
+
         return view('admin.trks.show',[
             'trk' => $trk,
+            'architectures' => $architectures,
             'buildings' => Building::all(),
             'floors' => Floor::all(),
             'rooms' => Room::all(),

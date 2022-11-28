@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\DB;
 class Trk extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
-    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+    //use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     protected $table = "trks";
 

@@ -35,5 +35,8 @@
         ],
         'users' => [
             'pagination' => 5
+        ],
+        'trk_rooms' => [
+            'pagination' => 5
         ]
     ];
