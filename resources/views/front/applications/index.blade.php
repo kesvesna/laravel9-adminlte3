@@ -7,7 +7,7 @@
 @section('content')
 <main>
     <div class="container-fluid" style="padding-bottom: 15vh;">
-            <h5 style="color: white;">Заявки</h5>
+{{--            <h5 style="color: white;">Заявки</h5>--}}
         <form action="{{ route('front.applications.index') }}" method="get">
         <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 pt-2 d-md-none">
             <div class="col">
@@ -57,9 +57,9 @@
                     ID
                 </th>
                 <th scope="col" style="width: 15%;" class="d-none d-sm-table-cell">Дата
-                    <button class="btn">
-                        <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">
-                    </button>
+{{--                    <button class="btn">--}}
+{{--                        <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">--}}
+{{--                    </button>--}}
                 </th>
                 <th scope="col" style="width: 21%;"  class="d-none d-lg-table-cell">
                     ТРК
@@ -120,7 +120,7 @@
                     <td class="d-none d-lg-table-cell">{{ $application->trk->name }}</td>
                     <td class="d-none d-md-table-cell">{{ $application->currentHistory->application_status->name }}</td>
                     <td class="d-none d-md-table-cell">{{ $application->currentHistory->service->name }}</td>
-                    <td>{{ $application->comment }}</td>
+                    <td>{{ Str::limit($application->comment, 35, ' ...')  }}</td>
                 </tr>
                 @empty
                     Нет заявок

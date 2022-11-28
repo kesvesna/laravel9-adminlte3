@@ -51,6 +51,14 @@ class ApplicationsStatusSeeder extends Seeder
                 'updated_at' => now()
             ],
             [
+                'name' => 'Выполняется',
+                'slug' => 'in_work',
+                'sort_order' => 1,
+                'visible' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
                 'name' => 'Отклонена',
                 'slug' => 'rejected',
                 'sort_order' => 1,

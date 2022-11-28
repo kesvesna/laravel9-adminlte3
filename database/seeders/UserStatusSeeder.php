@@ -20,7 +20,7 @@ class UserStatusSeeder extends Seeder
         DB::table('user_statuses')->insert([
             [
                 'name' => 'Работает',
-                'slug' => 'new',
+                'slug' => 'working',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -28,7 +28,7 @@ class UserStatusSeeder extends Seeder
             ],
             [
                 'name' => 'В отпуске',
-                'slug' => 'in_progress',
+                'slug' => 'on_holiday',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -36,7 +36,7 @@ class UserStatusSeeder extends Seeder
             ],
             [
                 'name' => 'На больничном',
-                'slug' => 'repair',
+                'slug' => 'on_sick',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -44,7 +44,15 @@ class UserStatusSeeder extends Seeder
             ],
             [
                 'name' => 'Уволен',
-                'slug' => 'done',
+                'slug' => 'fired',
+                'sort_order' => 1,
+                'visible' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'name' => 'Заблокирован',
+                'slug' => 'blocked',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),

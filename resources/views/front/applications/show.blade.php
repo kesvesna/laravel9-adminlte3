@@ -32,7 +32,7 @@
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 mt-2">
                         <div class="col">
-                            <textarea disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
+                            <textarea disabled class="form-control" id="comment" name="comment" rows="3" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
                         </div>
                     </div>
                     @if(isset($application->medias))

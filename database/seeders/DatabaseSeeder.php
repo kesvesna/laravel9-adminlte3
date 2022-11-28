@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Applications\ApplicationHistories;
 use App\Models\Applications\Applications;
 use App\Models\Equipments\Equipment;
 use App\Models\Equipments\EquipmentHistories;
@@ -36,13 +37,14 @@ class DatabaseSeeder extends Seeder
         ]);
 
         User::factory(10)->create();
-        Applications::factory(2)->create();
-        Repair::factory(2)->create();
+        Applications::factory(20)->create();
+        ApplicationHistories::factory(20)->create();
+        Repair::factory(20)->create();
         Equipment::factory(40)->create();
         EquipmentHistories::factory(500)->create();
 
         $this->call([
-            ApplicationHistoriesSeeder::class,
+            //ApplicationHistoriesSeeder::class,
             RepairHistoriesSeeder::class,
             ApplicationRepairActEquipmentSeeder::class,
             //EquipmentHistoriesSeeder::class,

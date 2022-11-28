@@ -151,7 +151,7 @@ class ApplicationController extends Controller
 
         $newHistory = $history->replicate()->fill([
             'application_status_id' => Applications::IN_PROGRESS,
-            'user_id' => 1,
+            'user_id' => 1, // Auth::id
             'comment' => ''
         ]);
         $newHistory->save();
