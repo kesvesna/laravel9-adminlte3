@@ -264,8 +264,8 @@
 
 
 <!-- User javascript -->
-<script src="{{ asset('dist/js/tables/trk_building/delete_row.js') }}"></script>
-<script src="{{ asset('dist/js/tables/trk_building/add_row.js') }}"></script>
+<script src="{{ asset('dist/js/tables/trk_rooms/delete_row.js') }}"></script>
+<script src="{{ asset('dist/js/tables/trk_rooms/add_row.js') }}"></script>
 
 </body>
 </html>

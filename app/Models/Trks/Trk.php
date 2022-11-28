@@ -8,8 +8,7 @@ use App\Models\Floors\Floor;
 use App\Models\Repairs\Repair;
 use App\Models\Rooms\Room;
 use App\Models\Towns\Town;
-use App\Models\TrksBuildings\TrkBuilding;
-use App\Models\TrksBuildingsFloors\TrkBuildingFloor;
+use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,10 +16,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Trk extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
+    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
     protected $table = "trks";
 
@@ -67,9 +68,15 @@ class Trk extends Model
         return $this->belongsToMany(Building::class);
     }
 
-    public function floors()
+    public function architectures()
     {
-        return $this->belongsToMany(Floor::class, 'building_floor_trk')
-                    ->using(TrkBuildingFloor::class);
+        return DB::table('trk_building_floor_room')
+            ->join('buildings', 'trk_building_floor_room.building_id', '=', 'buildings.id')
+            ->join('floors', 'trk_building_floor_room.floor_id', '=', 'floors.id')
+            ->join('rooms', 'trk_building_floor_room.room_id', '=', 'rooms.id')
+            ->select('trk_building_floor_room.*', 'rooms.name as room_name', 'floors.name as floor_name', 'buildings.name as building_name')
+            ->where('trk_id', '=', $this->id)
+            ->where('trk_building_floor_room.deleted_at', '=', null)
+            ->get();
     }
 }

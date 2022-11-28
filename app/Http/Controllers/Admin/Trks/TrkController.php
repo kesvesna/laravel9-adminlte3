@@ -7,6 +7,7 @@ use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
 use App\Models\Trks\Trk;
 use App\Models\Towns\Town;
+use App\Models\Rooms\Room;
 use Illuminate\Http\Request;
 
 class TrkController extends Controller
@@ -65,6 +66,7 @@ class TrkController extends Controller
             'trk' => $trk,
             'buildings' => Building::all(),
             'floors' => Floor::all(),
+            'rooms' => Room::all(),
         ]);
     }
 

@@ -13,8 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('building_floor_trk', function (Blueprint $table) {
-            $table->unique(['trk_id', 'building_id', 'floor_id']);
+        Schema::create('trk_building_floor_room', function (Blueprint $table) {
             $table->foreignId('trk_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -24,6 +23,10 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->foreignId('floor_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
+            $table->foreignId('room_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
@@ -40,11 +43,12 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('building_floor_trk', function (Blueprint $table) {
+        Schema::table('trk_building_floor_room', function (Blueprint $table) {
             $table->dropForeign(['trk_id']);
             $table->dropForeign(['building_id']);
             $table->dropForeign(['floor_id']);
+            $table->dropForeign(['room_id']);
         });
-        Schema::dropIfExists('building_floor_trk');
+        Schema::dropIfExists('trk_building_floor_room');
     }
 };

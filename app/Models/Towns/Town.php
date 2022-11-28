@@ -2,8 +2,9 @@
 
 namespace App\Models\Towns;
 
+use App\Models\Buildings\Building;
 use App\Models\Repairs\Repair;
-use App\Models\Trks\Building;
+use App\Models\Trks\Trk;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -38,6 +39,6 @@ class Town extends Model
 
     public function applications(): HasMany
     {
-        return $this->hasMany(Building::class, 'town_id', 'id');
+        return $this->hasMany(Trk::class, 'town_id', 'id');
     }
 }

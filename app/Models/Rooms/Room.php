@@ -3,6 +3,7 @@
 namespace App\Models\Rooms;
 
 use App\Models\Traits\Filterable;
+use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use App\Models\Trks\Trk;
 use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
@@ -38,5 +39,17 @@ class Room extends Model
                 'source' => ['name']
             ]
         ];
+    }
+
+    public function buildings()
+    {
+        return $this->hasManyThrough(
+            Building::class,
+            TrkBuildingFloorRoom::class,
+            'building_id',
+            'id',
+            'id',
+            'id'
+        );
     }
 }

@@ -90,7 +90,7 @@
                     </div>
                     @endif
 
-                    @if($application->currentHistory->application_status->id == $application::IN_PROGRESS)
+                    @if($application->currentHistory->application_status->id == $application::IN_PROGRESS || $application->currentHistory->application_status->id == $application::IN_WORK)
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-5">
                         <form action="{{ route('front.act.create_by_application_all_done', $application->id) }}" method="post">
                             @csrf

@@ -20,10 +20,11 @@ class Applications extends Model
     public const IN_PROGRESS = 2;
     public const REPAIR = 3;
     public const DONE = 4;
-    public const REJECTED = 5;
-    public const DELETED = 6;
-    public const REDIRECTED = 7;
-    public const RESPONSIBLE_USER = 8;
+    public const IN_WORK = 5;
+    public const REJECTED = 6;
+    public const DELETED = 7;
+    public const REDIRECTED = 8;
+    public const RESPONSIBLE_USER = 9;
 
     protected $table = "applications";
 

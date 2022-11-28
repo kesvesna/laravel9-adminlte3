@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Admin\BuildingsTrks;
+namespace App\Http\Controllers\Admin\TrkBuildingFloorRooms;
 
 use App\Http\Controllers\Controller;
 use App\Models\Buildings\Building;
+use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use App\Models\Trks\Trk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class BuildingTrkController extends Controller
+class TrkBuildingFloorRoomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -79,15 +81,36 @@ class BuildingTrkController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Trks\Trk  $trk
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Trk $trk)
     {
         if($request->isMethod('post')){
-            $buildings = array_filter($request->input('building'));
-            $trk->buildings()->sync($buildings);
-        }
 
+            $data = $request->all();
+            $rooms = [];
+
+            try{
+                DB::beginTransaction();
+
+                TrkBuildingFloorRoom::where('trk_id', $trk->id)->delete();
+
+                foreach($data['buildings'] as $key => $value)
+                {
+                    if(!is_null($value) || !is_null($data['floors'][$key]) || !is_null($data['rooms'][$key])){
+                        $rooms['trk_id'] = $trk->id;
+                        $rooms['building_id'] = $value;
+                        $rooms['floor_id'] = $data['floors'][$key];
+                        $rooms['room_id'] = $data['rooms'][$key];
+                        TrkBuildingFloorRoom::create($rooms);
+                    }
+                }
+
+                DB::commit();
+            } catch (\Exception $e) {
+                DB::rollBack();
+                dd($e);
+            }
+        }
         return redirect()->route('admin.trks.show', $trk->id);
     }
 

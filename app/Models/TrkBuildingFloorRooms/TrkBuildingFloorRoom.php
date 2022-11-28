@@ -1,19 +1,23 @@
 <?php
 
-namespace App\Models\TrksBuildings;
+namespace App\Models\TrkBuildingFloorRooms;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TrkBuilding extends Model
+class TrkBuildingFloorRoom extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $table = "building_trk";
+    protected $table = "trk_building_floor_room";
 
     protected $fillable = [
         'trk_id',
-        'building_id'
+        'building_id',
+        'floor_id',
+        'room_id'
     ];
+
+
 }

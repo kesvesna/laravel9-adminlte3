@@ -9,7 +9,7 @@ use App\Http\Controllers\Admin\Applications\ApplicationStatusController as Admin
 use App\Http\Controllers\Admin\Towns\TownController as AdminTownController;
 use App\Http\Controllers\Admin\Trks\TrkController as AdminTrkController;
 use App\Http\Controllers\Admin\Buildings\BuildingController as AdminBuildingController;
-use App\Http\Controllers\Admin\BuildingsTrks\BuildingTrkController as AdminBuildingTrkController;
+use App\Http\Controllers\Admin\TrkBuildingFloorRooms\TrkBuildingFloorRoomController as AdminTrkBuildingFloorRoomController;
 use App\Http\Controllers\Admin\Floors\FloorController as AdminFloorController;
 use App\Http\Controllers\Admin\Rooms\RoomController as AdminRoomController;
 use App\Http\Controllers\Admin\Profiles\ProfileController as AdminProfileController;
@@ -97,7 +97,7 @@ Route::name('admin.')
 
         Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');
 
-        Route::post('buildings-trks/{trk}', [AdminBuildingTrkController::class, 'update'])->name('buildings-trks.update');
+        Route::post('trk-building-floor-room/{trk}', [AdminTrkBuildingFloorRoomController::class, 'update'])->name('trk-building-floor-room.update');
 
         Route::resource('systems', AdminSystemController::class);
 
