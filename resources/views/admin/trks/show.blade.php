@@ -78,7 +78,7 @@
                 </select>
             </td>
             <td>
-                <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_name'])){{ $old_filters['room_name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_name" type="search" class="form-control" placeholder="Поиск" aria-label="room_name" aria-describedby="room_name">
+                <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_name'])){{ $old_filters['room_name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_name" type="search" class="form-control" placeholder="Помещение" aria-label="room_name" aria-describedby="room_name">
                 <datalist id="rooms">
                     @forelse($rooms as $room)
                         <option value="{{$room->name}}">
