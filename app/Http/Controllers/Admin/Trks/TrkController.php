@@ -84,6 +84,7 @@ class TrkController extends Controller
             'buildings' => Building::all(),
             'floors' => Floor::all(),
             'rooms' => Room::all(),
+            'old_filters' => $data,
         ]);
     }
 

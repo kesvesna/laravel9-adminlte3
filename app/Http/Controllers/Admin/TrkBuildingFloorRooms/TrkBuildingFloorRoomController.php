@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Buildings\Building;
 use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use App\Models\Trks\Trk;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -92,8 +93,6 @@ class TrkBuildingFloorRoomController extends Controller
             try{
                 DB::beginTransaction();
 
-                TrkBuildingFloorRoom::where('trk_id', $trk->id)->delete();
-
                 foreach($data['buildings'] as $key => $value)
                 {
                     if(!is_null($value) || !is_null($data['floors'][$key]) || !is_null($data['rooms'][$key])){
@@ -120,9 +119,18 @@ class TrkBuildingFloorRoomController extends Controller
      * @param  \App\Models\Buildings\Building  $building
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Building $building)
+    public function destroy(TrkBuildingFloorRoom $trk_building_floor_room): JsonResponse
     {
-        $building->delete();
-        return redirect()->route('admin.buildings.index');
+
+        try {
+            if ($trk_building_floor_room->delete()) {
+                return \response()->json('ok', 200);
+            }
+            return \response()->json('error', 400);
+        } catch (\Exception $e) {
+            //Log::error('New with ID: ' . $id . ' delete error');
+            //Log::error($e->getMessage());
+            return \response()->json('error', 400);
+        }
     }
 }

@@ -8,25 +8,33 @@ $(".add-trk-room").click(function(){
         let $selected_floor_id = $('#floors option:selected', $tr).val();
         let $selected_room_id = $('#rooms option:selected', $tr).val();
 
-        $clone_tr.attr('id', parseInt($clone_tr.attr('id')) + 1);
+        if($selected_room_id && $selected_building_id && $selected_floor_id){
+            $clone_tr.attr('id', parseInt($clone_tr.attr('id')) + 1);
 
-        let $table = $(this).closest("table");
-        $table.append($clone_tr);
+            let $table = $(this).closest("table");
+            $table.append($clone_tr);
 
-        console.log($(this).attr('class'));
-        $(this).removeClass('add-trk-room').addClass('delete-trk-room');
-        console.log($(this).attr('class'));
+            console.log($(this).attr('class'));
+            $(this).removeClass('add-trk-room').addClass('delete-trk-room');
+            console.log($(this).attr('class'));
 
-        $("img", this).attr("src","http://laravel9-adminlte3/icons/delete.svg");
-        $("img", this).attr("alt","Delete image");
+            $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+            $("img", this).attr("alt","Delete image");
 
-        $('#buildings', $clone_tr).val($selected_building_id).change();
-        $('#floors', $clone_tr).val($selected_floor_id).change();
-        $('#rooms', $clone_tr).val($selected_room_id).change();
+            $('#buildings', $clone_tr).val($selected_building_id).change();
+            $('#floors', $clone_tr).val($selected_floor_id).change();
+            $('#rooms', $clone_tr).val($selected_room_id).change();
 
-        $(this).off('click');
+            $(this).off('click');
 
-        $(this).click(function(){
-            $(this).closest("tr").remove();
-        });
+            $(this).click(function(){
+                $(this).closest("tr").remove();
+            });
+
+            window.scrollTo(0, document.body.scrollHeight);
+        } else {
+            alert('Сначала выберите блок, этаж и помещение');
+        }
+
+
 });

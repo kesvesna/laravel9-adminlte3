@@ -98,6 +98,7 @@ Route::name('admin.')
         Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');
 
         Route::post('trk-building-floor-room/{trk}', [AdminTrkBuildingFloorRoomController::class, 'update'])->name('trk-building-floor-room.update');
+        Route::delete('trk-building-floor-room/{trk_building_floor_room}', [AdminTrkBuildingFloorRoomController::class, 'destroy'])->name('trk-building-floor-room.destroy');
 
         Route::resource('systems', AdminSystemController::class);
 
