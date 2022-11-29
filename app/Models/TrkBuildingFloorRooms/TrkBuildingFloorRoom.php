@@ -2,6 +2,9 @@
 
 namespace App\Models\TrkBuildingFloorRooms;
 
+use App\Models\Buildings\Building;
+use App\Models\Floors\Floor;
+use App\Models\Rooms\Room;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -19,6 +22,24 @@ class TrkBuildingFloorRoom extends Model
         'floor_id',
         'room_id'
     ];
+
+    /**
+     * The buildings that belong to the trk.
+     */
+    public function building()
+    {
+        return $this->belongsTo(Building::class, 'building_id');
+    }
+
+    public function floor()
+    {
+        return $this->belongsTo(Floor::class, 'floor_id');
+    }
+
+    public function room()
+    {
+        return $this->belongsTo(Room::class, 'room_id');
+    }
 
     protected function removeQueryParam(string ...$keys)
     {

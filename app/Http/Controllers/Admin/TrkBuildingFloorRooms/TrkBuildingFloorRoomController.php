@@ -9,6 +9,8 @@ use App\Models\Trks\Trk;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class TrkBuildingFloorRoomController extends Controller
 {
@@ -88,10 +90,11 @@ class TrkBuildingFloorRoomController extends Controller
         if($request->isMethod('post')){
 
             $data = $request->all();
-            $rooms = [];
 
             try{
                 DB::beginTransaction();
+
+                $rooms = [];
 
                 foreach($data['buildings'] as $key => $value)
                 {
@@ -100,14 +103,18 @@ class TrkBuildingFloorRoomController extends Controller
                         $rooms['building_id'] = $value;
                         $rooms['floor_id'] = $data['floors'][$key];
                         $rooms['room_id'] = $data['rooms'][$key];
-                        TrkBuildingFloorRoom::create($rooms);
+                        TrkBuildingFloorRoom::firstOrCreate($rooms);
                     }
                 }
 
                 DB::commit();
+
             } catch (\Exception $e) {
+
                 DB::rollBack();
+
                 dd($e);
+
             }
         }
         return redirect()->route('admin.trks.show', $trk->id);

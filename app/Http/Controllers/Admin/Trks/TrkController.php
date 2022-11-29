@@ -13,6 +13,7 @@ use App\Models\Trks\Trk;
 use App\Models\Towns\Town;
 use App\Models\Rooms\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class TrkController extends Controller
 {
@@ -74,8 +75,10 @@ class TrkController extends Controller
         $filter = app()->make(TrksFilter::class, ['queryParams' => array_filter($data)]);
 
         $architectures = TrkBuildingFloorRoom::filter($filter)
+            ->with('building', 'floor', 'room')
             ->orderBy('created_at', 'desc')
             ->whereIn('room_id', $rooms)
+            ->where('trk_id', $trk->id)
             ->paginate(config('admin.trks.pagination'));
 
         return view('admin.trks.show',[
@@ -115,8 +118,16 @@ class TrkController extends Controller
             'name' => ['required', 'string', 'min:2', 'max:50'],
             'town_id' => ['required', 'integer', 'min:1']
         ]);
-        $trk->update($data);
-        return redirect()->route('admin.trks.show', $trk->id);
+        if($trk->update($data)) {
+            Session::flash('message', 'Данные трк обновлены');
+            return redirect()->route('admin.trks.show', $trk->id);
+        }
+        Session::flash('message', 'Данные трк НЕ обновлены');
+        return view('admin.trks.edit', [
+            'trk' => $trk,
+            'towns' => Town::all()
+        ]);
+
     }
 
     /**

@@ -79,4 +79,12 @@ class Trk extends Model
             ->where('trk_building_floor_room.deleted_at', '=', null)
             ->get();
     }
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($trk) {
+            //$trk->architectures()->delete();
+        });
+    }
 }

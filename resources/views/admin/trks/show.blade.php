@@ -33,14 +33,16 @@
         </tbody>
     </table>
     </div>
+    <div class="row">
         <a href="{{ route('admin.trks.index') }}" class="btn btn-success mr-3 mb-3">Назад</a>
         <a href="{{ route('admin.trks.edit', $trk->id) }}" class="btn btn-warning mr-3 mb-3">Редактировать</a>
-    <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post">
-        @csrf
-        @method('delete')
-    <button type="submit" class="btn btn-danger mb-3">Удалить</button>
+        <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post">
+            @csrf
+            @method('delete')
+            <button type="submit" class="btn btn-danger mb-3">Удалить</button>
+        </form>
+    </div>
 
-    </form>
     <br>
     <h4>Помещения {{ $trk->name }}</h4>
 
@@ -100,7 +102,7 @@
     </form>
 
     <div class="table-responsive">
-        <table class="table pb-5">
+        <table class="table pb-5" id="architecture-table">
             <thead>
             <tr>
                 <th>
@@ -121,13 +123,13 @@
                     <tr>
                     <td>
                         <input hidden value="{{ $architecture->id }}" id="trk_building_floor_room_id">
-                        {{ $architecture->building_id }}
+                        {{ $architecture->building->name }}
                     </td>
                     <td>
-                        {{ $architecture->floor_id }}
+                        {{ $architecture->floor->name }}
                     </td>
                     <td>
-                        {{ $architecture->room_id }}
+                        {{ $architecture->room->name }}
                     </td>
                         <td>
                             <button type="button" class="delete-trk-room" style="border: none; background-color: transparent;">
