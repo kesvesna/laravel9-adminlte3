@@ -46,8 +46,6 @@
     <br>
     <h4>Помещения {{ $trk->name }}</h4>
 
-    @if(count($architectures) || count($old_filters))
-
     <form action="{{ route('admin.trks.show', $trk->id) }}" method="get">
         @csrf
         <div class="table-responsive">
@@ -90,7 +88,7 @@
                 </datalist>
             </td>
             <td>
-                <a href="{{ route('admin.trks.show', $trk->id) }}" class="btn btn-success mr-3 mb-3">Сброс фильтров</a>
+                <a href="{{ route('admin.trks.show', $trk->id) }}" class="btn btn-success mr-3 mb-3">СБРОС</a>
             </td>
         </tr>
         <tr>
@@ -100,7 +98,7 @@
     </table>
         </div>
     </form>
-
+    @if(count($architectures) || count($old_filters))
     <div class="table-responsive">
         <table class="table pb-5" id="architecture-table">
             <thead>

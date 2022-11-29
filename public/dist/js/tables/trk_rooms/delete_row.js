@@ -12,7 +12,7 @@ $(".delete-trk-room").click(function () {
         success: function(result) {
             $($button).closest("tr").remove();
             let $rows = $("#architecture-table tr").length;
-            if(parseInt($rows) === 1) {
+            if(parseInt($rows) <= 1) {
                 location.reload();
             }
         },
