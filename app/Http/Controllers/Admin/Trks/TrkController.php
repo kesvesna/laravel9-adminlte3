@@ -138,6 +138,7 @@ class TrkController extends Controller
      */
     public function destroy(Trk $trk)
     {
+        TrkBuildingFloorRoom::where('trk_id', $trk->id)->delete();
         $trk->delete();
         return redirect()->route('admin.trks.index');
     }
