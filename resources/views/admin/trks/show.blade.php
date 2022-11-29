@@ -139,8 +139,9 @@
                 @endforelse
             </tbody>
         </table>
-    </div>
         {{ $architectures->links() }}
+    </div>
+
     @else
         <b style="color: red;">Нет помещений</b>
         <br>
