@@ -7,6 +7,7 @@
 @section('content')
     <br>
     <h2>Оборудование №{{ $equipment->id }}, {{$equipment->name->name}}</h2>
+    <div class="table-responsive">
     <table class="table table-sm table-bordered table-striped">
         <tbody>
         <tr>
@@ -43,6 +44,7 @@
         </tr>
         </tbody>
     </table>
+    </div>
     <form action="{{ route('admin.equipments.destroy', $equipment->id) }}" method="post">
         @csrf
         @method('delete')

@@ -8,7 +8,7 @@
     <br>
     <h2>ТРК {{ $trk->name }}</h2>
     <div class="table-responsive">
-    <table class="table table-sm table-bordered table-striped table-responsive">
+    <table class="table table-sm table-bordered table-striped">
         <tbody>
         <tr>
             <th scope="col" class="col-3">ID</th>

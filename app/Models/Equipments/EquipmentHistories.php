@@ -3,6 +3,7 @@
 namespace App\Models\Equipments;
 
 use App\Models\Services\Service;
+use App\Models\Systems\System;
 use App\Models\Traits\Filterable;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,6 +21,7 @@ class EquipmentHistories extends Model
         'equipment_id',
         'equipment_status_id',
         'created_by_user_id',
+        'comment',
 
     ];
 

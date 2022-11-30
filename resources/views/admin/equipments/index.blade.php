@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+    @if ($message = session()->get('success'))
+        <div class="alert alert-success alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h5><i class="icon fas fa-check"></i>{{ $message }}</h5>
+        </div>
+    @endif
     <br>
     <form method="get" action="{{ route('admin.equipments.create') }}" class="mb-3">
         <div class="row">
