@@ -8,7 +8,7 @@
     <br>
     <h2>ТРК {{ $trk->name }}</h2>
     <div class="table-responsive">
-    <table class="table table-sm table-bordered table-striped">
+    <table class="table table-sm table-bordered table-striped table-responsive">
         <tbody>
         <tr>
             <th scope="col" class="col-3">ID</th>
@@ -33,13 +33,13 @@
         </tbody>
     </table>
     </div>
-    <div class="row">
+    <div class="row btn-group-sm mx-auto justify-content-between justify-content-md-start">
         <a href="{{ route('admin.trks.index') }}" class="btn btn-success mr-3 mb-3">Назад</a>
         <a href="{{ route('admin.trks.edit', $trk->id) }}" class="btn btn-warning mr-3 mb-3">Редактировать</a>
         <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post">
             @csrf
             @method('delete')
-            <button type="submit" class="btn btn-danger mb-3">Удалить</button>
+            <button type="submit" class="btn btn-danger mb-3 btn-sm">Удалить</button>
         </form>
     </div>
 
@@ -49,7 +49,7 @@
     <form action="{{ route('admin.trks.show', $trk->id) }}" method="get">
         @csrf
         <div class="table-responsive">
-    <table class="table" id="filters-table">
+    <table class="table table-striped  table-bordered table-sm" id="filters-table">
         <thead>
         <tr>
             <th colspan="4">Фильтры</th>
@@ -88,7 +88,7 @@
                 </datalist>
             </td>
             <td>
-                <a href="{{ route('admin.trks.show', $trk->id) }}" class="btn btn-success mr-3 mb-3">СБРОС</a>
+                <a href="{{ route('admin.trks.show', $trk->id) }}" class="btn-sm btn btn-success mr-3 mb-3">СБРОС</a>
             </td>
         </tr>
         <tr>
@@ -100,7 +100,7 @@
     </form>
     @if(count($architectures) || count($old_filters))
     <div class="table-responsive">
-        <table class="table pb-5" id="architecture-table">
+        <table class="table pb-5 table-striped table-bordered table-sm" id="architecture-table">
             <thead>
             <tr>
                 <th>
@@ -149,7 +149,7 @@
     <form action="{{ route('admin.trk-building-floor-room.update', $trk->id) }}" method="post">
         @csrf
         <div class="table-responsive">
-        <table class="table pb-5" id="trk-rooms-table">
+        <table class="table pb-5 table-striped table-sm table-bordered" id="trk-rooms-table">
             <thead>
                 <th colspan="4">
                     Добавить помещения для {{ $trk->name }}
@@ -189,7 +189,7 @@
                 </td>
                 <td>
                     <button type="button" class="add-trk-room" style="border: none; background-color: transparent;">
-                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add image" height="30" width="30">
+                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add image" height="25" width="25">
                     </button>
                 </td>
             </tr>
