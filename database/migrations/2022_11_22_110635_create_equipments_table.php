@@ -39,7 +39,6 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->unique(['trk_id', 'room_id', 'equipment_name_id']);
             $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();

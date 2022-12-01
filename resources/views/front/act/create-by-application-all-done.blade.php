@@ -12,7 +12,7 @@
                             -webkit-backdrop-filter: blur( 1px );
                             border-radius: 5px;
                             border: 1px solid rgba( 255, 255, 255, 0.18 );"
-                  class="pt-2 pb-3">
+                  class="pt-2 pb-2">
                 <div class="container">
                 <div class="row mb-2">
                     <div class="col-12">
@@ -176,7 +176,7 @@
                                 </td>
                                 <td>
                                     <button type="button" class="add-act-work" style="border: none; background-color: transparent;">
-                                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add room" height="35" width="35" title="Добавить работы в акт">
+                                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add room" height="35" width="35" title="Добавить перечень работ в акт">
                                     </button>
                                 </td>
                             </tr>
