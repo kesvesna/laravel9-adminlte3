@@ -41,5 +41,8 @@
         ],
         'spare_parts' => [
             'pagination' => 5
+        ],
+        'work_types' => [
+            'pagination' => 5
         ]
     ];

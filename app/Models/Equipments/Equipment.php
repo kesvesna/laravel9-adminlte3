@@ -7,7 +7,7 @@ use App\Models\Applications\ApplicationRepairAct;
 use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
-use App\Models\Systems\SparePart;
+use App\Models\Systems\System;
 use App\Models\Traits\Filterable;
 use App\Models\Trks\Trk;
 use Illuminate\Database\Eloquent\Model;
@@ -42,7 +42,7 @@ class Equipment extends Model
 
     public function system(): BelongsTo
     {
-        return $this->belongsTo(SparePart::class, 'system_type_id')->withDefault();
+        return $this->belongsTo(System::class, 'system_type_id')->withDefault();
     }
 
     public function name(): BelongsTo

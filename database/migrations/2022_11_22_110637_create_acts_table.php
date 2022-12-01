@@ -23,12 +23,12 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('room_id')
+            $table->foreignId('building_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('equipment_id')
-                ->constrained('equipments')
+            $table->foreignId('system_type_id')
+                ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->text('works')->nullable()->default(null);
@@ -50,9 +50,9 @@ return new class extends Migration
     {
         Schema::table('acts', function (Blueprint $table) {
             $table->dropForeign(['trk_id']);
-            $table->dropForeign(['room_id']);
-            $table->dropForeign(['equipment_id']);
             $table->dropForeign(['act_type_id']);
+            $table->dropForeign(['system_type_id']);
+            $table->dropForeign(['building_id']);
         });
         Schema::dropIfExists('acts');
     }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\SpareParts;
+namespace App\Http\Controllers\Admin\WorkTypes;
 
 use App\Http\Controllers\Controller;
-use App\Models\SpareParts\SparePart;
+use App\Models\WorkTypes\WorkType;
 use Illuminate\Http\Request;
 
-class SparePartController extends Controller
+class WorkTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class SparePartController extends Controller
      */
     public function index()
     {
-        return view('admin.spare_parts.index', [
-            'spare_parts' => SparePart::paginate(config('admin.spare_parts.pagination')),
-            'spare_parts_count' => SparePart::count()
+        return view('admin.work_types.index', [
+            'work_types' => WorkType::paginate(config('admin.work_types.pagination')),
+            'work_types_count' => WorkType::count()
         ]);
     }
 
@@ -28,7 +28,7 @@ class SparePartController extends Controller
      */
     public function create()
     {
-        return view('admin.spare_parts.create');
+        return view('admin.work_types.create');
     }
 
     /**
@@ -43,33 +43,33 @@ class SparePartController extends Controller
             'name' => ['required', 'string', 'min:2', 'max:50'],
             'sort_order' => ['integer']
         ]);
-        SparePart::create($data);
-        return redirect()->route('admin.spare_parts.index');
+        WorkType::create($data);
+        return redirect()->route('admin.work_types.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SpareParts\SparePart  $spare_part
+     * @param  \App\Models\WorkTypes\WorkType  $work_type
      * @return \Illuminate\Http\Response
      */
-    public function show(SparePart $spare_part)
+    public function show(WorkType $work_type)
     {
-        return view('admin.spare_parts.show',[
-            'spare_part' => $spare_part
+        return view('admin.work_types.show',[
+            'work_type' => $work_type
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SpareParts\SparePart  $spare_part
+     * @param  \App\Models\SpareParts\WorkType  $work_type
      * @return \Illuminate\Http\Response
      */
-    public function edit(SparePart $spare_part)
+    public function edit(WorkType $work_type)
     {
-        return view('admin.spare_parts.edit', [
-            'spare_part' => $spare_part
+        return view('admin.work_types.edit', [
+            'work_type' => $work_type
         ]);
     }
 
@@ -77,28 +77,28 @@ class SparePartController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SpareParts\SparePart  $spare_part
+     * @param  \App\Models\WorkTypes\WorkType  $work_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SparePart $spare_part)
+    public function update(Request $request, WorkType $work_type)
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:50'],
             'sort_order' => ['integer']
         ]);
-        $spare_part->update($data);
-        return redirect()->route('admin.spare_parts.show', $spare_part->id);
+        $work_type->update($data);
+        return redirect()->route('admin.work_types.show', $work_type->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SpareParts\SparePart  $spare_part
+     * @param  \App\Models\WorkTypes\WorkType  $work_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SparePart $spare_part)
+    public function destroy(WorkType $work_type)
     {
-        $spare_part->delete();
-        return redirect()->route('admin.spare_parts.index');
+        $work_type->delete();
+        return redirect()->route('admin.work_types.index');
     }
 }

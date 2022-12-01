@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Front\Acts;
 
 use App\Http\Controllers\Controller;
 use App\Models\Applications\Applications;
+use App\Models\Buildings\Building;
 use App\Models\Repairs\Repair;
+use App\Models\Rooms\Room;
+use App\Models\Systems\System;
 
 class ActController extends Controller
 {
@@ -42,6 +45,10 @@ class ActController extends Controller
     {
         return view('front.act.create-by-application-all-done',[
             'application' => $application,
+            'systems' => System::all(),
+            'buildings' => Building::all(),
+            'rooms' => Room::all(),
+
         ]);
     }
 

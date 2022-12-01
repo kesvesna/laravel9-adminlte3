@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 use App\Models\Applications\ApplicationHistories;
 use App\Models\Applications\Applications;
+use App\Models\Applications\ApplicationStatuses;
 use App\Models\Repairs\Repair;
 use App\Models\Repairs\RepairHistories;
 
@@ -33,7 +34,7 @@ class IndexController extends Controller
             'repair_by_plan_count' => count(RepairHistories::where('repair_status_id', $repair::BY_PLAN)->get()),
             'repair_by_application_count' => count(RepairHistories::where('repair_status_id', $repair::BY_APPLICATION)->get()),
             'act_by_plan_count' => 3,
-            'act_by_application_count' => 4
+            'act_by_application_count' => 4,
         ]);
     }
 

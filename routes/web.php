@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\Equipments\EquipmentController as AdminEquipmentC
 use App\Http\Controllers\Admin\Users\UserController as AdminUserController;
 use App\Http\Controllers\Admin\Users\UserStatusController as AdminUserStatusController;
 use App\Http\Controllers\Admin\SpareParts\SparePartController as AdminSparePartController;
+use App\Http\Controllers\Admin\WorkTypes\WorkTypeController as AdminWorkTypeController;
 
 
 //frontend
@@ -110,5 +111,7 @@ Route::name('admin.')
         Route::resource('user_statuses', AdminUserStatusController::class);
 
         Route::resource('spare_parts', AdminSparePartController::class);
+
+        Route::resource('work_types', AdminWorkTypeController::class);
 
     });

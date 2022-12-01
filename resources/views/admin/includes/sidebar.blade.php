@@ -185,6 +185,20 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.work_types.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.work_types.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Тип работ
+                            @if(isset($spare_parts_count))
+                                <span class="badge badge-info right">
+                            {{ $spare_parts_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
             </ul>
         </li>
         <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
@@ -222,6 +236,11 @@
                         <i class="nav-icon far fa-file"></i>
                         <p>
                             Пользователи
+                            @if(isset($users_count))
+                                <span class="badge badge-info right">
+                            {{ $users_count }}
+                        </span>
+                            @endif
                         </p>
                     </a>
                 </li>
@@ -231,6 +250,11 @@
                         <i class="nav-icon far fa-file"></i>
                         <p>
                             Статусы
+                            @if(isset($user_statuses_count))
+                                <span class="badge badge-info right">
+                            {{ $user_statuses_count }}
+                        </span>
+                            @endif
                         </p>
                     </a>
                 </li>

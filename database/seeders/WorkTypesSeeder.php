@@ -76,6 +76,12 @@ class WorkTypesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
+                [
+                    'name' => 'Замена',
+                    'slug' => 'zamena',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
             ]);
 
     }
