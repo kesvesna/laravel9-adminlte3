@@ -3,7 +3,7 @@
 namespace App\Models\Equipments;
 
 use App\Models\Services\Service;
-use App\Models\Systems\System;
+use App\Models\Systems\SparePart;
 use App\Models\Traits\Filterable;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

@@ -21,6 +21,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Новая',
                 'slug' => 'new',
+                'background_color' => 'background: rgba(250, 7, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -29,6 +30,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'В обработке',
                 'slug' => 'in_progress',
+                'background_color' => 'background: rgba(250, 232, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -37,6 +39,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Ремонт',
                 'slug' => 'repair',
+                'background_color' => 'background: rgba(250, 232, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -45,6 +48,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Выполнена',
                 'slug' => 'done',
+                'background_color' => 'background: rgba(7, 250, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -53,6 +57,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Выполняется',
                 'slug' => 'in_work',
+                'background_color' => 'background: rgba(250, 232, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -61,6 +66,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Отклонена',
                 'slug' => 'rejected',
+                'background_color' => 'background: rgba(250, 7, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -69,6 +75,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Удалена',
                 'slug' => 'removed',
+                'background_color' => 'background: rgba(250, 7, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 1,
                 'created_at' => now(),
@@ -77,6 +84,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Перенаправлена',
                 'slug' => 'redirected',
+                'background_color' => 'background: rgba(250, 7, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 0,
                 'created_at' => now(),
@@ -85,6 +93,7 @@ class ApplicationsStatusSeeder extends Seeder
             [
                 'name' => 'Ответственный',
                 'slug' => 'responsible',
+                'background_color' => 'background: rgba(250, 7, 7, 0.1);',
                 'sort_order' => 1,
                 'visible' => 0,
                 'created_at' => now(),

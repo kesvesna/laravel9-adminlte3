@@ -114,37 +114,37 @@
                     </select>
                 </td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.renter_application.show') }}';">
-                <td class="d-none d-sm-table-cell" style="background: rgba(250, 7, 7, 0.1);">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell" style="background: rgba(250, 7, 7, 0.1);">Академ Парк</td>
-                <td style="background: rgba(250, 7, 7, 0.1);">Новая</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(250, 7, 7, 0.1);">B15</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(250, 7, 7, 0.1);">Перекресток</td>
-                <td style="background: rgba(250, 7, 7, 0.1);">Ввоз ТМЦ</td>
+            <tr style="color: white; background: rgba(250, 7, 7, 0.1);"  onclick="window.location='{{ route('front.renter_application.show') }}';">
+                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
+                <td class="d-none d-lg-table-cell">Академ Парк</td>
+                <td>Новая</td>
+                <td class="d-none d-md-table-cell">B15</td>
+                <td class="d-none d-md-table-cell">Перекресток</td>
+                <td>Ввоз ТМЦ</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.renter_application.show') }}';">
-                <td class="d-none d-sm-table-cell" style="background: rgba(7, 250, 7, 0.1);">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell" style="background: rgba(7, 250, 7, 0.1);">Европолис</td>
-                <td style="background: rgba(7, 250, 7, 0.1);">Выполнена</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(7, 250, 7, 0.1);">C15</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(7, 250, 7, 0.1);">Леонардо да Винчи</td>
-                <td style="background: rgba(7, 250, 7, 0.1);">Вывоз ТМЦ</td>
+            <tr style="color: white; background: rgba(7, 250, 7, 0.1);"  onclick="window.location='{{ route('front.renter_application.show') }}';">
+                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
+                <td class="d-none d-lg-table-cell">Европолис</td>
+                <td>Выполнена</td>
+                <td class="d-none d-md-table-cell">C15</td>
+                <td class="d-none d-md-table-cell">Леонардо да Винчи</td>
+                <td>Вывоз ТМЦ</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.renter_application.show') }}';">
-                <td class="d-none d-sm-table-cell" style="background: rgba(250, 232, 7, 0.1);">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell" style="background: rgba(250, 232, 7, 0.1);">Европолис</td>
-                <td style="background: rgba(250, 232, 7, 0.1);">Согласование у инженеров</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(250, 232, 7, 0.1);">A4</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(250, 232, 7, 0.1);">Рив Гош</td>
-                <td style="background: rgba(250, 232, 7, 0.1);">Инвентаризация</td>
+            <tr style="color: white; background: rgba(250, 232, 7, 0.1);"  onclick="window.location='{{ route('front.renter_application.show') }}';">
+                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
+                <td class="d-none d-lg-table-cell">Европолис</td>
+                <td>Согласование у инженеров</td>
+                <td class="d-none d-md-table-cell">A4</td>
+                <td class="d-none d-md-table-cell">Рив Гош</td>
+                <td>Инвентаризация</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.renter_application.show') }}';">
-                <td class="d-none d-sm-table-cell" style="background: rgba(250, 7, 7, 0.1);">11-11-2022 10:23</td>
-                <td class="d-none d-lg-table-cell" style="background: rgba(250, 7, 7, 0.1);">Европолис</td>
-                <td style="background: rgba(250, 7, 7, 0.1);">Отклонена</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(250, 7, 7, 0.1);">В4</td>
-                <td class="d-none d-md-table-cell" style="background: rgba(250, 7, 7, 0.1);">Буше</td>
-                <td style="background: rgba(250, 7, 7, 0.1);">Инвентаризация</td>
+            <tr style="color: white; background: rgba(250, 7, 7, 0.1);"  onclick="window.location='{{ route('front.renter_application.show') }}';">
+                <td class="d-none d-sm-table-cell">11-11-2022 10:23</td>
+                <td class="d-none d-lg-table-cell">Европолис</td>
+                <td>Отклонена</td>
+                <td class="d-none d-md-table-cell">В4</td>
+                <td class="d-none d-md-table-cell">Буше</td>
+                <td>Инвентаризация</td>
             </tr>
             </tbody>
         </table>

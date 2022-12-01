@@ -38,5 +38,8 @@
         ],
         'trk_rooms' => [
             'pagination' => 5
+        ],
+        'spare_parts' => [
+            'pagination' => 5
         ]
     ];

@@ -8,7 +8,7 @@ use App\Http\Filters\Equipments\EquipmentNamesFilter;
 use App\Http\Filters\Trks\TrkRoomNamesFilter;
 use App\Http\Filters\Trks\TrksFilter;
 use App\Models\Rooms\Room;
-use App\Models\Systems\System;
+use App\Models\Systems\SparePart;
 use App\Http\Requests\Equipments\{
     EquipmentFilterRequest,
     StoreUserFormRequest,
@@ -59,7 +59,7 @@ class EquipmentController extends Controller
         return view('front.equipment.index', [
             'equipments' => $equipments,
             'trks' => Trk::all(),
-            'systems' => System::all(),
+            'systems' => SparePart::all(),
             'rooms' => Room::all(),
             'equipment_names' => EquipmentNames::all(),
             'old_filters' => $data

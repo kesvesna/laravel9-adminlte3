@@ -159,13 +159,27 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('admin.systems.index') }}"
-                       class="nav-link {{ request()->routeIs('admin.systems.timesheet')?'active':'' }}">
+                       class="nav-link {{ request()->routeIs('admin.systems.index')?'active':'' }}">
                         <i class="nav-icon far fa-file"></i>
                         <p>
                             Тип/Услуга
                             @if(isset($systems_count))
                                 <span class="badge badge-info right">
                             {{ $systems_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.spare_parts.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.spare_parts.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Деталь
+                            @if(isset($spare_parts_count))
+                                <span class="badge badge-info right">
+                            {{ $spare_parts_count }}
                         </span>
                             @endif
                         </p>

@@ -81,13 +81,11 @@ $year = date('Y', strtotime($date));
 ?>
 
 <main>
-    <div class="container-fluid">
-        <div class="row col-12 mx-auto row-cols-1">
-            <div class="col">
+    <div class="container">
+        <div class="col-12 col-md-6 row-cols-1">
                 <h5 class="pt-3">Месяц и год</h5>
                 <input type="month" id="start" name="start"
-                       min="2022-10" value="2022-11">
-            </div>
+                       min="2022-10" value="2022-11" class="form-control">
         </div>
         <h5 class="pt-4 pb-3">Табель на <?=$month . ' ' . $year . ' года'?></h5>
         <table class="table table-bordered table-hover" style="background: rgba( 255, 255, 255, 0.5 );
@@ -133,11 +131,11 @@ $year = date('Y', strtotime($date));
             ?>
             </tbody>
         </table>
-        <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-2 pb-3">
-            <div class="col mt-3">
+        <div class="row-cols-1 row-cols-md-2 row-cols-xxl-2 pb-3 pt-1">
+            <div class="mt-3">
                 <button class="btn btn-danger col-12" type="button">Сохранить</button>
             </div>
-            <div class="col mt-3">
+            <div class="mt-3">
                 <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
             </div>
         </div>

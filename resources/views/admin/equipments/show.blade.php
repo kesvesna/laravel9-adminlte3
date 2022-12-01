@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    <div class="container">
     <br>
     <h2>Оборудование №{{ $equipment->id }}, {{$equipment->name->name}}</h2>
     <div class="table-responsive">
@@ -48,10 +49,12 @@
     <form action="{{ route('admin.equipments.destroy', $equipment->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3">Назад</a>
-        <a href="{{ route('admin.equipments.edit', $equipment->id) }}"
-           class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+        <div class="justify-content-between justify-content-md-start">
+            <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3 btn-sm">Назад</a>
+            <a href="{{ route('admin.equipments.edit', $equipment->id) }}"
+               class="btn btn-warning mr-3 btn-sm">Редактировать</a>
+            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+        </div>
     </form>
     <br>
     <h4>История {{$equipment->name->name}}</h4>
@@ -75,5 +78,17 @@
         @endforelse
         </tbody>
     </table>
-
+        <hr>
+        <p>фотографии</p>
+        <p>заявки</p>
+        <p>ремонт</p>
+        <p>акты</p>
+        <p>Из каких деталей состоит</p>
+        <p>Потребители</p>
+        <p>Откуда запитано</p>
+        <p>Комментарии</p>
+        <p>Ответственный</p>
+        <p>QR код</p>
+        <hr>
+    </div>
 @endsection

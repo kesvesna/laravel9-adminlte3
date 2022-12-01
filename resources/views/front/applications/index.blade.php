@@ -46,7 +46,7 @@
         </div>
         </form>
         <form action="{{ route('front.applications.index') }}" method="get">
-        <table class="table table-bordered table-hover mt-4" style="background: rgba( 255, 255, 255, 0.1 );
+        <table class="table table-bordered table-hover mt-2" style="background: rgba( 255, 255, 255, 0.1 );
                                                                     backdrop-filter: blur( 1px );
                                                                     -webkit-backdrop-filter: blur( 1px );
                                                                     border-radius: 5px;
@@ -114,7 +114,7 @@
                 </td>
             </tr>
             @forelse($applications as $application)
-                <tr style="color: white;"  onclick="window.location='{{ route('front.applications.show', $application->id) }}';">
+                <tr style="color: white; {{$application->currentHistory->application_status->background_color}}"  onclick="window.location='{{ route('front.applications.show', $application->id) }}';">
                     <td  class="d-none d-sm-table-cell">{{ $application->id }}</td>
                     <td class="d-none d-sm-table-cell">{{ $application->created_at }}</td>
                     <td class="d-none d-lg-table-cell">{{ $application->trk->name }}</td>
@@ -123,7 +123,9 @@
                     <td>{{ Str::limit($application->comment, 35, ' ...')  }}</td>
                 </tr>
                 @empty
-                    Нет заявок
+                <tr>
+                    <td colspan="6"><b style="color: white;">Нет заявок</b></td>
+                </tr>
             @endforelse
             <tr>
                 <th colspan="6">

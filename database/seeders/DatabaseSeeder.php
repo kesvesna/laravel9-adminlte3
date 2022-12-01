@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             EquipmentNamesSeeder::class,
             SystemTypesSeeder::class,
             WorkTypesSeeder::class,
+            SparePartTypesSeeder::class,
             EquipmentStatusSeeder::class,
             UserStatusSeeder::class,
         ]);

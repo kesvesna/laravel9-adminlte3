@@ -5,17 +5,18 @@
 @endsection
 
 @section('content')
+    <div class="container pt-3">
     @if ($message = session()->get('success'))
-        <div class="alert alert-success alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <div class="alert alert-success alert-dismissible" id="equipment_success_message">
+            <button id="btn_equipment_success_message" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-check"></i>{{ $message }}</h5>
         </div>
     @endif
     <br>
-    <form method="get" action="{{ route('admin.equipments.create') }}" class="mb-3">
+    <form method="get" action="{{ route('admin.equipments.create') }}">
         <div class="row">
             <h2>Оборудование</h2>
-            <button class="btn btn-success btn-sm ml-3" type="submit"><b>Создать</b></button>
+            <button class="btn btn-success btn-sm ml-1" type="submit"><b>Создать</b></button>
         </div>
     </form>
     <hr>
@@ -110,4 +111,17 @@
             </table>
             {{ $equipments->withQueryString()->links() }}
         </div>
+    </div>
+    <script>
+        function admin_equipment_index_page_ready() {
+            const targetDiv = document.getElementById("equipment_success_message");
+            const btn = document.getElementById("btn_equipment_success_message");
+            if(btn){
+                btn.onclick = function () {
+                    targetDiv.style.display = "none";
+                };
+            }
+        }
+        document.addEventListener("DOMContentLoaded", admin_equipment_index_page_ready);
+    </script>
 @endsection

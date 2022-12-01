@@ -5,9 +5,10 @@
 @endsection
 
 @section('content')
+    <div class="container-fluid pt-3">
     @if ($message = session()->get('danger'))
-        <div class="alert alert-danger alert-dismissible">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <div class="alert alert-danger alert-dismissible" role="alert" id="equipment_danger_message">
+            <button id="btn_equipment_danger_message" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-ban"></i>{{ $message }}</h5>
         </div>
     @endif
@@ -110,4 +111,17 @@
         <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3">Назад</a>
         <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
+    </div>
+    <script>
+        function admin_equipment_edit_page_ready() {
+            const targetDiv = document.getElementById("equipment_danger_message");
+            const btn = document.getElementById("btn_equipment_danger_message");
+            if(btn){
+                btn.onclick = function () {
+                    targetDiv.style.display = "none";
+                };
+            }
+        }
+        document.addEventListener("DOMContentLoaded", admin_equipment_edit_page_ready);
+    </script>
 @endsection

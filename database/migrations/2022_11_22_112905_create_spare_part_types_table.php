@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('application_statuses', function (Blueprint $table) {
+        Schema::create('spare_part_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50)->unique();
-            $table->string('slug', 50)->unique();
-            $table->string('background_color', 50)->default('');
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->integer('sort_order')->default(1);
             $table->tinyInteger('visible')->default(1);
             $table->timestamps();
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('application_statuses');
+        Schema::dropIfExists('spare_part_types');
     }
 };

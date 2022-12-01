@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class WorkTypesSeeder extends Seeder
+class SparePartTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,64 +15,58 @@ class WorkTypesSeeder extends Seeder
     public function run()
     {
 
-            DB::table('work_types')->insert([
+            DB::table('spare_part_types')->insert([
                 [
-                    'name' => 'Монтаж',
-                    'slug' => 'montazh',
+                    'name' => 'Подшипник',
+                    'slug' => 'podshipnik',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Демонтаж',
-                    'slug' => 'demontazh',
+                    'name' => 'Фильтр карманный приток',
+                    'slug' => 'filtr_karmanniy_pritok',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Сборка',
-                    'slug' => 'sborka',
+                    'name' => 'Фильтр карманный вытяжка',
+                    'slug' => 'filtr_karmanniy_vityazhka',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Разборка',
-                    'slug' => 'razborka',
+                    'name' => 'Фильтр панельный приток',
+                    'slug' => 'filtr_panelniy_pritok',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'ТО-1',
-                    'slug' => 'to-1',
+                    'name' => 'Фильтр панельный вытяжка',
+                    'slug' => 'filtr_panelniy_vitayzhka',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'ТО-2',
-                    'slug' => 'to-2',
+                    'name' => 'Фильтр кассетный приток',
+                    'slug' => 'filtr_cassetniy_pritok',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'ТО-3',
-                    'slug' => 'to-3',
+                    'name' => 'Фильтр кассетный вытяжка',
+                    'slug' => 'filtr_cassetniy_vitayzhka',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'ТО-4',
-                    'slug' => 'to-4',
+                    'name' => 'Ремень',
+                    'slug' => 'remen',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'ТО-5',
-                    'slug' => 'to-5',
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'name' => 'ТО-6',
-                    'slug' => 'to-6',
+                    'name' => 'Автомат',
+                    'slug' => 'avtomat',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
