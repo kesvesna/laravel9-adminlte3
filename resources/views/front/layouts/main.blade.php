@@ -22,8 +22,13 @@
 @include('front.components.footer')
 
 <script src="{{ asset('dist/js/jquery.min.js') }}"></script>
-<script defer src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script defer src="{{ asset('plugins/owlcarousel/js/owl.carousel.min.js') }}"></script>
 <script defer src="{{ asset('dist/js/carousel_driver.js') }}"></script>
+
+<!-- User javascript -->
+<script src="{{ asset('dist/js/tables/act/delete_row.js') }}"></script>
+<script src="{{ asset('dist/js/tables/act/add_row.js') }}"></script>
+
 </body>
 </html>
