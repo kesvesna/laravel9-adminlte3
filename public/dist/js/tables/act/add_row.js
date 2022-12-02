@@ -25,9 +25,9 @@ $(".add-act-work").click(function(){
     let new_spare_part_title_2 = $(this).closest('tr').next().next().next().clone();
     let new_spare_part_body_2 = $(this).closest('tr').next().next().next().next().clone(true);
 
-    while($(this).closest('tr').next().clone(true)) {
-
-    }
+    let add_button = $(this).clone(true);
+    $(new_spare_part_body_2).find('td:last button').remove();
+    $(new_spare_part_body_2).find('td:last').append(add_button);
 
     $(new_spare_part_body_2).find('input').val('').end();
     $(new_spare_part_body_2).find('textarea').val('').end();
