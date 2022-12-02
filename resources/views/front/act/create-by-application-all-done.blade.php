@@ -151,7 +151,7 @@
                                 </td>
                                 <td>
                                     <button type="button" class="add-act-spare-part" style="border: none; background-color: transparent;">
-                                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add room" height="35" width="35" title="Добавить перечень работ в акт">
+                                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add spare part" height="35" width="35" title="Добавить деталь в акт">
                                     </button>
                                 </td>
                             </tr>

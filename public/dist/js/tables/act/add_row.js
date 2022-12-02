@@ -5,8 +5,11 @@ $(".add-act-equipment").click(function(){
 
     $(this).closest('.table-responsive').after(new_equipment_block);
 
-    $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+    let hostname = $(location).attr('hostname');
+    let protocol = $(location).attr('protocol');
+    $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
+    $(this).attr('class', 'delete-act-equipment');
 
     $(this).off('click');
 
@@ -27,7 +30,9 @@ $(".add-act-work").click(function(){
 
     let add_button = $(this).clone(true);
     $(new_spare_part_body_2).find('td:last button').remove();
+    $(add_button).attr('class', 'add-act-spare-part');
     $(new_spare_part_body_2).find('td:last').append(add_button);
+
 
     $(new_spare_part_body_2).find('input').val('').end();
     $(new_spare_part_body_2).find('textarea').val('').end();
@@ -41,8 +46,11 @@ $(".add-act-work").click(function(){
         .before(new_spare_part_title_2)
         .before(new_spare_part_body_2);
 
-    $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+    let hostname = $(location).attr('hostname');
+    let protocol = $(location).attr('protocol');
+    $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
+    $(this).attr('class', 'delete-act-work');
 
     $(this).off('click');
 
@@ -76,8 +84,11 @@ $(".add-act-spare-part").click(function(){
         .after(new_spare_part_body_1)
         .after(new_spare_part_title_1);
 
-    $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+    let hostname = $(location).attr('hostname');
+    let protocol = $(location).attr('protocol');
+    $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
+    $(this).attr('class', 'delete-act-spare-part');
 
     $(this).off('click');
 
@@ -97,8 +108,11 @@ $(".add-act-user").click(function(){
 
     $(this).closest('tr').after(tr_body_act_user);
 
-    $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+    let hostname = $(location).attr('hostname');
+    let protocol = $(location).attr('protocol');
+    $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
+    $(this).attr('class', 'delete-act-user');
 
     $(this).off('click');
 

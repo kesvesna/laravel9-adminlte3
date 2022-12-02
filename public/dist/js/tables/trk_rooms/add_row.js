@@ -14,11 +14,11 @@ $(".add-trk-room").click(function(){
             let $table = $(this).closest("table");
             $table.append($clone_tr);
 
-            console.log($(this).attr('class'));
             $(this).removeClass('add-trk-room').addClass('delete-trk-room');
-            console.log($(this).attr('class'));
 
-            $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+            let hostname = $(location).attr('hostname');
+            let protocol = $(location).attr('protocol');
+            $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
             $("img", this).attr("alt","Delete image");
 
             $('#buildings', $clone_tr).val($selected_building_id).change();
