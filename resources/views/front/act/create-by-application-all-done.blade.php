@@ -74,7 +74,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <button type="button" class="add-act-equipment ps-4" style="border: none; background-color: transparent;">
+                                    <button type="button" class="add-act-equipment ps-2" style="border: none; background-color: transparent;">
                                         <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add room" height="35" width="35" title="Добавить оборудование в акт">
                                     </button>
                                 </td>
@@ -103,7 +103,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <button type="button" class="add-act-work" style="border: none; background-color: transparent;">
+                                    <button type="button" class="add-act-work ps-2" style="border: none; background-color: transparent;">
                                         <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add room" height="35" width="35" title="Добавить работы в акт">
                                     </button>
                                 </td>
@@ -150,7 +150,7 @@
                                     <textarea placeholder="Комментарий" class="form-control" id="comment" name="comment" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                 </td>
                                 <td>
-                                    <button type="button" class="add-act-spare-part" style="border: none; background-color: transparent;">
+                                    <button type="button" class="add-act-spare-part ps-2" style="border: none; background-color: transparent;">
                                         <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add spare part" height="35" width="35" title="Добавить деталь в акт">
                                     </button>
                                 </td>
@@ -231,7 +231,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <button type="button" class="add-act-user" style="border: none; background-color: transparent;">
+                                    <button type="button" class="add-act-user ps-2" style="border: none; background-color: transparent;">
                                         <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add room" height="35" width="35" title="Добавить исполнителя в акт">
                                     </button>
                                 </td>

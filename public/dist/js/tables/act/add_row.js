@@ -9,7 +9,7 @@ $(".add-act-equipment").click(function(){
     let protocol = $(location).attr('protocol');
     $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
-    $(this).attr('class', 'delete-act-equipment');
+    $(this).attr('class', 'delete-act-equipment ps-2');
 
     $(this).off('click');
 
@@ -30,7 +30,7 @@ $(".add-act-work").click(function(){
 
     let add_button = $(this).clone(true);
     $(new_spare_part_body_2).find('td:last button').remove();
-    $(add_button).attr('class', 'add-act-spare-part');
+    $(add_button).attr('class', 'add-act-spare-part ps-2');
     $(new_spare_part_body_2).find('td:last').append(add_button);
 
 
@@ -50,7 +50,7 @@ $(".add-act-work").click(function(){
     let protocol = $(location).attr('protocol');
     $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
-    $(this).attr('class', 'delete-act-work');
+    $(this).attr('class', 'delete-act-work ps-2');
 
     $(this).off('click');
 
@@ -88,7 +88,7 @@ $(".add-act-spare-part").click(function(){
     let protocol = $(location).attr('protocol');
     $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
-    $(this).attr('class', 'delete-act-spare-part');
+    $(this).attr('class', 'delete-act-spare-part ps-2');
 
     $(this).off('click');
 
@@ -112,7 +112,7 @@ $(".add-act-user").click(function(){
     let protocol = $(location).attr('protocol');
     $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
-    $(this).attr('class', 'delete-act-user');
+    $(this).attr('class', 'delete-act-user ps-2');
 
     $(this).off('click');
 
