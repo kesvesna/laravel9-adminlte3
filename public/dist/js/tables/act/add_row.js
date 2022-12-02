@@ -1,11 +1,9 @@
 
 $(".add-act-equipment").click(function(){
 
-    let new_equipment_block = $(this).parent().parent().clone(true);
-    console.log(new_equipment_block);
+    let new_equipment_block = $(this).closest('.table-responsive').clone(true);
 
-
-    $(this).closest('div.equipment_block').after(new_equipment_block);
+    $(this).closest('.table-responsive').after(new_equipment_block);
 
     $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
     $("img", this).attr("alt","Delete image");
@@ -13,128 +11,82 @@ $(".add-act-equipment").click(function(){
     $(this).off('click');
 
     $(this).click(function(){
-        $(this).closest("div.equipment_block").remove();
+        $(this).closest(".table-responsive").remove();
     });
-
-
-    //console.log(tr_title_equipment_name);
-    //console.log(tr_body_equipment_name);
-        // let $clone_tr = $(this).closest("tr").clone(true);
-        // let $tr = $(this).closest('tr').get();
-        //
-        // let $selected_building_id = $('#buildings option:selected', $tr).val();
-        // let $selected_floor_id = $('#floors option:selected', $tr).val();
-        // let $selected_room_id = $('#rooms option:selected', $tr).val();
-        //
-        // if($selected_room_id && $selected_building_id && $selected_floor_id){
-        //     $clone_tr.attr('id', parseInt($clone_tr.attr('id')) + 1);
-        //
-        //     let $table = $(this).closest("table");
-        //     $table.append($clone_tr);
-        //
-        //     console.log($(this).attr('class'));
-        //     $(this).removeClass('add-trk-room').addClass('delete-trk-room');
-        //     console.log($(this).attr('class'));
-        //
-        //     $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
-        //     $("img", this).attr("alt","Delete image");
-        //
-        //     $('#buildings', $clone_tr).val($selected_building_id).change();
-        //     $('#floors', $clone_tr).val($selected_floor_id).change();
-        //     $('#rooms', $clone_tr).val($selected_room_id).change();
-        //
-        //     $(this).off('click');
-        //
-        //     $(this).click(function(){
-        //         $(this).closest("tr").remove();
-        //     });
-        //
-        //     window.scrollTo(0, document.body.scrollHeight);
-        // } else {
-        //     alert('Сначала выберите блок, этаж и помещение');
-        // }
-
 
 });
 
 $(".add-act-work").click(function(){
 
-    let $clone_tr = $(this).closest("tr").clone(true);
-    let $tr = $(this).closest('tr').get();
+    let new_act_work_body = $(this).closest('tr').clone(true);
+    let new_act_work_title = $(this).closest('tr').prev().clone();
+    let new_spare_part_title_1 = $(this).closest('tr').next().clone();
+    let new_spare_part_body_1 = $(this).closest('tr').next().next().clone();
+    let new_spare_part_title_2 = $(this).closest('tr').next().next().next().clone();
+    let new_spare_part_body_2 = $(this).closest('tr').next().next().next().next().clone(true);
 
-    let $selected_building_id = $('#buildings option:selected', $tr).val();
-    let $selected_floor_id = $('#floors option:selected', $tr).val();
-    let $selected_room_id = $('#rooms option:selected', $tr).val();
+    while($(this).closest('tr').next().clone(true)) {
 
-    if($selected_room_id && $selected_building_id && $selected_floor_id){
-        $clone_tr.attr('id', parseInt($clone_tr.attr('id')) + 1);
-
-        let $table = $(this).closest("table");
-        $table.append($clone_tr);
-
-        console.log($(this).attr('class'));
-        $(this).removeClass('add-trk-room').addClass('delete-trk-room');
-        console.log($(this).attr('class'));
-
-        $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
-        $("img", this).attr("alt","Delete image");
-
-        $('#buildings', $clone_tr).val($selected_building_id).change();
-        $('#floors', $clone_tr).val($selected_floor_id).change();
-        $('#rooms', $clone_tr).val($selected_room_id).change();
-
-        $(this).off('click');
-
-        $(this).click(function(){
-            $(this).closest("tr").remove();
-        });
-
-        window.scrollTo(0, document.body.scrollHeight);
-    } else {
-        alert('Сначала выберите блок, этаж и помещение');
     }
 
+    $(new_spare_part_body_2).find('input').val('').end();
+    $(new_spare_part_body_2).find('textarea').val('').end();
+    $(new_spare_part_body_1).find('input').val('').end();
+
+    $('.title_act_text_description_1')
+        .before(new_act_work_title)
+        .before(new_act_work_body)
+        .before(new_spare_part_title_1)
+        .before(new_spare_part_body_1)
+        .before(new_spare_part_title_2)
+        .before(new_spare_part_body_2);
+
+    $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+    $("img", this).attr("alt","Delete image");
+
+    $(this).off('click');
+
+    $(this).click(function(){
+
+        while($(this).closest("tr").next().attr('class') !== 'title_act_work')
+        {
+            $(this).closest("tr").next().remove();
+        }
+
+        $(this).closest("tr").prev().remove();
+        $(this).closest("tr").remove();
+    });
 
 });
 
-
 $(".add-act-spare-part").click(function(){
 
-    let $clone_tr = $(this).closest("tr").clone(true);
-    let $tr = $(this).closest('tr').get();
+    let new_spare_part_body_2 = $(this).closest('tr').clone(true);
+    let new_spare_part_title_2 = $(this).closest('tr').prev().clone();
+    let new_spare_part_title_1 = $(this).closest('tr').prev().prev().prev().clone();
+    let new_spare_part_body_1 = $(this).closest('tr').prev().prev().clone();
 
-    let $selected_building_id = $('#buildings option:selected', $tr).val();
-    let $selected_floor_id = $('#floors option:selected', $tr).val();
-    let $selected_room_id = $('#rooms option:selected', $tr).val();
+    $(new_spare_part_body_2).find('input').val('').end();
+    $(new_spare_part_body_2).find('textarea').val('').end();
+    $(new_spare_part_body_1).find('input').val('').end();
 
-    if($selected_room_id && $selected_building_id && $selected_floor_id){
-        $clone_tr.attr('id', parseInt($clone_tr.attr('id')) + 1);
+    $(this).closest('tr')
+        .after(new_spare_part_body_2)
+        .after(new_spare_part_title_2)
+        .after(new_spare_part_body_1)
+        .after(new_spare_part_title_1);
 
-        let $table = $(this).closest("table");
-        $table.append($clone_tr);
+    $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
+    $("img", this).attr("alt","Delete image");
 
-        console.log($(this).attr('class'));
-        $(this).removeClass('add-trk-room').addClass('delete-trk-room');
-        console.log($(this).attr('class'));
+    $(this).off('click');
 
-        $("img", this).attr("src","http://laravel9-adminlte3/icons/delete-basket.svg");
-        $("img", this).attr("alt","Delete image");
-
-        $('#buildings', $clone_tr).val($selected_building_id).change();
-        $('#floors', $clone_tr).val($selected_floor_id).change();
-        $('#rooms', $clone_tr).val($selected_room_id).change();
-
-        $(this).off('click');
-
-        $(this).click(function(){
-            $(this).closest("tr").remove();
-        });
-
-        window.scrollTo(0, document.body.scrollHeight);
-    } else {
-        alert('Сначала выберите блок, этаж и помещение');
-    }
-
+    $(this).click(function(){
+        $(this).closest("tr").prev().remove();
+        $(this).closest("tr").prev().remove();
+        $(this).closest("tr").prev().remove();
+        $(this).closest("tr").remove();
+    });
 
 });
 
