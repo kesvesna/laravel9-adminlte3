@@ -59,35 +59,35 @@
                     <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
                 </td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.acts.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 14:54</td>
                 <td class="d-none d-lg-table-cell">Академ Парк</td>
                 <td class="d-none d-md-table-cell">Вентиляция</td>
                 <td class="d-none d-lg-table-cell">ВК-12</td>
                 <td>ПВ-9</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.acts.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:57</td>
                 <td class="d-none d-lg-table-cell">Родео Драйв</td>
                 <td class="d-none d-md-table-cell">Кондиционирование</td>
                 <td class="d-none d-lg-table-cell">B-13</td>
                 <td>Ф-59</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.acts.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
                 <td class="d-none d-lg-table-cell">Гудзон</td>
                 <td class="d-none d-md-table-cell">Электрооборудование</td>
                 <td class="d-none d-lg-table-cell">ГРЩ-2</td>
                 <td>Розетка</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.acts.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
                 <td class="d-none d-lg-table-cell">Гудзон</td>
                 <td class="d-none d-md-table-cell">Электрооборудование</td>
                 <td class="d-none d-lg-table-cell">ГРЩ-2</td>
                 <td>Розетка</td>
             </tr>
-            <tr style="color: white;"  onclick="window.location='{{ route('front.act.show') }}';" >
+            <tr style="color: white;"  onclick="window.location='{{ route('front.acts.show') }}';" >
                 <td class="d-none d-sm-table-cell">11-11-2022 12:54</td>
                 <td class="d-none d-lg-table-cell">Гудзон</td>
                 <td class="d-none d-md-table-cell">Электрооборудование</td>
@@ -97,7 +97,7 @@
             </tbody>
         </table>
         <div class="row pb-2 d-flex flex-row-reverse pe-5">
-            <a href="{{ route('front.act.create') }}" style="width: 0">
+            <a href="{{ route('front.acts.create') }}" style="width: 0">
                 <img src="{{ asset('icons/plus.svg') }}" alt="Add picture" width="50" height="50">
             </a>
         </div>

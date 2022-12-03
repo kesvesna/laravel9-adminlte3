@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Front\Acts;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Acts\StoreActFormRequest;
 use App\Models\Applications\Applications;
 use App\Models\Buildings\Building;
 use App\Models\Repairs\Repair;
 use App\Models\Rooms\Room;
 use App\Models\Systems\System;
+use App\Services\Acts\UploadService;
 
 class ActController extends Controller
 {
@@ -79,6 +81,13 @@ class ActController extends Controller
     public function create_by_plan()
     {
         return view('front.act.create-by-plan');
+    }
+
+    public function store(StoreActFormRequest $request, UploadService $uploadService)
+    {
+        dd($request->all());
+
+        return view('front.act.index');
     }
 
     public function update()

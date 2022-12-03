@@ -5,6 +5,8 @@ $(".add-act-equipment").click(function(){
 
     $(act_equipment).addClass('mt-4');
 
+    let array_equipment_index = $('div.equipments').find('div.act-equipment').length;
+
     while($(act_equipment).find("div.act-works").length > 1) {
         $(act_equipment).find('div.act-works:first').remove();
     }
@@ -12,6 +14,15 @@ $(".add-act-equipment").click(function(){
     while($(act_equipment).find("div.act-spare-parts").length > 1) {
         $(act_equipment).find('div.act-spare-parts:first').remove();
     }
+
+    $(act_equipment).find('select:first').attr('name', 'Equipment[' + array_equipment_index + '][equipment_id]');
+
+    $(act_equipment).find('div.act-works select:first').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][]');
+
+    $(act_equipment).find('div.act-spare-parts select:first').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][1][spare_part_ids][]');
+
+    $(act_equipment).find('input').val('');
+    $(act_equipment).find('textarea').val('');
 
     $(this).closest('div.act-equipment').after(act_equipment);
 
@@ -32,6 +43,8 @@ $(".add-act-equipment").click(function(){
     }, 100);
 });
 
+
+
 $(".add-act-work").click(function(){
 
     let act_work = $(this).closest('div.act-works').clone(true);
@@ -43,6 +56,14 @@ $(".add-act-work").click(function(){
     while($(act_work).find("div.act-spare-parts").length > 1) {
         $(act_work).find('div.act-spare-parts:first').remove();
     }
+
+    let array_equipment_index = $('div.equipments').find('div.act-equipment').length;
+
+    let act_works_div_counter = $(this).closest('div.act-equipment').find('div.act-works').length;
+
+    $(act_work).find('select:last').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + ']');
+
+    $(act_work).find('div.act-spare-parts select:first').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + '][spare_part_ids][]');
 
     $(this).closest('div.act-works').after(act_work);
 
@@ -71,6 +92,14 @@ $(".add-act-spare-part").click(function(){
     $(act_spare_parts).addClass('mt-2');
     $(act_spare_parts).find('input').val('');
     $(act_spare_parts).find('textarea').val('');
+
+    let array_equipment_index = $('div.equipments').find('div.act-equipment').length;
+
+    let act_works_div_counter = $(this).closest('div.act-equipment').find('div.act-works').length;
+
+    console.log('array_equipment_index = ' + array_equipment_index);
+
+    $(act_spare_parts).find('select:last').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + '][spare_part_ids][]');
 
     $(this).closest('div.act-spare-parts').after(act_spare_parts);
 

@@ -4,7 +4,7 @@
         <a class="nav-link" href="{{ route('front.applications.index') }}"><h5>Заявки</h5></a>
         <a class="nav-link" href="{{ route('front.applications.index') }}"><h5>Задачи</h5></a>
         <a class="nav-link" href="{{ route('front.repair.index') }}"><h5>Ремонт</h5></a>
-        <a class="nav-link" href="{{ route('front.act.index') }}"><h5>Акты</h5></a>
+        <a class="nav-link" href="{{ route('front.acts.index') }}"><h5>Акты</h5></a>
         <a class="nav-link" href="{{ route('front.equipment.index') }}"><h5>Оборудование</h5></a>
         {{--        <a class="nav-link" href="{{ route('front.login') }}"><h5>Вход</h5></a>--}}
         <a class="nav-link" href="{{ route('front.renter_application.index') }}"><h5>Заявки от арендаторов</h5></a>
