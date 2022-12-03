@@ -1,28 +1,17 @@
 
 $(".delete-act-equipment").click(function () {
-    $(this).closest(".table-responsive").remove();
+    $(this).closest("div.act-equipment").remove();
 });
 
 $(".delete-act-work").click(function () {
-    while($(this).closest("tr").next().attr('class') !== 'title_act_work')
-    {
-        $(this).closest("tr").next().remove();
-    }
-
-    $(this).closest("tr").prev().remove();
-    $(this).closest("tr").remove();
+    $(this).closest("div.act-works").remove();
 });
-
 
 $(".delete-act-spare-part").click(function () {
-    $(this).closest("tr").prev().remove();
-    $(this).closest("tr").prev().remove();
-    $(this).closest("tr").prev().remove();
-    $(this).closest("tr").remove();
+    $(this).closest("div.act-spare-parts").remove();
 });
 
-
 $(".delete-act-user").click(function () {
-    $(this).closest("tr").remove();
+    $(this).closest(".input-group").remove();
 });
 

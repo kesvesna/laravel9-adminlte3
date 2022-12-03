@@ -1,9 +1,19 @@
 
 $(".add-act-equipment").click(function(){
 
-    let new_equipment_block = $(this).closest('.table-responsive').clone(true);
+    let act_equipment = $(this).closest('div.act-equipment').clone(true);
 
-    $(this).closest('.table-responsive').after(new_equipment_block);
+    $(act_equipment).addClass('mt-4');
+
+    while($(act_equipment).find("div.act-works").length > 1) {
+        $(act_equipment).find('div.act-works:first').remove();
+    }
+
+    while($(act_equipment).find("div.act-spare-parts").length > 1) {
+        $(act_equipment).find('div.act-spare-parts:first').remove();
+    }
+
+    $(this).closest('div.act-equipment').after(act_equipment);
 
     let hostname = $(location).attr('hostname');
     let protocol = $(location).attr('protocol');
@@ -14,37 +24,27 @@ $(".add-act-equipment").click(function(){
     $(this).off('click');
 
     $(this).click(function(){
-        $(this).closest(".table-responsive").remove();
+        $(this).closest("div.act-equipment").remove();
     });
 
+    $('html, body').animate({
+        scrollTop: $(act_equipment).offset().top
+    }, 100);
 });
 
 $(".add-act-work").click(function(){
 
-    let new_act_work_body = $(this).closest('tr').clone(true);
-    let new_act_work_title = $(this).closest('tr').prev().clone();
-    let new_spare_part_title_1 = $(this).closest('tr').next().clone();
-    let new_spare_part_body_1 = $(this).closest('tr').next().next().clone();
-    let new_spare_part_title_2 = $(this).closest('tr').next().next().next().clone();
-    let new_spare_part_body_2 = $(this).closest('tr').next().next().next().next().clone(true);
+    let act_work = $(this).closest('div.act-works').clone(true);
 
-    let add_button = $(this).clone(true);
-    $(new_spare_part_body_2).find('td:last button').remove();
-    $(add_button).attr('class', 'add-act-spare-part ps-2');
-    $(new_spare_part_body_2).find('td:last').append(add_button);
+    $(act_work).addClass('mt-3');
+    $(act_work).find('input').val('');
+    $(act_work).find('textarea').val('');
 
+    while($(act_work).find("div.act-spare-parts").length > 1) {
+        $(act_work).find('div.act-spare-parts:first').remove();
+    }
 
-    $(new_spare_part_body_2).find('input').val('').end();
-    $(new_spare_part_body_2).find('textarea').val('').end();
-    $(new_spare_part_body_1).find('input').val('').end();
-
-    $('.title_act_text_description_1')
-        .before(new_act_work_title)
-        .before(new_act_work_body)
-        .before(new_spare_part_title_1)
-        .before(new_spare_part_body_1)
-        .before(new_spare_part_title_2)
-        .before(new_spare_part_body_2);
+    $(this).closest('div.act-works').after(act_work);
 
     let hostname = $(location).attr('hostname');
     let protocol = $(location).attr('protocol');
@@ -55,34 +55,24 @@ $(".add-act-work").click(function(){
     $(this).off('click');
 
     $(this).click(function(){
-
-        while($(this).closest("tr").next().attr('class') !== 'title_act_work')
-        {
-            $(this).closest("tr").next().remove();
-        }
-
-        $(this).closest("tr").prev().remove();
-        $(this).closest("tr").remove();
+        $(this).closest("div.act-works").remove();
     });
+
+    $('html, body').animate({
+        scrollTop: $(act_work).offset().top
+    }, 100);
 
 });
 
 $(".add-act-spare-part").click(function(){
 
-    let new_spare_part_body_2 = $(this).closest('tr').clone(true);
-    let new_spare_part_title_2 = $(this).closest('tr').prev().clone();
-    let new_spare_part_title_1 = $(this).closest('tr').prev().prev().prev().clone();
-    let new_spare_part_body_1 = $(this).closest('tr').prev().prev().clone();
+    let act_spare_parts = $(this).closest('div.act-spare-parts').clone(true);
 
-    $(new_spare_part_body_2).find('input').val('').end();
-    $(new_spare_part_body_2).find('textarea').val('').end();
-    $(new_spare_part_body_1).find('input').val('').end();
+    $(act_spare_parts).addClass('mt-2');
+    $(act_spare_parts).find('input').val('');
+    $(act_spare_parts).find('textarea').val('');
 
-    $(this).closest('tr')
-        .after(new_spare_part_body_2)
-        .after(new_spare_part_title_2)
-        .after(new_spare_part_body_1)
-        .after(new_spare_part_title_1);
+    $(this).closest('div.act-spare-parts').after(act_spare_parts);
 
     let hostname = $(location).attr('hostname');
     let protocol = $(location).attr('protocol');
@@ -93,20 +83,21 @@ $(".add-act-spare-part").click(function(){
     $(this).off('click');
 
     $(this).click(function(){
-        $(this).closest("tr").prev().remove();
-        $(this).closest("tr").prev().remove();
-        $(this).closest("tr").prev().remove();
-        $(this).closest("tr").remove();
+        $(this).closest("div.act-spare-parts").remove();
     });
+
+    $('html, body').animate({
+        scrollTop: $(act_spare_parts).offset().top
+    }, 100);
 
 });
 
 
 $(".add-act-user").click(function(){
 
-    let tr_body_act_user = $(this).closest('tr').clone(true);
+    let act_user = $(this).closest('.input-group').clone(true);
 
-    $(this).closest('tr').after(tr_body_act_user);
+    $(this).closest('.input-group').after(act_user);
 
     let hostname = $(location).attr('hostname');
     let protocol = $(location).attr('protocol');
@@ -117,7 +108,7 @@ $(".add-act-user").click(function(){
     $(this).off('click');
 
     $(this).click(function(){
-        $(this).closest("tr").remove();
+        $(this).closest(".input-group").remove();
     });
 
     window.scrollTo(0, document.body.scrollHeight);
