@@ -107,7 +107,7 @@
                                         </h2>
                                         <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                             <div class="accordion-body" style="padding: 0;">
-                                                <div class="act-spare-parts p-2 mt-2"  style="background: rgba( 5, 100, 150, 0.1 );
+                                                <div class="act-spare-parts p-2 m-1 mt-2"  style="background: rgba( 5, 100, 150, 0.1 );
                                                         backdrop-filter: blur( 1px );
                                                         -webkit-backdrop-filter: blur( 1px );
                                                         border-radius: 5px;

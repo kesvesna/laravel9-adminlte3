@@ -57,13 +57,13 @@ $(".add-act-work").click(function(){
         $(act_work).find('div.act-spare-parts:first').remove();
     }
 
-    let array_equipment_index = $('div.equipments').find('div.act-equipment').length;
+    //let array_equipment_index = $('div.equipments').find('div.act-equipment').length;
 
-    let act_works_div_counter = $(this).closest('div.act-equipment').find('div.act-works').length;
+    //let act_works_div_counter = $(this).closest('div.act-equipment').find('div.act-works').length;
 
-    $(act_work).find('select:last').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + ']');
+    //$(act_work).find('select:last').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + ']');
 
-    $(act_work).find('div.act-spare-parts select:first').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + '][spare_part_ids][]');
+    //$(act_work).find('div.act-spare-parts select:first').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + '][spare_part_ids][]');
 
     $(this).closest('div.act-works').after(act_work);
 
@@ -97,9 +97,9 @@ $(".add-act-spare-part").click(function(){
 
     let act_works_div_counter = $(this).closest('div.act-equipment').find('div.act-works').length;
 
-    console.log('array_equipment_index = ' + array_equipment_index);
+    //console.log('array_equipment_index = ' + array_equipment_index);
 
-    $(act_spare_parts).find('select:last').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + '][spare_part_ids][]');
+    //$(act_spare_parts).find('select:last').attr('name', 'Equipment[' + array_equipment_index + '][work_ids][' + act_works_div_counter + '][spare_part_ids][]');
 
     $(this).closest('div.act-spare-parts').after(act_spare_parts);
 
