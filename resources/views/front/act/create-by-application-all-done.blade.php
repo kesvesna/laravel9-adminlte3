@@ -66,10 +66,10 @@
                             </div>
                             <div class="mt-2 mb-1 d-flex flex-lg-row-reverse">
                                 <label class="form-check-label" for="copy_works" style="color: white; font-size: 0.75em;">
-                                    Копировать работы в следующую установку
+                                    Копировать работы в следующее оборудование
                                 </label>
-                                <input class="form-check-input ms-4 me-2" type="checkbox" value="" id="copy_works_1">
-{{--                                <button type="button" class="btn btn-outline-info btn-sm">Инфо</button>--}}
+                                <input class="form-check-input mt-0 ms-2 me-2" type="checkbox" value="" id="copy_works_1">
+
                             </div>
 
                         </div>

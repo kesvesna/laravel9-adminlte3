@@ -82,8 +82,6 @@ $(".add-act-equipment").click(function(){
         alert('Необходимо выбрать оборудование');
     }
 
-
-
 });
 
 
@@ -92,42 +90,51 @@ $(".add-act-work").click(function(){
 
     let act_work = $(this).closest('div.act-works').clone(true);
 
-    $(act_work).addClass('mt-3');
-    $(act_work).find('input').val('');
-    $(act_work).find('textarea').val('');
+    let selected_work = $(this).closest('div.act-works').find('select.equipment-work').val();
 
-    while($(act_work).find("div.act-spare-parts").length > 1) {
-        $(act_work).find('div.act-spare-parts:first').remove();
+    if(selected_work) {
+        $(act_work).addClass('mt-3');
+        $(act_work).find('input').val('');
+        $(act_work).find('textarea').val('');
+
+        while($(act_work).find("div.act-spare-parts").length > 1) {
+            $(act_work).find('div.act-spare-parts:first').remove();
+        }
+
+        let equip_name = $(this).closest('div.act-equipment').attr('id');
+
+        let work_idx = $(this).closest('div.act-equipment').find('div.act-works').length;
+
+        $(act_work).find('select:first').attr('name',  equip_name + '[work_ids][' + work_idx + '][id]');
+
+        $(act_work).find('div.act-spare-parts select:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][id]');
+        $(act_work).find('div.act-spare-parts input:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][count]');
+        $(act_work).find('div.act-spare-parts input:last').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][model]');
+        $(act_work).find('div.act-spare-parts textarea:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][comment]');
+
+        $(this).closest('div.act-works').after(act_work);
+
+        let hostname = $(location).attr('hostname');
+        let protocol = $(location).attr('protocol');
+        $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
+        $("img", this).attr("alt","Delete image");
+        $("img", this).attr("title", "Удалить работу из оборудования")
+        $(this).attr('class', 'delete-act-work ps-2');
+
+        $(this).off('click');
+
+        $(this).click(function(){
+            $(this).closest("div.act-works").remove();
+        });
+
+        $('html, body').animate({
+            scrollTop: $(act_work).offset().top
+        }, 100);
+    } else {
+        alert('Выберите выполненную работу');
     }
 
-    let equip_name = $(this).closest('div.act-equipment').attr('id');
 
-    let work_idx = $(this).closest('div.act-equipment').find('div.act-works').length;
-
-    $(act_work).find('select:first').attr('name',  equip_name + '[work_ids][' + work_idx + '][id]');
-
-    $(act_work).find('div.act-spare-parts select:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][id]');
-    $(act_work).find('div.act-spare-parts input:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][count]');
-    $(act_work).find('div.act-spare-parts input:last').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][model]');
-    $(act_work).find('div.act-spare-parts textarea:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][0][comment]');
-
-    $(this).closest('div.act-works').after(act_work);
-
-    let hostname = $(location).attr('hostname');
-    let protocol = $(location).attr('protocol');
-    $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
-    $("img", this).attr("alt","Delete image");
-    $(this).attr('class', 'delete-act-work ps-2');
-
-    $(this).off('click');
-
-    $(this).click(function(){
-        $(this).closest("div.act-works").remove();
-    });
-
-    $('html, body').animate({
-        scrollTop: $(act_work).offset().top
-    }, 100);
 
 });
 
