@@ -36,6 +36,7 @@ return new class extends Migration
             $table->text('recommendations')->nullable()->default(null);
             $table->text('spare_parts')->nullable()->default(null);
             $table->tinyInteger('visible')->default(1);
+            $table->dateTime('date');
             $table->timestamps();
             $table->softDeletes();
         });

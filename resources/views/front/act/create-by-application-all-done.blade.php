@@ -6,7 +6,7 @@
 
 @section('content')
 <main>
-    <div class="container pt-3" style="padding-bottom: 12vh;">
+    <div class="container pt-3" style="padding-bottom: 15vh;">
             <form class="pt-2 pb-2" method="post" action="{{ route('front.acts.store') }}" enctype="multipart/form-data"
                   style="background: rgba( 255, 255, 255, 0.1 );
                             backdrop-filter: blur( 1px );
@@ -26,14 +26,14 @@
 
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 mb-2">
                         <div class="col mb-2">
-                            <label for="created_at" style="color: white;" class="mb-1">Дата/Время</label>
-                            <input required type="datetime-local" id="created_at" name="created_at"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                            <label for="date" style="color: white;" class="mb-1">Дата/Время</label>
+                            <input required type="datetime-local" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                         </div>
                         <div class="col mb-2">
                             <label for="system_type_id" style="color: white;" class="mb-1">Оборудование/Услуга</label>
                             <select autofocus id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                <option value="">Выберите ...</option>
                                 @forelse($systems as $system)
-                                    <option value="">Выберите ...</option>
                                     <option value="{{ $system->id }}">{{ $system->name }}</option>
                                 @empty
                                     Нет систем
@@ -47,13 +47,13 @@
                                                         backdrop-filter: blur( 1px );
                                                         -webkit-backdrop-filter: blur( 1px );
                                                         border-radius: 5px;
-                                                        border: 2px solid rgba( 255, 255, 255, 0.18 );">
+                                                        border: 2px solid rgba( 255, 255, 255, 0.18 );" id="Equipment[0]">
                         <div class="row row-cols-1 mb-2">
                             <div class="col mb-1">
                                 <label for="id" style="color: white;">Оборудование</label>
                             </div>
                             <div class="col mb-2 input-group">
-                                <select name="Equipment[0][equipment_id]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                <select name="Equipment[0][id]" class="form-select equipment" style="background: rgba( 255, 255, 255, 0.5 );">
                                     <option value="">Выберите ...</option>
                                     <option value="1">ПВ-01-М (ВК 1)</option>
                                     <option value="2">ПВ-02-М (ВК 2)</option>
@@ -64,6 +64,14 @@
                                     <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add equipment" height="35" width="35" title="Добавить оборудование в акт">
                                 </button>
                             </div>
+                            <div class="mt-2 mb-1 d-flex flex-lg-row-reverse">
+                                <label class="form-check-label" for="copy_works" style="color: white; font-size: 0.75em;">
+                                    Копировать работы в следующую установку
+                                </label>
+                                <input class="form-check-input ms-4 me-2" type="checkbox" value="" id="copy_works_1">
+{{--                                <button type="button" class="btn btn-outline-info btn-sm">Инфо</button>--}}
+                            </div>
+
                         </div>
 
                         <div class="act-works p-2"  style="background: rgba( 55, 5, 100, 0.1 );
@@ -76,7 +84,7 @@
                                     <label for="work_type_id" style="color: white;">Выполненные работы</label>
                                 </div>
                                 <div class="col mb-2 input-group">
-                                    <select name="Equipment[0][work_ids][]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                    <select name="Equipment[0][work_ids][0][id]" class="form-select equipment-work" style="background: rgba( 255, 255, 255, 0.5 );">
                                         <option value="">Выберите ...</option>
                                         <option value="1">Замена</option>
                                         <option value="2">Чистка сухая</option>
@@ -115,7 +123,7 @@
                                                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
                                                     <div class="col mb-2">
                                                         <label for="spare_part_id" style="color: white;">Деталь</label>
-                                                        <select name="Equipment[0][work_ids][1][spare_part_ids][]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                        <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                                                             <option value="">Выберите ...</option>
                                                             <option value="1">Подшипник</option>
                                                             <option value="2">Фильтр карманный приток</option>
@@ -127,16 +135,16 @@
                                                     </div>
                                                     <div class="col mb-2">
                                                         <label for="count" style="color: white;">Кол-во</label>
-                                                        <input class="form-control" type="number" placeholder="1.0" step="0.1" min="0" max="1000" name="count" value="0.0" style="background: rgba( 255, 255, 255, 0.5 );"/>
+                                                        <input class="form-control" type="number" placeholder="1.0" step="0.1" min="0" max="1000" name="Equipment[0][work_ids][0][spare_part_ids][0][count]" style="background: rgba( 255, 255, 255, 0.5 );"/>
                                                     </div>
                                                     <div class="col mb-2">
                                                         <label for="model" style="color: white;">Модель</label>
-                                                        <input placeholder="Модель" name="model" id="model" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                        <input placeholder="Модель" name="Equipment[0][work_ids][0][spare_part_ids][0][model]" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                                                     </div>
                                                     <div class="col mb-2">
                                                         <label for="comment" style="color: white;">Комментарий</label>
                                                         <div class="input-group">
-                                                            <textarea placeholder="Комментарий" class="form-control" id="comment" name="comment" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                                            <textarea placeholder="Комментарий" class="form-control" name="Equipment[0][work_ids][0][spare_part_ids][0][comment]" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                                             <button type="button" class="add-act-spare-part ps-2" style="border: none; background-color: transparent;">
                                                                 <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add spare part" height="35" width="35" title="Добавить деталь в акт">
                                                             </button>
@@ -147,35 +155,33 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="act-description pt-3">
                             <div class="row row-cols-1 row-cols-md-2">
                                 <div class="col mb-3">
                                     <label for="works" style="color: white;">Описание работ (необязательно)</label>
-                                    <textarea class="form-control" id="works" name="works" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    <textarea class="form-control" name="Equipment[0][works]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                 </div>
                                 <div class="col mb-3">
                                     <label for="remarks" style="color: white;">Замечания (необязательно)</label>
-                                    <textarea class="form-control" id="remarks" name="remarks" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    <textarea class="form-control" name="Equipment[0][remarks]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                 </div>
                             </div>
                             <div class="row row-cols-1 row-cols-md-2">
                                 <div class="col mb-3">
                                     <label for="recommendations" style="color: white;">Рекомендации (необязательно)</label>
-                                    <textarea class="form-control" id="recommendations" name="recommendations" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    <textarea class="form-control" name="Equipment[0][recommendations]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                 </div>
                                 <div class="col mb-3">
                                     <label for="remarks" style="color: white;">Затраченные тмц (необязательно)</label>
-                                    <textarea class="form-control" id="spare_parts" name="spare_parts" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    <textarea class="form-control" placeholder="тмц - технические материальные ценности" name="Equipment[0][spare_parts]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                 </div>
                             </div>
                         </div>
                         <div class="act-files">
                             <div class="row row-cols-1">
                                 <div class="col mb-3">
-                                    <input class="form-control" type="file" id="files" multiple name="files[]" accept="image/*, video/*, audio/*">
+                                    <input class="form-control" type="file" multiple name="Equipment[0][files][]" accept="image/*, video/*, audio/*">
                                 </div>
                             </div>
                         </div>
@@ -188,7 +194,7 @@
                                 <label for="users" style="color: white;">Исполнители</label>
                             </div>
                             <div class="col mb-2 input-group">
-                                <select id="user_id" name="user_id[]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                <select name="user_id[]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                                     <option value="1">Иванов И.И.</option>
                                     <option value="2">Петров П.П.</option>
                                     <option value="3">Сидоров С.С.</option>

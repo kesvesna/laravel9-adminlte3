@@ -101,13 +101,13 @@
                             <div class="col-auto ms-2">
                                 <label for="search_application" class="col-form-label">
                                     <h4>
-                                        <a href="{{ route('front.act.index') }}" style="color: white;">Акты</a>
+                                        <a href="{{ route('front.acts.index') }}" style="color: white;">Акты</a>
                                     </h4>
                                 </label>
                             </div>
 
                             <div class="col-8 col-sm-7 col-md-7">
-                                <form action="{{ route('front.act.index') }}" method="get">
+                                <form action="{{ route('front.acts.index') }}" method="get">
                                     <div class="input-group">
                                         <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control" aria-describedby="search_act">
                                         <button class="btn" type="submit">
@@ -119,18 +119,18 @@
                         </div>
                     </div>
                     <hr style="margin-top: 0;">
-                    <form action="{{ route('front.act.index') }}" method="get" class="ms-2">
+                    <form action="{{ route('front.acts.index') }}" method="get" class="ms-2">
                         <input hidden name="act_status_id" value="2">
                         <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">По заявкам: {{ $act_by_application_count }}</b></button>
                     </form>
                     <hr>
-                    <form action="{{ route('front.act.index') }}" method="get" class="mb-3 ms-2">
+                    <form action="{{ route('front.acts.index') }}" method="get" class="mb-3 ms-2">
                         <input hidden name="repair_status_id" value="1">
                         <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">По плану: {{ $act_by_plan_count }}</b></button>
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
-                            <a href="{{ route('front.act.create') }}" title="Заполнить акт">
+                            <a href="{{ route('front.acts.create') }}" title="Заполнить акт">
                                 <img src="./icons/plus.svg" alt="Add picture" width="40" height="40">
                             </a>
                         </div>

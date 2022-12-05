@@ -15,9 +15,20 @@ class Act extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
+    public const CREATED_BY_PLAN = 1;
+    public const CREATED_BY_APPLICATION = 2;
+
     protected $table = "acts";
 
     protected $fillable = [
+        'act_type_id',
+        'trk_id',
+        'building_id',
+        'system_type_id',
+        'works',
+        'remarks',
+        'recommendations',
+        'spare_parts'
     ];
 
     public function trk(): BelongsTo
