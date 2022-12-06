@@ -130,7 +130,7 @@
                                                 <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
                                                     <div class="col mb-2">
                                                         <label for="spare_part_id" style="color: white;">Деталь</label>
-                                                        <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                        <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select work-spare-part" style="background: rgba( 255, 255, 255, 0.5 );">
                                                             <option value="">Выберите ...</option>
                                                             @forelse($spare_parts as $spare_part)
                                                                 <option value="{{$spare_part->id}}">{{$spare_part->name}}</option>

@@ -142,39 +142,46 @@ $(".add-act-spare-part").click(function(){
 
     let act_spare_parts = $(this).closest('div.act-spare-parts').clone(true);
 
-    $(act_spare_parts).addClass('mt-2');
-    $(act_spare_parts).find('input').val('');
-    $(act_spare_parts).find('textarea').val('');
+    let selected_spare_part = $(this).closest('div.act-spare-parts').find('select.work-spare-part').val();
 
-    let equip_name = $(this).closest('div.act-equipment').attr('id');
+    if(selected_spare_part) {
 
-    let work_idx =  $(this).closest('div.act-equipment').find('div.act-works').length - 1;
+        $(act_spare_parts).addClass('mt-2');
+        $(act_spare_parts).find('input').val('');
+        $(act_spare_parts).find('textarea').val('');
 
-    let spare_part_idx = $(this).closest('div.act-works').find('div.act-spare-parts').length;
+        let equip_name = $(this).closest('div.act-equipment').attr('id');
 
-    $(act_spare_parts).find('select:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][id]');
-    $(act_spare_parts).find('input:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][count]');
-    $(act_spare_parts).find('input:last').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][model]');
-    $(act_spare_parts).find('textarea:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][comment]');
+        let work_idx =  $(this).closest('div.act-equipment').find('div.act-works').length - 1;
 
-    $(this).closest('div.act-spare-parts').after(act_spare_parts);
+        let spare_part_idx = $(this).closest('div.act-works').find('div.act-spare-parts').length;
 
-    let hostname = $(location).attr('hostname');
-    let protocol = $(location).attr('protocol');
-    $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
-    $("img", this).attr("alt","Delete image");
-    $(this).attr('class', 'delete-act-spare-part ps-2');
+        $(act_spare_parts).find('select:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][id]');
+        $(act_spare_parts).find('input:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][count]');
+        $(act_spare_parts).find('input:last').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][model]');
+        $(act_spare_parts).find('textarea:first').attr('name', equip_name + '[work_ids][' + work_idx + '][spare_part_ids][' + spare_part_idx + '][comment]');
 
-    $(this).off('click');
+        $(this).closest('div.act-spare-parts').after(act_spare_parts);
 
-    $(this).click(function(){
-        $(this).closest("div.act-spare-parts").remove();
-    });
+        let hostname = $(location).attr('hostname');
+        let protocol = $(location).attr('protocol');
+        $("img", this).attr("src", protocol + '//' + hostname + "/icons/delete-basket.svg");
+        $("img", this).attr("alt","Delete image");
+        $(this).attr('class', 'delete-act-spare-part ps-2');
 
-    $('html, body').animate({
-        scrollTop: $(act_spare_parts).offset().top
-    }, 100);
+        $(this).off('click');
 
+        $(this).click(function(){
+            $(this).closest("div.act-spare-parts").remove();
+        });
+
+        $('html, body').animate({
+            scrollTop: $(act_spare_parts).offset().top
+        }, 100);
+
+    } else {
+        alert('Выберите использованную деталь');
+    }
 });
 
 
