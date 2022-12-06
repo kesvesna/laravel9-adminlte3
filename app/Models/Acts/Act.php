@@ -89,15 +89,15 @@ class Act extends Model
         );
     }
 
-    public function applications()
+    public function application()
     {
-        return $this->hasManyThrough(
+        return $this->hasOneThrough(
             Applications::class,
             ApplicationRepairAct::class,
             'act_id',
             'id',
             'id',
-            'id'
+            'application_id'
         );
     }
 
@@ -106,18 +106,6 @@ class Act extends Model
         return $this->hasMany(
             ActWorks::class
         );
-    }
-
-    public function spare_parts()
-    {
-//        return $this->hasManyThrough(
-//            ActWorkSpareParts::class,
-//            ActWorks::class,
-//            'id',
-//            'id',
-//            'id',
-//            'id'
-//        );
     }
 
     public function equipment()
@@ -131,8 +119,6 @@ class Act extends Model
             'equipment_id'
         );
     }
-
-
 
     protected function removeQueryParam(string ...$keys)
     {

@@ -9,6 +9,7 @@ use App\Models\Acts\ActEquipments;
 use App\Models\Acts\ActUsers;
 use App\Models\Acts\ActWorks;
 use App\Models\Acts\ActWorkSpareParts;
+use App\Models\Applications\ApplicationRepairAct;
 use App\Models\Applications\Applications;
 use App\Models\Buildings\Building;
 use App\Models\Equipments\Equipment;
@@ -144,15 +145,30 @@ class ActController extends Controller
                     $act->spare_parts = $equipment_array['spare_parts'];
                     $act->save();
 
-                    ActEquipments::firstOrCreate(['act_id' => $act->id, 'equipment_id' => $equipment->id]);
+                    ApplicationRepairAct::firstOrCreate([
+                        'application_id' => $application->id,
+                        'act_id' => $act->id,
+                        'equipment_id' => $equipment->id,
+                    ]);
+
+                    ActEquipments::firstOrCreate([
+                        'act_id' => $act->id,
+                        'equipment_id' => $equipment->id
+                    ]);
 
                     foreach($data['user_id'] as $user_id) {
-                        ActUsers::firstOrCreate(['act_id' => $act->id, 'user_id' => $user_id]);
+                        ActUsers::firstOrCreate([
+                            'act_id' => $act->id,
+                            'user_id' => $user_id
+                        ]);
                     }
 
                     foreach($equipment_array['work_ids'] as $work_type) {
 
-                        $act_work = ActWorks::firstOrCreate(['act_id' => $act->id, 'work_id' => $work_type['id']]);
+                        $act_work = ActWorks::firstOrCreate([
+                            'act_id' => $act->id,
+                            'work_id' => $work_type['id']
+                        ]);
 
                         foreach($work_type['spare_part_ids'] as $spare_part) {
                             ActWorkSpareParts::firstOrCreate([

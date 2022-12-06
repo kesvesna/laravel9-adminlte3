@@ -11,11 +11,12 @@ class ApplicationRepairAct extends Model
 {
     use HasFactory, SoftDeletes, Filterable;
 
-    protected $table = "application_repair_act";
+    protected $table = "application_repair_act_equipment";
 
     protected $fillable = [
         'application_id',
         'repair_id',
-        'act_id'
+        'act_id',
+        'equipment_id'
     ];
 }

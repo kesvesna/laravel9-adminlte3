@@ -16,10 +16,13 @@
                   class="pt-2 pb-3">
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
-                        <h4 style="color: white;">Акт №{{$act->id}}</h4>
+                        <h4 style="color: white;">Акт № {{$act->id}}</h4>
+                        @if(isset($act->application))
+                            <a href="{{ route('front.applications.show', $act->application->id) }}" style="text-decoration-color: white;"><h5 style="color: white;">По заявке № {{$act->application->id}}</h5></a>
+                        @endif
                     </div>
                 </div>
-                <div class="mb-2 d-lg-flex justify-content-around">
+                <div class="mb-2 mt-2 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label class="mb-2" for="date" style="color: white;">Дата и время:</label>
                         <br>
@@ -65,13 +68,17 @@
                             @foreach($work->work_type as $type)
                                     <input disabled value="{{$type->name}}" type="text" class="form-control mb-1 mt-2" style="background: rgba( 255, 255, 255, 0.5 );">
                             @endforeach
-                            @foreach($work->spare_parts as $spare_parts)
-                                <div class="ps-4 pb-1">
-                                    <input  disabled style="background: rgba( 255, 255, 255, 0.5 );" class="form-control form-control-sm" type="text"
+
+                                @foreach($work->spare_parts as $spare_parts)
+                                    @if(isset($spare_parts->one_spare_part))
+                                    <div class="ps-4 pb-1">
+                                        <input  disabled style="background: rgba( 255, 255, 255, 0.5 );" class="form-control form-control-sm" type="text"
                                             value="{{$spare_parts->one_spare_part->name}}@if($spare_parts->count){{', ' . $spare_parts->count}}@endif @if($spare_parts->model){{', ' . $spare_parts->model}}@endif @if($spare_parts->comment){{', ' . $spare_parts->comment }}@endif"
-                                    >
-                                </div>
+                                        >
+                                    </div>
+                                    @endif
                                 @endforeach
+
                         @empty
                             Нет работ
                         @endforelse
