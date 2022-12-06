@@ -122,7 +122,11 @@
                     <td class="">{{ $equipment->name->name }}</td>
                 </tr>
                 @empty
-                    Нет оборудования
+                <tr style="color: white;">
+                    <td>
+                        Нет оборудования
+                    </td>
+                </tr>
             @endforelse
             <tr>
                 <th colspan="6">

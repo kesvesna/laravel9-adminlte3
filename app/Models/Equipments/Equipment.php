@@ -47,12 +47,12 @@ class Equipment extends Model
 
     public function name(): BelongsTo
     {
-        return $this->belongsTo(EquipmentNames::class, 'equipment_name_id')->withDefault();
+        return $this->belongsTo(EquipmentNames::class, 'equipment_name_id')->orderBy('name')->withDefault();
     }
 
     public function room(): BelongsTo
     {
-        return $this->belongsTo(Room::class)->withDefault();
+        return $this->belongsTo(Room::class, 'room_id')->withDefault();
     }
 
     public function building(): BelongsTo

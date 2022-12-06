@@ -16,14 +16,14 @@
                   class="pt-2 pb-3">
                 <div class="d-flex justify-content-center">
                     <div class="col-10">
-                        <h4 style="color: white;">Акт выполненных работ show</h4>
+                        <h4 style="color: white;">Акт №{{$act->id}}</h4>
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label class="mb-2" for="date" style="color: white;">Дата и время:</label>
                         <br>
-                        <input disabled type="datetime-local" id="date" name="date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <input disabled value="{{$act->date}}" type="datetime-local" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         </div>
@@ -31,100 +31,92 @@
                 <div class="mb-2 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                        <select  disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Академ Парк</option>
-                            <option value="2">Гудзон</option>
-                            <option value="3">Европолис (м.Лесная)</option>
-                            <option value="4">Родео Драйв</option>
-                            <option value="5">Европолис (м.Ростокино)</option>
-                        </select>
+                        <input disabled value="{{$act->trk->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="system_id" class="form-label" style="color: white;">Тип оборудования</label>
-                        <select  disabled id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Вентиляция</option>
-                            <option value="2">Кондиционирование</option>
-                            <option value="3">Электроснабжение</option>
-                            <option value="4">Водоотведение</option>
-                        </select>
+                        <input disabled value="{{$act->system->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="building_id" class="form-label" style="color: white;">Блок/Зона</label>
-                        <select  disabled id="building_id" name="building_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Блок 1</option>
-                            <option value="2">Блок 2</option>
-                            <option value="3">Блок 3</option>
-                        </select>
+                        <input disabled value="{{$act->building->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="floor_id" class="form-label" style="color: white;">Этаж</label>
-                        <select  disabled id="floor_id" name="floor_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Парковка -2</option>
-                            <option value="2">Парковка -1</option>
-                            <option value="3">Этаж 1</option>
-                            <option value="4">Этаж 2</option>
-                        </select>
+                        <input disabled value="{{$act->equipment->floor->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="room_id" class="form-label" style="color: white;">Помещение</label>
-                        <select  disabled id="room_id" name="room_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">А-15</option>
-                            <option value="2">В-23</option>
-                            <option value="3">С-14</option>
-                            <option value="4">D-22</option>
-                        </select>
+                        <input disabled value="{{$act->room->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
                         <label for="equipment_id" class="form-label" style="color: white;">Оборудование<wbr> (по&nbsp;проекту)</label>
-                        <select  disabled id="equipment_id" name="equipment_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">ПВ-01-М</option>
-                            <option value="2">ПВ-02-М</option>
-                            <option value="3">ПВ-03-М</option>
-                            <option value="4">ПВ-04-М</option>
-                        </select>
+                        <input disabled value="{{$act->equipment->name->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="work_id" class="form-label" style="color: white;">Выполненные работы</label>
-                        <select  disabled id="work_id" name="work_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Замена подшипников</option>
-                            <option value="2">Сухая чистка калорифера</option>
-                            <option value="3">Ремонт</option>
-                            <option value="4">Замена воздушного панельного фильтра вытяжки</option>
-                        </select>
+                        <label class="form-label" style="color: white;">Выполненные работы</label>
+                        @forelse($act->this_works as $work)
+                            @foreach($work->work_type as $type)
+                                    <input disabled value="{{$type->name}}" type="text" class="form-control mb-1 mt-2" style="background: rgba( 255, 255, 255, 0.5 );">
+                            @endforeach
+                            @foreach($work->spare_parts as $spare_parts)
+                                <div class="ps-4 pb-1">
+                                    <input  disabled style="background: rgba( 255, 255, 255, 0.5 );" class="form-control form-control-sm" type="text"
+                                            value="{{$spare_parts->one_spare_part->name}}@if($spare_parts->count){{', ' . $spare_parts->count}}@endif @if($spare_parts->model){{', ' . $spare_parts->model}}@endif @if($spare_parts->comment){{', ' . $spare_parts->comment }}@endif"
+                                    >
+                                </div>
+                                @endforeach
+                        @empty
+                            Нет работ
+                        @endforelse
                     </div>
                 </div>
+                @if($act->works)
                 <div class="mb-3">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
                         <label for="comment" class="form-label" style="color: white;">Описание работ</label>
-                        <textarea  disabled class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                        <textarea  disabled class="form-control" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{$act->works}}</textarea>
                     </div>
                 </div>
+                @endif
+                @if($act->remarks)
                 <div class="mb-3">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
                         <label for="comment" class="form-label" style="color: white;">Замечания</label>
-                        <textarea  disabled class="form-control" id="remark" name="remark" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                        <textarea  disabled class="form-control" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{$act->remarks}}</textarea>
                     </div>
                 </div>
+                @endif
+                @if($act->recommendations)
                 <div class="mb-3">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
                         <label for="comment" class="form-label" style="color: white;">Рекомендации</label>
-                        <textarea  disabled class="form-control" id="recommendation" name="recommendation" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                        <textarea  disabled class="form-control" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{$act->recommendations}}</textarea>
                     </div>
                 </div>
-                <div class="mb-5">
+                @endif
+                @if($act->spare_parts)
+                <div class="mb-3">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="user_id" class="form-label" style="color: white;">Исполнители</label>
-                        <select  disabled id="user_id" name="user_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Иванов И.И.</option>
-                            <option value="2">Петров П.П.</option>
-                            <option value="3">Сидоров С.С.</option>
-                        </select>
+                        <label for="comment" class="form-label" style="color: white;">Потраченные тмц</label>
+                        <textarea  disabled class="form-control" rows="2" style="background: rgba( 255, 255, 255, 0.5 );">{{$act->spare_parts}}</textarea>
+                    </div>
+                </div>
+                @endif
+                <div class="mb-3">
+                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
+                        <label class="form-label" style="color: white;">Исполнители</label>
+                        @forelse($act->users as $user)
+                            <input disabled value="{{$user->name}}" type="text" class="form-control mb-2" style="background: rgba( 255, 255, 255, 0.5 );">
+                        @empty
+                            Нет исполнителей
+                        @endforelse
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-between col-11 mx-auto col-sm-10">

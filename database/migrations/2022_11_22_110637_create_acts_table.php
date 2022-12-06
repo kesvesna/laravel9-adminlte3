@@ -27,6 +27,10 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
+            $table->foreignId('room_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('no action');
             $table->foreignId('system_type_id')
                 ->constrained()
                 ->onUpdate('cascade')
@@ -54,6 +58,7 @@ return new class extends Migration
             $table->dropForeign(['act_type_id']);
             $table->dropForeign(['system_type_id']);
             $table->dropForeign(['building_id']);
+            $table->dropForeign(['room_id']);
         });
         Schema::dropIfExists('acts');
     }

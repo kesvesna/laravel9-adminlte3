@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('act_equipments', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->foreignId('act_id')
                 ->constrained()
                 ->onUpdate('cascade')

@@ -66,9 +66,9 @@ Route::name('front.')
         Route::resource('equipment', FrontEquipmentController::class);
 
         Route::resource('acts', FrontActController::class);
-        Route::post('acts/create_by_repair_all_done/{repair}', [FrontActController::class, 'create_by_repair_all_done'])->name('acts.create_by_repair_all_done');
+        Route::match(['get', 'post'],'acts/create_by_repair_all_done/{repair}', [FrontActController::class, 'create_by_repair_all_done'])->name('acts.create_by_repair_all_done');
         Route::post('acts/create_by_repair_not_completely_done/{repair}', [FrontActController::class, 'create_by_repair_not_completely_done'])->name('acts.create_by_repair_not_completely_done');
-        Route::post('acts/create_by_application_all_done/{application}', [FrontActController::class, 'create_by_application_all_done'])->name('acts.create_by_application_all_done');
+        Route::match(['get', 'post'],'acts/create_by_application_all_done/{application}', [FrontActController::class, 'create_by_application_all_done'])->name('acts.create_by_application_all_done');
         Route::post('acts/create_by_application_not_completely_done/{application}', [FrontActController::class, 'create_by_application_not_completely_done'])->name('acts.create_by_application_not_completely_done');
 
     });

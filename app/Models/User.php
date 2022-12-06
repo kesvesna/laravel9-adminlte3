@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Acts\Act;
+use App\Models\Acts\ActUsers;
 use App\Models\Traits\Filterable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -55,5 +57,16 @@ class User extends Authenticatable
     {
         return $this->belongsTo(UserStatuses::class, 'user_status_id')->withDefault();
     }
+
+    public function acts()
+    {
+        return $this->hasManyThrough(
+            Act::class,
+            ActUsers::class,
+            'user_id',
+            'id',
+            'id',
+            'act_id'
+        );    }
 
 }

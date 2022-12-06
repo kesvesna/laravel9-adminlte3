@@ -40,13 +40,13 @@ class DatabaseSeeder extends Seeder
         Applications::factory(20)->create();
         ApplicationHistories::factory(20)->create();
         Repair::factory(20)->create();
-        Equipment::factory(40)->create();
-        EquipmentHistories::factory(500)->create();
+        //Equipment::factory(40)->create();
+        //EquipmentHistories::factory(500)->create();
 
         $this->call([
             //ApplicationHistoriesSeeder::class,
             RepairHistoriesSeeder::class,
-            ApplicationRepairActEquipmentSeeder::class,
+            //ApplicationRepairActEquipmentSeeder::class,
             //EquipmentHistoriesSeeder::class,
         ]);
 

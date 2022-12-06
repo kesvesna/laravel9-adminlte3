@@ -26,5 +26,8 @@
         ],
         'equipments' => [
             'pagination' => 5
+        ],
+        'acts' => [
+            'pagination' => 5
         ]
     ];

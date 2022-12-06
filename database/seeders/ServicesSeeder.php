@@ -61,6 +61,14 @@ class ServicesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
+                [
+                    'name' => 'Диспетчер',
+                    'slug' => 'dispatcher',
+                    'sort_order' => 1,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+
             ]);
 
     }

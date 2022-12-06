@@ -3,9 +3,16 @@
 namespace App\Models\Acts;
 
 use App\Models\Applications\ApplicationRepairAct;
+use App\Models\Applications\Applications;
+use App\Models\Buildings\Building;
+use App\Models\Equipments\Equipment;
 use App\Models\Repairs\Repair;
+use App\Models\Rooms\Room;
+use App\Models\Systems\System;
 use App\Models\Traits\Filterable;
 use App\Models\Trks\Trk;
+use App\Models\User;
+use App\Models\WorkTypes\WorkType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -21,6 +28,7 @@ class Act extends Model
     protected $table = "acts";
 
     protected $fillable = [
+        'date',
         'act_type_id',
         'trk_id',
         'building_id',
@@ -28,7 +36,8 @@ class Act extends Model
         'works',
         'remarks',
         'recommendations',
-        'spare_parts'
+        'spare_parts',
+        'room_id',
     ];
 
     public function trk(): BelongsTo
@@ -36,19 +45,36 @@ class Act extends Model
         return $this->belongsTo(Trk::class)->withDefault();
     }
 
+    public function system(): BelongsTo
+    {
+        return $this->belongsTo(System::class, 'system_type_id')->withDefault();
+    }
+
+    public function room(): BelongsTo
+    {
+        return $this->belongsTo(Room::class, 'room_id')->withDefault();
+    }
+
+    public function building(): BelongsTo
+    {
+        return $this->belongsTo(Building::class, 'building_id')->withDefault();
+    }
+
     public function medias()
     {
-        return $this->hasMany(ActMedias::class, 'application_id', 'id');
+        return $this->hasMany(ActMedias::class, 'act_id', 'id');
     }
 
-    public function histories()
+    public function users()
     {
-        return $this->hasMany(ActHistories::class, 'application_id', 'id');
-    }
-
-    public function currentHistory()
-    {
-        return $this->hasOne(ActHistories::class, 'application_id')->latest('id');
+        return $this->hasManyThrough(
+            User::class,
+            ActUsers::class,
+            'act_id',
+            'id',
+            'id',
+            'user_id'
+        );
     }
 
     public function repairs()
@@ -63,10 +89,10 @@ class Act extends Model
         );
     }
 
-    public function acts()
+    public function applications()
     {
         return $this->hasManyThrough(
-            Act::class,
+            Applications::class,
             ApplicationRepairAct::class,
             'act_id',
             'id',
@@ -74,6 +100,39 @@ class Act extends Model
             'id'
         );
     }
+
+    public function this_works()
+    {
+        return $this->hasMany(
+            ActWorks::class
+        );
+    }
+
+    public function spare_parts()
+    {
+//        return $this->hasManyThrough(
+//            ActWorkSpareParts::class,
+//            ActWorks::class,
+//            'id',
+//            'id',
+//            'id',
+//            'id'
+//        );
+    }
+
+    public function equipment()
+    {
+        return $this->hasOneThrough(
+            Equipment::class,
+            ActEquipments::class,
+            'act_id',
+            'id',
+            'id',
+            'equipment_id'
+        );
+    }
+
+
 
     protected function removeQueryParam(string ...$keys)
     {

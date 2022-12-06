@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('act_works', function (Blueprint $table) {
+        Schema::create('act_work_spare_parts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId('act_id')
-                ->constrained('acts')
+            $table->foreignId('act_work_id')
+                ->constrained('act_works')
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('work_id')
-                ->constrained('work_types' )
-                ->onUpdate('cascade')
-                ->onDelete('no action');
+            $table->integer('spare_part_id')->nullable()->default(null);
+            $table->decimal('count')->nullable()->default(null);
+            $table->string('model')->nullable()->default(null);
+            $table->text('comment')->nullable()->default(null);
             $table->tinyInteger('visible')->default(1);
             $table->timestamps();
             $table->softDeletes();
@@ -36,10 +36,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('act_works', function (Blueprint $table) {
-            $table->dropForeign(['act_id']);
-            $table->dropForeign(['work_id']);
+        Schema::table('act_work_spare_parts', function (Blueprint $table) {
+            $table->dropForeign(['act_work_id']);
         });
-        Schema::dropIfExists('act_works');
+        Schema::dropIfExists('act_work_spare_parts');
     }
 };

@@ -8,11 +8,11 @@ use App\Http\Filters\Equipments\EquipmentNamesFilter;
 use App\Http\Filters\Trks\TrkRoomNamesFilter;
 use App\Http\Filters\Trks\TrksFilter;
 use App\Models\Rooms\Room;
-use App\Models\Systems\SparePart;
+use App\Models\Systems\System;
 use App\Http\Requests\Equipments\{
     EquipmentFilterRequest,
-    StoreUserFormRequest,
-    UpdateUserFormRequest
+    StoreEquipmentFormRequest,
+    UpdateEquipmentFormRequest
 };
 
 use App\Models\Equipments\{EquipmentHistories, EquipmentMedias, Equipment, EquipmentNames, EquipmentStatuses};
@@ -59,7 +59,7 @@ class EquipmentController extends Controller
         return view('front.equipment.index', [
             'equipments' => $equipments,
             'trks' => Trk::all(),
-            'systems' => SparePart::all(),
+            'systems' => System::all(),
             'rooms' => Room::all(),
             'equipment_names' => EquipmentNames::all(),
             'old_filters' => $data
@@ -72,7 +72,7 @@ class EquipmentController extends Controller
         ]);
     }
 
-    public function store(StoreUserFormRequest $request, UploadService $uploadService)
+    public function store(StoreEquipmentFormRequest $request, UploadService $uploadService)
     {
         return redirect()->route('front.equipment.index');
     }
@@ -89,7 +89,7 @@ class EquipmentController extends Controller
         return redirect()->route('front.equipment.index');
     }
 
-    public function update(Equipment $equipment, UpdateUserFormRequest $request)
+    public function update(Equipment $equipment, UpdateEquipmentFormRequest $request)
     {
         return redirect()->route('front.equipment.index');
     }

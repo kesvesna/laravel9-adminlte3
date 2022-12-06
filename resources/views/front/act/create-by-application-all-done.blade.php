@@ -7,6 +7,18 @@
 @section('content')
 <main>
     <div class="container pt-3" style="padding-bottom: 15vh;">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+
             <form class="pt-2 pb-2" method="post" action="{{ route('front.acts.store') }}" enctype="multipart/form-data"
                   style="background: rgba( 255, 255, 255, 0.1 );
                             backdrop-filter: blur( 1px );
@@ -30,7 +42,7 @@
                             <input required type="datetime-local" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                         </div>
                         <div class="col mb-2">
-                            <label for="system_type_id" style="color: white;" class="mb-1">Оборудование/Услуга</label>
+                            <label for="system_type_id" style="color: white;" class="mb-1">Система/Услуга (фильтр)</label>
                             <select autofocus id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                                 <option value="">Выберите ...</option>
                                 @forelse($systems as $system)
@@ -55,10 +67,11 @@
                             <div class="col mb-2 input-group">
                                 <select name="Equipment[0][id]" class="form-select equipment" style="background: rgba( 255, 255, 255, 0.5 );">
                                     <option value="">Выберите ...</option>
-                                    <option value="1">ПВ-01-М (ВК 1)</option>
-                                    <option value="2">ПВ-02-М (ВК 2)</option>
-                                    <option value="3">ПВ-03-М (ВК 3)</option>
-                                    <option value="4">ПВ-04-М (ВК 4)</option>
+                                    @forelse($equipments as $equipment)
+                                        <option value="{{$equipment->id}}">{{$equipment->name->name  }}{{' (' . $equipment->room->name . ')'}}</option>
+                                    @empty
+                                        Нет оборудования
+                                    @endforelse
                                 </select>
                                 <button type="button" class="add-act-equipment ps-2" style="border: none; background-color: transparent;">
                                     <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add equipment" height="35" width="35" title="Добавить оборудование в акт">
@@ -86,17 +99,11 @@
                                 <div class="col mb-2 input-group">
                                     <select name="Equipment[0][work_ids][0][id]" class="form-select equipment-work" style="background: rgba( 255, 255, 255, 0.5 );">
                                         <option value="">Выберите ...</option>
-                                        <option value="1">Замена</option>
-                                        <option value="2">Чистка сухая</option>
-                                        <option value="2">Чистка влажная</option>
-                                        <option value="3">Ремонт</option>
-                                        <option value="4">ТО-1</option>
-                                        <option value="5">ТО-2</option>
-                                        <option value="6">ТО-3</option>
-                                        <option value="7">ТО-4</option>
-                                        <option value="8">ТО-5</option>
-                                        <option value="9">ТО-6</option>
-                                        <option value="10">ТО-7</option>
+                                        @forelse($works as $works)
+                                            <option value="{{$works->id}}">{{$works->name}}</option>
+                                        @empty
+                                            Нет деталей
+                                        @endforelse
                                     </select>
                                     <button type="button" class="add-act-work ps-2" style="border: none; background-color: transparent;">
                                         <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add work" height="35" width="35" title="Добавить вид работ в акт">
@@ -125,12 +132,11 @@
                                                         <label for="spare_part_id" style="color: white;">Деталь</label>
                                                         <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                                                             <option value="">Выберите ...</option>
-                                                            <option value="1">Подшипник</option>
-                                                            <option value="2">Фильтр карманный приток</option>
-                                                            <option value="2">Фильтр карманный вытяжка</option>
-                                                            <option value="3">Ремень приводной</option>
-                                                            <option value="4">Насос ГВС</option>
-                                                            <option value="4">Насос дренажный</option>
+                                                            @forelse($spare_parts as $spare_part)
+                                                                <option value="{{$spare_part->id}}">{{$spare_part->name}}</option>
+                                                            @empty
+                                                                Нет деталей
+                                                            @endforelse
                                                         </select>
                                                     </div>
                                                     <div class="col mb-2">
@@ -195,9 +201,11 @@
                             </div>
                             <div class="col mb-2 input-group">
                                 <select name="user_id[]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                                    <option value="1">Иванов И.И.</option>
-                                    <option value="2">Петров П.П.</option>
-                                    <option value="3">Сидоров С.С.</option>
+                                    @forelse($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @empty
+                                        Нет исполнителей
+                                    @endforelse
                                 </select>
                                 <button type="button" class="add-act-user ps-2" style="border: none; background-color: transparent;">
                                     <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add user" height="35" width="35" title="Добавить исполнителя в акт">

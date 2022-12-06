@@ -141,5 +141,10 @@ return [
         'short_description' => 'краткое описание новости',
         'name' => 'название',
         'slug' => 'путь для url',
+        'system_type_id' => 'тип оборудования',
+        'Equipment.*.id' => 'оборудование',
+        'Equipment.*.work_ids.*.id' => 'выполненные работы',
+        'equipment.*.files' => 'прикрепленные файлы',
+        'date' => 'дата'
     ]
 ];
