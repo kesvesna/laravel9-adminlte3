@@ -19,7 +19,7 @@
         @endif
 
 
-            <form class="pt-2 pb-2" method="post" action="{{ route('front.acts.store') }}" enctype="multipart/form-data"
+            <form class="pt-2 pb-2" method="post" action="{{ route('front.acts.store_by_application_all_done') }}" enctype="multipart/form-data"
                   style="background: rgba( 255, 255, 255, 0.1 );
                             backdrop-filter: blur( 1px );
                             -webkit-backdrop-filter: blur( 1px );

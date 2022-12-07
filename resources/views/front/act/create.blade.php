@@ -5,127 +5,234 @@
 @endsection
 
 @section('content')
-<main>
-    <div class="container-fluid">
+    <main>
         <div class="container pt-3" style="padding-bottom: 15vh;">
-            <form style="background: rgba( 255, 255, 255, 0.1 );
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+
+            <form class="pt-3 pb-2" method="post" action="{{ route('front.acts.store') }}" enctype="multipart/form-data"
+                  style="background: rgba( 255, 255, 255, 0.1 );
                             backdrop-filter: blur( 1px );
                             -webkit-backdrop-filter: blur( 1px );
                             border-radius: 5px;
-                            border: 1px solid rgba( 255, 255, 255, 0.18 );"
-                  class="pt-2 pb-3">
-                <div class="d-flex justify-content-center">
-                    <div class="col-10">
-                        <h4 style="color: white;">Акт выполненных работ</h4>
-                    </div>
-                </div>
-                <div class="mb-2 d-lg-flex justify-content-around">
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label class="mb-2" for="date" style="color: white;">Дата и время:</label>
-                        <br>
-                        <input required type="datetime-local" id="date" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
-                    </div>
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
+                            border: 2px solid rgba( 255, 255, 255, 0.18 );">
+                @csrf
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-12">
+                            <input hidden name="application_id" value="">
+                            <h4 style="color: white;">Новый акт</h4>
                         </div>
-                </div>
-                <div class="mb-2 d-lg-flex justify-content-around">
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                        <select id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Академ Парк</option>
-                            <option value="2">Гудзон</option>
-                            <option value="3">Европолис (м.Лесная)</option>
-                            <option value="4">Родео Драйв</option>
-                            <option value="5">Европолис (м.Ростокино)</option>
-                        </select>
                     </div>
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label for="system_id" class="form-label" style="color: white;">Тип оборудования</label>
-                        <select autofocus id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Вентиляция</option>
-                            <option value="2">Кондиционирование</option>
-                            <option value="3">Электроснабжение</option>
-                            <option value="4">Водоотведение</option>
-                        </select>
+
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-2">
+                        <div class="col mb-2">
+                            <label for="date" style="color: white;" class="mb-1">Дата/Время</label>
+                            <input required type="datetime-local" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        </div>
+                        <div class="col mb-2">
+                            <label for="trk_id" style="color: white;" class="mb-1">Торговый комплекс</label>
+                            <select autofocus id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                @forelse($trks as $trk)
+                                    <option value="{{ $trk->id }}">{{ $trk->name }}</option>
+                                @empty
+                                    Нет трк
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="col mb-2">
+                            <label for="system_type_id" style="color: white;" class="mb-1">Система/Услуга (фильтр)</label>
+                            <select autofocus id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                <option value="">Выберите ...</option>
+                                @forelse($systems as $system)
+                                    <option value="{{ $system->id }}">{{ $system->name }}</option>
+                                @empty
+                                    Нет систем
+                                @endforelse
+                            </select>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-2 d-lg-flex justify-content-around">
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label for="room_id" class="form-label" style="color: white;">Помещение</label>
-                        <select id="room_id" name="room_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">А-15</option>
-                            <option value="2">В-23</option>
-                            <option value="3">С-14</option>
-                            <option value="4">D-22</option>
-                        </select>
+
+                    <div class="equipments">
+                        <div class="act-equipment p-2" style="background: rgba( 55, 255, 200, 0.1 );
+                                                        backdrop-filter: blur( 1px );
+                                                        -webkit-backdrop-filter: blur( 1px );
+                                                        border-radius: 5px;
+                                                        border: 2px solid rgba( 255, 255, 255, 0.18 );" id="Equipment[0]">
+                            <div class="row row-cols-1 mb-2">
+                                <div class="col mb-1">
+                                    <label for="id" style="color: white;">Оборудование</label>
+                                </div>
+                                <div class="col mb-2 input-group">
+                                    <select name="Equipment[0][id]" class="form-select equipment" style="background: rgba( 255, 255, 255, 0.5 );">
+                                        <option value="">Выберите ...</option>
+                                        @forelse($equipments as $equipment)
+                                            <option value="{{$equipment->id}}">{{$equipment->name->name  }}{{' (' . $equipment->room->name . ')'}}</option>
+                                        @empty
+                                            Нет оборудования
+                                        @endforelse
+                                    </select>
+                                    <button type="button" class="add-act-equipment ps-2" style="border: none; background-color: transparent;">
+                                        <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add equipment" height="35" width="35" title="Добавить оборудование в акт">
+                                    </button>
+                                </div>
+                                <div class="mt-2 mb-1 d-flex flex-lg-row-reverse">
+                                    <label class="form-check-label" for="copy_works" style="color: white; font-size: 0.75em;">
+                                        Копировать работы в следующее оборудование
+                                    </label>
+                                    <input class="form-check-input mt-0 ms-2 me-2" type="checkbox" value="" id="copy_works_1">
+
+                                </div>
+
+                            </div>
+
+                            <div class="act-works p-2"  style="background: rgba( 55, 5, 100, 0.1 );
+                                                        backdrop-filter: blur( 1px );
+                                                        -webkit-backdrop-filter: blur( 1px );
+                                                        border-radius: 5px;
+                                                        border: 2px solid rgba( 255, 255, 255, 0.18 );">
+                                <div class="row row-cols-1 mb-2">
+                                    <div class="col mb-1">
+                                        <label for="work_type_id" style="color: white;">Выполненные работы</label>
+                                    </div>
+                                    <div class="col mb-2 input-group">
+                                        <select name="Equipment[0][work_ids][0][id]" class="form-select equipment-work" style="background: rgba( 255, 255, 255, 0.5 );">
+                                            <option value="">Выберите ...</option>
+                                            @forelse($works as $works)
+                                                <option value="{{$works->id}}">{{$works->name}}</option>
+                                            @empty
+                                                Нет деталей
+                                            @endforelse
+                                        </select>
+                                        <button type="button" class="add-act-work ps-2" style="border: none; background-color: transparent;">
+                                            <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add work" height="35" width="35" title="Добавить вид работ в акт">
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="accordion">
+                                    <div class="accordion-item" style="background: transparent;">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button style="background: transparent; color: white;" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-1" aria-expanded="true" aria-controls="collapseOne">
+                                                Использованные детали (необязательно)
+                                            </button>
+                                        </h2>
+                                        <div id="collapse-1" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body" style="padding: 0;">
+                                                <div class="act-spare-parts p-2 m-1 mt-2"  style="background: rgba( 5, 100, 150, 0.1 );
+                                                        backdrop-filter: blur( 1px );
+                                                        -webkit-backdrop-filter: blur( 1px );
+                                                        border-radius: 5px;
+                                                        border: 2px solid rgba( 255, 255, 255, 0.18 );">
+                                                    <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
+                                                        <div class="col mb-2">
+                                                            <label for="spare_part_id" style="color: white;">Деталь</label>
+                                                            <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select work-spare-part" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                                <option value="">Выберите ...</option>
+                                                                @forelse($spare_parts as $spare_part)
+                                                                    <option value="{{$spare_part->id}}">{{$spare_part->name}}</option>
+                                                                @empty
+                                                                    Нет деталей
+                                                                @endforelse
+                                                            </select>
+                                                        </div>
+                                                        <div class="col mb-2">
+                                                            <label for="count" style="color: white;">Кол-во</label>
+                                                            <input class="form-control" type="number" placeholder="1.0" step="0.1" min="0" max="1000" name="Equipment[0][work_ids][0][spare_part_ids][0][count]" style="background: rgba( 255, 255, 255, 0.5 );"/>
+                                                        </div>
+                                                        <div class="col mb-2">
+                                                            <label for="model" style="color: white;">Модель</label>
+                                                            <input placeholder="Модель" name="Equipment[0][work_ids][0][spare_part_ids][0][model]" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                        </div>
+                                                        <div class="col mb-2">
+                                                            <label for="comment" style="color: white;">Комментарий</label>
+                                                            <div class="input-group">
+                                                                <textarea placeholder="Комментарий" class="form-control" name="Equipment[0][work_ids][0][spare_part_ids][0][comment]" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                                                <button type="button" class="add-act-spare-part ps-2" style="border: none; background-color: transparent;">
+                                                                    <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add spare part" height="35" width="35" title="Добавить деталь в акт">
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>                                            </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="act-description pt-3">
+                                <div class="row row-cols-1 row-cols-md-2">
+                                    <div class="col mb-3">
+                                        <label for="works" style="color: white;">Описание работ (необязательно)</label>
+                                        <textarea class="form-control" name="Equipment[0][works]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label for="remarks" style="color: white;">Замечания (необязательно)</label>
+                                        <textarea class="form-control" name="Equipment[0][remarks]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    </div>
+                                </div>
+                                <div class="row row-cols-1 row-cols-md-2">
+                                    <div class="col mb-3">
+                                        <label for="recommendations" style="color: white;">Рекомендации (необязательно)</label>
+                                        <textarea class="form-control" name="Equipment[0][recommendations]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    </div>
+                                    <div class="col mb-3">
+                                        <label for="remarks" style="color: white;">Затраченные тмц (необязательно)</label>
+                                        <textarea class="form-control" placeholder="тмц - технические материальные ценности" name="Equipment[0][spare_parts]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="act-files">
+                                <div class="row row-cols-1">
+                                    <div class="col mb-3">
+                                        <input class="form-control" type="file" multiple name="Equipment[0][files][]" accept="image/*, video/*, audio/*">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
-                        <label for="equipment_id" class="form-label" style="color: white;">Оборудование<wbr> (по&nbsp;проекту)</label>
-                        <select id="equipment_id" name="equipment_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">ПВ-01-М</option>
-                            <option value="2">ПВ-02-М</option>
-                            <option value="3">ПВ-03-М</option>
-                            <option value="4">ПВ-04-М</option>
-                        </select>
+
+                    <div class="act-users pt-2">
+                        <div class="row row-cols-1">
+                            <div class="col mb-2">
+                                <label for="users" style="color: white;">Исполнители</label>
+                            </div>
+                            <div class="col mb-2 input-group">
+                                <select name="user_id[]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                    @forelse($users as $user)
+                                        <option value="{{$user->id}}">{{$user->name}}</option>
+                                    @empty
+                                        Нет исполнителей
+                                    @endforelse
+                                </select>
+                                <button type="button" class="add-act-user ps-2" style="border: none; background-color: transparent;">
+                                    <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add user" height="35" width="35" title="Добавить исполнителя в акт">
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="work_id" class="form-label" style="color: white;">Выполненные работы</label>
-                        <select id="work_id" name="work_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Замена подшипников</option>
-                            <option value="2">Сухая чистка калорифера</option>
-                            <option value="3">Ремонт</option>
-                            <option value="4">Замена воздушного панельного фильтра вытяжки</option>
-                        </select>
+                    <div class="row row-cols-1 row-cols-md-2 pt-2">
+                        <div class="col mb-2">
+                            <button class="btn btn-danger col-12" type="submit">Сохранить</button>
+                        </div>
+                        <div class="col mb-2">
+                            <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="comment" class="form-label" style="color: white;">Описание работ</label>
-                        <textarea class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="comment" class="form-label" style="color: white;">Замечания</label>
-                        <textarea class="form-control" id="remark" name="remark" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="comment" class="form-label" style="color: white;">Рекомендации</label>
-                        <textarea class="form-control" id="recommendation" name="recommendation" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="space_parts" class="form-label" style="color: white;">Потраченные материальные ценности</label>
-                        <textarea class="form-control" id="space_parts" name="space_parts" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <input class="form-control" type="file" id="files" multiple name="files[]" accept="image/*, video/*, audio/*">
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
-                        <label for="user_id" class="form-label" style="color: white;">Исполнители</label>
-                        <select id="user_id" name="user_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
-                            <option value="1">Иванов И.И.</option>
-                            <option value="2">Петров П.П.</option>
-                            <option value="3">Сидоров С.С.</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-between col-11 mx-auto col-sm-10">
-                    <button class="btn btn-danger col-sm-5" type="button">Сохранить</button>
-                    <button onClick="history.back()" class="btn btn-success col-sm-5" type="button">Назад</button>
                 </div>
             </form>
         </div>
-    </div>
-    @include('front.components.navbar')
-</main>
+        @include('front.components.navbar')
+    </main>
 @endsection

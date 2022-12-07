@@ -120,7 +120,7 @@
                     <td class="d-none d-lg-table-cell">{{ $application->trk->name }}</td>
                     <td class="d-none d-md-table-cell">{{ $application->currentHistory->application_status->name }}</td>
                     <td class="d-none d-md-table-cell">{{ $application->currentHistory->service->name }}</td>
-                    <td>{{ Str::limit($application->comment, 35, ' ...')  }}</td>
+                    <td>{{ Str::limit($application->comment, 25, ' ...')  }}</td>
                 </tr>
                 @empty
                 <tr>

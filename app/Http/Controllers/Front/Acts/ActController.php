@@ -66,7 +66,14 @@ class ActController extends Controller
 
     public function create()
     {
-        return view('front.act.create');
+        return view('front.act.create', [
+            'trks' => Trk::all(),
+            'systems' => System::all(),
+            'equipments' => Equipment::all(),
+            'works' => WorkType::all(),
+            'spare_parts' => SparePart::all(),
+            'users' => User::all(),
+        ]);
     }
 
     public function create_by_application_all_done(Applications $application)
@@ -113,6 +120,92 @@ class ActController extends Controller
     }
 
     public function store(StoreActFormRequest $request, UploadService $uploadService)
+    {
+        if($request->isMethod('post')){
+
+            $data = $request->validated();
+
+            try{
+
+                DB::beginTransaction();
+
+                foreach($data['Equipment'] as $equipment_array){
+
+                    $act = new Act();
+
+                    $equipment = Equipment::find($equipment_array['id']);
+                    $act->date = $data['date'];
+                    $act->system_type_id = $equipment->system_type_id;
+                    $act->trk_id = $equipment_array['trk_id'];
+                    $act->building_id = $equipment->building_id;
+                    $act->room_id = $equipment->room_id;
+                    $act->works = $equipment_array['works'];
+                    $act->remarks = $equipment_array['remarks'];
+                    $act->recommendations = $equipment_array['recommendations'];
+                    $act->spare_parts = $equipment_array['spare_parts'];
+                    $act->save();
+
+                    $media['act_id'] = $act->id;
+                    if (isset($equipment_array['files'])) {
+                        foreach($equipment_array['files'] as $file) {
+                            $media['name'] = $uploadService->uploadMedia($file);
+                            ActMedias::create($media);
+                        }
+                    }
+
+                    ApplicationRepairAct::firstOrCreate([
+                        'act_id' => $act->id,
+                        'equipment_id' => $equipment->id,
+                    ]);
+
+                    ActEquipments::firstOrCreate([
+                        'act_id' => $act->id,
+                        'equipment_id' => $equipment->id
+                    ]);
+
+                    foreach($data['user_id'] as $user_id) {
+                        ActUsers::firstOrCreate([
+                            'act_id' => $act->id,
+                            'user_id' => $user_id
+                        ]);
+                    }
+
+                    foreach($equipment_array['work_ids'] as $work_type) {
+
+                        $act_work = ActWorks::firstOrCreate([
+                            'act_id' => $act->id,
+                            'work_id' => $work_type['id']
+                        ]);
+
+                        foreach($work_type['spare_part_ids'] as $spare_part) {
+                            ActWorkSpareParts::firstOrCreate([
+                                'act_work_id' => $act_work->id,
+                                'spare_part_id' => $spare_part['id'],
+                                'model' => $spare_part['model'],
+                                'count' => $spare_part['count'],
+                                'comment' => $spare_part['comment']
+                            ]);
+                        }
+
+                    }
+
+                }
+
+                DB::commit();
+                return redirect()->route('front.acts.index');
+
+            } catch(\Exception $e){
+
+                DB::rollback();
+                dd($e);
+            }
+
+        }
+
+        return view('front.act.create');
+    }
+
+    public function store_by_application_all_done(StoreActFormRequest $request, UploadService $uploadService)
     {
         if($request->isMethod('post')){
 

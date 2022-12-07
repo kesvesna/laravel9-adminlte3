@@ -6,19 +6,23 @@
 
 @section('content')
 <main>
-    <div class="container-fluid">
-        <div class="container" style="padding-bottom: 15vh;">
+    <div class="container-fluid pt-3" style="padding-bottom: 15vh;">
+        <div class="container" style="background: rgba( 255, 255, 255, 0.1 );
+             backdrop-filter: blur( 1px );
+             -webkit-backdrop-filter: blur( 1px );
+             border-radius: 5px;
+             border: 1px solid rgba( 255, 255, 255, 0.18 );">
                     <div>
                         <div class="row col-12 mx-auto row-cols-1">
                             <div class="col">
-                            <h5 style="color: white;" class="mt-4">Заявка № {{ $application->id }}, {{ $application->currentHistory->application_status->name }}</h5>
+                            <h5 style="color: white;" class="mt-3">Заявка № {{ $application->id }}, {{ $application->currentHistory->application_status->name }}</h5>
                                 </div>
                         </div>
-                        @if($application->acts)
-                            <div class="row col-12 mx-auto row-cols-1">
+                        @if(isset($application->acts) && count($application->acts) > 0)
+                            <div class="row mx-auto">
                                 <h5 style="color: white;" class="mt-2">Акты:
                                 @foreach($application->acts as $act)
-                                        <a class="text-decoration-none" style="color: white;" href="{{route('front.acts.show', $act->id)}}"> {{' № ' . $act->id . ', '}}</a>
+                                        <a style="color: white;" href="{{route('front.acts.show', $act->id)}}"> {{' № ' . $act->id . ', '}}</a>
                                 @endforeach
                                 </h5>
                             </div>
@@ -156,9 +160,12 @@
                         </div>
                     </div>
                     @endif
-                    <div class="row col-12 mx-auto row-cols-1">
+                    <div class="row col-12 mx-auto row-cols-1 row-cols-sm-2">
                         <div class="col">
-                            <button onClick="history.back()" class="btn btn-success col-12" type="button"><b>Назад</b></button>
+                            <button onClick="history.back()" class="btn btn-success col-12 mb-3" type="button"><b>Назад</b></button>
+                        </div>
+                        <div class="col">
+                            <button onClick="window.location='{{ route('front.applications.index') }}';" class="btn btn-warning col-12" type="button"><b>Все заявки</b></button>
                         </div>
                     </div>
             </div>

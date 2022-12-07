@@ -32,7 +32,7 @@
                         </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
+                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto mb-2">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
                         <input disabled value="{{$act->trk->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
+                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto mb-2">
                         <label for="building_id" class="form-label" style="color: white;">Блок/Зона</label>
                         <input disabled value="{{$act->building->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
@@ -52,11 +52,11 @@
                     </div>
                 </div>
                 <div class="mb-2 d-lg-flex justify-content-around">
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
+                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto mb-2">
                         <label for="room_id" class="form-label" style="color: white;">Помещение</label>
                         <input disabled value="{{$act->room->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
-                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto">
+                    <div class="col-11 col-sm-10 col-md-10 col-lg-4 mx-auto mb-3">
                         <label for="equipment_id" class="form-label" style="color: white;">Оборудование<wbr> (по&nbsp;проекту)</label>
                         <input disabled value="{{$act->equipment->name->name}}" type="text" class="form-control" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                     </div>
@@ -139,6 +139,7 @@
                 </div>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-between col-11 mx-auto col-sm-10">
                     <button onClick="history.back()" class="btn btn-success col-sm-5" type="button">Назад</button>
+                    <button onClick="window.location='{{ route('front.acts.index') }}';" class="btn btn-warning col-sm-5" type="button">Все акты</button>
                 </div>
             </form>
         </div>
