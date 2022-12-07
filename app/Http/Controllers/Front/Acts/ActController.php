@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Acts\StoreActFormRequest;
 use App\Models\Acts\Act;
 use App\Models\Acts\ActEquipments;
+use App\Models\Acts\ActMedias;
 use App\Models\Acts\ActUsers;
 use App\Models\Acts\ActWorks;
 use App\Models\Acts\ActWorkSpareParts;
+use App\Models\Applications\ApplicationHistories;
 use App\Models\Applications\ApplicationRepairAct;
 use App\Models\Applications\Applications;
 use App\Models\Buildings\Building;
@@ -145,6 +147,14 @@ class ActController extends Controller
                     $act->spare_parts = $equipment_array['spare_parts'];
                     $act->save();
 
+                    $media['act_id'] = $act->id;
+                    if (isset($equipment_array['files'])) {
+                        foreach($equipment_array['files'] as $file) {
+                            $media['name'] = $uploadService->uploadMedia($file);
+                            ActMedias::create($media);
+                        }
+                    }
+
                     ApplicationRepairAct::firstOrCreate([
                         'application_id' => $application->id,
                         'act_id' => $act->id,
@@ -183,6 +193,14 @@ class ActController extends Controller
                     }
 
                 }
+
+                ApplicationHistories::firstOrCreate([
+                    'application_id' => $application->id,
+                    'service_id' => $application->currentHistory->service->id,
+                    'application_status_id' => Applications::DONE,
+                    'user_id' => 1, // Auth::id
+                ]);
+
 
                 DB::commit();
                 return redirect()->route('front.acts.index');

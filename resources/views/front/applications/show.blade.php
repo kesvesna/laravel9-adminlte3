@@ -14,6 +14,15 @@
                             <h5 style="color: white;" class="mt-4">Заявка № {{ $application->id }}, {{ $application->currentHistory->application_status->name }}</h5>
                                 </div>
                         </div>
+                        @if($application->acts)
+                            <div class="row col-12 mx-auto row-cols-1">
+                                <h5 style="color: white;" class="mt-2">Акты:
+                                @foreach($application->acts as $act)
+                                        <a class="text-decoration-none" style="color: white;" href="{{route('front.acts.show', $act->id)}}"> {{' № ' . $act->id . ', '}}</a>
+                                @endforeach
+                                </h5>
+                            </div>
+                        @endif
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                         <div class="col mt-2">

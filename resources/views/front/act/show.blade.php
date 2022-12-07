@@ -116,6 +116,17 @@
                     </div>
                 </div>
                 @endif
+                @if(isset($act->medias))
+                    <div class="d-flex row col-11 col-sm-10 row-cols-1 mx-auto row-cols-sm-2 row-cols-md3 row-cols-lg-4">
+                        @forelse($act->medias as $media)
+                                <div style="max-height: 50vh;" class="mb-2">
+                                <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
+                                    <img style="height: 100%; width: 100%;" class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Act file"></a>
+                                </div>
+                        @empty
+                        @endforelse
+                    </div>
+                @endif
                 <div class="mb-3">
                     <div class="col-11 col-xs-10 col-sm-10 col-md-10 mx-auto">
                         <label class="form-label" style="color: white;">Исполнители</label>

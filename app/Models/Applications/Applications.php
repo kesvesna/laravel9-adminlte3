@@ -74,7 +74,7 @@ class Applications extends Model
             'application_id',
             'id',
             'id',
-            'id'
+            'act_id'
         );
     }
 

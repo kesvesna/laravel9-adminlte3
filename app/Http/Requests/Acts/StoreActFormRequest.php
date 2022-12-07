@@ -50,7 +50,7 @@ class StoreActFormRequest extends FormRequest
                                                             'jpeg', 'jpg', 'png',
                                                             'mp4', 'avi', 'webm',
                                                         ])
-                                                        ->min(256)
+                                                        ->min(5)
                                                         ->max(12 * 1024),],
 
         ];
