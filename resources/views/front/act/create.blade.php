@@ -33,16 +33,14 @@
                             <h4 style="color: white;">Новый акт</h4>
                         </div>
                     </div>
-
-
                     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 mb-2">
                         <div class="col mb-2">
                             <label for="date" style="color: white;" class="mb-1">Дата/Время</label>
-                            <input required type="datetime-local" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                            <input required type="datetime-local" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control form-control-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                         </div>
                         <div class="col mb-2">
                             <label for="trk_id" style="color: white;" class="mb-1">Торговый комплекс</label>
-                            <select autofocus id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                            <select autofocus id="trk_id" name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                                 @forelse($trks as $trk)
                                     <option value="{{ $trk->id }}">{{ $trk->name }}</option>
                                 @empty
@@ -51,8 +49,8 @@
                             </select>
                         </div>
                         <div class="col mb-2">
-                            <label for="system_type_id" style="color: white;" class="mb-1">Система/Услуга (фильтр)</label>
-                            <select autofocus id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                            <label for="system_type_id" style="color: white;" class="mb-1">Система/Услуга</label>
+                            <select autofocus id="system_type_id" name="system_type_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                                 <option value="">Выберите ...</option>
                                 @forelse($systems as $system)
                                     <option value="{{ $system->id }}">{{ $system->name }}</option>
@@ -74,7 +72,7 @@
                                     <label for="id" style="color: white;">Оборудование</label>
                                 </div>
                                 <div class="col mb-2 input-group">
-                                    <select name="Equipment[0][id]" class="form-select equipment" style="background: rgba( 255, 255, 255, 0.5 );">
+                                    <select name="Equipment[0][id]" class="form-select form-select-sm equipment" style="background: rgba( 255, 255, 255, 0.5 );">
                                         <option value="">Выберите ...</option>
                                         @forelse($equipments as $equipment)
                                             <option value="{{$equipment->id}}">{{$equipment->name->name  }}{{' (' . $equipment->room->name . ')'}}</option>
@@ -106,7 +104,7 @@
                                         <label for="work_type_id" style="color: white;">Выполненные работы</label>
                                     </div>
                                     <div class="col mb-2 input-group">
-                                        <select name="Equipment[0][work_ids][0][id]" class="form-select equipment-work" style="background: rgba( 255, 255, 255, 0.5 );">
+                                        <select name="Equipment[0][work_ids][0][id]" class="form-select form-select-sm equipment-work" style="background: rgba( 255, 255, 255, 0.5 );">
                                             <option value="">Выберите ...</option>
                                             @forelse($works as $works)
                                                 <option value="{{$works->id}}">{{$works->name}}</option>
@@ -119,9 +117,6 @@
                                         </button>
                                     </div>
                                 </div>
-
-
-
                                 <div class="accordion">
                                     <div class="accordion-item" style="background: transparent;">
                                         <h2 class="accordion-header" id="headingOne">
@@ -139,7 +134,7 @@
                                                     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2">
                                                         <div class="col mb-2">
                                                             <label for="spare_part_id" style="color: white;">Деталь</label>
-                                                            <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select work-spare-part" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                            <select name="Equipment[0][work_ids][0][spare_part_ids][0][id]" class="form-select form-select-sm work-spare-part" style="background: rgba( 255, 255, 255, 0.5 );">
                                                                 <option value="">Выберите ...</option>
                                                                 @forelse($spare_parts as $spare_part)
                                                                     <option value="{{$spare_part->id}}">{{$spare_part->name}}</option>
@@ -150,16 +145,16 @@
                                                         </div>
                                                         <div class="col mb-2">
                                                             <label for="count" style="color: white;">Кол-во</label>
-                                                            <input class="form-control" type="number" placeholder="1.0" step="0.1" min="0" max="1000" name="Equipment[0][work_ids][0][spare_part_ids][0][count]" style="background: rgba( 255, 255, 255, 0.5 );"/>
+                                                            <input class="form-control form-control-sm" type="number" placeholder="1.0" step="0.1" min="0" max="1000" name="Equipment[0][work_ids][0][spare_part_ids][0][count]" style="background: rgba( 255, 255, 255, 0.5 );"/>
                                                         </div>
                                                         <div class="col mb-2">
                                                             <label for="model" style="color: white;">Модель</label>
-                                                            <input placeholder="Модель" name="Equipment[0][work_ids][0][spare_part_ids][0][model]" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                                                            <input placeholder="Модель" name="Equipment[0][work_ids][0][spare_part_ids][0][model]" class="form-control form-control-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                                                         </div>
                                                         <div class="col mb-2">
                                                             <label for="comment" style="color: white;">Комментарий</label>
                                                             <div class="input-group">
-                                                                <textarea placeholder="Комментарий" class="form-control" name="Equipment[0][work_ids][0][spare_part_ids][0][comment]" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                                                <textarea placeholder="Комментарий" class="form-control form-control-sm" name="Equipment[0][work_ids][0][spare_part_ids][0][comment]" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                                                 <button type="button" class="add-act-spare-part ps-2" style="border: none; background-color: transparent;">
                                                                     <img src="{{ asset('icons/add.svg') }}" class="rounded" alt="Add spare part" height="35" width="35" title="Добавить деталь в акт">
                                                                 </button>
@@ -175,28 +170,28 @@
                                 <div class="row row-cols-1 row-cols-md-2">
                                     <div class="col mb-3">
                                         <label for="works" style="color: white;">Описание работ (необязательно)</label>
-                                        <textarea class="form-control" name="Equipment[0][works]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                        <textarea class="form-control form-control-sm" name="Equipment[0][works]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                     </div>
                                     <div class="col mb-3">
                                         <label for="remarks" style="color: white;">Замечания (необязательно)</label>
-                                        <textarea class="form-control" name="Equipment[0][remarks]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                        <textarea class="form-control form-control-sm" name="Equipment[0][remarks]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                     </div>
                                 </div>
                                 <div class="row row-cols-1 row-cols-md-2">
                                     <div class="col mb-3">
                                         <label for="recommendations" style="color: white;">Рекомендации (необязательно)</label>
-                                        <textarea class="form-control" name="Equipment[0][recommendations]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                        <textarea class="form-control form-control-sm" name="Equipment[0][recommendations]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                     </div>
                                     <div class="col mb-3">
                                         <label for="remarks" style="color: white;">Затраченные тмц (необязательно)</label>
-                                        <textarea class="form-control" placeholder="тмц - технические материальные ценности" name="Equipment[0][spare_parts]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                                        <textarea class="form-control form-control-sm" placeholder="тмц - технические материальные ценности" name="Equipment[0][spare_parts]" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="act-files">
                                 <div class="row row-cols-1">
                                     <div class="col mb-3">
-                                        <input class="form-control" type="file" multiple name="Equipment[0][files][]" accept="image/*, video/*, audio/*">
+                                        <input class="form-control form-control-sm" type="file" multiple name="Equipment[0][files][]" accept="image/*, video/*, audio/*">
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +204,7 @@
                                 <label for="users" style="color: white;">Исполнители</label>
                             </div>
                             <div class="col mb-2 input-group">
-                                <select name="user_id[]" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                                <select name="user_id[]" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                                     @forelse($users as $user)
                                         <option value="{{$user->id}}">{{$user->name}}</option>
                                     @empty

@@ -13,17 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rooms', function (Blueprint $table) {
+        Schema::create('room_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('room_type_id')
-                ->constrained('room_types')
-                ->onUpdate('cascade')
-                ->onDelete('no action');
             $table->string('name', 50)->unique();
             $table->string('slug', 50)->unique();
             $table->integer('sort_order')->default(1);
             $table->tinyInteger('visible')->default(1);
-            $table->string('comment')->nullable()->default(null);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rooms');
+        Schema::dropIfExists('room_types');
     }
 };

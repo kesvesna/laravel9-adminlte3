@@ -50,6 +50,12 @@ class Act extends Model
         return $this->belongsTo(System::class, 'system_type_id')->withDefault();
     }
 
+    public function act_type()
+    {
+        return $this->belongsTo(ActTypes::class, 'act_type_id')->withDefault();
+
+    }
+
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class, 'room_id')->withDefault();

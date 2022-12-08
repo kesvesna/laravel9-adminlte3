@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Admin\Rooms;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Rooms\StoreRoomFormRequest;
+use App\Http\Requests\Rooms\UpdateRoomFormRequest;
 use App\Models\Rooms\Room;
+use App\Models\Rooms\RoomTypes;
 use Illuminate\Http\Request;
 
 class RoomController extends Controller
@@ -31,7 +34,9 @@ class RoomController extends Controller
     public function create()
     {
         $this->str = 'rooms';
-        return view('admin.' . $this->str . '.create');
+        return view('admin.' . $this->str . '.create',[
+            'room_types' => RoomTypes::all(),
+        ]);
     }
 
     /**
@@ -40,12 +45,9 @@ class RoomController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRoomFormRequest $request)
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'min:2', 'max:50'],
-            'sort_order' => ['integer']
-        ]);
+        $data = $request->validated();
         Room::create($data);
         return redirect()->route('admin.rooms.index');
     }
@@ -72,7 +74,8 @@ class RoomController extends Controller
     public function edit(Room $room)
     {
         return view('admin.rooms.edit', [
-            'room' => $room
+            'room' => $room,
+            'room_types' => RoomTypes::all(),
         ]);
     }
 
@@ -83,12 +86,9 @@ class RoomController extends Controller
      * @param  \App\Models\Rooms\Room $room
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Room $room)
+    public function update(UpdateRoomFormRequest $request, Room $room)
     {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'min:2', 'max:50'],
-            'sort_order' => ['integer']
-        ]);
+        $data = $request->validated();
         $room->update($data);
         return redirect()->route('admin.rooms.show', $room->id);
     }

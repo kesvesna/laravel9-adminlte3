@@ -22,8 +22,16 @@
             <td>{{ $room->name }}</td>
         </tr>
         <tr>
+            <th scope="row">Назначение</th>
+            <td>{{ $room->room_type->name }}</td>
+        </tr>
+        <tr>
             <th scope="row">Slug</th>
             <td>{{ $room->slug }}</td>
+        </tr>
+        <tr>
+            <th scope="row">Комментарий</th>
+            <td>{{ $room->comment }}</td>
         </tr>
         </tbody>
     </table>

@@ -132,11 +132,11 @@ class ActController extends Controller
                 foreach($data['Equipment'] as $equipment_array){
 
                     $act = new Act();
-
                     $equipment = Equipment::find($equipment_array['id']);
                     $act->date = $data['date'];
+                    $act->act_type_id = Act::CREATED_BY_PLAN;
                     $act->system_type_id = $equipment->system_type_id;
-                    $act->trk_id = $equipment_array['trk_id'];
+                    $act->trk_id = $data['trk_id'];
                     $act->building_id = $equipment->building_id;
                     $act->room_id = $equipment->room_id;
                     $act->works = $equipment_array['works'];

@@ -28,6 +28,7 @@ class StoreActFormRequest extends FormRequest
             'application_id' => ['numeric', 'min:1', 'nullable'],
             'date' => ['required', 'after_or_equal: 2019'],
             //'system_type_id' => ['required', 'numeric', 'min:1'],
+            'trk_id' => ['numeric', 'min:1', 'nullable'],
             'user_id' => ['required', 'array', 'min:1'],
             'user_id.*' => ['required', 'numeric', 'min:1'],
             'Equipment' => ['required', 'array', 'min:1'],
