@@ -21,7 +21,7 @@ class RoomController extends Controller
     public function index()
     {
         return view('admin.rooms.index', [
-            'rooms' => Room::paginate(config('admin.rooms.pagination')),
+            'rooms' => Room::orderBy('created_at', 'desc')->paginate(config('admin.rooms.pagination')),
             'rooms_count' => Room::count()
         ]);
     }
