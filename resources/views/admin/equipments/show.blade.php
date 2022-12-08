@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <th scope="row">ТРК</th>
-            <td>{{ $equipment->trk->name }}</td>
+            <td>{{ $equipment->room->trk->name }}</td>
         </tr>
         <tr>
             <th scope="row">Тип оборудования/Услуга</th>
@@ -29,20 +29,31 @@
         </tr>
         <tr>
             <th scope="row">Блок/Зона</th>
-            <td>{{ $equipment->building->name }}</td>
+            <td>{{ $equipment->room->building->name }}</td>
         </tr>
         <tr>
             <th scope="row">Этаж</th>
-            <td>{{ $equipment->floor->name }}</td>
+            <td>{{ $equipment->room->floor->name }}</td>
         </tr>
         <tr>
             <th scope="row">Помещение</th>
-            <td>{{ $equipment->room->name }}</td>
+            <td>{{ $equipment->room->room->name }}</td>
         </tr>
         <tr>
             <th scope="row">Наименование по проекту</th>
             <td>{{ $equipment->name->name }}</td>
         </tr>
+        {{ $counter = 1 }}
+        @forelse($equipment->medias as $media)
+        <tr>
+            <th scope="row">Файл {{ $counter }}</th>
+            {{$counter++}}
+                <td>
+                    <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
+                        <img class="img-thumbnail" style="width: 200px; height: 200px;" src="{{ Storage::disk('public')->url($media->name) }}" alt="Equipment file"></a></td>
+        </tr>
+        @empty
+        @endforelse
         </tbody>
     </table>
     </div>

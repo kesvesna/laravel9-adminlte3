@@ -268,6 +268,7 @@
 <!-- User javascript -->
 <script src="{{ asset('dist/js/tables/trk_rooms/delete_row.js') }}"></script>
 <script src="{{ asset('dist/js/tables/trk_rooms/add_row.js') }}"></script>
+<script src="{{ asset('dist/js/trk_building_floor_room/get_rooms_by_trk_id.js') }}"></script>
 
 </body>
 </html>

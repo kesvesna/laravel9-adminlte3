@@ -15,24 +15,12 @@ return new class extends Migration
     {
         Schema::create('equipments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('trk_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
             $table->foreignId('system_type_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('no action');
-            $table->foreignId('building_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
-            $table->foreignId('floor_id')
-                ->constrained()
-                ->onUpdate('cascade')
-                ->onDelete('no action');
             $table->foreignId('room_id')
-                ->constrained()
+                ->constrained('trk_building_floor_room', 'id')
                 ->onUpdate('cascade')
                 ->onDelete('no action');
             $table->foreignId('equipment_name_id')
@@ -53,10 +41,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('equipments', function (Blueprint $table) {
-            $table->dropForeign(['trk_id']);
             $table->dropForeign(['system_type_id']);
-            $table->dropForeign(['building_id']);
-            $table->dropForeign(['floor_id']);
             $table->dropForeign(['room_id']);
             $table->dropForeign(['equipment_name_id']);
         });

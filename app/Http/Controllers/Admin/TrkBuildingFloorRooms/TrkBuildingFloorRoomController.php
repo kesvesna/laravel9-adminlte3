@@ -140,4 +140,16 @@ class TrkBuildingFloorRoomController extends Controller
             return \response()->json('error', 400);
         }
     }
+
+
+    public function get_rooms_by_trk_id(Trk $trk){
+
+        if($trk){
+            $data = TrkBuildingFloorRoom::where('trk_id', $trk->id)->with('room', 'floor', 'building')->get();
+            return ['success'=>true,'data'=>$data];
+        } else {
+            return ['error' => true, 'message'=>"Can't get rooms"];
+        }
+
+    }
 }

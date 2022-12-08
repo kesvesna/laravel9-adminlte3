@@ -6,7 +6,19 @@
 
 @section('content')
     <br>
-    <form action="{{ route('admin.equipments.store') }}" method="post">
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    @if(Session::has('error'))
+        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+    @endif
+    <form action="{{ route('admin.equipments.store') }}" method="post"  enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="trk_id">ТОРГОВЫЙ КОМПЛЕКС</label>
@@ -32,39 +44,39 @@
                 @endforelse
             </select>
         </div>
-        <div class="form-group">
-            <label for="building_id">Блок/Зона</label>
-            <select name="building_id" id="building_id" class="form-control">
-                @forelse($buildings as $building)
-                    <option
-                        {{ old('building_id') == $building->id ? ' selected' : ''}}
-                        value="{{ $building->id }}">{{ $building->name }}</option>
-                @empty
-                    <option value="0">Нет блоков/зон</option>
-                @endforelse
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="floor_id">Этаж/Уровень</label>
-            <select name="floor_id" id="floor_id" class="form-control">
-                @forelse($floors as $floor)
-                    <option
-                        {{ old('floor_id') == $floor->id ? ' selected' : ''}}
-                        value="{{ $floor->id }}">{{ $floor->name }}</option>
-                @empty
-                    <option value="0">Нет этажей</option>
-                @endforelse
-            </select>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label for="building_id">Блок/Зона</label>--}}
+{{--            <select name="building_id" id="building_id" class="form-control">--}}
+{{--                @forelse($buildings as $building)--}}
+{{--                    <option--}}
+{{--                        {{ old('building_id') == $building->id ? ' selected' : ''}}--}}
+{{--                        value="{{ $building->id }}">{{ $building->name }}</option>--}}
+{{--                @empty--}}
+{{--                    <option value="0">Нет блоков/зон</option>--}}
+{{--                @endforelse--}}
+{{--            </select>--}}
+{{--        </div>--}}
+{{--        <div class="form-group">--}}
+{{--            <label for="floor_id">Этаж/Уровень</label>--}}
+{{--            <select name="floor_id" id="floor_id" class="form-control">--}}
+{{--                @forelse($floors as $floor)--}}
+{{--                    <option--}}
+{{--                        {{ old('floor_id') == $floor->id ? ' selected' : ''}}--}}
+{{--                        value="{{ $floor->id }}">{{ $floor->name }}</option>--}}
+{{--                @empty--}}
+{{--                    <option value="0">Нет этажей</option>--}}
+{{--                @endforelse--}}
+{{--            </select>--}}
+{{--        </div>--}}
         <div class="form-group">
             <label for="room_id">Помещение</label>
             <select name="room_id" id="room_id" class="form-control">
                 @forelse($rooms as $room)
                     <option
                         {{ old('room_id') == $room->id ? ' selected' : ''}}
-                        value="{{ $room->id }}">{{ $room->name }}</option>
+                        value="{{ $room->id }}">{{ $room->room->name}} &nbsp;&nbsp;&nbsp;{{'( ' . $room->floor->name . ', ' }}{{ $room->building->name . ' )' }}</option>
                 @empty
-                    <option value="0">Нет помещений</option>
+                    <option value="">Нет помещений</option>
                 @endforelse
             </select>
         </div>
@@ -107,4 +119,16 @@
         <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3 mt-3 mb-3">Назад</a>
         <button type="submit" class="btn btn-primary mt-3 mb-3">Сохранить</button>
     </form>
+
+
+
+    <style>
+        #loader {
+            position: absolute;
+            right: 18px;
+            top: 30px;
+            width: 20px;
+        }
+    </style>
+
 @endsection

@@ -6,6 +6,7 @@ use App\Models\Buildings\Building;
 use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Traits\Filterable;
+use App\Models\Trks\Trk;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -29,6 +30,11 @@ class TrkBuildingFloorRoom extends Model
     public function building()
     {
         return $this->belongsTo(Building::class, 'building_id');
+    }
+
+    public function trk()
+    {
+        return $this->belongsTo(Trk::class, 'trk_id');
     }
 
     public function floor()

@@ -9,6 +9,7 @@ use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Systems\System;
 use App\Models\Traits\Filterable;
+use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use App\Models\Trks\Trk;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -27,18 +28,11 @@ class Equipment extends Model
     public const DECOMMISSIONED = 4;
 
     protected $fillable = [
-        'trk_id',
         'system_type_id',
-        'building_id',
-        'floor_id',
         'room_id',
         'equipment_name_id'
     ];
 
-    public function trk(): BelongsTo
-    {
-        return $this->belongsTo(Trk::class)->withDefault();
-    }
 
     public function system(): BelongsTo
     {
@@ -50,19 +44,9 @@ class Equipment extends Model
         return $this->belongsTo(EquipmentNames::class, 'equipment_name_id')->orderBy('name')->withDefault();
     }
 
-    public function room(): BelongsTo
+    public function room()
     {
-        return $this->belongsTo(Room::class, 'room_id')->withDefault();
-    }
-
-    public function building(): BelongsTo
-    {
-        return $this->belongsTo(Building::class)->withDefault();
-    }
-
-    public function floor(): BelongsTo
-    {
-        return $this->belongsTo(Floor::class)->withDefault();
+        return $this->belongsTo(TrkBuildingFloorRoom::class, 'room_id')->withDefault();
     }
 
     public function medias()
@@ -107,6 +91,7 @@ class Equipment extends Model
 
         static::deleting(function($equipment) {
             $equipment->histories()->delete();
+            $equipment->medias()->delete();
         });
     }
 }

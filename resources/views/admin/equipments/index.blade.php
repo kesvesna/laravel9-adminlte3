@@ -60,7 +60,7 @@
                             @forelse($rooms as $room)
                                 <option value="{{$room->name}}">
                                     @empty
-                                        Нет названий оборудования
+                                        Нет помещений
                             @endforelse
                         </datalist>
                     </th>
@@ -81,9 +81,9 @@
                 <tbody>
                 @forelse($equipments as $equipment)
                     <tr>
-                        <td>{{ $equipment->trk->name }}</td>
+                        <td>{{ $equipment->room->trk->name }}</td>
                         <td>{{ $equipment->system->name }}</td>
-                        <td>{{ $equipment->room->name }}</td>
+                        <td>{{ $equipment->room->room->name }}</td>
                         <td>{{ $equipment->name->name }}</td>
                         <td><a href="{{ route('admin.equipments.show', $equipment->id) }}"><i
                                     class="nav-icon fas fa-eye ml-2 mr-2" style="color: green; opacity: .7;"
@@ -105,7 +105,11 @@
                         </td>
                     </tr>
                 @empty
-                    Нет заявок
+                    <tr>
+                        <td colspan="5">
+                            Нет оборудования
+                        </td>
+                    </tr>
                 @endforelse
                 </tbody>
             </table>

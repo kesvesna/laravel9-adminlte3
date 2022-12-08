@@ -44,6 +44,35 @@ class RoomTypesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
+                [
+                    'name' => 'Входная группа',
+                    'slug' => 'vhodnaya-gruppa',
+                    'sort_order' => 500,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'Въезд',
+                    'slug' => 'vezd',
+                    'sort_order' => 600,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'Выезд',
+                    'slug' => 'viezd',
+                    'sort_order' => 700,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'Для посетителей',
+                    'slug' => ' dlya-posetitelii',
+                    'sort_order' => 800,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+
             ]);
     }
 }

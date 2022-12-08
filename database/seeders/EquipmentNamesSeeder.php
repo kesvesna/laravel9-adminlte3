@@ -100,6 +100,54 @@ class EquipmentNamesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
+                [
+                    'name' => 'П-01-АС',
+                    'slug' => 'p-01-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-02-АС',
+                    'slug' => 'p-02-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-03-АС',
+                    'slug' => 'p-03-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-04-АС',
+                    'slug' => 'p-04-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-05-АС',
+                    'slug' => 'p-05-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-06-АС',
+                    'slug' => 'p-06-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-07-АС',
+                    'slug' => 'p-07-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
+                [
+                    'name' => 'П-08-АС',
+                    'slug' => 'p-08-as',
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ],
             ]);
 
     }

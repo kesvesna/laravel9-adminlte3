@@ -12,11 +12,13 @@ use App\Models\Floors\Floor;
 use App\Models\Rooms\Room;
 use App\Models\Services\Service;
 use App\Models\Systems\System;
+use App\Models\TrkBuildingFloorRooms\TrkBuildingFloorRoom;
 use App\Http\Requests\Equipments\{EquipmentFilterRequest, StoreEquipmentFormRequest, UpdateEquipmentFormRequest};
-use App\Models\Equipments\{Equipment, EquipmentHistories, EquipmentNames, EquipmentStatuses};
+use App\Models\Equipments\{Equipment, EquipmentHistories, EquipmentMedias, EquipmentNames, EquipmentStatuses};
 use App\Models\Trks\Trk;
 use App\Services\Equipments\UploadService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class EquipmentController extends Controller
 {
@@ -41,7 +43,7 @@ class EquipmentController extends Controller
 
         $filter = app()->make(TrksFilter::class, ['queryParams' => array_filter($data)]);
         $equipments = Equipment::filter($filter)
-                                        ->with(['trk', 'histories', 'currentHistory', 'system', 'name', 'room'])
+                                        ->with(['histories', 'currentHistory', 'system', 'name', 'room'])
                                         ->orderBy('id', 'desc')
                                         ->whereIn('equipment_name_id', $names)
                                         ->whereIn('room_id', $rooms)
@@ -59,15 +61,15 @@ class EquipmentController extends Controller
 
     public function create()
     {
+
         return view('admin.equipments.create', [
             'trks' => Trk::all(),
-            'buildings' => Building::all(),
-            'floors' => Floor::all(),
+            //'buildings' => Building::all(),
+            //'floors' => Floor::all(),
             'systems' => System::all(),
-            'rooms' => Room::all(),
-            'equipment_names' => EquipmentNames::all(),
+            'rooms' => TrkBuildingFloorRoom::where('trk_id', Trk::first()->id)->get(),
+            'equipment_names' => EquipmentNames::orderBy('name', 'asc')->get(),
             'equipment_statuses' => EquipmentStatuses::all(),
-
         ]);
     }
 
@@ -77,14 +79,41 @@ class EquipmentController extends Controller
         {
             $data = $request->validated();
 
+            $trk_room = TrkBuildingFloorRoom::where('id', $data['room_id'])->first();
+
             try {
                 DB::beginTransaction();
-                $equipment = Equipment::create($data);
 
-                $data['created_by_user_id'] = 1; // Auth::id
-                $data['equipment_id'] = $equipment->id;
+                $data['building_id'] = $trk_room->building_id;
+                $data['floor_id'] = $trk_room->floor_id;
+                $data['room_id'] = $trk_room->id;
 
-                $history = EquipmentHistories::create($data);
+                $equipment = Equipment::where(['system_type_id' => $data['system_type_id']])
+                                        ->where(['room_id' => $data['room_id']])
+                                        ->where(['equipment_name_id' => $data['equipment_name_id']])
+                                        ->first();
+                if(!$equipment)
+                {
+                    $equipment = Equipment::create($data);
+                    $media['equipment_id'] = $equipment->id;
+                    if ($request->hasFile('files')) {
+                        foreach($request->file(['files']) as $file) {
+                            $media['name'] = $uploadService->uploadMedia($file);
+                            EquipmentMedias::create($media);
+                        }
+                    }
+
+                    $data['created_by_user_id'] = 1; // Auth::id
+                    $data['equipment_id'] = $equipment->id;
+
+                    $history = EquipmentHistories::create($data);
+
+                } else {
+                    return redirect()
+                        ->route('admin.equipments.create')
+                        ->with('error', 'Такое оборудование уже есть');
+                }
+
                 DB::commit();
             } catch(\Exception $e){
                 DB::rollBack();
@@ -158,7 +187,14 @@ class EquipmentController extends Controller
     {
         try{
             DB::beginTransaction();
+
+            foreach($equipment->medias as $media)
+            {
+                Storage::disk('public')->delete($media->name);
+            }
+
             $equipment->delete();
+
             DB::commit();
         } catch (\Exception $e) {
             DB::rollBack();

@@ -100,6 +100,7 @@ Route::name('admin.')
 
         Route::post('trk-building-floor-room/{trk}', [AdminTrkBuildingFloorRoomController::class, 'update'])->name('trk-building-floor-room.update');
         Route::delete('trk-building-floor-room/{trk_building_floor_room}', [AdminTrkBuildingFloorRoomController::class, 'destroy'])->name('trk-building-floor-room.destroy');
+        Route::post('trk-building-floor-room/get_rooms_by_trk_id/{trk}', [AdminTrkBuildingFloorRoomController::class, 'get_rooms_by_trk_id'])->name('trk-building-floor-room.get_rooms_by_trk_id');
 
         Route::resource('systems', AdminSystemController::class);
 

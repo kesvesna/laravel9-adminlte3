@@ -11,7 +11,7 @@ class UploadService
 {
     public function uploadMedia(UploadedFile $uploadedFile): string
     {
-        $path = $uploadedFile->storeAs('files/equipments', $uploadedFile->hashName(), 'public');
+        $path = $uploadedFile->storeAs('files/equipments/' . date('Y-m-d'), $uploadedFile->hashName(), 'public');
         if ($path === false) {
             throw new UploadException("File was not upload");
         }
