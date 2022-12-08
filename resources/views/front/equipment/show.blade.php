@@ -18,7 +18,7 @@
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                         <div class="col mt-2">
                             <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                                <option value="">{{ $equipment->trk->name }}</option>
+                                <option value="">{{ $equipment->room->trk->name }}</option>
                             </select>                        </div>
                         <div class="col mt-2">
                             <select disabled id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
@@ -29,19 +29,19 @@
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                 <div class="col mt-2">
                     <select disabled id="building_id" name="building_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                        <option value="">{{ $equipment->building->name }}</option>
+                        <option value="">{{ $equipment->room->building->name }}</option>
                     </select>
                 </div>
                 <div class="col mt-2">
                     <select disabled id="floor_id" name="floor_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                        <option value="">{{ $equipment->floor->name }}</option>
+                        <option value="">{{ $equipment->room->floor->name }}</option>
                     </select>
                 </div>
             </div>
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                 <div class="col mt-2">
                     <select disabled id="room_id" name="room_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                        <option value="">{{ $equipment->room->name }}</option>
+                        <option value="">{{ $equipment->room->room->name }}</option>
                     </select>
                 </div>
                 <div class="col mt-2">
@@ -51,7 +51,6 @@
                 </div>
             </div>
             <hr>
-                    <p style="color: white;">фотографии</p>
                     <p style="color: white;">заявки</p>
                     <p style="color: white;">ремонт</p>
                     <p style="color: white;">акты</p>
@@ -62,17 +61,17 @@
                     <p style="color: white;">Ответственный</p>
                     <p style="color: white;">QR код</p>
             <hr>
-                    @if(isset($equipment->medias))
-                    <div class="row col-12 mx-auto row-cols-1 row-cols-md-{{ count($equipment->medias) }} my-2">
-                        @forelse($equipment->medias as $media)
-                            <div class="col my-2">
-                                <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
-                                    <img class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Equipment file"></a>
-                            </div>
-                           @empty
-                        @endforelse
-                    </div>
-                    @endif
+            @if(isset($equipment->medias))
+                <div class="d-flex row col-11 col-sm-10 row-cols-1 mx-auto row-cols-sm-2 row-cols-md3 row-cols-lg-4">
+                    @forelse($equipment->medias as $media)
+                        <div style="max-height: 50vh;" class="mb-2">
+                            <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
+                                <img style="height: 100%; width: 100%;" class="img-thumbnail" src="{{ Storage::disk('public')->url($media->name) }}" alt="Equipment file"></a>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
+            @endif
                     @if(isset($equipment->histories) && count($equipment->histories) > 0)
                         <div class="row col-12 mx-auto row-cols-1 my-2">
                         <h6 style="color: white;">История оборудования</h6>

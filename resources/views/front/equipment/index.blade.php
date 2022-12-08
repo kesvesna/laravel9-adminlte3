@@ -116,9 +116,9 @@
             </tr>
             @forelse($equipments as $equipment)
                 <tr style="color: white;"  onclick="window.location='{{ route('front.equipment.show', $equipment->id) }}';">
-                    <td class="d-none d-lg-table-cell">{{ $equipment->trk->name }}</td>
+                    <td class="d-none d-lg-table-cell">{{ $equipment->room->trk->name }}</td>
                     <td class="d-none d-lg-table-cell">{{ $equipment->system->name }}</td>
-                    <td class="d-none d-lg-table-cell">{{ $equipment->room->name }}</td>
+                    <td class="d-none d-lg-table-cell">{{ $equipment->room->room->name }}</td>
                     <td class="">{{ $equipment->name->name }}</td>
                 </tr>
                 @empty

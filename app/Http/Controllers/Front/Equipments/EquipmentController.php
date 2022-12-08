@@ -50,7 +50,7 @@ class EquipmentController extends Controller
 
         $filter = app()->make(TrksFilter::class, ['queryParams' => array_filter($data)]);
         $equipments = Equipment::filter($filter)
-                                        ->with(['trk', 'histories', 'currentHistory', 'system', 'name', 'room'])
+                                        ->with(['histories', 'currentHistory', 'system', 'name', 'room'])
                                         ->orderBy('id', 'desc')
                                         ->whereIn('equipment_name_id', $names)
                                         ->whereIn('room_id', $rooms)
