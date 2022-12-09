@@ -80,13 +80,13 @@
                 @endif
                 @if($repair->currentHistory->repair_status->id == $repair::BY_PLAN || $repair->currentHistory->repair_status->id == $repair::BY_APPLICATION ||  $repair->currentHistory->repair_status->id == $repair::IN_PROGRESS)
                     <div class="mt-3 row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-4">
-                        <form action="{{ route('front.act.create_by_repair_all_done', $repair->id) }}" method="post">
+                        <form action="{{ route('front.acts.create_by_repair_all_done', $repair->id) }}" method="post">
                             @csrf
                             <div class="col">
                                 <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнен</b></button>
                             </div>
                         </form>
-                        <form action="{{ route('front.act.create_by_repair_not_completely_done', $repair->id) }}" method="post">
+                        <form action="{{ route('front.acts.create_by_repair_not_completely_done', $repair->id) }}" method="post">
                             @csrf
                         <div class="col">
                             <button type="submit" class="btn btn-warning col-12 mb-3">Выполнен частично</button>

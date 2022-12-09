@@ -204,20 +204,20 @@ class RepairController extends Controller
         if($request->isMethod('post'))
         {
             $data = $request->validated();
-            $data['user_id'] = 1; // Auth::id()
-            $data['responsible_user_id'] = $repair->responsible_user_id; // Auth::id()
-            $data['trk_id'] = $repair->trk_id;
             $data['repair_status_id'] = $repair::REJECTED;
-            $data['service_id'] = $repair->service_id;
+            $data['service_id'] = $repair->currentHistory->service_id;
             $data['repair_id'] = $repair->id;
-
-            $repair->repair_status_id = $repair::REJECTED;
+            $data['plan_date'] = $repair->currentHistory->plan_date;
+            $data['user_id'] = 1; // Auth::id
 
             try {
+
                 DB::beginTransaction();
-                $repair->update();
+
                 RepairHistories::create($data);
+
                 DB::commit();
+
             } catch (\Exception $e) {
                 DB::rollBack();
                 dd($e);
