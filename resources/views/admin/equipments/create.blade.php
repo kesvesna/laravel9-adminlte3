@@ -33,7 +33,19 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="system_type_id">ТИП ОБОРУДОВАНИЯ/УСЛУГА</label>
+            <label for="room_id">Помещение</label>
+            <select name="room_id" id="room_id" class="form-control">
+                @forelse($rooms as $room)
+                    <option
+                        {{ old('room_id') == $room->id ? ' selected' : ''}}
+                        value="{{ $room->id }}">{{ $room->room->name}} &nbsp;&nbsp;&nbsp;{{'( ' . $room->floor->name . ', ' }}{{ $room->building->name . ' )' }}</option>
+                @empty
+                    <option value="">Нет помещений</option>
+                @endforelse
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="system_type_id">Тип оборудования</label>
             <select name="system_type_id" id="system_type_id" class="form-control">
                 @forelse($systems as $system)
                     <option
@@ -68,18 +80,6 @@
 {{--                @endforelse--}}
 {{--            </select>--}}
 {{--        </div>--}}
-        <div class="form-group">
-            <label for="room_id">Помещение</label>
-            <select name="room_id" id="room_id" class="form-control">
-                @forelse($rooms as $room)
-                    <option
-                        {{ old('room_id') == $room->id ? ' selected' : ''}}
-                        value="{{ $room->id }}">{{ $room->room->name}} &nbsp;&nbsp;&nbsp;{{'( ' . $room->floor->name . ', ' }}{{ $room->building->name . ' )' }}</option>
-                @empty
-                    <option value="">Нет помещений</option>
-                @endforelse
-            </select>
-        </div>
         <div class="form-group">
             <label for="equipment_name_id">Наименование по проекту</label>
             <select name="equipment_name_id" id="equipment_name_id" class="form-control">

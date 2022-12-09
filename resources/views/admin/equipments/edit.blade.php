@@ -57,9 +57,20 @@
             <select name="room_id" id="room_id" class="form-control">
                 @forelse($rooms as $room)
                     <option @if($equipment->room->room->id === $room->id) selected @endif
-                    value="{{ $room->id }}">{{ $room->room->name }}</option>
+                    value="{{ $room->id }}">{{ $room->room->name }}&nbsp;&nbsp;{{'(' . $room->floor->name . ', ' . $room->building->name . ')'}}</option>
                 @empty
                     <option value="">Нет помещений в списке</option>
+                @endforelse
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="system_type_id">Тип оборудования</label>
+            <select name="system_type_id" id="system_type_id" class="form-control">
+                @forelse($systems as $system)
+                    <option @if($equipment->system->id === $system->id) selected @endif
+                    value="{{ $system->id }}">{{ $system->name }}</option>
+                @empty
+                    <option value="">Нет систем в списке</option>
                 @endforelse
             </select>
         </div>
@@ -71,17 +82,6 @@
                     value="{{ $status->id }}">{{ $status->name }}</option>
                 @empty
                     <option value="">Нет статусов в списке</option>
-                @endforelse
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="system_type_id">Подразделение</label>
-            <select name="system_type_id" id="system_type_id" class="form-control">
-                @forelse($systems as $system)
-                    <option @if($equipment->system->id === $system->id) selected @endif
-                    value="{{ $system->id }}">{{ $system->name }}</option>
-                @empty
-                    <option value="">Нет систем в списке</option>
                 @endforelse
             </select>
         </div>
