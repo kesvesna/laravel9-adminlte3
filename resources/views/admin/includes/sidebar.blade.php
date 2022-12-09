@@ -176,7 +176,7 @@
                        class="nav-link {{ request()->routeIs('admin.systems.index')?'active':'' }}">
                         <i class="nav-icon far fa-file"></i>
                         <p>
-                            Тип
+                            Тип оборудования
                             @if(isset($systems_count))
                                 <span class="badge badge-info right">
                             {{ $systems_count }}
