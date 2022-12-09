@@ -177,13 +177,6 @@ class SystemTypesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
-                [
-                    'name' => 'Электроснабжение',
-                    'slug' => 'electrosnabzhenie',
-                    'sort_order' => 2500,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
             ]);
 
     }

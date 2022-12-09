@@ -42,7 +42,7 @@
                             <input required type="datetime-local" name="date"  value="{{ Carbon\Carbon::now() }}" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
                         </div>
                         <div class="col mb-2">
-                            <label for="system_type_id" style="color: white;" class="mb-1">Система/Услуга (фильтр)</label>
+                            <label for="system_type_id" style="color: white;" class="mb-1">Тип оборудования</label>
                             <select autofocus id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
                                 <option value="">Выберите ...</option>
                                 @forelse($systems as $system)

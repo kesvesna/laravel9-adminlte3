@@ -7,7 +7,7 @@
 @section('content')
 <main>
     <div class="container-fluid" style="padding-bottom: 15vh;">
-        <h5 style="color: white;" class="pt-3">Ремонты</h5>
+        <h5 style="color: white;" class="pt-3 pb-2">Ремонты</h5>
         <form action="{{ route('front.repair.index') }}" method="get">
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 pt-2 d-md-none">
                 <div class="col">
@@ -54,9 +54,9 @@
             <thead>
             <tr>
                 <th scope="col" style="width: 10%;" class="d-none d-sm-table-cell">Дата
-                    <button class="btn">
-                        <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">
-                    </button>
+{{--                    <button class="btn">--}}
+{{--                        <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">--}}
+{{--                    </button>--}}
                 </th>
                 <th scope="col" style="width: 20%;"  class="d-none d-lg-table-cell">
                     ТРК
@@ -119,7 +119,11 @@
                     <td>{{ $repair->comment }}</td>
                 </tr>
             @empty
-                Нет ремонтов
+                <tr>
+                    <td colspan="5" style="color: white;">
+                        Нет ремонтов
+                    </td>
+                </tr>
             @endforelse
             <tr>
                 <th colspan="5">

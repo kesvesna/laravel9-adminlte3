@@ -49,7 +49,7 @@
                             </select>
                         </div>
                         <div class="col mb-2">
-                            <label for="system_type_id" style="color: white;" class="mb-1">Система/Услуга</label>
+                            <label for="system_type_id" style="color: white;" class="mb-1">Тип оборудования</label>
                             <select autofocus id="system_type_id" name="system_type_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                                 <option value="">Выберите ...</option>
                                 @forelse($systems as $system)
@@ -75,7 +75,7 @@
                                     <select name="Equipment[0][id]" class="form-select form-select-sm equipment" style="background: rgba( 255, 255, 255, 0.5 );">
                                         <option value="">Выберите ...</option>
                                         @forelse($equipments as $equipment)
-                                            <option value="{{$equipment->id}}">{{$equipment->name->name  }}&nbsp;&nbsp;{{'(' . $equipment->room->room->name . ')'}}</option>
+                                            <option value="{{$equipment->id}}">{{$equipment->name->name  }}&nbsp;&nbsp;{{'(' . $equipment->room->room->name . ', ' . $equipment->room->building->name . ')'}}</option>
                                         @empty
                                             Нет оборудования
                                         @endforelse

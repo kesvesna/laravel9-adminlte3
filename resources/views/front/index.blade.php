@@ -25,7 +25,7 @@
                             <div class="col-8 col-sm-7 col-md-7">
                                 <form action="{{ route('front.applications.index') }}" method="get">
                                 <div class="input-group">
-                                    <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control" aria-describedby="search_application">
+                                    <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm" aria-describedby="search_application">
                                     <button class="btn" type="submit">
                                         <img src="{{ asset('icons/search.svg') }}" alt="Search application" width="30" height="30">
                                     </button>
@@ -67,7 +67,7 @@
                             <div class="col-8 col-sm-7 col-md-7">
                                 <form action="{{ route('front.repair.index') }}" method="get">
                                     <div class="input-group">
-                                        <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control" aria-describedby="search_repair">
+                                        <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm" aria-describedby="search_repair">
                                         <button class="btn" type="submit">
                                             <img src="{{ asset('icons/search.svg') }}" alt="Search repair" width="30" height="30">
                                         </button>
@@ -109,7 +109,7 @@
                             <div class="col-8 col-sm-7 col-md-7">
                                 <form action="{{ route('front.acts.index') }}" method="get">
                                     <div class="input-group">
-                                        <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control" aria-describedby="search_act">
+                                        <input autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm" aria-describedby="search_act">
                                         <button class="btn" type="submit">
                                             <img src="{{ asset('icons/search.svg') }}" alt="Search act" width="30" height="30">
                                         </button>
