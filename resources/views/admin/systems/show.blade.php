@@ -1,12 +1,12 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-    @parent Система/Услуга
+    @parent Тип оборудования
 @endsection
 
 @section('content')
     <br>
-    <h2>Система/Услуга {{ $system->id }}</h2>
+    <h2>Тип оборудования {{ $system->id }}</h2>
     <table class="table table-sm table-bordered table-striped">
         <tbody>
         <tr>
@@ -30,8 +30,8 @@
     <form action="{{ route('admin.systems.destroy', $system->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.systems.index') }}" class="btn btn-success mr-3">Назад</a>
-        <a href="{{ route('admin.systems.edit', $system->id) }}" class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
+        <a href="{{ route('admin.systems.edit', $system->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+        <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
     </form>
 @endsection

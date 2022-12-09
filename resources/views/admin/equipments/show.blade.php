@@ -5,49 +5,42 @@
 @endsection
 
 @section('content')
-    <div class="container">
-    <br>
+    <div class="container pt-2">
     <h2>Оборудование №{{ $equipment->id }}, {{$equipment->name->name}}</h2>
     <div class="table-responsive">
     <table class="table table-sm table-bordered table-striped">
         <tbody>
         <tr>
-            <th scope="col" class="col-3">ID</th>
+            <th scope="col" class="col-4">ID</th>
             <td>{{ $equipment->id }}</td>
         </tr>
         <tr>
-            <th scope="row">Создано</th>
-            <td>{{ $equipment->created_at }}</td>
-        </tr>
-        <tr>
             <th scope="row">ТРК</th>
-            <td>{{ $equipment->room->trk->name }}</td>
+            <td><a href="{{route('admin.trks.show', $equipment->room->trk->id)}}">{{ $equipment->room->trk->name }}</a></td>
         </tr>
         <tr>
             <th scope="row">Тип оборудования</th>
-            <td>{{ $equipment->system->name }}</td>
+            <td><a href="{{route('admin.systems.show', $equipment->system->id)}}">{{ $equipment->system->name }}</a></td>
         </tr>
         <tr>
             <th scope="row">Блок/Зона</th>
-            <td>{{ $equipment->room->building->name }}</td>
+            <td><a href="{{route('admin.buildings.show', $equipment->room->building->id)}}">{{ $equipment->room->building->name }}</a></td>
         </tr>
         <tr>
             <th scope="row">Этаж</th>
-            <td>{{ $equipment->room->floor->name }}</td>
+            <td><a href="{{route('admin.floors.show', $equipment->room->floor->id)}}">{{ $equipment->room->floor->name }}</a></td>
         </tr>
         <tr>
             <th scope="row">Помещение</th>
-            <td>{{ $equipment->room->room->name }}&nbsp;&nbsp; {{ '(' . $equipment->room->room->room_type->name . ')' }}</td>
+            <td><a href="{{route('admin.rooms.show', $equipment->room->room->id)}}">{{ $equipment->room->room->name }}&nbsp;&nbsp; {{ '(' . $equipment->room->room->room_type->name . ')' }}</a></td>
         </tr>
         <tr>
             <th scope="row">Наименование по проекту</th>
             <td>{{ $equipment->name->name }}</td>
         </tr>
-        {{ $counter = 1 }}
         @forelse($equipment->medias as $media)
         <tr>
-            <th scope="row">Файл {{ $counter }}</th>
-            {{$counter++}}
+            <th scope="row">Файл</th>
                 <td>
                     <a href="{{ Storage::disk('public')->url($media->name) }}" target="_blank">
                         <img class="img-thumbnail" style="width: 200px; height: 200px;" src="{{ Storage::disk('public')->url($media->name) }}" alt="Equipment file"></a></td>
@@ -61,7 +54,7 @@
         @csrf
         @method('delete')
         <div class="justify-content-between justify-content-md-start">
-            <a href="{{ route('admin.equipments.index') }}" class="btn btn-success mr-3 btn-sm">Назад</a>
+            <button type="button" onclick="history.back()" class="btn btn-success mr-3 btn-sm">Назад</button>
             <a href="{{ route('admin.equipments.edit', $equipment->id) }}"
                class="btn btn-warning mr-3 btn-sm">Редактировать</a>
             <button type="submit" class="btn btn-danger btn-sm">Удалить</button>

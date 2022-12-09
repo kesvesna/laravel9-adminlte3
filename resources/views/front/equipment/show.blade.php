@@ -19,7 +19,8 @@
                         <div class="col mt-2">
                             <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $equipment->room->trk->name }}</option>
-                            </select>                        </div>
+                            </select>
+                        </div>
                         <div class="col mt-2">
                             <select disabled id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $equipment->system->name }}</option>

@@ -23,6 +23,22 @@ class EquipmentSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'system_type_id' => 2,
+                'room_id' => 1,
+                'equipment_name_id' => 17,
+                'visible' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'system_type_id' => 2,
+                'room_id' => 1,
+                'equipment_name_id' => 18,
+                'visible' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
 
     }

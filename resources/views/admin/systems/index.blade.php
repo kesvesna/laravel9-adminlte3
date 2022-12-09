@@ -1,13 +1,13 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-    @parent Система/Услуга
+    @parent Тип оборудования
 @endsection
 
 @section('content')
     <br>
-    <h1>Система/Услуга</h1>
-    <a href="{{ route('admin.systems.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить систему/услугу</b></a>
+    <h1>Тип оборудования</h1>
+    <a href="{{ route('admin.systems.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>
@@ -39,7 +39,7 @@
                     </td>
                 </tr>
             @empty
-                Нет систем/услуг
+                Нет систем
             @endforelse
             </tbody>
         </table>

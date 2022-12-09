@@ -33,13 +33,13 @@
         </tbody>
     </table>
     </div>
-    <div class="row btn-group-sm mx-auto justify-content-between justify-content-md-start">
-        <a href="{{ route('admin.trks.index') }}" class="btn btn-success mr-3 mb-3">Назад</a>
-        <a href="{{ route('admin.trks.edit', $trk->id) }}" class="btn btn-warning mr-3 mb-3">Редактировать</a>
-        <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post">
+    <div class="justify-content-between justify-content-md-start">
+        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
+        <a href="{{ route('admin.trks.edit', $trk->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+        <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post" class="d-inline-block">
             @csrf
             @method('delete')
-            <button type="submit" class="btn btn-danger mb-3 btn-sm">Удалить</button>
+            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
         </form>
     </div>
 

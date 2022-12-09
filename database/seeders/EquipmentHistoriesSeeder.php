@@ -24,7 +24,24 @@ class EquipmentHistoriesSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'equipment_id' => 2,
+                'equipment_status_id' => 1,
+                'created_by_user_id' => 1,
+                'comment' => 'Тест',
+                'sort_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'equipment_id' => 3,
+                'equipment_status_id' => 1,
+                'created_by_user_id' => 1,
+                'comment' => 'Тест',
+                'sort_order' => 1,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
-
     }
 }

@@ -30,8 +30,8 @@
     <form action="{{ route('admin.floors.destroy', $floor->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.floors.index') }}" class="btn btn-success mr-3">Назад</a>
-        <a href="{{ route('admin.floors.edit', $floor->id) }}" class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
+        <a href="{{ route('admin.floors.edit', $floor->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+        <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
     </form>
 @endsection

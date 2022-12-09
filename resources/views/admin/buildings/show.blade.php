@@ -30,8 +30,8 @@
     <form action="{{ route('admin.buildings.destroy', $building->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.buildings.index') }}" class="btn btn-success mr-3">Назад</a>
-        <a href="{{ route('admin.buildings.edit', $building->id) }}" class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
+        <a href="{{ route('admin.buildings.edit', $building->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+        <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
     </form>
 @endsection

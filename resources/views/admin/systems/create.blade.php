@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-    @parent Добавление системы/услуги
+    @parent Добавление типа
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
     <form action="{{ route('admin.systems.store') }}" method="post">
         @csrf
         <div class="mb-3">
-            <label for="name" class="form-label">СИСТЕМА/УСЛУГА</label>
+            <label for="name" class="form-label">Тип оборудования</label>
             <input type="text" value="{{ old('name') }}" class="form-control" id="name" name="name">
             @error('name')
             <p class="text-danger">{{ __($message) }}</p>

@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-    @parent Редактирование системы/услуги
+    @parent Редактирование типа
 @endsection
 
 @section('content')
@@ -9,7 +9,7 @@
         @csrf
         @method('patch')
         <div class="mb-3">
-            <label for="name" class="form-label">Система/Услуга</label>
+            <label for="name" class="form-label">Тип оборудования</label>
             <input type="text" class="form-control" id="name" name="name" value="{{ $system->name }}">
             @error('name')
             <p class="text-danger">{{ __($message) }}</p>
