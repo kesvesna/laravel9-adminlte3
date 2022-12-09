@@ -27,6 +27,18 @@
                 @endforelse
             </select>
         </div>
+        <div class="form-group">
+            <label for="room_status_id">Статус помещения</label>
+            <select name="room_status_id" id="room_status_id" class="form-control form-control-sm">
+                @forelse($room_statuses as $status)
+                    <option
+                        {{ old('room_status_id') == $status->id ? ' selected' : ''}}
+                        value="{{ $status->id }}">{{ $status->name }}</option>
+                @empty
+                    <option value="">Нет статусов</option>
+                @endforelse
+            </select>
+        </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Комментарий</label>
             <input type="text" value="{{ old('comment') }}" class="form-control form-control-sm" id="comment" name="comment">

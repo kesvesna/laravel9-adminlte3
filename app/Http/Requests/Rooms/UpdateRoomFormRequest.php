@@ -26,6 +26,7 @@ class UpdateRoomFormRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'min:2'],
             'room_type_id' => ['required', 'numeric', 'min:1'],
+            'room_status_id' => ['required', 'numeric', 'min:1'],
             'comment' => ['string', 'min:2', 'nullable'],
             'slug' => ['required', 'string', 'min:2'],
         ];

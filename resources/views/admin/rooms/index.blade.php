@@ -14,6 +14,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">НАЗВАНИЕ</th>
+                <th scope="col">Статус</th>
                 <th scope="col">ОПЕРАЦИИ</th>
             </tr>
             </thead>
@@ -22,6 +23,7 @@
                 <tr>
                     <th scope="row">{{ $room->id }}</th>
                     <td>{{ $room->name }}</td>
+                    <td>{{ $room->room_status->name }}</td>
                     <td>
                         <form action="{{ route('admin.rooms.destroy', $room->id) }}" method="post">
                             @csrf

@@ -84,9 +84,9 @@ class TrkController extends Controller
         return view('admin.trks.show',[
             'trk' => $trk,
             'architectures' => $architectures,
-            'buildings' => Building::orderBy('name', 'asc')->get(),
-            'floors' => Floor::orderBy('name', 'asc')->get(),
-            'rooms' => Room::orderBy('name', 'asc')->get(),
+            'buildings' => Building::all()->sortBy('name', SORT_NATURAL, true),
+            'floors' => Floor::all()->sortBy('name', SORT_NATURAL, true),
+            'rooms' => Room::all()->sortBy('name', SORT_NATURAL, true),
             'old_filters' => $data,
         ]);
     }

@@ -21,43 +21,43 @@
         </div>
         <div class="form-group">
             <label for="trk_id">Торговый комплекс</label>
-            <select name="trk_id" id="trk_id" class="form-control">
+            <select disabled name="trk_id" id="trk_id" class="form-control">
                 @forelse($trks as $trk)
-                    <option @if($equipment->trk->id === $trk->id) selected @endif
+                    <option @if($equipment->room->trk->id === $trk->id) selected @endif
                     value="{{ $trk->id }}">{{ $trk->name }}</option>
                 @empty
                     <option value="">Нет комплексов в списке</option>
                 @endforelse
             </select>
         </div>
-        <div class="form-group">
-            <label for="building_id">Блок/Зона</label>
-            <select name="building_id" id="building_id" class="form-control">
-                @forelse($buildings as $building)
-                    <option @if($equipment->building->id === $building->id) selected @endif
-                    value="{{ $building->id }}">{{ $building->name }}</option>
-                @empty
-                    <option value="">Нет блоков/зон в списке</option>
-                @endforelse
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="floor_id">Этаж/Уровень</label>
-            <select name="floor_id" id="floor_id" class="form-control">
-                @forelse($floors as $floor)
-                    <option @if($equipment->floor->id === $floor->id) selected @endif
-                    value="{{ $floor->id }}">{{ $floor->name }}</option>
-                @empty
-                    <option value="">Нет этажей в списке</option>
-                @endforelse
-            </select>
-        </div>
+{{--        <div class="form-group">--}}
+{{--            <label for="building_id">Блок/Зона</label>--}}
+{{--            <select name="building_id" id="building_id" class="form-control">--}}
+{{--                @forelse($buildings as $building)--}}
+{{--                    <option @if($equipment->room->building->id === $building->id) selected @endif--}}
+{{--                    value="{{ $building->id }}">{{ $building->name }}</option>--}}
+{{--                @empty--}}
+{{--                    <option value="">Нет блоков/зон в списке</option>--}}
+{{--                @endforelse--}}
+{{--            </select>--}}
+{{--        </div>--}}
+{{--        <div class="form-group">--}}
+{{--            <label for="floor_id">Этаж/Уровень</label>--}}
+{{--            <select name="floor_id" id="floor_id" class="form-control">--}}
+{{--                @forelse($floors as $floor)--}}
+{{--                    <option @if($equipment->room->floor->id === $floor->id) selected @endif--}}
+{{--                    value="{{ $floor->id }}">{{ $floor->name }}</option>--}}
+{{--                @empty--}}
+{{--                    <option value="">Нет этажей в списке</option>--}}
+{{--                @endforelse--}}
+{{--            </select>--}}
+{{--        </div>--}}
         <div class="form-group">
             <label for="room_id">Помещение</label>
             <select name="room_id" id="room_id" class="form-control">
                 @forelse($rooms as $room)
-                    <option @if($equipment->room->id === $room->id) selected @endif
-                    value="{{ $room->id }}">{{ $room->name }}</option>
+                    <option @if($equipment->room->room->id === $room->id) selected @endif
+                    value="{{ $room->id }}">{{ $room->room->name }}</option>
                 @empty
                     <option value="">Нет помещений в списке</option>
                 @endforelse

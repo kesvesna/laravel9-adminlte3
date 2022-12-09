@@ -24,12 +24,9 @@ class UpdateEquipmentFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'trk_id' => [ 'required', 'integer', 'min:1' ],
             'equipment_status_id' => [ 'required', 'integer', 'min:1' ],
             'comment' => 'string',
             'system_type_id' => [ 'required', 'integer', 'min:1'],
-            'building_id' => ['required', 'integer', 'min:1'],
-            'floor_id' => ['required', 'integer', 'min:1'],
             'room_id' => ['required', 'integer', 'min:1'],
             'visible' => '',
             'equipment_name_id' => ['required', 'integer', 'min:1']

@@ -134,13 +134,12 @@ class EquipmentController extends Controller
 
     public function edit(Equipment $equipment)
     {
-
         return view('admin.equipments.edit', [
             'equipment' => $equipment,
-            'trks' => Trk::all(),
-            'buildings' => Building::all(),
-            'floors' => Floor::all(),
-            'rooms' => Room::all(),
+            'trks' => Trk::where('id', $equipment->room->trk->id)->get(),
+            //'buildings' => Building::all(),
+            //'floors' => Floor::all(),
+            'rooms' => TrkBuildingFloorRoom::where('trk_id', $equipment->room->trk->id)->get(),
             'equipment_statuses' => EquipmentStatuses::all(),
             'systems' => System::all(),
             'names' => EquipmentNames::all(),
@@ -153,10 +152,7 @@ class EquipmentController extends Controller
         $data['created_by_user_id'] = 1; // Auth::id
         $data['equipment_id'] = $equipment->id;
 
-        if(Equipment::where('trk_id', $data['trk_id'])
-                        ->where('building_id', $data['building_id'])
-                        ->where('floor_id', $data['floor_id'])
-                        ->where('room_id', $data['room_id'])
+        if(Equipment::where('room_id', $data['room_id'])
                         ->where('system_type_id', $data['system_type_id'])
                         ->where('equipment_name_id', $data['equipment_name_id'])
                         ->first()

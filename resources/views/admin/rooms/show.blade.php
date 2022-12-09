@@ -26,6 +26,10 @@
             <td>{{ $room->room_type->name }}</td>
         </tr>
         <tr>
+            <th scope="row">Статус</th>
+            <td>{{ $room->room_status->name }}</td>
+        </tr>
+        <tr>
             <th scope="row">Slug</th>
             <td>{{ $room->slug }}</td>
         </tr>

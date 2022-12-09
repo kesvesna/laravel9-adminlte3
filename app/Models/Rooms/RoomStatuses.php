@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class RoomTypes extends Model
+class RoomStatuses extends Model
 {
     use HasFactory, SoftDeletes, Filterable, Sluggable;
 
-    protected $table = "room_types";
+    protected $table = "room_statuses";
 
     protected $fillable = [
         'name',

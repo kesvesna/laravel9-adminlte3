@@ -23,37 +23,37 @@ class SparePartTypesSeeder extends Seeder
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Фильтр карманный приток',
+                    'name' => 'Фильтр карман приток',
                     'slug' => 'filtr_karmanniy_pritok',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Фильтр карманный вытяжка',
+                    'name' => 'Фильтр карман вытяжка',
                     'slug' => 'filtr_karmanniy_vityazhka',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Фильтр панельный приток',
+                    'name' => 'Фильтр панель приток',
                     'slug' => 'filtr_panelniy_pritok',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Фильтр панельный вытяжка',
+                    'name' => 'Фильтр панель вытяжка',
                     'slug' => 'filtr_panelniy_vitayzhka',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Фильтр кассетный приток',
+                    'name' => 'Фильтр кассета приток',
                     'slug' => 'filtr_cassetniy_pritok',
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Фильтр кассетный вытяжка',
+                    'name' => 'Фильтр кассета вытяжка',
                     'slug' => 'filtr_cassetniy_vitayzhka',
                     'created_at' => now(),
                     'updated_at' => now()

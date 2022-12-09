@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ApplicationsStatusSeeder::class,
             BuildingsSeeder::class,
             FloorsSeeder::class,
+            RoomStatusesSeeder::class,
             RoomTypesSeeder::class,
             RoomsSeeder::class,
             TrkBuildingFloorRoomSeeder::class,

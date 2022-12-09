@@ -25,6 +25,7 @@ class Room extends Model
         'slug',
         'sort_order',
         'room_type_id',
+        'room_status_id',
         'comment',
     ];
 
@@ -58,6 +59,12 @@ class Room extends Model
     public function room_type()
     {
         return $this->belongsTo(RoomTypes::class, 'room_type_id')->withDefault();
+
+    }
+
+    public function room_status()
+    {
+        return $this->belongsTo(RoomStatuses::class, 'room_status_id')->withDefault();
 
     }
 }

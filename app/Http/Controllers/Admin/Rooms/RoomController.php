@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Rooms\StoreRoomFormRequest;
 use App\Http\Requests\Rooms\UpdateRoomFormRequest;
 use App\Models\Rooms\Room;
+use App\Models\Rooms\RoomStatuses;
 use App\Models\Rooms\RoomTypes;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,7 @@ class RoomController extends Controller
         $this->str = 'rooms';
         return view('admin.' . $this->str . '.create',[
             'room_types' => RoomTypes::all(),
+            'room_statuses' => RoomStatuses::all(),
         ]);
     }
 
@@ -76,6 +78,7 @@ class RoomController extends Controller
         return view('admin.rooms.edit', [
             'room' => $room,
             'room_types' => RoomTypes::all(),
+            'room_statuses' => RoomStatuses::all(),
         ]);
     }
 
