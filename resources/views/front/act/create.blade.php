@@ -75,7 +75,7 @@
                                     <select name="Equipment[0][id]" class="form-select form-select-sm equipment" style="background: rgba( 255, 255, 255, 0.5 );">
                                         <option value="">Выберите ...</option>
                                         @forelse($equipments as $equipment)
-                                            <option value="{{$equipment->id}}">{{$equipment->name->name  }}{{' (' . $equipment->room->name . ')'}}</option>
+                                            <option value="{{$equipment->id}}">{{$equipment->name->name  }}&nbsp;&nbsp;{{'(' . $equipment->room->room->name . ')'}}</option>
                                         @empty
                                             Нет оборудования
                                         @endforelse

@@ -20,13 +20,6 @@ class FloorsSeeder extends Seeder
 
             DB::table('floors')->insert([
                 [
-                    'name' => 'Все',
-                    'slug' => 'vse',
-                    'sort_order' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
                     'name' => 'Парковка -2',
                     'slug' => 'parkovka-2',
                     'sort_order' => 1,

@@ -41,7 +41,7 @@
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                 <div class="col mt-2">
                     <select disabled id="room_id" name="room_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
-                        <option value="">{{ $equipment->room->room->name }}</option>
+                        <option value="">{{ $equipment->room->room->name }}&nbsp;&nbsp;{{ '(' . $equipment->room->room->room_type->name . ')' }}</option>
                     </select>
                 </div>
                 <div class="col mt-2">

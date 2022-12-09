@@ -137,7 +137,7 @@ class ActController extends Controller
                     $act->act_type_id = Act::CREATED_BY_PLAN;
                     $act->system_type_id = $equipment->system_type_id;
                     $act->trk_id = $data['trk_id'];
-                    $act->building_id = $equipment->building_id;
+                    $act->building_id = $equipment->room->building_id;
                     $act->room_id = $equipment->room_id;
                     $act->works = $equipment_array['works'];
                     $act->remarks = $equipment_array['remarks'];
@@ -232,7 +232,7 @@ class ActController extends Controller
                     $act->date = $data['date'];
                     $act->system_type_id = $equipment->system_type_id;
                     $act->trk_id = $application->trk_id;
-                    $act->building_id = $equipment->building_id;
+                    $act->building_id = $equipment->room->building_id;
                     $act->room_id = $equipment->room_id;
                     $act->works = $equipment_array['works'];
                     $act->remarks = $equipment_array['remarks'];

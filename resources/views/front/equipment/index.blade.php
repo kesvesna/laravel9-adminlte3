@@ -24,7 +24,7 @@
         </div>
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 pt-2 d-md-none">
                 <div class="col">
-                    <label for="system_type_id" class="form-label" style="color: white;">Оборудование/Услуга</label>
+                    <label for="system_type_id" class="form-label" style="color: white;">Тип оборудования</label>
                     <select name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
                         <option value="">Все</option>
                         @forelse($systems as $system)
@@ -58,16 +58,16 @@
             <thead>
             <tr>
                 <th scope="col" style="width: 21%;"  class="d-none d-lg-table-cell">
-                    ТРК
+                    Трк
                 </th>
                 <th scope="col" style="width: 21%;"  class="d-none d-lg-table-cell">
-                    ОБОРУДОВАНИЕ/УСЛУГА
+                    Тип оборудования
                 </th>
                 <th scope="col" style="width: 21%;"  class="d-none d-lg-table-cell">
-                    ПОМЕЩЕНИЕ
+                    Помещение
                 </th>
                 <th scope="col" style="width: 21%;"  class="">
-                    НАИМЕНОВАНИЕ
+                    Наименование
                 </th>
             </tr>
             </thead>

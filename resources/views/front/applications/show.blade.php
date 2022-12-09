@@ -30,22 +30,22 @@
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                         <div class="col mt-2">
-                            <input disabled type="datetime-local" value="{{ $application->created_at }}" id="created_at" name="created_at" class="form-control" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold">
+                            <input disabled type="datetime-local" value="{{ $application->created_at }}" id="created_at" name="created_at" class="form-control form-control-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold">
                         </div>
                         <div class="col mt-2">
-                            <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                            <select disabled id="trk_id" name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $application->trk->name }}</option>
                             </select>
                         </div>
                         <div class="col mt-2">
-                            <select disabled id="system_id" name="system_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                            <select disabled id="system_id" name="system_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $application->currentHistory->service->name }}</option>
                             </select>
                         </div>
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 mt-2">
                         <div class="col">
-                            <textarea disabled class="form-control" id="comment" name="comment" rows="3" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
+                            <textarea disabled class="form-control form-control-sm" id="comment" name="comment" rows="3" style="background: rgba( 255, 255, 255, 0.5 );">{{ $application->comment }}</textarea>
                         </div>
                     </div>
                     @if(isset($application->medias))
@@ -88,17 +88,17 @@
                         <div class="col">
                             <form action="{{ route('front.applications.accept', $application->id) }}" method="post">
                                 @csrf
-                                <button type="submit" class="btn btn-success col-12 mb-3"><b>Принять</b></button>
+                                <button type="submit" class="btn btn-sm btn-success col-12 mb-3"><b>Принять</b></button>
                             </form>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
+                            <button type="button" class="btn btn-sm btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointApplicationModal"><b>Назначить исполнителя</b></button>
+                            <button type="button" class="btn btn-sm btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointApplicationModal"><b>Назначить исполнителя</b></button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectApplicationModal"><b>Отклонить</b></button>
+                            <button type="button" class="btn btn-sm btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectApplicationModal"><b>Отклонить</b></button>
                         </div>
                     </div>
                     @endif
@@ -108,29 +108,29 @@
                         <form action="{{ route('front.acts.create_by_application_all_done', $application->id) }}" method="post">
                             @csrf
                             <div class="col">
-                                <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
+                                <button type="submit" class="btn btn-sm btn-success col-12 mb-3"><b>Выполнена</b></button>
                             </div>
                         </form>
                         <form action="{{ route('front.acts.create_by_application_not_completely_done', $application->id) }}" method="post">
                             @csrf
                         <div class="col">
-                            <button type="submit" class="btn btn-warning col-12 mb-3"><b>Выполнена частично</b></button>
+                            <button type="submit" class="btn btn-sm btn-warning col-12 mb-3"><b>Выполнена частично</b></button>
                         </div>
                         </form>
                         <form action="{{ route('front.repair.create_by_application', $application->id) }}" method="post">
                             @csrf
                         <div class="col">
-                            <button type="submit" class="btn btn-warning col-12 mb-3"><b>В ремонт</b></button>
+                            <button type="submit" class="btn btn-sm btn-warning col-12 mb-3"><b>В ремонт</b></button>
                         </div>
                         </form>
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
+                            <button type="button" class="btn btn-sm btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointApplicationModal"><b>Назначить исполнителя</b></button>
+                            <button type="button" class="btn btn-sm btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointApplicationModal"><b>Назначить исполнителя</b></button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectApplicationModal"><b>Отклонить</b></button>
+                            <button type="button" class="btn btn-sm btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectApplicationModal"><b>Отклонить</b></button>
                         </div>
                     </div>
                     @endif
@@ -140,32 +140,32 @@
                         <form action="{{ route('front.acts.create_by_application_all_done', $application->id) }}" method="post">
                         @csrf
                             <div class="col">
-                            <button type="submit" class="btn btn-success col-12 mb-3"><b>Выполнена</b></button>
+                            <button type="submit" class="btn btn-sm btn-success col-12 mb-3"><b>Выполнена</b></button>
                         </div>
                         </form>
                         <form action="{{ route('front.acts.create_by_application_not_completely_done', $application->id) }}" method="post">
                             @csrf
                         <div class="col">
-                            <button type="submit" class="btn btn-warning col-12 mb-3"><b>Выполнена частично</b></button>
+                            <button type="submit" class="btn btn-sm btn-warning col-12 mb-3"><b>Выполнена частично</b></button>
                         </div>
                         </form>
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
+                            <button type="button" class="btn btn-sm btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#redirectApplicationModal"><b>Перенаправить</b></button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointApplicationModal"><b>Назначить исполнителя</b></button>
+                            <button type="button" class="btn btn-sm btn-warning col-12 mb-3" data-bs-toggle="modal" data-bs-target="#appointApplicationModal"><b>Назначить исполнителя</b></button>
                         </div>
                         <div class="col">
-                            <button type="button" class="btn btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectApplicationModal"><b>Отклонить</b></button>
+                            <button type="button" class="btn btn-sm btn-danger col-12 mb-3" data-bs-toggle="modal" data-bs-target="#rejectApplicationModal"><b>Отклонить</b></button>
                         </div>
                     </div>
                     @endif
                     <div class="row col-12 mx-auto row-cols-1 row-cols-sm-2">
                         <div class="col">
-                            <button onClick="history.back()" class="btn btn-success col-12 mb-3" type="button"><b>Назад</b></button>
+                            <button onClick="history.back()" class="btn btn-sm btn-success col-12 mb-3" type="button"><b>Назад</b></button>
                         </div>
-                        <div class="col">
-                            <button onClick="window.location='{{ route('front.applications.index') }}';" class="btn btn-warning col-12" type="button"><b>Все заявки</b></button>
+                        <div class="col mb-4">
+                            <button onClick="window.location='{{ route('front.applications.index') }}';" class="btn btn-sm btn-warning col-12" type="button"><b>Все заявки</b></button>
                         </div>
                     </div>
             </div>
@@ -183,7 +183,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="service_id">Куда перенаправить</label>
-                        <select name="service_id" id="service_id" class="form-control">
+                        <select name="service_id" id="service_id" class="form-control form-control-sm">
                             @forelse($services as $service)
                                 <option @if($application->currentHistory->service->id === $service->id) selected @endif
                                 value="{{ $service->id }}">{{ $service->name }}</option>
@@ -194,7 +194,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="comment" class="form-label">Причина</label>
-                        <textarea required type="text" class="form-control" id="comment"
+                        <textarea required type="text" class="form-control form-control-sm" id="comment"
                                   name="comment"></textarea>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="comment" class="form-label">Причина</label>
-                            <textarea required type="text" class="form-control" id="comment"
+                            <textarea required type="text" class="form-control form-control-sm" id="comment"
                                       name="comment"></textarea>
                         </div>
                     </div>
@@ -244,7 +244,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="responsible_user_id">Кого назначить</label>
-                            <select name="responsible_user_id" id="responsible_user_id" class="form-control">
+                            <select name="responsible_user_id" id="responsible_user_id" class="form-control form-control-sm">
                                 @forelse($users as $user)
                                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                                 @empty
@@ -254,7 +254,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="comment" class="form-label">Комментарий</label>
-                            <textarea required type="text" class="form-control" id="comment"
+                            <textarea required type="text" class="form-control form-control-sm" id="comment"
                                       name="comment"></textarea>
                         </div>
                     </div>

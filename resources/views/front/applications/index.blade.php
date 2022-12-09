@@ -9,10 +9,11 @@
     <div class="container-fluid" style="padding-bottom: 15vh;">
 {{--            <h5 style="color: white;">Заявки</h5>--}}
         <form action="{{ route('front.applications.index') }}" method="get">
+            <h4 style="color: white;" class="pt-4 pb-2">Заявки</h4>
         <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 pt-2 d-md-none">
             <div class="col">
                 <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                <select name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
+                <select name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
                     <option value="">Все</option>
                     @forelse($trks as $trk)
                         <option  @if(isset($old_filters['trk_id'])){{ $old_filters['trk_id'] == $trk->id ? ' selected' : '' }} @endif value="{{ $trk->id }}">{{ $trk->name }}</option>
@@ -23,7 +24,7 @@
             </div>
             <div class="col pt-2">
                 <label for="service_id" class="form-label" style="color: white;">Подразделение</label>
-                <select name="service_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
+                <select name="service_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
                     <option value="">Все</option>
                     @forelse($services as $service)
                         <option  @if(isset($old_filters['service_id'])){{ $old_filters['service_id'] == $service->id ? ' selected' : '' }} @endif value="{{ $service->id }}">{{ $service->name }}</option>
@@ -32,9 +33,9 @@
                     @endforelse
                 </select>
             </div>
-            <div class="col pt-2">
+            <div class="col pt-2 pb-4">
                 <label for="application_status_id" class="form-label" style="color: white;">Статус заявки</label>
-                <select name="application_status_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
+                <select name="application_status_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
                     <option value="">Все</option>
                     @forelse($application_statuses as $status)
                         <option  @if(isset($old_filters['application_status_id'])){{ $old_filters['application_status_id'] == $status->id ? ' selected' : '' }} @endif value="{{ $status->id }}">{{ $status->name }}</option>
@@ -74,10 +75,10 @@
             <tbody>
             <tr>
                 <td  class="d-none d-sm-table-cell">
-                    <input   value="{{ request()->input('id') }}" style="background: rgba( 255, 255, 255, 0.5 );" name="id" type="search" class="form-control" placeholder="Поиск" aria-label="id" aria-describedby="id">
+                    <input   value="{{ request()->input('id') }}" style="background: rgba( 255, 255, 255, 0.5 );" name="id" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="id" aria-describedby="id">
                 </td>
                 <td class="d-none d-sm-table-cell">
-                    <input value="@if(isset($old_filters['created_at'])){{ $old_filters['created_at'] }}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="created_at" type="date" class="form-control" placeholder="Поиск" aria-label="created_at" aria-describedby="created_at" onchange="this.form.submit()">
+                    <input value="@if(isset($old_filters['created_at'])){{ $old_filters['created_at'] }}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="created_at" type="date" class="form-control form-control-sm" placeholder="Поиск" aria-label="created_at" aria-describedby="created_at" onchange="this.form.submit()">
                 </td>
                 <td class="d-none d-lg-table-cell">
                     <select name="trk_id" class="form-select" aria-label="trk_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
@@ -110,7 +111,7 @@
                     </select>
                 </td>
                 <td colspan="4">
-                    <input value="{{ request()->input('comment') }}" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="comment" type="search" class="form-control" placeholder="Поиск" aria-label="comment" aria-describedby="comment">
+                    <input value="{{ request()->input('comment') }}" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="comment" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="comment" aria-describedby="comment">
                 </td>
             </tr>
             @forelse($applications as $application)

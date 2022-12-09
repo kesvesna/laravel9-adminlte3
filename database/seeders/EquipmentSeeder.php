@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class EquipmentHistoriesSeeder extends Seeder
+class EquipmentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,12 @@ class EquipmentHistoriesSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('equipment_histories')->insert([
+        DB::table('equipments')->insert([
             [
-                'equipment_id' => 1,
-                'equipment_status_id' => 1,
-                'created_by_user_id' => 1,
-                'comment' => 'Тест',
-                'sort_order' => 1,
+                'system_type_id' => 2,
+                'room_id' => 1,
+                'equipment_name_id' => 16,
+                'visible' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

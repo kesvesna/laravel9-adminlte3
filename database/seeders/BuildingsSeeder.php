@@ -20,13 +20,6 @@ class BuildingsSeeder extends Seeder
 
             DB::table('buildings')->insert([
                 [
-                    'name' => 'Все',
-                    'slug' => 'vse',
-                    'sort_order' => 1,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
                     'name' => 'Блок 1',
                     'slug' => 'block-1',
                     'sort_order' => 1,

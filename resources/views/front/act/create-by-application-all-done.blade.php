@@ -19,7 +19,7 @@
         @endif
 
 
-            <form class="pt-2 pb-2" method="post" action="{{ route('front.acts.store_by_application_all_done') }}" enctype="multipart/form-data"
+            <form class="pt-2 pb-2" method="post" action="{{ route('front.acts.store_by_application_all_done', $application->id) }}" enctype="multipart/form-data"
                   style="background: rgba( 255, 255, 255, 0.1 );
                             backdrop-filter: blur( 1px );
                             -webkit-backdrop-filter: blur( 1px );
@@ -68,7 +68,7 @@
                                 <select name="Equipment[0][id]" class="form-select equipment" style="background: rgba( 255, 255, 255, 0.5 );">
                                     <option value="">Выберите ...</option>
                                     @forelse($equipments as $equipment)
-                                        <option value="{{$equipment->id}}">{{$equipment->name->name  }}{{' (' . $equipment->room->name . ')'}}</option>
+                                        <option value="{{$equipment->id}}">{{$equipment->name->name  }}&nbsp;&nbsp;{{'(' . $equipment->room->room->name . ')'}}</option>
                                     @empty
                                         Нет оборудования
                                     @endforelse

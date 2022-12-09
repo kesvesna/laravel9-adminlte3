@@ -136,6 +136,11 @@
                         </td>
                     </tr>
                 @empty
+                <tr>
+                    <td colspan="4">
+                        Ничего нет
+                    </td>
+                </tr>
                 @endforelse
             </tbody>
         </table>
