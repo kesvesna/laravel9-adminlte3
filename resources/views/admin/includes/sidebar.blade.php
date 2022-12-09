@@ -158,6 +158,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.equipment_names.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.equipment_names.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Наименование
+                            @if(isset($equipment_names_count))
+                                <span class="badge badge-info right">
+                            {{ $equipment_names_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{ route('admin.systems.index') }}"
                        class="nav-link {{ request()->routeIs('admin.systems.index')?'active':'' }}">
                         <i class="nav-icon far fa-file"></i>

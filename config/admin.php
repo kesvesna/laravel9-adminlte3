@@ -33,6 +33,9 @@
         'equipments' => [
             'pagination' => 5
         ],
+        'equipment_names' => [
+            'pagination' => 5
+        ],
         'users' => [
             'pagination' => 5
         ],

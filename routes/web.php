@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Users\UserController as AdminUserController;
 use App\Http\Controllers\Admin\Users\UserStatusController as AdminUserStatusController;
 use App\Http\Controllers\Admin\SpareParts\SparePartController as AdminSparePartController;
 use App\Http\Controllers\Admin\WorkTypes\WorkTypeController as AdminWorkTypeController;
+use App\Http\Controllers\Admin\EquipmentNames\EquipmentNameController as AdminEquipmentNameController;
 
 
 //frontend
@@ -94,6 +95,7 @@ Route::name('admin.')
         Route::resource('rooms', AdminRoomController::class);
         Route::resource('repairs', AdminRepairController::class);
         Route::resource('application_statuses', AdminApplicationStatusController::class);
+        Route::resource('equipment_names', AdminEquipmentNameController::class);
 
 
         Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');

@@ -39,14 +39,4 @@ class Floor extends Model
             ]
         ];
     }
-
-    public function buildings() {
-        return $this->belongsToMany(Building::class, 'building_floor_trk')
-                    ->using(TrkBuildingFloor::class);
-    }
-
-    public function trks() {
-        return $this->belongsToMany(Trk::class, 'building_floor_trk')
-            ->using(TrkBuildingFloor::class);
-    }
 }
