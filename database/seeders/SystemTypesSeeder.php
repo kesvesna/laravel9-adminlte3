@@ -184,20 +184,6 @@ class SystemTypesSeeder extends Seeder
                     'created_at' => now(),
                     'updated_at' => now()
                 ],
-                [
-                    'name' => 'Уборка',
-                    'slug' => 'uborka',
-                    'sort_order' => 2600,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
-                    'name' => 'Другое',
-                    'slug' => 'drugoe',
-                    'sort_order' => 2700,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
             ]);
 
     }

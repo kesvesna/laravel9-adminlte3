@@ -24,7 +24,7 @@
             <td>{{ $equipment->room->trk->name }}</td>
         </tr>
         <tr>
-            <th scope="row">Тип оборудования/Услуга</th>
+            <th scope="row">Тип оборудования</th>
             <td>{{ $equipment->system->name }}</td>
         </tr>
         <tr>
@@ -37,7 +37,7 @@
         </tr>
         <tr>
             <th scope="row">Помещение</th>
-            <td>{{ $equipment->room->room->name }}</td>
+            <td>{{ $equipment->room->room->name }}&nbsp;&nbsp; {{ '(' . $equipment->room->room->room_type->name . ')' }}</td>
         </tr>
         <tr>
             <th scope="row">Наименование по проекту</th>

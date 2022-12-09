@@ -38,13 +38,6 @@ class RoomTypesSeeder extends Seeder
                     'updated_at' => now()
                 ],
                 [
-                    'name' => 'Все',
-                    'slug' => 'vse',
-                    'sort_order' => 400,
-                    'created_at' => now(),
-                    'updated_at' => now()
-                ],
-                [
                     'name' => 'Входная группа',
                     'slug' => 'vhodnaya-gruppa',
                     'sort_order' => 500,
