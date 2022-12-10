@@ -28,6 +28,14 @@ class AdminController extends Controller
      */
     public function index()
     {
+
+        $new_applications = Applications::whereRelation('currentHistory', 'application_status_id', Applications::NEW)->get();
+        $in_progress_applications = Applications::whereRelation('currentHistory', 'application_status_id', Applications::IN_PROGRESS)->get();
+
+        $repairs_by_plan = Repair::whereRelation('currentHistory', 'repair_status_id', Repair::BY_PLAN)->get();
+        $repairs_by_application = Repair::whereRelation('currentHistory', 'repair_status_id', Repair::BY_APPLICATION)->get();
+
+
         return view('admin.index', [
             'applications_count' => Applications::count(),
             'repairs_count' => Repair::count(),
@@ -42,6 +50,10 @@ class AdminController extends Controller
             'spare_parts_count' => SparePart::count(),
             'users_count' => User::count(),
             'user_statuses_count' => UserStatuses::count(),
+            'new_applications' => $new_applications,
+            'in_progress_applications' => $in_progress_applications,
+            'repairs_by_plan' => $repairs_by_plan,
+            'repairs_by_application' => $repairs_by_application,
         ]);
     }
 

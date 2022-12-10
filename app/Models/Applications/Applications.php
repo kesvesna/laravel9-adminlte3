@@ -51,7 +51,7 @@ class Applications extends Model
 
     public function currentHistory()
     {
-        return $this->hasOne(ApplicationHistories::class, 'application_id')->latest('id');
+        return $this->hasOne(ApplicationHistories::class, 'application_id')->latestOfMany();
     }
 
     public function repairs()
