@@ -72,6 +72,10 @@ footer {
     display: none;
 }
 
+.empty-block {
+    min-height: 40vh;
+}
+
 @media (max-width: 992px) {
     .bottom-menu-block {
         margin-bottom: 13vh;

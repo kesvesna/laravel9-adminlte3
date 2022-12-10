@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <div class="col pt-2">
-                    <label for="application_status_id" class="form-label" style="color: white;">Статус заявки</label>
+                    <label for="application_status_id" class="form-label" style="color: white;">Статус</label>
                     <select name="application_status_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );" onchange="this.form.submit()">
                         <option value="">Все</option>
                         @forelse($repair_statuses as $status)
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </form>
-        <form action="{{ route('front.repair.index') }}" method="get">
+        <form action="{{ route('front.repair.index') }}" method="get" class="pt-4">
         <table class="table table-bordered table-hover" style="background: rgba( 255, 255, 255, 0.1 );
     backdrop-filter: blur( 1px );
     -webkit-backdrop-filter: blur( 1px );
