@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Repairs;
+namespace App\Models\Acts;
 
 use App\Models\Traits\Filterable;
 use Cviebrock\EloquentSluggable\Sluggable;
@@ -9,25 +9,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class RepairStatuses extends Model
+class ActStatuses extends Model
 {
     use HasFactory, SoftDeletes, Filterable, Sluggable;
 
-    protected $table = "repair_statuses";
+    protected $table = "act_types";
 
     protected $fillable = [
         'name',
-        'slug'
+        'slug',
+        'sort_order'
     ];
 
-    public function repairs(): HasMany
+    public function applications(): HasMany
     {
-        return $this->hasMany(Repair::class, 'repair_status_id', 'id');
-    }
-
-    public function histories(): HasMany
-    {
-        return $this->hasMany(RepairHistories::class, 'repair_status_id', 'id');
+        return $this->hasMany(Act::class, 'act_status_id', 'id');
     }
 
     protected function removeQueryParam(string ...$keys)

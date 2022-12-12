@@ -47,5 +47,8 @@
         ],
         'work_types' => [
             'pagination' => 5
+        ],
+        'acts' => [
+            'pagination' => 5
         ]
     ];

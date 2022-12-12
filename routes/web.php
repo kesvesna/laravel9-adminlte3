@@ -21,6 +21,8 @@ use App\Http\Controllers\Admin\Users\UserStatusController as AdminUserStatusCont
 use App\Http\Controllers\Admin\SpareParts\SparePartController as AdminSparePartController;
 use App\Http\Controllers\Admin\WorkTypes\WorkTypeController as AdminWorkTypeController;
 use App\Http\Controllers\Admin\EquipmentNames\EquipmentNameController as AdminEquipmentNameController;
+use App\Http\Controllers\Admin\Acts\ActController as AdminActController;
+use App\Http\Controllers\Admin\Acts\ActStatusController as AdminActStatusController;
 
 
 //frontend
@@ -94,6 +96,8 @@ Route::name('admin.')
         Route::resource('floors', AdminFloorController::class);
         Route::resource('rooms', AdminRoomController::class);
         Route::resource('repairs', AdminRepairController::class);
+        Route::resource('acts', AdminActController::class);
+        Route::resource('act_statuses', AdminActStatusController::class);
         Route::resource('application_statuses', AdminApplicationStatusController::class);
         Route::resource('equipment_names', AdminEquipmentNameController::class);
 

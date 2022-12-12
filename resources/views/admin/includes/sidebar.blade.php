@@ -53,6 +53,45 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;" >
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-file"></i>
+                <p>
+                    Акты
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.acts.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.acts.index')?'active':'' }}">
+                        <i class="nav-icon far fa-edit"></i>
+                        <p>
+                            Акты
+                            @if(isset($acts_count))
+                                <span class="badge badge-info right">
+                            {{ $acts_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.act_statuses.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.act_statuses.index')?'active':'' }}">
+                        <i class="nav-icon far fa-file"></i>
+                        <p>
+                            Статусы актов
+                            @if(isset($act_statuses_count))
+                                <span class="badge badge-info right">
+                            {{ $act_statuses_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="#" class="nav-link">
                 <i class="nav-icon far fa-file"></i>
