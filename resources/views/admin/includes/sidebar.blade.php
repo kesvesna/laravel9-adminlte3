@@ -121,7 +121,7 @@
         </li>
         <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;">
             <a href="#" class="nav-link">
-                <i class="nav-icon far fa-building"></i>
+                <i class="nav-icon fa-solid fa-landmark"></i>
                 <p>
                     Архитектура
                     <i class="fas fa-angle-left right"></i>
@@ -131,7 +131,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.trks.index') }}"
                        class="nav-link {{ request()->routeIs('admin.trks.index')?'active':'' }}">
-                        <i class="nav-icon far fa-building"></i>
+                        <i class="nav-icon fa-solid fa-shop"></i>
                         <p>
                             ТРК
                             @if(isset($trks_count))
@@ -145,7 +145,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.towns.index') }}"
                        class="nav-link {{ request()->routeIs('admin.towns.index')?'active':'' }}">
-                        <i class="nav-icon far fa-building"></i>
+                        <i class="nav-icon fa-solid fa-city"></i>
                         <p>
                             Город
                             @if(isset($towns_count))
@@ -173,7 +173,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.floors.index') }}"
                        class="nav-link {{ request()->routeIs('admin.floors.index')?'active':'' }}">
-                        <i class="nav-icon far fa-building"></i>
+                        <i class="nav-icon fa-solid fa-signal"></i>
                         <p>
                             Этаж/Уровень
                             @if(isset($floors_count))
@@ -187,7 +187,7 @@
                 <li class="nav-item">
                     <a href="{{ route('admin.rooms.index') }}"
                        class="nav-link {{ request()->routeIs('admin.rooms.index')?'active':'' }}">
-                        <i class="nav-icon far fa-building"></i>
+                        <i class="nav-icon fa-solid fa-door-open"></i>
                         <p>
                             Помещение
                             @if(isset($rooms_count))
