@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\WorkTypes\WorkTypeController as AdminWorkTypeCont
 use App\Http\Controllers\Admin\EquipmentNames\EquipmentNameController as AdminEquipmentNameController;
 use App\Http\Controllers\Admin\Acts\ActController as AdminActController;
 use App\Http\Controllers\Admin\Acts\ActStatusController as AdminActStatusController;
+use App\Http\Controllers\Admin\Repairs\RepairStatusController as AdminRepairStatusController;
 
 
 //frontend
@@ -100,6 +101,7 @@ Route::name('admin.')
         Route::resource('act_statuses', AdminActStatusController::class);
         Route::resource('application_statuses', AdminApplicationStatusController::class);
         Route::resource('equipment_names', AdminEquipmentNameController::class);
+        Route::resource('repair_statuses', AdminRepairStatusController::class);
 
 
         Route::get('profiles/timesheet/', [AdminProfileController::class, 'timesheet'])->name('profiles.timesheet');

@@ -46,13 +46,39 @@
                 <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
                 <p>
                     Ремонт
-                    @if(isset($repairs_count))
-                        <span class="badge badge-info right">
-                            {{ $repairs_count }}
-                        </span>
-                    @endif
+                    <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
+            <ul class="nav nav-treeview" style="display: none;">
+                <li class="nav-item">
+                    <a href="{{ route('admin.repairs.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.repairs.index')?'active':'' }}">
+                        <i class="nav-icon fa-solid fa-screwdriver-wrench"></i>
+                        <p>
+                            Ремонт
+                            @if(isset($repairs_count))
+                                <span class="badge badge-info right">
+                            {{ $repairs_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.repair_statuses.index') }}"
+                       class="nav-link {{ request()->routeIs('admin.repair_statuses.index')?'active':'' }}">
+                        <i class="nav-icon fa-solid fa-traffic-light"></i>
+                        <p>
+                            Статусы ремонтов
+                            @if(isset($repair_statuses_count))
+                                <span class="badge badge-info right">
+                            {{ $repair_statuses_count }}
+                        </span>
+                            @endif
+                        </p>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item" style="border-bottom: 1px white; border-bottom-style: groove;" >
             <a href="#" class="nav-link">
