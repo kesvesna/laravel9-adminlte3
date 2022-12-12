@@ -44,12 +44,12 @@
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('admin.index') }}"
-                   class="nav-link {{ request()->routeIs('admin.index')?'active':'' }}">Главная админки</a>
+                   class="nav-link {{ request()->routeIs('admin.index')?'active':'' }}">Админка</a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="{{ route('front.index') }}"
-                   class="nav-link {{ request()->routeIs('front.index')?'active':'' }}">Главная сайта</a>
-            </li>
+{{--            <li class="nav-item d-none d-sm-inline-block">--}}
+{{--                <a href="{{ route('front.index') }}"--}}
+{{--                   class="nav-link {{ request()->routeIs('front.index')?'active':'' }}">Главная</a>--}}
+{{--            </li>--}}
 {{--            <li class="nav-item d-none d-sm-inline-block">--}}
 {{--                <a href="#" class="nav-link">Contact</a>--}}
 {{--            </li>--}}
@@ -188,7 +188,17 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-2 pb-2 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
+                    <a href="{{ route('front.index') }}">
+                        <img src="{{ asset('icons/white_home.svg') }}" alt="Home icon">
+                    </a>
+                </div>
+                <div class="info">
+                    <a  href="{{ route('front.index') }}" class="d-block">На сайт</a>
+                </div>
+            </div>
+            <div class="user-panel mt-2 pb-2 mb-3 d-flex">
+                <div class="image">
+                    <img src="{{ asset('dist/img/user.svg') }}" class="img-circle elevation-2"
                          alt="User Image">
                 </div>
                 <div class="info">
