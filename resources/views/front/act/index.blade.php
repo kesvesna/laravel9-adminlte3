@@ -30,10 +30,10 @@
             <tbody>
             <tr>
                 <td class="d-none d-sm-table-cell">
-                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="date" type="datetime-local" class="form-control" placeholder="Поиск" aria-label="date" aria-describedby="date">
+                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="date" type="datetime-local" class="form-control form-control-sm" placeholder="Поиск" aria-label="date" aria-describedby="date">
                 </td>
                 <td class="d-none d-lg-table-cell">
-                    <select class="form-select" aria-label="trk" style="background: rgba( 255, 255, 255, 0.5 );" >
+                    <select class="form-select form-select-sm" aria-label="trk" style="background: rgba( 255, 255, 255, 0.5 );" >
                         <option selected value="">Все</option>
                         @forelse($trks as $trk)
                             <option value="{{$trk->id}}">{{$trk->name}}</option>
@@ -43,7 +43,7 @@
                     </select>
                 </td>
                 <td class="d-none d-md-table-cell">
-                    <select class="form-select" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
+                    <select class="form-select form-select-sm" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
                         <option selected value="">Все</option>
                         @forelse($systems as $system)
                             <option value="{{$system->id}}">{{$system->name}}</option>
@@ -53,10 +53,10 @@
                     </select>
                 </td>
                 <td class="d-none d-lg-table-cell">
-                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="room" type="search" class="form-control" placeholder="Поиск" aria-label="room" aria-describedby="room">
+                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="room" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="room" aria-describedby="room">
                 </td>
                 <td colspan="4">
-                    <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
+                    <input  autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="equipment" aria-describedby="equipment">
                 </td>
             </tr>
             @forelse($acts as $act)

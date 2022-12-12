@@ -30,9 +30,9 @@
     <form action="{{ route('admin.towns.destroy', $town->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.towns.index') }}" class="btn btn-success mr-3">Назад</a>
-        <a href="{{ route('admin.towns.edit', $town->id) }}" class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{{ route('admin.towns.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
+        <a href="{{ route('admin.towns.edit', $town->id) }}" class=" btn btn-sm  btn-warning mr-3">Редактировать</a>
+        <button type="submit" class=" btn btn-sm  btn-danger">Удалить</button>
     </form>
 
     <iframe style="height: 80vh; border:none;" class="col-12 pt-2" src="{{ route('admin.trks.get', $town->id) }}">

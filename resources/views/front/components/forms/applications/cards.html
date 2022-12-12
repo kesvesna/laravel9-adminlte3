@@ -28,7 +28,7 @@
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-2">
                 <div class="col mb-3">
                     <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                    <select id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                    <select id="trk_id" name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                         <option value="1">Академ Парк</option>
                         <option value="2">Гудзон</option>
                         <option value="3">Европолис (м.Лесная)</option>
@@ -38,7 +38,7 @@
                 </div>
                 <div class="col mb-3">
                     <label for="renter_work_type_id" class="form-label" style="color: white;">Виды работ</label>
-                    <select autofocus id="renter_work_type_id" name="renter_work_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                    <select autofocus id="renter_work_type_id" name="renter_work_type_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                         <option value="10" style="color: yellowgreen">Изготовление магнитных карт</option>
                     </select>
                 </div>
@@ -46,7 +46,7 @@
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-2">
                 <div class="col mb-3">
                     <label for="count" class="form-label" style="color: white;">Количество карт</label>
-                    <select id="count" name="count" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                    <select id="count" name="count" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col mb-3">
                     <label for="responsible_person" class="form-label" style="color: white;">Ответственный</label>
-                    <textarea required class="form-control" placeholder="ФИО, тел." id="responsible_person" name="responsible_person" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                    <textarea required class="form-control form-control-sm" placeholder="ФИО, тел." id="responsible_person" name="responsible_person" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                 </div>
             </div>
             <div class="row col-12 mx-auto row-cols-1">
@@ -71,10 +71,10 @@
             </div>
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-2">
                 <div class="col mt-4">
-                    <button class="btn btn-danger col-12" type="submit">Сохранить</button>
+                    <button class=" btn btn-sm  btn-danger col-12" type="submit">Сохранить</button>
                 </div>
                 <div class="col mt-4">
-                    <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
+                    <button onClick="history.back()" class=" btn btn-sm  btn-success col-12" type="button">Назад</button>
                 </div>
             </div>
         </form>
@@ -91,15 +91,15 @@
 </main>
 <footer>
     <nav class="navbar fixed-bottom justify-content-around">
-        <a href="../../../index.blade.php" class="btn">
+        <a href="../../../index.blade.php" class=" btn btn-sm">
             <img src="../../../icons/home.svg" alt="Profile icon" width="30" height="30">
         </a>
-        <button class="navbar-toggler btn" type="button" data-bs-toggle="collapse"
+        <button class="navbar-toggler  btn btn-sm" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
                 aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <button onClick="history.back()" class="btn">
+        <button onClick="history.back()" class=" btn btn-sm">
             <img src="../../../icons/back.svg" alt="Profile icon" width="30" height="30">
         </button>
     </nav>

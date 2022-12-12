@@ -7,7 +7,7 @@
 @section('content')
     <br>
     <h1>Города</h1>
-    <a href="{{ route('admin.towns.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить город</b></a>
+    <a href="{{ route('admin.towns.create') }}" class=" btn btn-sm  btn-lg  btn-outline-warning mb-3"><b>Добавить город</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>

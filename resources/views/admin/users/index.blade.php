@@ -9,11 +9,11 @@
     <form method="get" action="{{ route('admin.users.create') }}" class="mb-3">
         <div class="row">
             <h2>Пользователи</h2>
-            <button class="btn btn-success btn-sm ml-3" type="submit"><b>Создать пользователя</b></button>
+            <button class=" btn btn-sm  btn-success   ml-3" type="submit"><b>Создать пользователя</b></button>
         </div>
     </form>
     <hr>
-        <a href="{{ route('admin.users.index') }}" class="btn btn-success btn-sm btn-block mb-3"><b>Сбросить все
+        <a href="{{ route('admin.users.index') }}" class=" btn btn-sm  btn-success    btn-block mb-3"><b>Сбросить все
                 фильтры</b></a>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered table-sm">
@@ -28,7 +28,7 @@
                 <form action="{{ route('admin.users.index') }}" method="get">
                 <tr>
                     <th>
-                        <input list="ids" onchange="this.form.submit()" value="@if(isset($old_filters['id'])){{ $old_filters['id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="id" type="search" class="form-control" placeholder="Поиск" aria-label="id" aria-describedby="id">
+                        <input list="ids" onchange="this.form.submit()" value="@if(isset($old_filters['id'])){{ $old_filters['id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="id" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="id" aria-describedby="id">
                         <datalist id="ids">
                             @forelse($users as $user)
                                 <option value="{{$user->id}}">
@@ -38,7 +38,7 @@
                         </datalist>
                     </th>
                     <th>
-                        <input list="names" onchange="this.form.submit()" value="@if(isset($old_filters['name'])){{ $old_filters['name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="name" type="search" class="form-control" placeholder="Поиск" aria-label="name" aria-describedby="name">
+                        <input list="names" onchange="this.form.submit()" value="@if(isset($old_filters['name'])){{ $old_filters['name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="name" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="name" aria-describedby="name">
                         <datalist id="names">
                             @forelse($users as $user)
                                 <option value="{{$user->name}}">
@@ -48,7 +48,7 @@
                         </datalist>
                     </th>
                     <th>
-                        <input list="emails" onchange="this.form.submit()" value="@if(isset($old_filters['email'])){{ $old_filters['email']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="email" type="search" class="form-control" placeholder="Поиск" aria-label="email" aria-describedby="email">
+                        <input list="emails" onchange="this.form.submit()" value="@if(isset($old_filters['email'])){{ $old_filters['email']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="email" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="email" aria-describedby="email">
                         <datalist id="emails">
                             @forelse($users as $user)
                                 <option value="{{$user->email}}">
@@ -58,7 +58,7 @@
                         </datalist>
                     </th>
                     <th>
-                        <select class="form-control" name="user_status_id" aria-label="select" onchange="this.form.submit()">
+                        <select class="form-control form-control-sm" name="user_status_id" aria-label="select" onchange="this.form.submit()">
                             <option selected value="">Все</option>
                             @forelse($user_statuses as $status)
                                 <option value="{{ $status->id }}" @if(isset($old_filters['user_status_id'])){{ $old_filters['user_status_id'] == $status->id ? ' selected' : '' }} @endif>{{ $status->name }}</option>

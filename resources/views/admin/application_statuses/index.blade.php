@@ -9,7 +9,7 @@
     <form method="get" action="{{ route('admin.application_statuses.create') }}" class="mb-3">
         <div class="row">
             <h2>Статусы заявок</h2>
-            <button class="btn btn-success btn-sm ml-3" type="submit"><b>Создать</b></button>
+            <button class=" btn btn-sm btn-success ml-3" type="submit"><b>Создать</b></button>
         </div>
     </form>
         <div class="table-responsive">

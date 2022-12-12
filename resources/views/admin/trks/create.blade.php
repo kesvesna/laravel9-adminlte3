@@ -10,14 +10,14 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">НАЗВАНИЕ КОМПЛЕКСА</label>
-            <input type="text" value="{{ old('name') }}" class="form-control" id="name" name="name">
+            <input type="text" value="{{ old('name') }}" class="form-control form-control-sm" id="name" name="name">
             @error('name')
                 <p class="text-danger">{{ __($message) }}</p>
             @enderror
         </div>
         <div class="form-group">
             <label for="town_id">ГОРОД</label>
-            <select name="town_id" id="town_id" class="form-control">
+            <select name="town_id" id="town_id" class="form-control form-control-sm">
                 @forelse($towns as $town)
                     <option
                         {{ old('town_id') == $town->id ? ' selected' : ''}}
@@ -27,7 +27,7 @@
                 @endforelse
             </select>
         </div>
-        <a href="{{ route('admin.trks.index') }}" class="btn btn-success mr-3">Назад</a>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ route('admin.trks.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
+        <button type="submit" class=" btn btn-sm  btn-primary">Сохранить</button>
     </form>
 @endsection

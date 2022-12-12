@@ -21,7 +21,7 @@
                 <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-2">
                     <div class="col">
                         <label for="renter_work_type_id" class="form-label" style="color: white;">Виды работ</label>
-                        <select autofocus id="renter_work_type_id" name="renter_work_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <select autofocus id="renter_work_type_id" name="renter_work_type_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                             <option value="1">Ввоз ТМЦ</option>
                             <option value="2">Вывоз ТМЦ</option>
                             <option value="3">Инвентаризация</option>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col">
                         <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                        <select id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <select id="trk_id" name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                             <option value="1">Академ Парк</option>
                             <option value="2">Гудзон</option>
                             <option value="3">Европолис (м.Лесная)</option>
@@ -51,36 +51,36 @@
                     <div class="col mt-4">
                         <label class="mb-2" for="work_start_time" style="color: white;">Начало работ:</label>
                         <br>
-                        <input type="datetime-local" id="work_start_time" name="date" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <input type="datetime-local" id="work_start_time" name="date" class="form-control form-control-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                     <div class="col mt-4">
                         <label class="mb-2" for="work_finish_time" style="color: white;">Окончание работ:</label>
                         <br>
-                        <input type="datetime-local" id="work_finish_time" name="work_finish_time" class="form-control" style="background: rgba( 255, 255, 255, 0.5 );">
+                        <input type="datetime-local" id="work_finish_time" name="work_finish_time" class="form-control form-control-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                     </div>
                 </div>
                 <div class="row col-12 mx-auto row-cols-1">
                     <div class="col mt-4">
                         <label for="comment" class="form-label" style="color: white;">Описание работ</label>
-                        <textarea required class="form-control" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                        <textarea required class="form-control form-control-sm" id="comment" name="comment" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                     </div>
                 </div>
                 <div class="row col-12 mx-auto row-cols-1">
                     <div class="col mt-4">
                         <label for="persons_list" class="form-label" style="color: white;">Список лиц</label>
-                        <textarea required class="form-control" placeholder="ФИО, тел. ; ФИО, тел. ;" id="persons_list" name="persons_list" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                        <textarea required class="form-control form-control-sm" placeholder="ФИО, тел. ; ФИО, тел. ;" id="persons_list" name="persons_list" rows="2" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                     </div>
                 </div>
                 <div class="row col-12 mx-auto row-cols-1">
                     <div class="col mt-4">
                         <label for="responsible_person" class="form-label" style="color: white;">Ответственный</label>
-                        <textarea required class="form-control" placeholder="ФИО, тел." id="responsible_person" name="responsible_person" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
+                        <textarea required class="form-control form-control-sm" placeholder="ФИО, тел." id="responsible_person" name="responsible_person" rows="1" style="background: rgba( 255, 255, 255, 0.5 );"></textarea>
                     </div>
                 </div>
                 <div class="row col-12 mx-auto row-cols-1">
                     <div class="col mt-4">
                         <label for="file" class="form-label" style="color: white;">Сканы</label>
-                        <input class="form-control" type="file" id="file" name="file" multiple>
+                        <input class="form-control form-control-sm" type="file" id="file" name="file" multiple>
                         </div>
                 </div>
                 <div class="row col-12 mx-auto row-cols-1">
@@ -95,10 +95,10 @@
                 </div>
                 <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-2">
                     <div class="col mt-4">
-                        <button class="btn btn-danger col-12" type="button">Сохранить</button>
+                        <button class=" btn btn-sm  btn-danger col-12" type="button">Сохранить</button>
                     </div>
                     <div class="col mt-4">
-                        <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
+                        <button onClick="history.back()" class=" btn btn-sm  btn-success col-12" type="button">Назад</button>
                     </div>
                 </div>
             </form>

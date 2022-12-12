@@ -7,7 +7,7 @@
 @section('content')
     <br>
     <h1>Блоки/Зоны</h1>
-    <a href="{{ route('admin.buildings.create') }}" class="btn btn-lg btn-outline-warning mb-3"><b>Добавить блок/зону</b></a>
+    <a href="{{ route('admin.buildings.create') }}" class=" btn btn-sm  btn-lg  btn-outline-warning mb-3"><b>Добавить блок/зону</b></a>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-bordered table-sm">
             <thead>

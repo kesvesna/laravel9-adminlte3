@@ -54,10 +54,10 @@
         @csrf
         @method('delete')
         <div class="justify-content-between justify-content-md-start">
-            <button type="button" onclick="history.back()" class="btn btn-success mr-3 btn-sm">Назад</button>
+            <button type="button" onclick="history.back()" class=" btn btn-sm  btn-success mr-3  ">Назад</button>
             <a href="{{ route('admin.equipments.edit', $equipment->id) }}"
-               class="btn btn-warning mr-3 btn-sm">Редактировать</a>
-            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+               class=" btn btn-sm  btn-warning mr-3  ">Редактировать</a>
+            <button type="submit" class=" btn btn-sm  btn-danger  ">Удалить</button>
         </div>
     </form>
     <br>

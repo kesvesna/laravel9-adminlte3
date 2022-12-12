@@ -10,11 +10,11 @@
         @method('patch')
         <div class="mb-3">
             <label for="id" class="form-label">ID заявки</label>
-            <input type="text" class="form-control" id="id" value="{{ $application->id }}" readonly>
+            <input type="text" class="form-control form-control-sm" id="id" value="{{ $application->id }}" readonly>
         </div>
         <div class="form-group">
             <label for="trk_id">ТОРГОВЫЙ КОМПЛЕКС</label>
-            <select name="trk_id" id="trk_id" class="form-control">
+            <select name="trk_id" id="trk_id" class="form-control form-control-sm">
                 @forelse($trks as $trk)
                     <option @if($application->trk->id === $trk->id) selected @endif
                     value="{{ $trk->id }}">{{ $trk->name }}</option>
@@ -25,7 +25,7 @@
         </div>
         <div class="form-group">
             <label for="application_status_id">СТАТУС</label>
-            <select name="application_status_id" id="application_status_id" class="form-control">
+            <select name="application_status_id" id="application_status_id" class="form-control form-control-sm">
                 @forelse($application_statuses as $status)
                     <option @if($application->currentHistory->application_status->id === $status->id) selected @endif
                     value="{{ $status->id }}">{{ $status->name }}</option>
@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
             <label for="service_id">Подразделение</label>
-            <select name="service_id" id="service_id" class="form-control">
+            <select name="service_id" id="service_id" class="form-control form-control-sm">
                 @forelse($services as $service)
                     <option @if($application->currentHistory->service->id === $service->id) selected @endif
                     value="{{ $service->id }}">{{ $service->name }}</option>
@@ -47,10 +47,10 @@
         </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Comment</label>
-            <textarea type="text" class="form-control" id="comment"
+            <textarea type="text" class="form-control form-control-sm" id="comment"
                       name="comment">{{ $application->comment }}</textarea>
         </div>
-        <a href="{{ route('admin.applications.index') }}" class="btn btn-success mr-3">Назад</a>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ route('admin.applications.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
+        <button type="submit" class=" btn btn-sm  btn-primary">Сохранить</button>
     </form>
 @endsection

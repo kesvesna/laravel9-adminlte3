@@ -30,9 +30,9 @@
                                                     -webkit-backdrop-filter: blur( 1px );
                                                     border-radius: 3px;"
                                            autofocus type="search" id="comment" required name="comment"
-                                           placeholder="Поиск" class="form-control form-control-sm"
+                                           placeholder="Поиск" class="form-control form-control-sm form-control form-control-sm-sm"
                                            aria-describedby="search_application">
-                                    <button class="btn" type="submit">
+                                    <button class=" btn btn-sm" type="submit">
                                         <img src="{{ asset('icons/search.svg') }}" alt="Search application" width="30" height="30">
                                     </button>
                                 </div>
@@ -43,12 +43,12 @@
                     <hr style="margin-top: 0;">
                     <form action="{{ route('front.applications.index') }}" method="get" class="ms-2">
                         <input hidden name="application_status_id" value="1">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: darkred;">Новые: {{ $new_applications_count }}</b></button>
+                        <button class=" btn btn-sm" type="submit" style="background-color: transparent;"><b style="color: darkred;">Новые: {{ $new_applications_count }}</b></button>
                     </form>
                     <hr>
                     <form action="{{ route('front.applications.index') }}" method="get" class="mb-3 ms-2">
                         <input hidden name="application_status_id" value="2">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">В обработке: {{ $in_progress_applications_count }}</b></button>
+                        <button class=" btn btn-sm" type="submit" style="background-color: transparent;"><b style="color: yellow;">В обработке: {{ $in_progress_applications_count }}</b></button>
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
@@ -76,8 +76,8 @@
                                         <input  style="background: rgba( 255, 255, 255, 0.2 );
                                                     backdrop-filter: blur( 1px );
                                                     -webkit-backdrop-filter: blur( 1px );
-                                                    border-radius: 3px;" autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm" aria-describedby="search_repair">
-                                        <button class="btn" type="submit">
+                                                    border-radius: 3px;" autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm form-control form-control-sm-sm" aria-describedby="search_repair">
+                                        <button class=" btn btn-sm" type="submit">
                                             <img src="{{ asset('icons/search.svg') }}" alt="Search repair" width="30" height="30">
                                         </button>
                                     </div>
@@ -88,12 +88,12 @@
                     <hr style="margin-top: 0;">
                     <form action="{{ route('front.repair.index') }}" method="get" class="ms-2">
                         <input hidden name="repair_status_id" value="2">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: darkred;">По заявкам: {{ $repair_by_application_count }}</b></button>
+                        <button class=" btn btn-sm" type="submit" style="background-color: transparent;"><b style="color: darkred;">По заявкам: {{ $repair_by_application_count }}</b></button>
                     </form>
                     <hr>
                     <form action="{{ route('front.repair.index') }}" method="get" class="mb-3 ms-2">
                         <input hidden name="repair_status_id" value="1">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">По плану: {{ $repair_by_plan_count }}</b></button>
+                        <button class=" btn btn-sm" type="submit" style="background-color: transparent;"><b style="color: yellow;">По плану: {{ $repair_by_plan_count }}</b></button>
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >
@@ -121,8 +121,8 @@
                                         <input  style="background: rgba( 255, 255, 255, 0.2 );
                                                     backdrop-filter: blur( 1px );
                                                     -webkit-backdrop-filter: blur( 1px );
-                                                    border-radius: 3px;" autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm" aria-describedby="search_act">
-                                        <button class="btn" type="submit">
+                                                    border-radius: 3px;" autofocus type="search" id="comment" required name="comment" placeholder="Поиск" class="form-control form-control-sm form-control form-control-sm-sm" aria-describedby="search_act">
+                                        <button class=" btn btn-sm" type="submit">
                                             <img src="{{ asset('icons/search.svg') }}" alt="Search act" width="30" height="30">
                                         </button>
                                     </div>
@@ -133,12 +133,12 @@
                     <hr style="margin-top: 0;">
                     <form action="{{ route('front.acts.index') }}" method="get" class="ms-2">
                         <input hidden name="act_status_id" value="1">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: darkgreen;">По плану: {{ $act_by_plan_count }}</b></button>
+                        <button class=" btn btn-sm" type="submit" style="background-color: transparent;"><b style="color: darkgreen;">По плану: {{ $act_by_plan_count }}</b></button>
                     </form>
                     <hr>
                     <form action="{{ route('front.acts.index') }}" method="get" class="ms-2 mb-3">
                         <input hidden name="act_status_id" value="2">
-                        <button class="btn" type="submit" style="background-color: transparent;"><b style="color: yellow;">По заявкам: {{ $act_by_application_count }}</b></button>
+                        <button class=" btn btn-sm" type="submit" style="background-color: transparent;"><b style="color: yellow;">По заявкам: {{ $act_by_application_count }}</b></button>
                     </form>
                     <div class="position-relative">
                         <div class="position-absolute end-0 my-3" >

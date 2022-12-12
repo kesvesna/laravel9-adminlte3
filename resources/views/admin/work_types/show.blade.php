@@ -30,8 +30,8 @@
     <form action="{{ route('admin.work_types.destroy', $work_type->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.work_types.index') }}" class="btn btn-success mr-3">Назад</a>
-        <a href="{{ route('admin.work_types.edit', $work_type->id) }}" class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+        <a href="{{ route('admin.work_types.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
+        <a href="{{ route('admin.work_types.edit', $work_type->id) }}" class=" btn btn-sm  btn-warning mr-3">Редактировать</a>
+        <button type="submit" class=" btn btn-sm  btn-danger">Удалить</button>
     </form>
 @endsection

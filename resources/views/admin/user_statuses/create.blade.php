@@ -10,7 +10,7 @@
         @csrf
         <div class="mb-3">
             <label for="comment" class="form-label">Название</label>
-            <input type="text" class="form-control" name="name" id="name" required>
+            <input type="text" class="form-control form-control-sm" name="name" id="name" required>
 
         </div>
         <div class="form-check mb-3">
@@ -19,7 +19,7 @@
                 Показывать в списках
             </label>
         </div>
-        <a href="{{ route('admin.user_statuses.index') }}" class="btn btn-success mr-3">Назад</a>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ route('admin.user_statuses.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
+        <button type="submit" class=" btn btn-sm  btn-primary">Сохранить</button>
     </form>
 @endsection

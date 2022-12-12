@@ -10,12 +10,12 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Наименование</label>
-            <input type="text" value="{{ old('name') }}" class="form-control" id="name" name="name">
+            <input type="text" value="{{ old('name') }}" class="form-control form-control-sm" id="name" name="name">
             @error('name')
             <p class="text-danger">{{ __($message) }}</p>
             @enderror
         </div>
-        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
-        <button type="submit" class="btn btn-primary btn-sm">Сохранить</button>
+        <button type="button" onclick="history.back()" class=" btn btn-sm  btn-success  ">Назад</button>
+        <button type="submit" class=" btn btn-sm  btn-primary  ">Сохранить</button>
     </form>
 @endsection

@@ -12,13 +12,13 @@
                 <h5 style="color: white;">Заявки от арендаторов</h5>
             </div>
             <div class="col pt-2">
-                <button class="btn btn-success btn-sm">Сброс фильтров</button>
+                <button class=" btn btn-sm  btn-success  ">Сброс фильтров</button>
             </div>
             </div>
         <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3 d-md-none">
             <div class="col mb-2 pt-2">
                 <label for="trk_id" class="form-label" style="color: white;">Торговый комплекс</label>
-                <select id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 );">
+                <select id="trk_id" name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 );">
                     <option value="1">Академ Парк</option>
                     <option value="2">Гудзон</option>
                     <option value="3">Европолис (м.Лесная)</option>
@@ -28,7 +28,7 @@
             </div>
             <div class="col">
                 <label for="brand_id" class="form-label" style="color: white;">Арендатор</label>
-                <select class="form-select" aria-label="brand_id" id="brand_id" style="background: rgba( 255, 255, 255, 0.5 );" >
+                <select class="form-select form-select-sm" aria-label="brand_id" id="brand_id" style="background: rgba( 255, 255, 255, 0.5 );" >
                     <option selected>Все</option>
                     <option value="1">Рив Гош</option>
                     <option value="2">Samsung</option>
@@ -45,7 +45,7 @@
             <thead>
             <tr>
                 <th scope="col" class="d-none d-sm-table-cell">Дата
-                    <button class="btn">
+                    <button class=" btn btn-sm">
                         <img class="" src="{{ asset('icons/arrow-down-up.svg') }}" alt="Arrow-down-up" width="20" height="20">
                     </button>
                 </th>
@@ -63,10 +63,10 @@
             <tbody>
             <tr>
                 <td class="d-none d-sm-table-cell">
-                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="date" type="datetime-local" class="form-control" placeholder="Поиск" aria-label="date" aria-describedby="date">
+                    <input  style="background: rgba( 255, 255, 255, 0.5 );" name="date" type="datetime-local" class="form-control form-control-sm" placeholder="Поиск" aria-label="date" aria-describedby="date">
                 </td>
                 <td class="d-none d-lg-table-cell">
-                    <select class="form-select" aria-label="trk" style="background: rgba( 255, 255, 255, 0.5 );" >
+                    <select class="form-select form-select-sm" aria-label="trk" style="background: rgba( 255, 255, 255, 0.5 );" >
                         <option selected>Все</option>
                         <option value="1">Академ Парк</option>
                         <option value="2">Родео Драйв</option>
@@ -75,7 +75,7 @@
                     </select>
                 </td>
                 <td>
-                    <select class="form-select" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
+                    <select class="form-select form-select-sm" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
                         <option selected>Все</option>
                         <option value="1">Новые</option>
                         <option value="2">Согласование у инженеров</option>
@@ -85,7 +85,7 @@
                     </select>
                 </td>
                 <td class="d-none d-md-table-cell">
-                    <select class="form-select" aria-label="room" style="background: rgba( 255, 255, 255, 0.5 );" >
+                    <select class="form-select form-select-sm" aria-label="room" style="background: rgba( 255, 255, 255, 0.5 );" >
                         <option selected>Все</option>
                         <option value="1">B1</option>
                         <option value="2">C2</option>
@@ -94,7 +94,7 @@
                     </select>
                 </td>
                 <td class="d-none d-md-table-cell">
-                    <select class="form-select" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
+                    <select class="form-select form-select-sm" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );" >
                         <option selected>Все</option>
                         <option value="1">Перекресток</option>
                         <option value="2">Samsung</option>
@@ -104,7 +104,7 @@
                     </select>
                 </td>
                 <td>
-                    <select class="form-select" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );">
+                    <select class="form-select form-select-sm" aria-label="type" style="background: rgba( 255, 255, 255, 0.5 );">
                         <option selected>Все</option>
                         <option value="1">Ввоз ТМЦ</option>
                         <option value="2">Вывоз ТМЦ</option>

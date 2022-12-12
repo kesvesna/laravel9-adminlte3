@@ -13,7 +13,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Академ Парк
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -58,7 +58,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Гудзон
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -103,7 +103,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Европолис (м.Лесная)
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -148,7 +148,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Европолис (м.Ростокино)
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -193,7 +193,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     FORT Отрадное
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -238,7 +238,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Золотой Вавилон
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -283,7 +283,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Лондон Молл
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -328,7 +328,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Порт Находка
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -373,7 +373,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Пятая Авеню
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -418,7 +418,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Пять Озёр
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -463,7 +463,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Родео Драйв
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -508,7 +508,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Сити Молл
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -553,7 +553,7 @@
         </div>
         <div class="col-12 col-sm-10 col-md-8 col-lg-6 mx-auto">
             <div class="dropdown-center mb-2">
-                <a class="btn btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class=" btn btn-sm  btn-outline-light dropdown-toggle col-12" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
                     Фиолент
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

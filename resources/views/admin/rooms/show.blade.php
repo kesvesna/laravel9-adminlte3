@@ -42,8 +42,8 @@
     <form action="{{ route('admin.rooms.destroy', $room->id) }}" method="post">
         @csrf
         @method('delete')
-        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
-        <a href="{{ route('admin.rooms.edit', $room->id) }}" class="btn btn-warning  btn-sm">Редактировать</a>
-        <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+        <button type="button" onclick="history.back()" class=" btn btn-sm  btn-success  ">Назад</button>
+        <a href="{{ route('admin.rooms.edit', $room->id) }}" class=" btn btn-sm  btn-warning   ">Редактировать</a>
+        <button type="submit" class=" btn btn-sm  btn-danger  ">Удалить</button>
     </form>
 @endsection

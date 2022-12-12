@@ -221,7 +221,7 @@
                 <span class="input-group-text" id="basic-addon5">
                         <img src="{{ asset('icons/attach.svg') }}" alt="Send message" width="20" height="20">
                     </span>
-            <input type="search" class="form-control" placeholder="Введите сообщение"
+            <input type="search" class="form-control form-control-sm" placeholder="Введите сообщение"
                    aria-label="Recipient's username" aria-describedby="basic-addon2" autofocus>
             <span class="input-group-text" id="basic-addon2">
                         <img src="{{ asset('icons/send.svg') }}" alt="Send message" width="20" height="20">

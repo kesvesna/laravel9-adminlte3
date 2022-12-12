@@ -64,13 +64,13 @@
                 <div class="navbar-search-block">
                     <form class="form-inline">
                         <div class="input-group input-group-sm">
-                            <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                            <input class="form-control form-control-sm form-control form-control-sm-navbar" type="search" placeholder="Search"
                                    aria-label="Search">
                             <div class="input-group-append">
-                                <button class="btn btn-navbar" type="submit">
+                                <button class=" btn btn-sm  btn-navbar" type="submit">
                                     <i class="fas fa-search"></i>
                                 </button>
-                                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                <button class=" btn btn-sm  btn-navbar" type="button" data-widget="navbar-search">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
@@ -198,10 +198,10 @@
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Поиск"
+                    <input class="form-control form-control-sm form-control form-control-sm-sidebar" type="search" placeholder="Поиск"
                            aria-label="Search">
                     <div class="input-group-append">
-                        <button class="btn btn-sidebar">
+                        <button class=" btn btn-sm  btn-sidebar">
                             <i class="fas fa-search fa-fw"></i>
                         </button>
                     </div>

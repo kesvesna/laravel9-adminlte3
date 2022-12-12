@@ -85,7 +85,7 @@ $year = date('Y', strtotime($date));
         <div class="col-12 col-md-6 row-cols-1">
                 <h5 class="pt-3">Месяц и год</h5>
                 <input type="month" id="start" name="start"
-                       min="2022-10" value="2022-11" class="form-control">
+                       min="2022-10" value="2022-11" class="form-control form-control-sm">
         </div>
         <h5 class="pt-4 pb-3">Табель на <?=$month . ' ' . $year . ' года'?></h5>
         <table class="table table-bordered table-hover" style="background: rgba( 255, 255, 255, 0.5 );
@@ -133,10 +133,10 @@ $year = date('Y', strtotime($date));
         </table>
         <div class="row-cols-1 row-cols-md-2 row-cols-xxl-2 pb-3 pt-1">
             <div class="mt-3">
-                <button class="btn btn-danger col-12" type="button">Сохранить</button>
+                <button class=" btn btn-sm  btn-danger col-12" type="button">Сохранить</button>
             </div>
             <div class="mt-3">
-                <button onClick="history.back()" class="btn btn-success col-12" type="button">Назад</button>
+                <button onClick="history.back()" class=" btn btn-sm  btn-success col-12" type="button">Назад</button>
             </div>
         </div>
     </div>

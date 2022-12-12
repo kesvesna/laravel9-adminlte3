@@ -9,11 +9,11 @@
     <form method="get" action="{{ route('admin.repairs.create') }}" class="mb-3">
         <div class="row">
             <h2>Ремонт</h2>
-            <button class="btn btn-success btn-sm ml-3" type="submit"><b>Запланировать ремонт</b></button>
+            <button class=" btn btn-sm  btn-success   ml-3" type="submit"><b>Запланировать ремонт</b></button>
         </div>
     </form>
     <hr>
-        <a href="{{ route('admin.repairs.index') }}" class="btn btn-success btn-sm btn-block mb-3"><b>Сбросить все
+        <a href="{{ route('admin.repairs.index') }}" class=" btn btn-sm  btn-success    btn-block mb-3"><b>Сбросить все
                 фильтры</b></a>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered table-sm">
@@ -27,7 +27,7 @@
                 <form action="{{ route('admin.repairs.index') }}" method="get">
                 <tr>
                     <th>
-                        <select class="form-control" name="trk_id" aria-label="select" onchange="this.form.submit()">
+                        <select class="form-control form-control-sm" name="trk_id" aria-label="select" onchange="this.form.submit()">
                             <option selected value="">Все</option>
                             @forelse($trks as $trk)
                                 <option value="{{ $trk->id }}" @if(isset($old_filters['trk_id'])){{ $old_filters['trk_id'] == $trk->id ? ' selected' : '' }} @endif>{{ $trk->name }}</option>
@@ -37,7 +37,7 @@
                         </select>
                     </th>
                     <th>
-                        <select class="form-control" name="repair_status_id" aria-label="select" onchange="this.form.submit()">
+                        <select class="form-control form-control-sm" name="repair_status_id" aria-label="select" onchange="this.form.submit()">
                             <option selected value="">Все</option>
                             @forelse($repair_statuses as $status)
                                 <option value="{{ $status->id }}" @if(isset($old_filters['repair_status_id'])){{ $old_filters['repair_status_id'] == $status->id ? ' selected' : '' }} @endif>{{ $status->name }}</option>
@@ -48,7 +48,7 @@
                     </th>
                     <th>
                         <input type="text" value="@if(isset($old_filters['comment'])) {{ $old_filters['comment'] }} @endif"
-                               class="form-control" id="comment" name="comment">
+                               class="form-control form-control-sm" id="comment" name="comment">
                     </th>
                     <th colspan="3"></th>
                 </tr>

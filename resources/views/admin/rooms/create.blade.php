@@ -10,14 +10,14 @@
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">ПОМЕЩЕНИЕ</label>
-            <input type="text" value="{{ old('name') }}" class="form-control form-control-sm" id="name" name="name">
+            <input type="text" value="{{ old('name') }}" class="form-control form-control-sm form-control form-control-sm-sm" id="name" name="name">
             @error('name')
             <p class="text-danger">{{ __($message) }}</p>
             @enderror
         </div>
         <div class="form-group">
             <label for="room_type_id">Тип помещения</label>
-            <select name="room_type_id" id="room_type_id" class="form-control form-control-sm">
+            <select name="room_type_id" id="room_type_id" class="form-control form-control-sm form-control form-control-sm-sm">
                 @forelse($room_types as $type)
                     <option
                         {{ old('room_type_id') == $type->id ? ' selected' : ''}}
@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <label for="room_status_id">Статус помещения</label>
-            <select name="room_status_id" id="room_status_id" class="form-control form-control-sm">
+            <select name="room_status_id" id="room_status_id" class="form-control form-control-sm form-control form-control-sm-sm">
                 @forelse($room_statuses as $status)
                     <option
                         {{ old('room_status_id') == $status->id ? ' selected' : ''}}
@@ -41,12 +41,12 @@
         </div>
         <div class="mb-3">
             <label for="comment" class="form-label">Комментарий</label>
-            <input type="text" value="{{ old('comment') }}" class="form-control form-control-sm" id="comment" name="comment">
+            <input type="text" value="{{ old('comment') }}" class="form-control form-control-sm form-control form-control-sm-sm" id="comment" name="comment">
             @error('comment')
                 <p class="text-danger">{{ __($message) }}</p>
             @enderror
         </div>
-        <a href="{{ route('admin.rooms.index') }}" class="btn btn-success mr-3">Назад</a>
-        <button type="submit" class="btn btn-primary">Сохранить</button>
+        <a href="{{ route('admin.rooms.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
+        <button type="submit" class=" btn btn-sm  btn-primary">Сохранить</button>
     </form>
 @endsection

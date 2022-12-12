@@ -17,36 +17,36 @@
                     </div>
                     <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                         <div class="col mt-2">
-                            <select disabled id="trk_id" name="trk_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                            <select disabled id="trk_id" name="trk_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $equipment->room->trk->name }}</option>
                             </select>
                         </div>
                         <div class="col mt-2">
-                            <select disabled id="system_type_id" name="system_type_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                            <select disabled id="system_type_id" name="system_type_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                                 <option value="">{{ $equipment->system->name }}</option>
                             </select>
                         </div>
                     </div>
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                 <div class="col mt-2">
-                    <select disabled id="building_id" name="building_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                    <select disabled id="building_id" name="building_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                         <option value="">{{ $equipment->room->building->name }}</option>
                     </select>
                 </div>
                 <div class="col mt-2">
-                    <select disabled id="floor_id" name="floor_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                    <select disabled id="floor_id" name="floor_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                         <option value="">{{ $equipment->room->floor->name }}</option>
                     </select>
                 </div>
             </div>
             <div class="row col-12 mx-auto row-cols-1 row-cols-md-2 row-cols-xxl-3">
                 <div class="col mt-2">
-                    <select disabled id="room_id" name="room_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                    <select disabled id="room_id" name="room_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                         <option value="">{{ $equipment->room->room->name }}&nbsp;&nbsp;{{ '(' . $equipment->room->room->room_type->name . ')' }}</option>
                     </select>
                 </div>
                 <div class="col mt-2">
-                    <select disabled id="equipment_name_id" name="equipment_name_id" class="form-select" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
+                    <select disabled id="equipment_name_id" name="equipment_name_id" class="form-select form-select-sm" style="background: rgba( 255, 255, 255, 0.5 ); font-weight: bold;">
                         <option value="">{{ $equipment->name->name }}</option>
                     </select>
                 </div>
@@ -87,7 +87,7 @@
                     @endif
                     <div class="row col-12 mx-auto row-cols-1">
                         <div class="col">
-                            <button onClick="history.back()" class="btn btn-success col-12" type="button"><b>Назад</b></button>
+                            <button onClick="history.back()" class=" btn btn-sm  btn-success col-12" type="button"><b>Назад</b></button>
                         </div>
                     </div>
             </div>

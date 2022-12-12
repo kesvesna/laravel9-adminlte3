@@ -56,10 +56,10 @@
     <form action="{{ route('admin.repairs.destroy', $repair->id) }}" method="post">
         @csrf
         @method('delete')
-        <a href="{{ route('admin.repairs.index') }}" class="btn btn-success mr-3">Назад</a>
+        <a href="{{ route('admin.repairs.index') }}" class=" btn btn-sm  btn-success mr-3">Назад</a>
         <a href="{{ route('admin.repairs.edit', $repair->id) }}"
-           class="btn btn-warning mr-3">Редактировать</a>
-        <button type="submit" class="btn btn-danger">Удалить</button>
+           class=" btn btn-sm  btn-warning mr-3">Редактировать</a>
+        <button type="submit" class=" btn btn-sm  btn-danger">Удалить</button>
     </form>
 
 @endsection

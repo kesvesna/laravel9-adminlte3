@@ -34,12 +34,12 @@
     </table>
     </div>
     <div class="justify-content-between justify-content-md-start">
-        <button type="button" onclick="history.back()" class="btn btn-success btn-sm">Назад</button>
-        <a href="{{ route('admin.trks.edit', $trk->id) }}" class="btn btn-warning btn-sm">Редактировать</a>
+        <button type="button" onclick="history.back()" class=" btn btn-sm  btn-success  ">Назад</button>
+        <a href="{{ route('admin.trks.edit', $trk->id) }}" class=" btn btn-sm  btn-warning  ">Редактировать</a>
         <form action="{{ route('admin.trks.destroy', $trk->id) }}" method="post" class="d-inline-block">
             @csrf
             @method('delete')
-            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+            <button type="submit" class=" btn btn-sm  btn-danger  ">Удалить</button>
         </form>
     </div>
 
@@ -58,7 +58,7 @@
         <tbody>
         <tr>
             <td>
-                <select name="building_id" class="form-control" aria-label="building_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                <select name="building_id" class="form-control form-control-sm" aria-label="building_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
                     <option value="">Здания/Зоны</option>
                     @forelse($buildings as $building)
                         <option @if(isset($old_filters['building_id'])){{ $old_filters['building_id'] == $building->id ? ' selected' : '' }} @endif value="{{ $building->id }}">{{ $building->name }}</option>
@@ -68,7 +68,7 @@
                 </select>
             </td>
             <td>
-                <select name="floor_id" class="form-control" aria-label="floor_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
+                <select name="floor_id" class="form-control form-control-sm" aria-label="floor_id" style="background: rgba( 255, 255, 255, 0.5 );"  onchange="this.form.submit()">
                     <option value="">Этажи/уровни</option>
                     @forelse($floors as $floor)
                         <option  @if(isset($old_filters['floor_id'])){{ $old_filters['floor_id'] == $floor->id ? ' selected' : '' }} @endif value="{{ $floor->id }}">{{ $floor->name }}</option>
@@ -78,7 +78,7 @@
                 </select>
             </td>
             <td>
-                <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_name'])){{ $old_filters['room_name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_name" type="search" class="form-control" placeholder="Помещение" aria-label="room_name" aria-describedby="room_name">
+                <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_name'])){{ $old_filters['room_name']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_name" type="search" class="form-control form-control-sm" placeholder="Помещение" aria-label="room_name" aria-describedby="room_name">
                 <datalist id="rooms">
                     @forelse($rooms as $room)
                         <option value="{{$room->name}}">
@@ -88,7 +88,7 @@
                 </datalist>
             </td>
             <td>
-                <a href="{{ route('admin.trks.show', $trk->id) }}" class="btn-sm btn btn-success mr-3 mb-3">СБРОС</a>
+                <a href="{{ route('admin.trks.show', $trk->id) }}" class="   btn btn-sm  btn-success mr-3 mb-3">СБРОС</a>
             </td>
         </tr>
         <tr>
@@ -163,7 +163,7 @@
             <tbody>
             <tr>
                 <td>
-                    <select id="buildings" name="buildings[]" class="form-control">
+                    <select id="buildings" name="buildings[]" class="form-control form-control-sm">
                         <option value="">Выберите блок/зону</option>
                         @forelse($buildings as $building)
                             <option value="{{ $building->id }}">{{ $building->name }}</option>
@@ -173,7 +173,7 @@
                     </select>
                 </td>
                 <td>
-                    <select id="floors" name="floors[]" class="form-control">
+                    <select id="floors" name="floors[]" class="form-control form-control-sm">
                         <option value="">Выберите этаж</option>
                         @forelse($floors as $floor)
                             <option value="{{ $floor->id }}">{{ $floor->name }}</option>
@@ -183,7 +183,7 @@
                     </select>
                 </td>
                 <td>
-                    <select id="rooms" name="rooms[]" class="form-control">
+                    <select id="rooms" name="rooms[]" class="form-control form-control-sm">
                         <option value="">Выберите помещение</option>
                         @forelse($rooms as $room)
                             <option value="{{ $room->id }}">{{ $room->name }}</option>
@@ -201,7 +201,7 @@
             </tbody>
         </table>
         </div>
-        <button type="submit" class="btn btn-danger mb-5">Сохранить</button>
+        <button type="submit" class=" btn btn-sm  btn-danger mb-5">Сохранить</button>
     </form>
 @endsection
 

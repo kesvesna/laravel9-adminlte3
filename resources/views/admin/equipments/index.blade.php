@@ -8,7 +8,7 @@
     <div class="container pt-3">
     @if ($message = session()->get('success'))
         <div class="alert alert-success alert-dismissible" id="equipment_success_message">
-            <button id="btn_equipment_success_message" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <button id=" btn btn-sm_equipment_success_message" type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             <h5><i class="icon fas fa-check"></i>{{ $message }}</h5>
         </div>
     @endif
@@ -16,11 +16,11 @@
     <form method="get" action="{{ route('admin.equipments.create') }}">
         <div class="row">
             <h2>Оборудование</h2>
-            <button class="btn btn-success btn-sm ml-1" type="submit"><b>Создать</b></button>
+            <button class=" btn btn-sm  btn-success   ml-1" type="submit"><b>Создать</b></button>
         </div>
     </form>
     <hr>
-        <a href="{{ route('admin.equipments.index') }}" class="btn btn-success btn-sm btn-block mb-3"><b>Сбросить все
+        <a href="{{ route('admin.equipments.index') }}" class=" btn btn-sm  btn-success    btn-block mb-3"><b>Сбросить все
                 фильтры</b></a>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-bordered table-sm">
@@ -35,7 +35,7 @@
                 <form action="{{ route('admin.equipments.index') }}" method="get">
                 <tr>
                     <th>
-                        <select class="form-control" name="trk_id" aria-label="select" onchange="this.form.submit()">
+                        <select class="form-control form-control-sm" name="trk_id" aria-label="select" onchange="this.form.submit()">
                             <option selected value="">Все</option>
                             @forelse($trks as $trk)
                                 <option value="{{ $trk->id }}" @if(isset($old_filters['trk_id'])){{ $old_filters['trk_id'] == $trk->id ? ' selected' : '' }} @endif>{{ $trk->name }}</option>
@@ -45,7 +45,7 @@
                         </select>
                     </th>
                     <th>
-                        <select class="form-control" name="system_type_id" aria-label="select" onchange="this.form.submit()">
+                        <select class="form-control form-control-sm" name="system_type_id" aria-label="select" onchange="this.form.submit()">
                             <option selected value="">Все</option>
                             @forelse($systems as $system)
                                 <option value="{{ $system->id }}" @if(isset($old_filters['system_type_id'])){{ $old_filters['system_type_id'] == $system->id ? ' selected' : '' }} @endif>{{ $system->name }}</option>
@@ -55,7 +55,7 @@
                         </select>
                     </th>
                     <th>
-                        <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_id'])){{ $old_filters['room_id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_id" type="search" class="form-control" placeholder="Поиск" aria-label="room_id" aria-describedby="room_id">
+                        <input onchange="this.form.submit();" list="rooms" value="@if(isset($old_filters['room_id'])){{ $old_filters['room_id']}}@endif" style="background: rgba( 255, 255, 255, 0.5 );" name="room_id" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="room_id" aria-describedby="room_id">
                         <datalist id="rooms">
                             @forelse($rooms as $room)
                                 <option value="{{$room->name}}">
@@ -65,7 +65,7 @@
                         </datalist>
                     </th>
                     <th>
-                        <input list="equipment_names" onchange="this.form.submit()" value="@if(isset($old_filters['equipment_name_id'])){{$old_filters['equipment_name_id']}}@endif" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment_name_id" type="search" class="form-control" placeholder="Поиск" aria-label="equipment_name_id" aria-describedby="equipment_name_id">
+                        <input list="equipment_names" onchange="this.form.submit()" value="@if(isset($old_filters['equipment_name_id'])){{$old_filters['equipment_name_id']}}@endif" autofocus style="background: rgba( 255, 255, 255, 0.5 );" name="equipment_name_id" type="search" class="form-control form-control-sm" placeholder="Поиск" aria-label="equipment_name_id" aria-describedby="equipment_name_id">
                         <datalist id="equipment_names">
                             @forelse($equipment_names as $name)
                                 <option value="{{$name->name}}">
@@ -119,9 +119,9 @@
     <script>
         function admin_equipment_index_page_ready() {
             const targetDiv = document.getElementById("equipment_success_message");
-            const btn = document.getElementById("btn_equipment_success_message");
-            if(btn){
-                btn.onclick = function () {
+            const  btn btn-sm = document.getElementById(" btn btn-sm_equipment_success_message");
+            if( btn btn-sm){
+                 btn btn-sm.onclick = function () {
                     targetDiv.style.display = "none";
                 };
             }
